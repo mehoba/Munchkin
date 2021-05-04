@@ -121,15 +121,15 @@
 
     <ImageView
         android:id="@+id/spielfeldui_treasurecard"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.761"
+        app:layout_constraintHorizontal_bias="0.708"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469"
+        app:layout_constraintVertical_bias="0.489"
         app:srcCompat="@drawable/spielfeldui_treasurecard" />
 
     <ImageView
@@ -146,15 +146,15 @@
 
     <ImageView
         android:id="@+id/spielfeldui_doorcard"
-        android:layout_width="160dp"
-        android:layout_height="70dp"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.196"
+        app:layout_constraintHorizontal_bias="0.256"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.469"
+        app:layout_constraintVertical_bias="0.489"
         app:srcCompat="@drawable/spielfeldui_doorcard" />
 
     <ImageView
