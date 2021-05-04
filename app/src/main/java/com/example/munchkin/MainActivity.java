@@ -7,18 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import android.widget.ImageView;
+
+
 public class MainActivity extends AppCompatActivity {
 
     private Button exitBtn, diceBtn;
+
+    private ImageView menuspielen,menuexit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        exitBtn= findViewById(R.id.exitBtn);
-        diceBtn= findViewById(R.id.diceBtn);
 
-        diceBtn.setOnClickListener(new View.OnClickListener() {
+        menuspielen=findViewById(R.id.menuspielenbutton);
+        menuexit=findViewById(R.id.menuexitbutton);
+
+        menuspielen.setOnClickListener(new View.OnClickListener() {
+
+   
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), DiceActivity.class);
@@ -26,7 +36,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        exitBtn.setOnClickListener(new View.OnClickListener() {
+
+        menuexit.setOnClickListener(new View.OnClickListener() {
+
+      
             @Override
             public void onClick(View v) {
                 System.exit(1);

@@ -4,28 +4,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
+    android:background="@drawable/dice_background"
+
     tools:context=".DiceActivity">
 
     <Button
         android:id="@+id/btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="140dp"
-        android:layout_marginLeft="140dp"
+
         android:layout_marginTop="68dp"
-        android:text="Button"
+        android:text="Roll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/diceImage" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.611" />
+
 
     <ImageView
         android:id="@+id/diceImage"
         android:layout_width="171dp"
         android:layout_height="150dp"
-        android:layout_marginStart="107dp"
-        android:layout_marginLeft="107dp"
-        android:layout_marginTop="234dp"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.376"
+
         app:srcCompat="@drawable/dices" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
