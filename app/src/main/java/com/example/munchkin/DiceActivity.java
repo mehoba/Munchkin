@@ -56,10 +56,13 @@ public class DiceActivity extends AppCompatActivity {
                 break;
             case 4:
                 diceImage.setImageResource(R.drawable.dicefour);
+                break;
             case 5:
                 diceImage.setImageResource(R.drawable.dicefive);
+                break;
             case 6:
                 diceImage.setImageResource(R.drawable.dicesix);
+                break;
         }
     }
 
