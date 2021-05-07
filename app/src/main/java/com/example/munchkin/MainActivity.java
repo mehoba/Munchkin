@@ -28,14 +28,13 @@ public class MainActivity extends AppCompatActivity {
 
         menuspielen.setOnClickListener(new View.OnClickListener() {
 
-   
+
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), DiceActivity.class);
-                startActivity(intent);
+                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
+                startActivity(i);
             }
         });
-
 
         menuexit.setOnClickListener(new View.OnClickListener() {
 

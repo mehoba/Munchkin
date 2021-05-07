@@ -3,6 +3,7 @@ package com.example.munchkin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,6 @@ import java.util.Random;
 
 public class DiceActivity extends AppCompatActivity {
 
-    private Button button;
     private ImageView diceImage;
     private int prevNum;
 
@@ -24,10 +24,17 @@ public class DiceActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dice);
 
-        button= findViewById(R.id.btn);
+        DisplayMetrics dm=new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width=dm.widthPixels;
+        int height=dm.heightPixels;
+
+        getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
+
         diceImage=findViewById(R.id.diceImage);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        diceImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int diceNum = getRandomNumber();
