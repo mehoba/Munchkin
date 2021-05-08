@@ -128,7 +128,7 @@
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.489"
@@ -222,10 +222,14 @@
 
     <TextView
         android:id="@+id/spielfeldui_player3name"
-        android:layout_width="55dp"
-        android:layout_height="16dp"
+        android:layout_width="32dp"
+        android:layout_height="53dp"
+        android:gravity="center|center_vertical"
+        android:lineSpacingExtra="0sp"
         android:rotation="90"
         android:text="Spieler3"
+        android:textIsSelectable="false"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -235,16 +239,20 @@
 
     <TextView
         android:id="@+id/spielfeldui_player2name"
-        android:layout_width="55dp"
-        android:layout_height="16dp"
+        android:layout_width="32dp"
+        android:layout_height="53dp"
+        android:gravity="center|center_vertical"
+        android:lineSpacingExtra="0sp"
         android:rotation="-90"
         android:text="Spieler2"
+        android:textIsSelectable="false"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.998"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.502" />
 
     <ImageView
         android:id="@+id/spielfeldui_player2icon"

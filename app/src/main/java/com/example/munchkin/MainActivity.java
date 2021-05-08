@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button exitBtn, diceBtn;
 
-    private ImageView menuspielen,menuexit;
+    private ImageView menuspielen,menuexit,menueinstellungen;
 
 
     @Override
@@ -25,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
 
         menuspielen=findViewById(R.id.menuspielenbutton);
         menuexit=findViewById(R.id.menuexitbutton);
+        menueinstellungen=findViewById(R.id.menusettingsbutton);
+
+        menueinstellungen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
 
         menuspielen.setOnClickListener(new View.OnClickListener() {
 
