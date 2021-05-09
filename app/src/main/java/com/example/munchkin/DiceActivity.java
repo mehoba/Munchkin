@@ -2,6 +2,10 @@ package com.example.munchkin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,11 +15,16 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class DiceActivity extends AppCompatActivity {
+public class DiceActivity extends AppCompatActivity implements SensorEventListener {
 
     private Button button;
     private ImageView diceImage;
     private int prevNum;
+    private static final float SHAKE_THRESHOLD = 3.25f;
+    private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
+    private long mLastShakeTime;
+    private SensorManager mSensorMgr;
+
 
 
 
@@ -26,6 +35,14 @@ public class DiceActivity extends AppCompatActivity {
 
         button= findViewById(R.id.btn);
         diceImage=findViewById(R.id.diceImage);
+
+        mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
+
+        Sensor acceloremeter = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+        if(acceloremeter!= null){
+            mSensorMgr.registerListener(this, acceloremeter,SensorManager.SENSOR_DELAY_NORMAL);
+        }
+
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,10 +85,35 @@ public class DiceActivity extends AppCompatActivity {
     }
 
 
-
     public int getRandomNumber(){
         Random rand= new Random();
         return rand.nextInt(6)+1;
+    }
+
+    @Override
+    public void onSensorChanged(SensorEvent event) {
+        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+            long curTime = System.currentTimeMillis();
+            if((curTime -mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES){
+                float x= event.values[0];
+                float y = event.values[1];
+                float z = event.values[2];
+
+                double acceleration = Math.sqrt(Math.pow(x, 2) +
+                        Math.pow(y, 2) +
+                        Math.pow(z, 2)) - SensorManager.GRAVITY_EARTH;
+
+                if (acceleration > SHAKE_THRESHOLD) {
+                    mLastShakeTime = curTime;
+                    setDicePicture(getRandomNumber());
+
+            }
+        }
+    }}
+
+    @Override
+    public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
     }
 }
 
