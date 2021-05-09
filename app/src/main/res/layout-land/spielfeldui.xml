@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/spielfeldui_background">
+    android:background="@drawable/spielfeldui_background"
+    tools:ignore="MissingDefaultResource">
 
     <ImageView
         android:id="@+id/player3_rasseicon2"
@@ -86,13 +87,14 @@
 
     <ImageView
         android:id="@+id/spielfeldui_settingsbtn"
-        android:layout_width="67dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="672dp"
-        android:layout_marginLeft="672dp"
-        android:layout_marginBottom="368dp"
+        android:layout_width="44dp"
+        android:layout_height="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.994"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.005"
         app:srcCompat="@drawable/spielfeldui_settings" />
 
     <ImageView
@@ -126,7 +128,7 @@
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.708"
+        app:layout_constraintHorizontal_bias="0.703"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.489"
@@ -185,9 +187,10 @@
         android:id="@+id/spielfeldui_player1icon"
         android:layout_width="55dp"
         android:layout_height="55dp"
+        android:onClick="ShowPopUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.915"
@@ -200,7 +203,7 @@
         android:text="Spieler1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.309"
+        app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.964" />
@@ -219,10 +222,14 @@
 
     <TextView
         android:id="@+id/spielfeldui_player3name"
-        android:layout_width="55dp"
-        android:layout_height="16dp"
+        android:layout_width="32dp"
+        android:layout_height="53dp"
+        android:gravity="center|center_vertical"
+        android:lineSpacingExtra="0sp"
         android:rotation="90"
         android:text="Spieler3"
+        android:textIsSelectable="false"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -232,16 +239,20 @@
 
     <TextView
         android:id="@+id/spielfeldui_player2name"
-        android:layout_width="55dp"
-        android:layout_height="16dp"
+        android:layout_width="32dp"
+        android:layout_height="53dp"
+        android:gravity="center|center_vertical"
+        android:lineSpacingExtra="0sp"
         android:rotation="-90"
         android:text="Spieler2"
+        android:textIsSelectable="false"
+        android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.998"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
+        app:layout_constraintVertical_bias="0.502" />
 
     <ImageView
         android:id="@+id/spielfeldui_player2icon"
