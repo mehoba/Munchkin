@@ -2,10 +2,7 @@ package Karte;
 
 public class Inventar {
 
-    public Inventar(){
-        setKartenArray(this.KartenArray);
-        setHandKarten(this.handKarten);
-    }
+ 
     public Karte [] KartenArray;
 
     public Karte[] getKartenArray(){
