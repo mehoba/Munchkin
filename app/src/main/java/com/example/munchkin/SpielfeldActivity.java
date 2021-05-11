@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class SpielfeldActivity extends AppCompatActivity {
 
-    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1;
+    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1,doorcard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,15 @@ public class SpielfeldActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.spielfeldui_backbutton);
         klasse1=findViewById(R.id.player1_klasseicon);
         rasse1=findViewById(R.id.player1_rasseicon);
+        doorcard=findViewById(R.id.spielfeldui_doorcard);
+
+        doorcard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
+                startActivity(intent);
+            }
+        });
 
         rasse1.setOnClickListener(new View.OnClickListener() {
             @Override
