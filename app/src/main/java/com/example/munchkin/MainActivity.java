@@ -10,39 +10,59 @@ import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
 import com.esotericsoftware.minlog.Log;
 
-import java.io.IOException;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import android.widget.ImageView;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    private Button exitBtn, diceBtn;
 
-    static TextView txtText;
+    private ImageView menuspielen,menuexit,menueinstellungen;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        txtText = findViewById(R.id.txtText);
 
-        try {
-            new GameServer();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        menuspielen=findViewById(R.id.menuspielenbutton);
+        menuexit=findViewById(R.id.menuexitbutton);
+        menueinstellungen=findViewById(R.id.menusettingsbutton);
+
+        menueinstellungen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        menuspielen.setOnClickListener(new View.OnClickListener() {
 
 
-            new GameClient();
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
+                startActivity(i);
+            }
+        });
 
+        menuexit.setOnClickListener(new View.OnClickListener() {
 
+      
+            @Override
+            public void onClick(View v) {
+                System.exit(1);
+            }
+        });
 
     }
 
-    public static void SetText(String text)
-    {
-        txtText.setText(text);
-    }
-    public static void AddText(String text)
-    {
-        txtText.setText(txtText.getText() + " " + text);
-    }
 }
