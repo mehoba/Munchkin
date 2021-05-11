@@ -7,6 +7,7 @@
     android:background="@drawable/mainmenu_background"
     tools:context=".MainActivity">
 
+
     <Button
         android:id="@+id/diceBtn"
 
@@ -60,6 +61,7 @@
         android:id="@+id/menusettingsbutton"
         android:layout_width="261dp"
         android:layout_height="96dp"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
