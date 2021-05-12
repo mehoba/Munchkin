@@ -31,7 +31,7 @@ public class EquipActivity extends AppCompatActivity {
 
             @Override
             public void onFinish() {
-                Intent intent = new Intent(getApplicationContext(), DiceActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SpielfeldActivity.class);
                 startActivity(intent);
             }
         }.start();
