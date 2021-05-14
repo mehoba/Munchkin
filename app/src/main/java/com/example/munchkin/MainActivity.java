@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         menuspielen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), EquipActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SpielfeldActivity.class);
                 startActivity(intent);
             }
         });

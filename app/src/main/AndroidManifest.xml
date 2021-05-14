@@ -33,16 +33,11 @@
             android:name=".SpielfeldActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
-        <activity
-            android:name=".EquipActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="portrait" />
         <activity android:name=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

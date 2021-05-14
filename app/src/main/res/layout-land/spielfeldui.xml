@@ -344,4 +344,59 @@
         app:layout_constraintVertical_bias="0.671"
         app:srcCompat="@drawable/empty_card" />
 
+    <TextView
+        android:id="@+id/spielfeldui_player1_countdown"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="@+id/spielfeldui_player1icon"
+        app:layout_constraintStart_toStartOf="@+id/spielfeldui_player1icon"
+        app:layout_constraintTop_toTopOf="@+id/spielfeldui_player1icon" />
+
+    <TextView
+        android:id="@+id/spielfeldui_player4_countdown"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:rotation="180"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="@+id/spielfeldui_player4icon"
+        app:layout_constraintEnd_toEndOf="@+id/spielfeldui_player4icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spielfeldui_player4icon"
+        app:layout_constraintTop_toTopOf="@+id/spielfeldui_player4icon"
+        app:layout_constraintVertical_bias="0.444" />
+
+    <TextView
+        android:id="@+id/spielfeldui_player2_countdown"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:gravity="center"
+        android:rotation="-90"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="@+id/spielfeldui_player2icon"
+        app:layout_constraintEnd_toEndOf="@+id/spielfeldui_player2icon"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/spielfeldui_player2icon"
+        app:layout_constraintTop_toTopOf="@+id/spielfeldui_player2icon"
+        app:layout_constraintVertical_bias="0.562" />
+
+    <TextView
+        android:id="@+id/spielfeldui_player3_countdown"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:gravity="center"
+        android:rotation="90"
+        android:textColor="?android:attr/textColorPrimaryInverse"
+        app:layout_constraintBottom_toBottomOf="@+id/spielfeldui_player3icon"
+        app:layout_constraintEnd_toEndOf="@+id/spielfeldui_player3icon"
+        app:layout_constraintStart_toStartOf="@+id/spielfeldui_player3icon"
+        app:layout_constraintTop_toTopOf="@+id/spielfeldui_player3icon"
+        app:layout_constraintVertical_bias="1.0" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
