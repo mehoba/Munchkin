@@ -38,7 +38,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
 
-        diceImage=findViewById(R.id.diceImage);
+        diceImage=findViewById(R.id.win_logo);
 
 
 
