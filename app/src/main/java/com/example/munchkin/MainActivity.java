@@ -45,24 +45,19 @@ public class MainActivity extends AppCompatActivity {
         });
 
         menuspielen.setOnClickListener(new View.OnClickListener() {
-
-
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
-                startActivity(i);
+                Intent intent = new Intent(getApplicationContext(), SpielfeldActivity.class);
+                startActivity(intent);
             }
         });
 
         menuexit.setOnClickListener(new View.OnClickListener() {
-
-      
             @Override
             public void onClick(View v) {
                 System.exit(1);
             }
         });
-
     }
 
 }
