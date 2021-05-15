@@ -9,10 +9,7 @@ import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -41,7 +38,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
 
-        diceImage=findViewById(R.id.diceImage);
+        diceImage=findViewById(R.id.win_logo);
 
 
 
