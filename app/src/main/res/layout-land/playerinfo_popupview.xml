@@ -8,6 +8,21 @@
     tools:ignore="MissingDefaultResource"
     android:background="@drawable/player_popup">
 
+    <TextView
+        android:id="@+id/spielfeldui_player1_countdown"
+        android:layout_width="77dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.886" />
+
     <ImageView
         android:id="@+id/player1popup_picture"
         android:layout_width="70dp"
@@ -65,16 +80,4 @@
         app:layout_constraintVertical_bias="0.886"
         app:srcCompat="@drawable/spielfeldui_skiptimebutton" />
 
-    <EditText
-        android:id="@+id/playerpop_equiptime"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.088"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886" />
 </androidx.constraintlayout.widget.ConstraintLayout>

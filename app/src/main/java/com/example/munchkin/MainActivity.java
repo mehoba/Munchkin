@@ -17,6 +17,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private ImageView spielenbutton;
+    public TextView playername, playernameinvalid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -24,16 +25,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.playername_view);
 
         spielenbutton = findViewById(R.id.playername_startbutton);
+        playername=findViewById(R.id.playernameinput);
+        playernameinvalid=findViewById(R.id.playername_error);
 
         spielenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
-                startActivity(intent);
+                spielen(view);
             }
         });
 
+    }
 
+    private void spielen(View view){
+        if(playername.getText().toString().equals("")||playername==null){
+
+            playernameinvalid.setVisibility(View.VISIBLE);
+
+        }else{
+
+            Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
+            startActivity(intent);
+
+        }
     }
 
 }

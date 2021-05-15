@@ -103,7 +103,7 @@
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783"
@@ -344,16 +344,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.095"
         app:srcCompat="@drawable/spielfeldui_player4icon" />
-
-    <TextView
-        android:id="@+id/spielfeldui_player1_countdown"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:gravity="center"
-        android:textColor="?android:attr/textColorPrimaryInverse"
-        app:layout_constraintBottom_toBottomOf="@+id/spielfeldui_player1icon"
-        app:layout_constraintStart_toStartOf="@+id/spielfeldui_player1icon"
-        app:layout_constraintTop_toTopOf="@+id/spielfeldui_player1icon" />
 
     <TextView
         android:id="@+id/spielfeldui_player4_countdown"
