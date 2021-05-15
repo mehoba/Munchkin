@@ -1,4 +1,4 @@
-package com.example.munchkin;
+/*package com.example.munchkin;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -55,4 +55,4 @@ public class GameClient
             }
         }.start();
     }
-}
+}*/

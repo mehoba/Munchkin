@@ -103,11 +103,35 @@
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783"
         app:srcCompat="@drawable/spielfeldui_backpackicon" />
+
+    <ImageView
+        android:id="@+id/player1_klasseicon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.783"
+        app:srcCompat="@drawable/spielfeldui_klasseicon" />
+
+    <ImageView
+        android:id="@+id/player1_rasseicon"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957"
+        app:srcCompat="@drawable/spielfeldui_rasseicon" />
 
     <ImageView
         android:id="@+id/spielfeldui_dicesicon"
@@ -115,24 +139,11 @@
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintHorizontal_bias="0.869"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955"
+        app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/dices" />
-
-    <ImageView
-        android:id="@+id/spielfeldui_treasurecard"
-        android:layout_width="103dp"
-        android:layout_height="117dp"
-        android:rotation="-90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.703"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
-        app:srcCompat="@drawable/spielfeldui_treasurecard" />
 
     <ImageView
         android:id="@+id/spielfeldui_backbutton"
@@ -153,35 +164,80 @@
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.256"
+        app:layout_constraintHorizontal_bias="0.321"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.489"
         app:srcCompat="@drawable/spielfeldui_doorcard" />
 
     <ImageView
-        android:id="@+id/player1_klasseicon"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:id="@+id/midemptycard_bottomright"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:rotation="-1"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.609"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.783"
-        app:srcCompat="@drawable/spielfeldui_klasseicon" />
+        app:layout_constraintVertical_bias="0.671"
+        app:srcCompat="@drawable/empty_card" />
 
     <ImageView
-        android:id="@+id/player1_rasseicon"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
+        android:id="@+id/spielfeldui_treasurecard"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
+        android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.869"
+        app:layout_constraintHorizontal_bias="0.769"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.955"
-        app:srcCompat="@drawable/spielfeldui_rasseicon" />
+        app:layout_constraintVertical_bias="0.489"
+        app:srcCompat="@drawable/spielfeldui_treasurecard" />
+
+    <ImageView
+        android:id="@+id/midemptycard_topright"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:rotation="-1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433"
+        app:srcCompat="@drawable/empty_card" />
+
+    <ImageView
+        android:id="@+id/midemptycard_topleft"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:rotation="-1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.433"
+        app:srcCompat="@drawable/empty_card" />
+
+    <ImageView
+        android:id="@+id/midemptycard_bottomleft"
+        android:layout_width="78dp"
+        android:layout_height="79dp"
+        android:rotation="-1"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.671"
+        app:srcCompat="@drawable/empty_card" />
 
     <ImageView
         android:id="@+id/spielfeldui_player1icon"
@@ -193,7 +249,7 @@
         app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.915"
+        app:layout_constraintVertical_bias="0.873"
         app:srcCompat="@drawable/spielfeldui_player1icon" />
 
     <TextView
@@ -206,7 +262,7 @@
         app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.964" />
+        app:layout_constraintVertical_bias="0.926" />
 
     <TextView
         android:id="@+id/spielfeldui_player4name"
@@ -287,61 +343,5 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.095"
         app:srcCompat="@drawable/spielfeldui_player4icon" />
-
-    <ImageView
-        android:id="@+id/midemptycard_topleft"
-        android:layout_width="78dp"
-        android:layout_height="79dp"
-        android:rotation="-1"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
-        app:srcCompat="@drawable/empty_card" />
-
-    <ImageView
-        android:id="@+id/midemptycard_topright"
-        android:layout_width="78dp"
-        android:layout_height="79dp"
-        android:rotation="-1"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
-        app:srcCompat="@drawable/empty_card" />
-
-    <ImageView
-        android:id="@+id/midemptycard_bottomright"
-        android:layout_width="78dp"
-        android:layout_height="79dp"
-        android:rotation="-1"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
-        app:srcCompat="@drawable/empty_card" />
-
-    <ImageView
-        android:id="@+id/midemptycard_bottomleft"
-        android:layout_width="78dp"
-        android:layout_height="79dp"
-        android:rotation="-1"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.416"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
-        app:srcCompat="@drawable/empty_card" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

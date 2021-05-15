@@ -1,67 +1,38 @@
 package com.example.munchkin;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import com.esotericsoftware.kryonet.Client;
-import com.esotericsoftware.kryonet.Connection;
-import com.esotericsoftware.kryonet.Listener;
-import com.esotericsoftware.kryonet.Server;
-import com.esotericsoftware.minlog.Log;
 
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button exitBtn, diceBtn;
-
-    private ImageView menuspielen,menuexit,menueinstellungen;
-
+    private ImageView spielenbutton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.playername_view);
 
-        menuspielen=findViewById(R.id.menuspielenbutton);
-        menuexit=findViewById(R.id.menuexitbutton);
-        menueinstellungen=findViewById(R.id.menusettingsbutton);
+        spielenbutton = findViewById(R.id.playername_startbutton);
 
-        menueinstellungen.setOnClickListener(new View.OnClickListener() {
+        spielenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
                 startActivity(intent);
             }
         });
 
-        menuspielen.setOnClickListener(new View.OnClickListener() {
-
-
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
-                startActivity(i);
-            }
-        });
-
-        menuexit.setOnClickListener(new View.OnClickListener() {
-
-      
-            @Override
-            public void onClick(View v) {
-                System.exit(1);
-            }
-        });
 
     }
 

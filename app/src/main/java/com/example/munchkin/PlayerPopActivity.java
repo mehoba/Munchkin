@@ -1,11 +1,15 @@
 package com.example.munchkin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.view.View;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 public class PlayerPopActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +23,7 @@ public class PlayerPopActivity extends AppCompatActivity {
         int height=dm.heightPixels;
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.8));
+
 
     }
 }
