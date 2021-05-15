@@ -390,4 +390,56 @@
         app:layout_constraintTop_toTopOf="@+id/spielfeldui_player3icon"
         app:layout_constraintVertical_bias="1.0" />
 
+    <ImageView
+        android:id="@+id/cardView"
+        android:layout_width="42dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spielfeldui_player1icon"
+        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
+        app:srcCompat="@drawable/spielfeldui_doorcard" />
+
+    <ImageView
+        android:id="@+id/cardView2"
+        android:layout_width="42dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/cardView3"
+        android:layout_width="42dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <ImageView
+        android:id="@+id/cardView4"
+        android:layout_width="42dp"
+        android:layout_height="82dp"
+        android:layout_marginStart="7dp"
+        android:layout_marginLeft="7dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        tools:srcCompat="@tools:sample/avatars" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

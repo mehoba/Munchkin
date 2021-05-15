@@ -3,14 +3,26 @@ package com.example.munchkin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.Karte.Inventar;
+
+import java.util.Random;
 
 
 public class SpielfeldActivity extends AppCompatActivity {
 
+    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4;
 
     private ImageView dice,settings,backbtn,klasse1,rasse1,doorcard, backpack;
     private ImageView spieler1,spieler2, spieler3, spieler4;
@@ -18,8 +30,15 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Inventar inventar=new Inventar();
+        inventar.setKartenList();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielfeldui);
+        cardView=findViewById(R.id.cardView);
+        cardView2=findViewById(R.id.cardView2);
+        cardView3=findViewById(R.id.cardView3);
+        cardView4=findViewById(R.id.cardView4);
 
         dice=findViewById(R.id.spielfeldui_dicesicon);
         spieler1=findViewById(R.id.spielfeldui_player1icon);
@@ -81,6 +100,11 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
+        cardView.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView2.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView3.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView4.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+
         rasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -122,4 +146,21 @@ public class SpielfeldActivity extends AppCompatActivity {
         });
     }
 
+            @Override
+            public void onFinish() {
+                // Reset countdown display
+                playerCountdowns[activePlayer-1].setText("");
+
+                // Switch to next player
+                activePlayer = (activePlayer % 4) + 1;
+
+                // Restart timer
+                this.start();
+            }
+        }.start();
+    }
+    private int getRandomNum(){
+        Random rand= new Random();
+        return rand.nextInt(10)+1;
+    }
 }
