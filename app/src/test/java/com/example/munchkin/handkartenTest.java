@@ -1,14 +1,18 @@
 package com.example.munchkin;
 
+import com.example.munchkin.Karte.HandKarten;
+import com.example.munchkin.Karte.Inventar;
+import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KarteImpl;
+
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import Karte.Inventar;
-import Karte.Karte;
-import Karte.KarteImpl;
-import Karte.HandKarten;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 
 public class handkartenTest {
 
@@ -36,8 +40,7 @@ public class handkartenTest {
         k7=new KarteImpl();
         k8=new KarteImpl();
         Karte[] array = {k1,k2,k3,k4,k5,k6,k7,k8};
-        inventar.setKartenArray(array);
-        handkarten.setKartenArray(array);
+       handkarten.setHandKarten(Arrays.asList(array));
         Assert.assertEquals(true,handkarten.checkIfMoreThan7());
     }
 
@@ -45,12 +48,12 @@ public class handkartenTest {
     public void checkIfMoreThan7Test2(){
         k1=new KarteImpl();
         Karte[] array = {k1};
-        handkarten.setKartenArray(array);
+        handkarten.setHandKarten(Arrays.asList(array));
         Assert.assertEquals(false,handkarten.checkIfMoreThan7());
     }
 
     @After
     public void cleanUp(){
-
+        handkarten.setHandKarten(null);
     }
 }

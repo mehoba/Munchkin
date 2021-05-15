@@ -15,9 +15,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.Karte.Inventar;
+
+import java.util.Random;
+
+
 public class SpielfeldActivity extends AppCompatActivity {
 
-    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1;
+    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4;
 
     private int activePlayer = 1;
 
@@ -27,8 +32,15 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Inventar inventar=new Inventar();
+        inventar.setKartenList();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielfeldui);
+        cardView=findViewById(R.id.cardView);
+        cardView2=findViewById(R.id.cardView2);
+        cardView3=findViewById(R.id.cardView3);
+        cardView4=findViewById(R.id.cardView4);
 
         dice=findViewById(R.id.spielfeldui_dicesicon);
         spieler1=findViewById(R.id.spielfeldui_player1icon);
@@ -41,6 +53,11 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);
+
+        cardView.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView2.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView3.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        cardView4.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
 
         rasse1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -111,5 +128,9 @@ public class SpielfeldActivity extends AppCompatActivity {
                 this.start();
             }
         }.start();
+    }
+    private int getRandomNum(){
+        Random rand= new Random();
+        return rand.nextInt(10)+1;
     }
 }
