@@ -15,7 +15,7 @@ public class Level {
         level++;
 
         if(level == 10){
-
+            notifyAboutWin();
         }
     }
 
