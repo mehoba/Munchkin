@@ -6,7 +6,15 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class levelTest {
-    Level level= new Level();
+    Level level;
+    SpielfeldActivity sourceActivity;
+
+    @Before
+    public void setUp(){
+        sourceActivity=new SpielfeldActivity();
+        level= new Level( sourceActivity);
+    }
+
 
     @Test
     public void checkIfIncrease(){
