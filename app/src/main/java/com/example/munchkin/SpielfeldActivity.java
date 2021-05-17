@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class SpielfeldActivity extends AppCompatActivity {
 
-    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4;
+    private ImageView dice,spieler1,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, skip;
 
     private int activePlayer = 1;
 
@@ -48,6 +48,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.spielfeldui_backbutton);
         klasse1=findViewById(R.id.player1_klasseicon);
         rasse1=findViewById(R.id.player1_rasseicon);
+        skip=findViewById(R.id.spielfeldui_player_skip);
 
         playerCountdowns[0]=findViewById(R.id.spielfeldui_player1_countdown);
         playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
@@ -105,8 +106,18 @@ public class SpielfeldActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        skip.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                skipTurn();
+            }
+        });
 
         initTimer();
+    }
+
+    public void skipTurn() {
+        timer.onFinish();
     }
 
     private void initTimer() {
