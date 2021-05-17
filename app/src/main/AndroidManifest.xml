@@ -30,6 +30,11 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
+            android:name=".WinPopActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.CustomPopUp" />
+        <activity
             android:name=".SpielfeldActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
