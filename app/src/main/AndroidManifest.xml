@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.munchkin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,21 +12,26 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SettingsActivity"
+        <activity android:name=".Networking.ServerActivity"></activity>
+        <activity
+            android:name=".SettingsActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".PlayerPopActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.CustomPopUp"/>
-        <activity android:name=".CardPopActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.CustomPopUp"/>
-        <activity android:name=".DiceActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PlayerPopActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.CustomPopUp"/>
+            android:theme="@style/AppTheme.CustomPopUp" />
+        <activity
+            android:name=".CardPopActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.CustomPopUp" />
+        <activity
+            android:name=".DiceActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.CustomPopUp" />
         <activity
             android:name=".PopActivity"
             android:configChanges="orientation"
@@ -38,17 +46,16 @@
             android:name=".SpielfeldActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>
