@@ -30,8 +30,7 @@ public class Level {
     }
 
     private void notifyAboutWin() {
-
-        Intent i=new Intent(sourceActivity.getApplicationContext(),WinPopActivity.class);
+        Intent i = new Intent(sourceActivity.getApplicationContext(),WinPopActivity.class);
         sourceActivity.startActivity(i);
     }
 }
