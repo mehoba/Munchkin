@@ -247,7 +247,7 @@
         android:onClick="ShowPopUp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.873"
@@ -260,7 +260,7 @@
         android:text="Spieler1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.269"
+        app:layout_constraintHorizontal_bias="0.217"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.926" />
@@ -392,54 +392,57 @@
 
     <ImageView
         android:id="@+id/cardView"
-        android:layout_width="42dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
+        android:layout_width="77dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spielfeldui_player1icon"
         app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
-        app:srcCompat="@drawable/spielfeldui_doorcard" />
+        app:layout_constraintVertical_bias="0.851" />
 
     <ImageView
         android:id="@+id/cardView2"
-        android:layout_width="42dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
+        android:layout_width="77dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
+        app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/cardView3"
-        android:layout_width="42dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
+        android:layout_width="77dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
         app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
     <ImageView
         android:id="@+id/cardView4"
-        android:layout_width="42dp"
-        android:layout_height="82dp"
-        android:layout_marginStart="7dp"
-        android:layout_marginLeft="7dp"
+        android:layout_width="77dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginTop="23dp"
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
         app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

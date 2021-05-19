@@ -12,6 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class PlayerPopActivity extends AppCompatActivity {
 
+    public Level level;
+    private TextView playerstufepopup;
     private ImageView skiptimebtn;
     private int activePlayer = 1;
 
@@ -24,6 +26,11 @@ public class PlayerPopActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playerinfo_popupview);
+        playerstufepopup=findViewById(R.id.playerpopup_stufetext);
+
+        level=new Level();
+
+        playerstufepopup.setText(Integer.toString(level.getLevel()));
 
         DisplayMetrics dm=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
