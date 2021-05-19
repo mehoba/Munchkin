@@ -47,6 +47,13 @@ public class PlayerPopActivity extends AppCompatActivity {
 
         skiptimebtn=findViewById(R.id.playerpop_skiptimebtn);
 
+        skiptimebtn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                skipTurn();
+            }
+        });
+
         initTimer();
     }
 
@@ -70,5 +77,8 @@ public class PlayerPopActivity extends AppCompatActivity {
                 this.start();
             }
         }.start();
+    }
+    public void skipTurn() {
+        timer.onFinish();
     }
 }

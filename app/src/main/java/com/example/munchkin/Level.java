@@ -6,6 +6,18 @@ public class Level {
 
     public int level = 1;
 
+    private SpielfeldActivity sourceActivity;
+
+    public Level(SpielfeldActivity sourceActivity) {
+        this.sourceActivity = sourceActivity;
+    }
+
+    private void notifyAboutWin() {
+
+        Intent i=new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
+        sourceActivity.startActivity(i);
+    }
+
     void levelIncrease(){
         level++;
 
