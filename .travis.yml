@@ -49,8 +49,10 @@ script:
 
 addons:
   sonarcloud:
-    organization: "mehoba" # der key der organisation auf sonarcloud.io
-    token: ${SONAR_TOKEN}
+    organization: "mehoba"
+    token:
+      secure: ${SONAR_TOKEN} # encrypted value of your token
+
     # Umgebungsvariable auf travis-ci.com
 
 # benachrichtigungen per email ausschalten
