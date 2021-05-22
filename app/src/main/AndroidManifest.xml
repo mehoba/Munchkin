@@ -12,11 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".MainMenuActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".WinnerPopActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.CustomPopUp"/>
         <activity android:name=".Networking.ServerActivity"></activity>
         <activity
             android:name=".SettingsActivity"
             android:configChanges="orientation"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".PlayerPopActivity"
             android:configChanges="orientation"
@@ -38,11 +45,6 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".WinPopActivity"
-            android:configChanges="orientation"
-            android:screenOrientation="landscape"
-            android:theme="@style/AppTheme.CustomPopUp" />
-        <activity
             android:name=".SpielfeldActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
@@ -57,5 +59,8 @@
             </intent-filter>
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

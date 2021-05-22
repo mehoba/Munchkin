@@ -1,59 +1,54 @@
 package com.example.munchkin;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button exitBtn, diceBtn;
-
-    private ImageView menuspielen,menuexit,menueinstellungen;
-
+    private ImageView spielenbutton;
+    public TextView playername, playernameinvalid;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.playername_view);
 
-        menuspielen=findViewById(R.id.menuspielenbutton);
-        menuexit=findViewById(R.id.menuexitbutton);
-        menueinstellungen=findViewById(R.id.menusettingsbutton);
+        spielenbutton = findViewById(R.id.playername_startbutton);
+        playername=findViewById(R.id.playernameinput);
+        playernameinvalid=findViewById(R.id.playername_error);
 
-        menueinstellungen.setOnClickListener(new View.OnClickListener() {
+        spielenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
-                startActivity(intent);
+                spielen(view);
             }
         });
 
-        menuspielen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SpielfeldActivity.class);
-                startActivity(intent);
-            }
-        });
 
-        menuexit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                System.exit(1);
-            }
-        });
+    }
+
+    private void spielen(View view){
+        if(playername.getText().toString().equals("")||playername==null){
+
+            playernameinvalid.setVisibility(View.VISIBLE);
+
+        }else{
+
+            Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
+            startActivity(intent);
+
+        }
     }
 
 }
