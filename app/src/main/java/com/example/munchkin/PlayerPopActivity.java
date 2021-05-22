@@ -16,6 +16,7 @@ public class PlayerPopActivity extends AppCompatActivity {
     private TextView playerstufepopup;
     private ImageView skiptimebtn;
     private int activePlayer = 1;
+    private SpielfeldActivity sourceActivity;
 
     private TextView playerCountdowns[] = new TextView[4];
     private CountDownTimer timer;
@@ -28,7 +29,7 @@ public class PlayerPopActivity extends AppCompatActivity {
         setContentView(R.layout.playerinfo_popupview);
         playerstufepopup=findViewById(R.id.playerpopup_stufetext);
 
-        level=new Level();
+        level=new Level(sourceActivity);
 
         playerstufepopup.setText(Integer.toString(level.getLevel()));
 
@@ -47,14 +48,15 @@ public class PlayerPopActivity extends AppCompatActivity {
 
         skiptimebtn=findViewById(R.id.playerpop_skiptimebtn);
 
+
+        initTimer();
+
         skiptimebtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                skipTurn();
+                timer.onFinish();
             }
         });
-
-        initTimer();
     }
 
 
@@ -77,8 +79,5 @@ public class PlayerPopActivity extends AppCompatActivity {
                 this.start();
             }
         }.start();
-    }
-    public void skipTurn() {
-        timer.onFinish();
     }
 }

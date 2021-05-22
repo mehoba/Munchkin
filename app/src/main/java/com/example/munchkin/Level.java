@@ -12,18 +12,12 @@ public class Level {
         this.sourceActivity = sourceActivity;
     }
 
-    private void notifyAboutWin() {
-
-        Intent i=new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
-        sourceActivity.startActivity(i);
-    }
-
     void levelIncrease(){
         level++;
 
         if(level == 10){
-            //ToDo: Person has won the game - popup Help
-
+            Intent i=new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
+            sourceActivity.startActivity(i);
         }
     }
 
@@ -40,6 +34,5 @@ public class Level {
     public void setLevel(int level) {
         this.level = level;
     }
-
 
 }
