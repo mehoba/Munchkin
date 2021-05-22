@@ -13,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Inventar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 
@@ -22,11 +24,13 @@ public class SpielfeldActivity extends AppCompatActivity {
     private ImageView doorcard, backpack;
     private ImageView spieler1,spieler2, spieler3, spieler4;
     private TextView playerCountdowns[] = new TextView[4];
+    private List<Integer> drawnCards;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         Inventar inventar=new Inventar();
         inventar.setKartenList();
+        drawnCards=new ArrayList<>();
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielfeldui);
@@ -96,10 +100,10 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        cardView.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
-        cardView2.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
-        cardView3.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
-        cardView4.setImageResource(inventar.getKartenList().get(getRandomNum()).getImage());
+        setCardView(cardView);
+        setCardView(cardView2);
+        setCardView(cardView3);
+        setCardView(cardView4);
 
         rasse1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -148,6 +152,18 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     private int getRandomNum(){
         Random rand= new Random();
-        return rand.nextInt(10)+1;
+        return rand.nextInt(50)+1;
+    }
+
+    public void setCardView(ImageView card){
+        Inventar inventar=new Inventar();
+        inventar.setKartenList();
+        int index= getRandomNum();
+        if(!drawnCards.contains(index)){
+            card.setImageResource(inventar.getKartenList().get(index).getImage());
+            drawnCards.add(index);
+        }
+        else
+            setCardView(card);
     }
 }
