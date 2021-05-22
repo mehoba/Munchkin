@@ -49,7 +49,7 @@ script:
 
 addons:
   sonarcloud:
-    organization: "mehoba"
+    organization: "se2-mehoba-github"
     token: ${SONAR_TOKEN} # encrypted value of your token
 
     # Umgebungsvariable auf travis-ci.com
