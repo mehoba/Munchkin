@@ -4,8 +4,7 @@ import android.content.Intent;
 
 public class Level {
 
-    public int level = 1;
-
+    private int level = 1;
     private SpielfeldActivity sourceActivity;
 
     public Level(SpielfeldActivity sourceActivity) {
@@ -16,8 +15,7 @@ public class Level {
         level++;
 
         if(level == 10){
-            Intent i=new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
-            sourceActivity.startActivity(i);
+            notifyAboutWin();
         }
     }
 
@@ -35,4 +33,8 @@ public class Level {
         this.level = level;
     }
 
+    private void notifyAboutWin() {
+        Intent i = new Intent(sourceActivity.getApplicationContext(),WinPopActivity.class);
+        sourceActivity.startActivity(i);
+    }
 }
