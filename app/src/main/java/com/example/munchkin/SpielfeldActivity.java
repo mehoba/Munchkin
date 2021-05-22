@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class SpielfeldActivity extends AppCompatActivity {
 
-    private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, midemptycard_bottomleft;
+    private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, midemptycard_bottomleft, treasureCard;
     private ImageView doorcard, backpack;
     private ImageView spieler1,spieler2, spieler3, spieler4;
     private TextView playerCountdowns[] = new TextView[4];
@@ -54,6 +54,14 @@ public class SpielfeldActivity extends AppCompatActivity {
         rasse1=findViewById(R.id.player1_rasseicon);
         doorcard=findViewById(R.id.spielfeldui_doorcard);
         backpack=findViewById(R.id.spielfeldui_backpackicon);
+        treasureCard= findViewById(R.id.spielfeldui_treasurecard);
+
+        treasureCard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardHeben();
+            }
+        });
 
         backpack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -197,10 +205,17 @@ public class SpielfeldActivity extends AppCompatActivity {
     }
 
 
-    public void cardHeben(ImageView card, ImageView field){
-
-
+    public void cardHeben(){
+        if(cardView.getVisibility() == View.INVISIBLE)
+            setCardView(cardView);
+        else if(cardView2.getVisibility()==View.INVISIBLE)
+            setCardView(cardView2);
+        else if(cardView3.getVisibility()==View.INVISIBLE)
+            setCardView(cardView3);
+        else if(cardView4.getVisibility()==View.INVISIBLE)
+            setCardView(cardView4);
     }
+
     public void cardAbelegen(ImageView card, ImageView field){
         field.setVisibility(View.VISIBLE);
         field.setImageDrawable(card.getDrawable());
