@@ -3,7 +3,6 @@ package com.example.munchkin;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
-import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -14,7 +13,7 @@ public class PlayerPopActivity extends AppCompatActivity {
 
     public Level level;
     private TextView playerstufepopup;
-    private ImageView skiptimebtn;
+    private ImageView skiptimebtn,playerpicture;
     private int activePlayer = 1;
     private SpielfeldActivity sourceActivity;
 
@@ -28,6 +27,7 @@ public class PlayerPopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playerinfo_popupview);
         playerstufepopup=findViewById(R.id.playerpopup_stufetext);
+        playerpicture=findViewById(R.id.player1popup_picture);
 
         level=new Level(sourceActivity);
 
@@ -41,10 +41,8 @@ public class PlayerPopActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.8));
 
-        playerCountdowns[0]=findViewById(R.id.spielfeldui_player1_countdown);
-        playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
-        playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
-        playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);
+        playerCountdowns[0]=findViewById(R.id.playerpopup_player1_countdown);
+
 
         skiptimebtn=findViewById(R.id.playerpop_skiptimebtn);
 
@@ -54,7 +52,8 @@ public class PlayerPopActivity extends AppCompatActivity {
         skiptimebtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                timer.onFinish();
+                timer.cancel();
+                timer.onTick(0);
             }
         });
     }

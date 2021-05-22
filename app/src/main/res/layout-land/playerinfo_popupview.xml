@@ -9,7 +9,7 @@
     android:background="@drawable/player_popup">
 
     <TextView
-        android:id="@+id/spielfeldui_player1_countdown"
+        android:id="@+id/playerpopup_player1_countdown"
         android:layout_width="77dp"
         android:layout_height="50dp"
         android:gravity="center"

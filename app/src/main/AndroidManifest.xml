@@ -19,14 +19,11 @@
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp"/>
-        <activity android:name=".SettingsActivity"
         <activity android:name=".Networking.ServerActivity"></activity>
         <activity
             android:name=".SettingsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".PlayerPopActivity"
-            android:screenOrientation="portrait" />
         <activity
             android:name=".PlayerPopActivity"
             android:configChanges="orientation"
