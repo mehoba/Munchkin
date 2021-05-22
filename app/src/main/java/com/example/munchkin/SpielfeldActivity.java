@@ -20,7 +20,7 @@ import java.util.Random;
 
 public class SpielfeldActivity extends AppCompatActivity {
 
-    private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4;
+    private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, midemptycard_bottomleft;
     private ImageView doorcard, backpack;
     private ImageView spieler1,spieler2, spieler3, spieler4;
     private TextView playerCountdowns[] = new TextView[4];
@@ -39,6 +39,9 @@ public class SpielfeldActivity extends AppCompatActivity {
         cardView2=findViewById(R.id.cardView2);
         cardView3=findViewById(R.id.cardView3);
         cardView4=findViewById(R.id.cardView4);
+
+        midemptycard_bottomleft=findViewById(R.id.midemptycard_bottomleft);
+
 
         dice=findViewById(R.id.spielfeldui_dicesicon);
         spieler1=findViewById(R.id.spielfeldui_player1icon);
@@ -105,6 +108,31 @@ public class SpielfeldActivity extends AppCompatActivity {
         setCardView(cardView3);
         setCardView(cardView4);
 
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardAbelegen(cardView,midemptycard_bottomleft);
+            }
+        });
+        cardView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardAbelegen(cardView2,midemptycard_bottomleft);
+            }
+        });
+        cardView3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardAbelegen(cardView3,midemptycard_bottomleft);
+            }
+        });
+        cardView4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cardAbelegen(cardView4,midemptycard_bottomleft);
+            }
+        });
+
         rasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -162,8 +190,20 @@ public class SpielfeldActivity extends AppCompatActivity {
         if(!drawnCards.contains(index)){
             card.setImageResource(inventar.getKartenList().get(index).getImage());
             drawnCards.add(index);
+            card.setVisibility(View.VISIBLE);
         }
         else
             setCardView(card);
+    }
+
+
+    public void cardHeben(ImageView card, ImageView field){
+
+
+    }
+    public void cardAbelegen(ImageView card, ImageView field){
+        field.setVisibility(View.VISIBLE);
+        field.setImageDrawable(card.getDrawable());
+        card.setVisibility(View.INVISIBLE);
     }
 }

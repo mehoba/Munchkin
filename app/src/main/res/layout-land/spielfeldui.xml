@@ -393,7 +393,7 @@
     <ImageView
         android:id="@+id/cardView"
         android:layout_width="77dp"
-        android:layout_height="108dp"
+        android:layout_height="100dp"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="23dp"
@@ -406,7 +406,7 @@
     <ImageView
         android:id="@+id/cardView2"
         android:layout_width="77dp"
-        android:layout_height="108dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="23dp"
@@ -420,7 +420,7 @@
     <ImageView
         android:id="@+id/cardView3"
         android:layout_width="77dp"
-        android:layout_height="108dp"
+        android:layout_height="100dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="23dp"
@@ -434,7 +434,7 @@
     <ImageView
         android:id="@+id/cardView4"
         android:layout_width="77dp"
-        android:layout_height="108dp"
+        android:layout_height="100dp"
         android:layout_marginStart="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginTop="23dp"
