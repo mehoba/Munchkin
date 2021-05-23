@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,13 +13,16 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Inventar;
+import com.example.munchkin.Networking.Lobby;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
 
 public class SpielfeldActivity extends AppCompatActivity {
+    private static SpielfeldActivity instance;
 
     private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, midemptycard_bottomleft, treasureCard;
     private ImageView doorcard, backpack;
@@ -28,6 +32,8 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        instance = this;
+
         Inventar inventar=new Inventar();
         inventar.setKartenList();
         drawnCards=new ArrayList<>();
@@ -184,6 +190,8 @@ public class SpielfeldActivity extends AppCompatActivity {
        /* playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
+
+        setPlayerNames();
     }
 
     private int getRandomNum(){
@@ -220,5 +228,30 @@ public class SpielfeldActivity extends AppCompatActivity {
         field.setVisibility(View.VISIBLE);
         field.setImageDrawable(card.getDrawable());
         card.setVisibility(View.INVISIBLE);
+    }
+
+    public void setPlayerNames()
+    {
+        if(Lobby.getInstance() == null)
+            return ;
+
+        TextView[] txtPlayerNames = new TextView[4];
+        txtPlayerNames[0] = findViewById(R.id.spielfeldui_player1name);
+        txtPlayerNames[1] = findViewById(R.id.spielfeldui_player2name);
+        txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
+        txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
+
+        LinkedList<String> playerNames = Lobby.getInstance().getPlayerNames();
+
+        for(int i = 0; i < playerNames.size(); i++)
+        {
+            if(txtPlayerNames[i] != null)
+                txtPlayerNames[i].setText(playerNames.get(i));
+        }
+    }
+
+    public static SpielfeldActivity getInstance()
+    {
+        return instance;
     }
 }

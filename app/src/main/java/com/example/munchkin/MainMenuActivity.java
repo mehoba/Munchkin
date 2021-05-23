@@ -20,7 +20,8 @@ public class MainMenuActivity extends AppCompatActivity {
         menuexit=findViewById(R.id.menuexitbutton);
         menueinstellungen=findViewById(R.id.menusettingsbutton);
 
-        menueinstellungen.setOnClickListener(new View.OnClickListener() {
+        menueinstellungen.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
@@ -28,9 +29,8 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        menuspielen.setOnClickListener(new View.OnClickListener() {
-
-
+        menuspielen.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
@@ -38,14 +38,13 @@ public class MainMenuActivity extends AppCompatActivity {
             }
         });
 
-        menuexit.setOnClickListener(new View.OnClickListener() {
-
-
+        menuexit.setOnClickListener(new View.OnClickListener()
+        {
             @Override
             public void onClick(View v) {
+                finish();
                 System.exit(1);
             }
         });
-
     }
 }

@@ -10,16 +10,13 @@ import com.example.munchkin.R;
 
 import java.io.IOException;
 
-public class ServerActivity extends AppCompatActivity {
-
-    static TextView txtText;
-
+public class ServerActivity extends AppCompatActivity
+{
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_server2);
-        //txtText = findViewById(R.id.txtText);
 
         try
         {
@@ -29,14 +26,5 @@ public class ServerActivity extends AppCompatActivity {
         {
             e.printStackTrace();
         }
-    }
-
-    public static void SetText(String text)
-    {
-
-    }
-    public static void AddText(String text)
-    {
-        //txtText.setText(txtText.getText() + " " + text);
     }
 }

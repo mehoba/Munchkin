@@ -3,6 +3,7 @@ package com.example.munchkin;
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.example.munchkin.Networking.Lobby;
 
 import java.io.IOException;
 
@@ -10,8 +11,9 @@ import java.io.IOException;
 public class GameClient
 {
     Client client;
-    public  GameClient() {
-        client   = new Client();
+    public  GameClient()
+    {
+        client  = new Client();
         client.start();
 
         Network.register(client);
@@ -34,22 +36,36 @@ public class GameClient
                                @Override
                                public void received(Connection connection, Object object)
                                {
-                                   if (object instanceof Network.TestClass)
+                                   if (object instanceof Lobby)
                                    {
-                                       Network.TestClass test = (Network.TestClass)object;
-                                       //MainActivity.AddText(test.text);
+                                       Lobby lobby = (Lobby)object;
+                                       Lobby.setInstance(lobby);
+
+                                       if(SpielfeldActivity.getInstance() != null)
+                                            SpielfeldActivity.getInstance().setPlayerNames();
                                    }
                                }
                            }
 
         );
+    }
 
-        new Thread("Connect") {
+    public void connectToServer(final String ipAddress, final String playerName)
+    {
+        new Thread("Connect")
+        {
             public void run () {
-                try {
-                    client.connect(5000, Network.ipAdressServer, Network.port);
-                    // Server communication after connection can go here, or in Listener#connected().
-                } catch (IOException ex) {
+                try
+                {
+                    if(!client.isConnected())
+                    {
+                        Network.ipAdressServer = ipAddress;
+                        client.connect(5000, Network.ipAdressServer, Network.port);
+                    }
+                    sendPlayerNameToServer(playerName);
+                }
+                catch (IOException ex)
+                {
                     ex.printStackTrace();
                     System.exit(1);
                 }
@@ -62,5 +78,12 @@ public class GameClient
         Network.PlayerName playerName = new Network.PlayerName();
         playerName.playerName = name;
         client.sendTCP(playerName);
+
+        connectionWithServerAbgeschlossen();
+    }
+
+    void connectionWithServerAbgeschlossen()
+    {
+        MainActivity.getInstance().successfullyConnectedToServer();
     }
 }
