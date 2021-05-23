@@ -19,7 +19,12 @@
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp"/>
-        <activity android:name=".Networking.ServerActivity"></activity>
+        <activity android:name=".Networking.ServerActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SettingsActivity"
             android:configChanges="orientation"

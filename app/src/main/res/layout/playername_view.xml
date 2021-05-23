@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.412"
+        app:layout_constraintVertical_bias="0.525"
         app:srcCompat="@drawable/welcome_button" />
 
     <ImageView
@@ -48,6 +48,24 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.218" />
 
+    <EditText
+        android:id="@+id/txtServerIPAddress"
+        android:layout_width="322dp"
+        android:layout_height="54dp"
+        android:backgroundTint="@android:color/white"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="IP Adresse vom Server:"
+        android:inputType="textPersonName"
+        android:textColor="#ffffff"
+        android:textColorHint="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382" />
+
     <TextView
         android:id="@+id/playername_error"
         android:layout_width="329dp"
@@ -59,9 +77,8 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.321"
+        app:layout_constraintVertical_bias="0.306"
         tools:visibility="invisible" />
 </androidx.constraintlayout.widget.ConstraintLayout>

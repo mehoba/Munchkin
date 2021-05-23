@@ -14,19 +14,27 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
+    public static GameClient gameClient;
+    static MainActivity instance;
+
+    public TextView playername, playernameinvalid, txtServerIpAddress;
 
     private ImageView spielenbutton;
-    public TextView playername, playernameinvalid;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playername_view);
 
+        instance = this;
+
         spielenbutton = findViewById(R.id.playername_startbutton);
-        playername=findViewById(R.id.playernameinput);
-        playernameinvalid=findViewById(R.id.playername_error);
+        playername = findViewById(R.id.playernameinput);
+        playernameinvalid = findViewById(R.id.playername_error);
+        txtServerIpAddress = findViewById(R.id.txtServerIPAddress);
+        txtServerIpAddress.setText(Network.ipAdressServer);
 
         spielenbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,20 +43,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        //Start Client
+        gameClient = new GameClient();
     }
 
-    private void spielen(View view){
-        if(playername.getText().toString().equals("")||playername==null){
-
+    private void spielen(View view)
+    {
+        if (checkIfTextViewEmptyOrNull(playernameinvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))
             playernameinvalid.setVisibility(View.VISIBLE);
+        else
+            gameClient.connectToServer(txtServerIpAddress.getText().toString(), playername.getText().toString());
+    }
 
-        }else{
+    public void successfullyConnectedToServer()
+    {
+        Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
+        startActivity(intent);
+    }
 
-            Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
-            startActivity(intent);
+    boolean checkIfTextViewEmptyOrNull(TextView textView)
+    {
+        if (textView.getText().toString().equals("") || textView == null)
+            return true;
+        return false;
+    }
 
-        }
+    public static MainActivity getInstance()
+    {
+        return instance;
     }
 
 }
