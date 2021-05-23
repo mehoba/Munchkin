@@ -36,10 +36,13 @@ public class GameClient
                                @Override
                                public void received(Connection connection, Object object)
                                {
-                                   if (object instanceof Network.PlayerBoardNumber)
+                                   if (object instanceof Lobby)
                                    {
-                                       Network.PlayerBoardNumber playerBoardNumber = (Network.PlayerBoardNumber)object;
-                                       boardNumberRecievedFromServer(playerBoardNumber);
+                                       Lobby lobby = (Lobby)object;
+                                       Lobby.setInstance(lobby);
+
+                                       if(SpielfeldActivity.getInstance() != null)
+                                            SpielfeldActivity.getInstance().setPlayerNames();
                                    }
                                }
                            }
@@ -75,11 +78,12 @@ public class GameClient
         Network.PlayerName playerName = new Network.PlayerName();
         playerName.playerName = name;
         client.sendTCP(playerName);
+
+        connectionWithServerAbgeschlossen();
     }
 
-    void boardNumberRecievedFromServer(Network.PlayerBoardNumber playerBoardNumber)
+    void connectionWithServerAbgeschlossen()
     {
         MainActivity.getInstance().successfullyConnectedToServer();
-        //playerBoardNumber to be implemented......
     }
 }

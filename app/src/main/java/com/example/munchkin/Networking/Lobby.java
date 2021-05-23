@@ -6,7 +6,14 @@ import java.util.LinkedList;
 //Stores all the Player for the Server
 public class Lobby
 {
+    private static Lobby instance = null;
+
     Player[] players = new Player[4];
+
+    public Lobby()
+    {
+        instance = this;
+    }
 
     //Return true if successfully added
     public boolean addPlayer(Player player)
@@ -49,5 +56,15 @@ public class Lobby
         }
 
         return playerNamesList;
+    }
+
+    public static Lobby getInstance()
+    {
+        return instance;
+    }
+
+    public static void setInstance(Lobby lobby)
+    {
+        instance = lobby;
     }
 }

@@ -42,7 +42,7 @@ public class GameServer
                     Log.d("PlayerConnection", " ");
 
 
-                    sendBoardNumberToClient(player);
+                    syncLobbyWithClients(lobby);
                 }
             }
 
@@ -72,12 +72,9 @@ public class GameServer
         server.start();
     }
 
-    void sendBoardNumberToClient(Player player)
+    void syncLobbyWithClients(Lobby lobby)
     {
-        Network.PlayerBoardNumber playerBoardNumber = new Network.PlayerBoardNumber();
-        playerBoardNumber.playerBoardNumber = player.playerBoardNumber;
-
-        server.sendToTCP(player.connectionId, playerBoardNumber);
+        server.sendToAllTCP(lobby);
     }
 
     void logPlayerList()

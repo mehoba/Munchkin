@@ -2,6 +2,7 @@ package com.example.munchkin;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
+import com.example.munchkin.Networking.Lobby;
 
 public class Network
 {
@@ -13,6 +14,9 @@ public class Network
         Kryo kryo = endpoint.getKryo();
         kryo.register(PlayerName.class);
         kryo.register(PlayerBoardNumber.class);
+        kryo.register(Lobby.class);
+        kryo.register(Player[].class);
+        kryo.register(Player.class);
     }
 
     static public class PlayerName

@@ -44,11 +44,19 @@ public class MainActivity extends AppCompatActivity
         });
 
         //Start Client
-        gameClient = new GameClient();
+        //--------------------------------
+        //Comment this line if you want to debug without Server
+        //gameClient = new GameClient();
+        //--------------------------------
     }
 
     private void spielen(View view)
     {
+        if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
+        {
+            successfullyConnectedToServer();
+        }
+
         if (checkIfTextViewEmptyOrNull(playernameinvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))
             playernameinvalid.setVisibility(View.VISIBLE);
         else
