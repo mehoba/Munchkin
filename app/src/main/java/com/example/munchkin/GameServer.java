@@ -62,6 +62,8 @@ public class GameServer
                 {
                     Log.d("PlayerConnection", "disconnected: " + connection.getID());
                     logPlayerList();
+
+                    syncLobbyWithClients(lobby);
                 }
             }
         });

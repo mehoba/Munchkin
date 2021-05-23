@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity
         //Start Client
         //--------------------------------
         //Comment this line if you want to debug without Server
-        //gameClient = new GameClient();
+        gameClient = new GameClient();
         //--------------------------------
     }
 
@@ -67,6 +67,7 @@ public class MainActivity extends AppCompatActivity
     {
         Intent intent = new Intent(getApplicationContext(), MainMenuActivity.class);
         startActivity(intent);
+        finish();
     }
 
     boolean checkIfTextViewEmptyOrNull(TextView textView)
