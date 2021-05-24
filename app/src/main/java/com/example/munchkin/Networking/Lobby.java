@@ -2,42 +2,69 @@ package com.example.munchkin.Networking;
 import com.example.munchkin.Player;
 
 import java.util.LinkedList;
+
+//Stores all the Player for the Server
 public class Lobby
 {
-    LinkedList<Player> players = new LinkedList<>();
+    private static Lobby instance = null;
 
-    public  void addPlayer(Player player)
+    Player[] players = new Player[4];
+
+    public Lobby()
     {
-        players.add(player);
+        instance = this;
     }
 
-    public  boolean removePlayer(int connectionId)
+    //Return true if successfully added
+    public boolean addPlayer(Player player)
     {
-        Player playerToRemove = null;
-
-        for(int i = 0; i < players.size(); i++)
+        for(int i = 0; i < players.length; i++)
         {
-            if(players.get(i).connectionId == connectionId)
+            if(players[i] == null)
             {
-                playerToRemove = players.get(i);
+                players[i] = player;
+                players[i].playerBoardNumber = i;
+                return true;
             }
-        }
-        if(playerToRemove != null)
-        {
-            players.remove(playerToRemove);
-            return  true;
         }
         return false;
     }
 
-    public String[] getPlayerNames()
+    //Return true if successfully removed
+    public boolean removePlayer(int connectionId)
     {
-        String[] playerNames = new String[players.size()];
-
-        for(int i = 0; i < players.size(); i++)
+        for(int i = 0; i < players.length; i++)
         {
-            playerNames[i] = players.get(i).name;
+            if(players[i] != null && players[i].connectionId == connectionId)
+            {
+                players[i] = null;
+                return true;
+            }
         }
-        return playerNames;
+
+        return false;
+    }
+
+    public LinkedList<String> getPlayerNames()
+    {
+        LinkedList<String> playerNamesList = new LinkedList<>();
+
+        for(int i = 0; i < players.length; i++)
+        {
+            if(players[i] != null)
+                playerNamesList.add(players[i].name);
+        }
+
+        return playerNamesList;
+    }
+
+    public static Lobby getInstance()
+    {
+        return instance;
+    }
+
+    public static void setInstance(Lobby lobby)
+    {
+        instance = lobby;
     }
 }

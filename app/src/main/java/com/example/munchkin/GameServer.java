@@ -8,8 +8,6 @@ import com.esotericsoftware.kryonet.Server;
 import com.example.munchkin.Networking.Lobby;
 
 import java.io.IOException;
-import java.util.List;
-import java.util.Objects;
 
 public class GameServer
 {
@@ -32,13 +30,19 @@ public class GameServer
                     player.name = playerName.playerName;
                     player.connectionId = connection.getID();
 
-                    lobby.addPlayer(player);
+                    if(!lobby.addPlayer(player))
+                    {
+                        Log.d("PlayerConnection", "Too much connections: " + player.name);
+                    }
 
                     Log.d("PlayerConnection", "New Connected: " + player.name);
 
                     Log.d("PlayerConnection", " ");
                     logPlayerList();
                     Log.d("PlayerConnection", " ");
+
+
+                    syncLobbyWithClients(lobby);
                 }
             }
 
@@ -58,6 +62,8 @@ public class GameServer
                 {
                     Log.d("PlayerConnection", "disconnected: " + connection.getID());
                     logPlayerList();
+
+                    syncLobbyWithClients(lobby);
                 }
             }
         });
@@ -68,11 +74,16 @@ public class GameServer
         server.start();
     }
 
+    void syncLobbyWithClients(Lobby lobby)
+    {
+        server.sendToAllTCP(lobby);
+    }
+
     void logPlayerList()
     {
         Log.d("PlayerConnection", "PlayerList: ");
 
-        String[] playerNames = lobby.getPlayerNames();
+        String[] playerNames = lobby.getPlayerNames().toArray(new String[0]);
         for(int i = 0; i < playerNames.length; i++)
         {
             Log.d("PlayerConnection", "       Player: " + playerNames[i]);
