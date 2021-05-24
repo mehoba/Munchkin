@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Inventar;
+import com.example.munchkin.Karte.Karte;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,11 +25,12 @@ public class SpielfeldActivity extends AppCompatActivity {
     private ImageView doorcard, backpack;
     private ImageView spieler1,spieler2, spieler3, spieler4;
     private TextView playerCountdowns[] = new TextView[4];
-    private List<Integer> drawnCards;
+    private List<Karte> drawnCards;
+    // Just the collection of all available cards
+    private final Inventar inventar = new Inventar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        Inventar inventar=new Inventar();
         inventar.setKartenList();
         drawnCards=new ArrayList<>();
 
@@ -59,7 +61,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         treasureCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardHeben();
+                addTreasureCard();
             }
         });
 
@@ -186,24 +188,51 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
     }
 
-    private int getRandomNum(){
-        Random rand= new Random();
-        return rand.nextInt(50)+1;
+    public void addTreasureCard() {
+        int index = getRandomNum(inventar.treasureCardList.size())-1;
+        Karte card = inventar.treasureCardList.get(index);
+        if(!drawnCards.contains(card)) {
+            addCard(card);
+        } else {
+            addTreasureCard();
+        }
     }
 
-    public void setCardView(ImageView card){
-        Inventar inventar=new Inventar();
-        inventar.setKartenList();
-        int index= getRandomNum();
-        if(!drawnCards.contains(index)){
-            card.setImageResource(inventar.getKartenList().get(index).getImage());
-            drawnCards.add(index);
-            card.setVisibility(View.VISIBLE);
+    // Add the card to the first free cardview
+    public void addCard(Karte card) {
+        drawnCards.add(card);
+        if(cardView.getVisibility() == View.INVISIBLE)
+            setCard(card, cardView);
+        else if(cardView2.getVisibility()==View.INVISIBLE)
+            setCard(card, cardView2);
+        else if(cardView3.getVisibility()==View.INVISIBLE)
+            setCard(card, cardView3);
+        else if(cardView4.getVisibility()==View.INVISIBLE)
+            setCard(card, cardView4);
+    }
+
+    private void setCard(Karte card, ImageView cardView) {
+        cardView.setImageResource(card.getImage());
+        cardView.setVisibility(View.VISIBLE);
+    }
+
+    // Returns a random number from 1 to bound (inclusive)
+    private int getRandomNum(int bound){
+        Random rand= new Random();
+        return rand.nextInt(bound)+1;
+    }
+
+    public void setCardView(ImageView cardView){
+        int index= getRandomNum(50);
+        Karte card = inventar.getKartenList().get(index);
+        if(!drawnCards.contains(card)){
+            cardView.setImageResource(card.getImage());
+            drawnCards.add(card);
+            cardView.setVisibility(View.VISIBLE);
         }
         else
-            setCardView(card);
+            setCardView(cardView);
     }
-
 
     public void cardHeben(){
         if(cardView.getVisibility() == View.INVISIBLE)

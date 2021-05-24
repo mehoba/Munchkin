@@ -3,6 +3,13 @@ package com.example.munchkin.Karte;
 
 public class KarteImpl implements Karte {
 
+    private CardType cardType;
+    public int image;
+
+    public KarteImpl(CardType cardType) {
+        this.cardType = cardType;
+    }
+
     @Override
     public int getImage() {
         return image;
@@ -13,7 +20,6 @@ public class KarteImpl implements Karte {
         this.image = image;
     }
 
-    public int image;
     public String getBeschreibung() {
         return beschreibung;
     }
@@ -32,5 +38,10 @@ public class KarteImpl implements Karte {
     @Override
     public void karteAblegen() {
         //TODO
+    }
+
+    @Override
+    public CardType getCardType() {
+        return this.cardType;
     }
 }

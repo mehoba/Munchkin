@@ -13,176 +13,188 @@ public class Inventar {
     public List<Karte> getKartenList() {
         return KartenList;
     }
+    public List<Karte> getTreasureCardList() {
+        return treasureCardList;
+    }
 
     public void setKartenList() {
         KartenList=new ArrayList<>();
-        KarteImpl k1 = new KarteImpl();
+        treasureCardList = new ArrayList<>();
+        KarteImpl k1 = new KarteImpl(CardType.BUFF);
 
         //Adding Buff Cards
         k1.setImage(R.drawable.buffcard1);
-        KarteImpl k2= new KarteImpl();
+        KarteImpl k2= new KarteImpl(CardType.BUFF);
         k2.setImage(R.drawable.buffcard2);
-        KartenList.add(k1);
-        KartenList.add(k2);
-        KarteImpl k3=new KarteImpl();
+        addCard(k1);
+        addCard(k2);
+        KarteImpl k3=new KarteImpl(CardType.BUFF);
         k3.setImage(R.drawable.buffcard3);
-        KartenList.add(k3);
-        KarteImpl k4= new KarteImpl();
+        addCard(k3);
+        KarteImpl k4= new KarteImpl(CardType.BUFF);
         k4.setImage(R.drawable.buffcard4);
-        KartenList.add(k4);
-        KarteImpl k5= new KarteImpl();
+        addCard(k4);
+        KarteImpl k5= new KarteImpl(CardType.BUFF);
         k5.setImage(R.drawable.buffcard5);
-        KartenList.add(k5);
-        KarteImpl k6 = new KarteImpl();
+        addCard(k5);
+        KarteImpl k6 = new KarteImpl(CardType.BUFF);
         k6.setImage(R.drawable.buffcard6);
-        KartenList.add(k6);
+        addCard(k6);
 
         //Adding level up cards
-        KarteImpl k7 = new KarteImpl();
+        KarteImpl k7 = new KarteImpl(CardType.LEVEL_UP);
         k7.setImage(R.drawable.lvlupcard1);
-        KartenList.add(k7);
-        KarteImpl k8= new KarteImpl();
+        addCard(k7);
+        KarteImpl k8= new KarteImpl(CardType.LEVEL_UP);
         k8.setImage(R.drawable.lvlupcard2);
-        KartenList.add(k8);
-        KarteImpl k9 = new KarteImpl();
+        addCard(k8);
+        KarteImpl k9 = new KarteImpl(CardType.LEVEL_UP);
         k9.setImage(R.drawable.lvlupcard3);
-        KartenList.add(k9);
-        KarteImpl k10= new KarteImpl();
+        addCard(k9);
+        KarteImpl k10= new KarteImpl(CardType.LEVEL_UP);
         k10.setImage(R.drawable.lvlupcard4);
-        KartenList.add(k10);
+        addCard(k10);
 
         //Adding rustungs cards
-        KarteImpl k11= new KarteImpl();
+        KarteImpl k11= new KarteImpl(CardType.ARMOR);
         k11.setImage(R.drawable.rustungcard1);
-        KartenList.add(k11);
-        KarteImpl k12= new KarteImpl();
+        addCard(k11);
+        KarteImpl k12= new KarteImpl(CardType.ARMOR);
         k12.setImage(R.drawable.rustungcard2);
-        KartenList.add(k12);
-        KarteImpl k13= new KarteImpl();
+        addCard(k12);
+        KarteImpl k13= new KarteImpl(CardType.ARMOR);
         k13.setImage(R.drawable.rustungcard3);
-        KartenList.add(k13);
-        KarteImpl k14= new KarteImpl();
+        addCard(k13);
+        KarteImpl k14= new KarteImpl(CardType.ARMOR);
         k14.setImage(R.drawable.rustungcard4);
-        KartenList.add(k14);
-        KarteImpl k15= new KarteImpl();
+        addCard(k14);
+        KarteImpl k15= new KarteImpl(CardType.ARMOR);
         k15.setImage(R.drawable.rustungcard5);
-        KartenList.add(k15);
-        KarteImpl k16= new KarteImpl();
+        addCard(k15);
+        KarteImpl k16= new KarteImpl(CardType.ARMOR);
         k16.setImage(R.drawable.rustungcard6);
-        KartenList.add(k16);
-        KarteImpl k17= new KarteImpl();
+        addCard(k16);
+        KarteImpl k17= new KarteImpl(CardType.ARMOR);
         k17.setImage(R.drawable.rustungcard7);
-        KartenList.add(k17);
-        KarteImpl k18= new KarteImpl();
+        addCard(k17);
+        KarteImpl k18= new KarteImpl(CardType.ARMOR);
         k18.setImage(R.drawable.rustungcard8);
-        KartenList.add(k18);
-        KarteImpl k19= new KarteImpl();
+        addCard(k18);
+        KarteImpl k19= new KarteImpl(CardType.ARMOR);
         k19.setImage(R.drawable.rustungcard9);
-        KartenList.add(k19);
-        KarteImpl k20= new KarteImpl();
+        addCard(k19);
+        KarteImpl k20= new KarteImpl(CardType.ARMOR);
         k20.setImage(R.drawable.rustungcard10);
-        KartenList.add(k20);
-        KarteImpl k21= new KarteImpl();
+        addCard(k20);
+        KarteImpl k21= new KarteImpl(CardType.ARMOR);
         k21.setImage(R.drawable.rustungcard11);
-        KartenList.add(k21);
-        KarteImpl k22= new KarteImpl();
+        addCard(k21);
+        KarteImpl k22= new KarteImpl(CardType.ARMOR);
         k22.setImage(R.drawable.rustungcard12);
-        KartenList.add(k22);
-        KarteImpl k23= new KarteImpl();
+        addCard(k22);
+        KarteImpl k23= new KarteImpl(CardType.ARMOR);
         k23.setImage(R.drawable.rustungcard13);
-        KartenList.add(k23);
-        KarteImpl k24= new KarteImpl();
+        addCard(k23);
+        KarteImpl k24= new KarteImpl(CardType.ARMOR);
         k24.setImage(R.drawable.rustungcard14);
-        KartenList.add(k24);
+        addCard(k24);
 
         //Adding fluch cards
-        KarteImpl k25= new KarteImpl();
+        KarteImpl k25= new KarteImpl(CardType.CURSE);
         k25.setImage(R.drawable.fluchcard1);
-        KartenList.add(k25);
-        KarteImpl k26= new KarteImpl();
+        addCard(k25);
+        KarteImpl k26= new KarteImpl(CardType.CURSE);
         k26.setImage(R.drawable.fluchcard2);
-        KartenList.add(k26);
-        KarteImpl k27= new KarteImpl();
+        addCard(k26);
+        KarteImpl k27= new KarteImpl(CardType.CURSE);
         k27.setImage(R.drawable.fluchcard3);
-        KartenList.add(k27);
-        KarteImpl k28= new KarteImpl();
+        addCard(k27);
+        KarteImpl k28= new KarteImpl(CardType.CURSE);
         k28.setImage(R.drawable.fluchcard4);
-        KartenList.add(k28);
+        addCard(k28);
 
         //Adding Klassen cards
-        KarteImpl k29= new KarteImpl();
+        KarteImpl k29= new KarteImpl(CardType.CLASS);
         k29.setImage(R.drawable.klasscard1);
-        KartenList.add(k29);
-        KarteImpl k30= new KarteImpl();
+        addCard(k29);
+        KarteImpl k30= new KarteImpl(CardType.CLASS);
         k30.setImage(R.drawable.klasscard2);
-        KartenList.add(k30);
-        KarteImpl k31= new KarteImpl();
+        addCard(k30);
+        KarteImpl k31= new KarteImpl(CardType.CLASS);
         k31.setImage(R.drawable.klasscard3);
-        KartenList.add(k31);
-        KarteImpl k32= new KarteImpl();
+        addCard(k31);
+        KarteImpl k32= new KarteImpl(CardType.CLASS);
         k32.setImage(R.drawable.klasscard4);
-        KartenList.add(k32);
+        addCard(k32);
 
         //Adding monster cards
-        KarteImpl k33= new KarteImpl();
+        KarteImpl k33= new KarteImpl(CardType.MONSTER);
         k33.setImage(R.drawable.monstercard1);
-        KartenList.add(k33);
-        KarteImpl k34= new KarteImpl();
+        addCard(k33);
+        KarteImpl k34= new KarteImpl(CardType.MONSTER);
         k34.setImage(R.drawable.monstercard2);
-        KartenList.add(k34);
-        KarteImpl k35= new KarteImpl();
+        addCard(k34);
+        KarteImpl k35= new KarteImpl(CardType.MONSTER);
         k35.setImage(R.drawable.monstercard3);
-        KartenList.add(k35);
-        KarteImpl k36= new KarteImpl();
+        addCard(k35);
+        KarteImpl k36= new KarteImpl(CardType.MONSTER);
         k36.setImage(R.drawable.monstercard4);
-        KartenList.add(k36);
-        KarteImpl k37= new KarteImpl();
+        addCard(k36);
+        KarteImpl k37= new KarteImpl(CardType.MONSTER);
         k37.setImage(R.drawable.monstercard5);
-        KartenList.add(k37);
-        KarteImpl k38= new KarteImpl();
+        addCard(k37);
+        KarteImpl k38= new KarteImpl(CardType.MONSTER);
         k38.setImage(R.drawable.monstercard6);
-        KartenList.add(k38);
-        KarteImpl k39= new KarteImpl();
+        addCard(k38);
+        KarteImpl k39= new KarteImpl(CardType.MONSTER);
         k39.setImage(R.drawable.monstercard7);
-        KartenList.add(k39);
-        KarteImpl k40= new KarteImpl();
+        addCard(k39);
+        KarteImpl k40= new KarteImpl(CardType.MONSTER);
         k40.setImage(R.drawable.monstercard8);
-        KartenList.add(k40);
-        KarteImpl k41= new KarteImpl();
+        addCard(k40);
+        KarteImpl k41= new KarteImpl(CardType.MONSTER);
         k41.setImage(R.drawable.monstercard9);
-        KartenList.add(k41);
-        KarteImpl k42= new KarteImpl();
+        addCard(k41);
+        KarteImpl k42= new KarteImpl(CardType.MONSTER);
         k42.setImage(R.drawable.monstercard9);
-        KartenList.add(k42);
-        KarteImpl k43= new KarteImpl();
+        addCard(k42);
+        KarteImpl k43= new KarteImpl(CardType.MONSTER);
         k43.setImage(R.drawable.monstercard10);
-        KartenList.add(k43);
-        KarteImpl k44= new KarteImpl();
+        addCard(k43);
+        KarteImpl k44= new KarteImpl(CardType.MONSTER);
         k44.setImage(R.drawable.monstercard11);
-        KartenList.add(k44);
-        KarteImpl k45= new KarteImpl();
+        addCard(k44);
+        KarteImpl k45= new KarteImpl(CardType.MONSTER);
         k45.setImage(R.drawable.monstercard12);
-        KartenList.add(k45);
-        KarteImpl k46= new KarteImpl();
+        addCard(k45);
+        KarteImpl k46= new KarteImpl(CardType.MONSTER);
         k46.setImage(R.drawable.monstercard13);
-        KartenList.add(k46);
-        KarteImpl k47= new KarteImpl();
+        addCard(k46);
+        KarteImpl k47= new KarteImpl(CardType.MONSTER);
         k47.setImage(R.drawable.monstercard14);
-        KartenList.add(k47);
+        addCard(k47);
 
         //Adding Rassen cards
-        KarteImpl k48= new KarteImpl();
+        KarteImpl k48= new KarteImpl(CardType.RACE);
         k48.setImage(R.drawable.rassencard1);
-        KartenList.add(k48);
-        KarteImpl k49= new KarteImpl();
+        addCard(k48);
+        KarteImpl k49= new KarteImpl(CardType.RACE);
         k49.setImage(R.drawable.rassencard2);
-        KartenList.add(k49);
-        KarteImpl k50= new KarteImpl();
+        addCard(k49);
+        KarteImpl k50= new KarteImpl(CardType.RACE);
         k50.setImage(R.drawable.rassencard3);
-        KartenList.add(k50);
+        addCard(k50);
 
     }
 
+    private void addCard(KarteImpl card) {
+        KartenList.add(card);
+        if(card.getCardType() == CardType.ARMOR || card.getCardType() == CardType.BUFF || card.getCardType() == CardType.LEVEL_UP) {
+            treasureCardList.add(card);
+        }
+    }
+
     public ArrayList<Karte> KartenList;
+    public ArrayList<Karte> treasureCardList;
 
 }
