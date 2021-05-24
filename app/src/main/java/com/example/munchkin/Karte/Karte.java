@@ -5,4 +5,5 @@ public interface Karte {
      void setImage(int image);
       void karteHeben();
       void karteAblegen();
+      CardType getCardType();
 }
