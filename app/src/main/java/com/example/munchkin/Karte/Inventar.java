@@ -1,23 +1,51 @@
 package com.example.munchkin.Karte;
 
+import com.example.munchkin.PlayerAusrüstung;
 import com.example.munchkin.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-public class Inventar {
+public class Inventar
+{
+    private HandKarten handKarten;
+    private PlayerAusrüstung playerAusrüstung;
+    private KlassenKarte klassenKarte;
+    private RassenKarte rassenKarte;
+
+    public Inventar()
+    {
+        handKarten = new HandKarten();
+        playerAusrüstung = new PlayerAusrüstung();
+        klassenKarte = new KlassenKarte();
+        rassenKarte = new RassenKarte();
+    }
 
 
-
-
-    public List<Karte> getKartenList() {
+    public static List<Karte> getKartenList() {
         return KartenList;
     }
-    public List<Karte> getTreasureCardList() {
+    public static List<Karte> getTreasureCardList() {
         return treasureCardList;
     }
 
-    public void setKartenList() {
+    public static Karte getRandomTreasureCard()
+    {
+        int count = treasureCardList.size() - 1;
+        Random rand = new Random();
+        int randomCardIndex = rand.nextInt(count);
+        return treasureCardList.get(randomCardIndex);
+    }
+    public static Karte getRandomDoorCard()
+    {
+        int count = KartenList.size() - 1;
+        Random rand = new Random();
+        int randomCardIndex = rand.nextInt(count);
+        return KartenList.get(randomCardIndex);
+    }
+
+    public static void setKartenList() {
         KartenList=new ArrayList<>();
         treasureCardList = new ArrayList<>();
         KarteImpl k1 = new KarteImpl(CardType.BUFF);
@@ -187,14 +215,14 @@ public class Inventar {
 
     }
 
-    private void addCard(KarteImpl card) {
+    private static void addCard(KarteImpl card) {
         KartenList.add(card);
         if(card.getCardType() == CardType.ARMOR || card.getCardType() == CardType.BUFF || card.getCardType() == CardType.LEVEL_UP) {
             treasureCardList.add(card);
         }
     }
 
-    public ArrayList<Karte> KartenList;
-    public ArrayList<Karte> treasureCardList;
+    public static ArrayList<Karte> KartenList;
+    public static ArrayList<Karte> treasureCardList;
 
 }

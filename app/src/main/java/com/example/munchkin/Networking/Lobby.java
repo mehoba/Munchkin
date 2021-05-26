@@ -10,6 +10,9 @@ public class Lobby
 
     Player[] players = new Player[4];
 
+    //ToDo localPlayer
+    Player localPlayer;
+
     public Lobby()
     {
         instance = this;
@@ -23,7 +26,7 @@ public class Lobby
             if(players[i] == null)
             {
                 players[i] = player;
-                players[i].playerBoardNumber = i;
+                players[i].setPlayerBoardNumber(i);
                 return true;
             }
         }
@@ -35,7 +38,7 @@ public class Lobby
     {
         for(int i = 0; i < players.length; i++)
         {
-            if(players[i] != null && players[i].connectionId == connectionId)
+            if(players[i] != null && players[i].getConnectionId() == connectionId)
             {
                 players[i] = null;
                 return true;
@@ -52,7 +55,7 @@ public class Lobby
         for(int i = 0; i < players.length; i++)
         {
             if(players[i] != null)
-                playerNamesList.add(players[i].name);
+                playerNamesList.add(players[i].getName());
         }
 
         return playerNamesList;

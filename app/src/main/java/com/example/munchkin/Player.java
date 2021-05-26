@@ -3,6 +3,7 @@ package com.example.munchkin;
 import android.telephony.RadioAccessSpecifier;
 
 import com.example.munchkin.Karte.HandKarten;
+import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.KlassenKarte;
 import com.example.munchkin.Karte.RassenKarte;
 
@@ -11,22 +12,17 @@ public class Player
     private String name;
     private int connectionId;
     private int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
-
-    private HandKarten handKarten;
+    //ToDo Player Icon
+    //ToDo setPlayerName()
+    private Inventar inventar;
     private Level playerLevel;
-    private PlayerAusrüstung playerAusrüstung;
-    private KlassenKarte klassenKarte;
-    private RassenKarte rassenKarte;
+
 
     public Player()
     {
-        handKarten = new HandKarten();
-
-        playerLevel = new Level(null  );//<-------------------------------------------------- Fehlt etwas beim Parameter
-
-        playerAusrüstung = new PlayerAusrüstung();
-        klassenKarte = new KlassenKarte();
-        rassenKarte = new RassenKarte();
+        //ToDo Parameter beim Level ????
+        playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
+        inventar = new Inventar();
     }
 
     //---------Getter/Setter-----------

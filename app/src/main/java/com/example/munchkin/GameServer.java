@@ -27,15 +27,15 @@ public class GameServer
                 {
                     Network.PlayerName playerName = (Network.PlayerName)object;
                     Player player = new Player();
-                    player.name = playerName.playerName;
-                    player.connectionId = connection.getID();
+                    player.setName(playerName.playerName);
+                    player.setConnectionId(connection.getID());
 
                     if(!lobby.addPlayer(player))
                     {
-                        Log.d("PlayerConnection", "Too much connections: " + player.name);
+                        Log.d("PlayerConnection", "Too much connections: " + player.getName());
                     }
 
-                    Log.d("PlayerConnection", "New Connected: " + player.name);
+                    Log.d("PlayerConnection", "New Connected: " + player.getName());
 
                     Log.d("PlayerConnection", " ");
                     logPlayerList();
