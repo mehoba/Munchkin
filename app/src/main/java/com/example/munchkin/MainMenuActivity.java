@@ -5,40 +5,39 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainMenuActivity extends AppCompatActivity {
-    private ImageView menuspielen,menuexit,menueinstellungen;
+    private ImageView imgMenuSpielen, imgMenuExit, imgMenuEinstellungen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        menuspielen=findViewById(R.id.menuspielenbutton);
-        menuexit=findViewById(R.id.menuexitbutton);
-        menueinstellungen=findViewById(R.id.menusettingsbutton);
+        imgMenuSpielen = findViewById(R.id.menuspielenbutton);
+        imgMenuExit = findViewById(R.id.menuexitbutton);
+        imgMenuEinstellungen = findViewById(R.id.menusettingsbutton);
 
-        menueinstellungen.setOnClickListener(new View.OnClickListener()
+        imgMenuEinstellungen.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
                 startActivity(intent);
             }
         });
 
-        menuspielen.setOnClickListener(new View.OnClickListener()
+        imgMenuSpielen.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
+                Intent i = new Intent(getApplicationContext(),SpielfeldActivity.class);
                 startActivity(i);
             }
         });
 
-        menuexit.setOnClickListener(new View.OnClickListener()
+        imgMenuExit.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
