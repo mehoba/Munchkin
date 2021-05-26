@@ -3,9 +3,7 @@ package com.example.munchkin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,10 +23,10 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    private ImageView dice,settings,backbtn,klasse1,rasse1,cardView, cardView2, cardView3, cardView4, midemptycard_bottomleft, treasureCard;
-    private ImageView doorcard, backpack;
-    private ImageView spieler1,spieler2, spieler3, spieler4;
-    private TextView playerCountdowns[] = new TextView[4];
+    private ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMidemptycard_bottomleft, imgTreasureCard;
+    private ImageView imgDoorcard, imgBackpack;
+    private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
+    private TextView[] txtPlayerCountdowns = new TextView[4];
     private List<Karte> drawnCards;
     // Just the collection of all available cards
     private final Inventar inventar = new Inventar();
@@ -42,35 +40,35 @@ public class SpielfeldActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.spielfeldui);
 
-        cardView=findViewById(R.id.cardView);
-        cardView2=findViewById(R.id.cardView2);
-        cardView3=findViewById(R.id.cardView3);
-        cardView4=findViewById(R.id.cardView4);
+        imgCardView =findViewById(R.id.cardView);
+        imgCardView2 =findViewById(R.id.cardView2);
+        imgCardView3 =findViewById(R.id.cardView3);
+        imgCardView4 =findViewById(R.id.cardView4);
 
-        midemptycard_bottomleft=findViewById(R.id.midemptycard_bottomleft);
+        imgMidemptycard_bottomleft =findViewById(R.id.midemptycard_bottomleft);
 
 
-        dice=findViewById(R.id.spielfeldui_dicesicon);
-        spieler1=findViewById(R.id.spielfeldui_player1icon);
-        spieler2=findViewById(R.id.spielfeldui_player2icon);
-        spieler3=findViewById(R.id.spielfeldui_player3icon);
-        spieler4=findViewById(R.id.spielfeldui_player4icon);
-        settings=findViewById(R.id.spielfeldui_settingsbtn);
-        backbtn=findViewById(R.id.spielfeldui_backbutton);
-        klasse1=findViewById(R.id.player1_klasseicon);
-        rasse1=findViewById(R.id.player1_rasseicon);
-        doorcard=findViewById(R.id.spielfeldui_doorcard);
-        backpack=findViewById(R.id.spielfeldui_backpackicon);
-        treasureCard= findViewById(R.id.spielfeldui_treasurecard);
+        imgDice =findViewById(R.id.spielfeldui_dicesicon);
+        imgSpieler1 =findViewById(R.id.spielfeldui_player1icon);
+        imgSpieler2 =findViewById(R.id.spielfeldui_player2icon);
+        imgSpieler3 =findViewById(R.id.spielfeldui_player3icon);
+        imgSpieler4 =findViewById(R.id.spielfeldui_player4icon);
+        imgSettings =findViewById(R.id.spielfeldui_settingsbtn);
+        imgBackbtn =findViewById(R.id.spielfeldui_backbutton);
+        imgKlasse1 =findViewById(R.id.player1_klasseicon);
+        imgRasse1 =findViewById(R.id.player1_rasseicon);
+        imgDoorcard =findViewById(R.id.spielfeldui_doorcard);
+        imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
+        imgTreasureCard = findViewById(R.id.spielfeldui_treasurecard);
 
-        treasureCard.setOnClickListener(new View.OnClickListener() {
+        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 addTreasureCard();
             }
         });
 
-        backpack.setOnClickListener(new View.OnClickListener() {
+        imgBackpack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
@@ -78,7 +76,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        spieler1.setOnClickListener(new View.OnClickListener() {
+        imgSpieler1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),PlayerPopActivity.class);
@@ -86,7 +84,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        spieler2.setOnClickListener(new View.OnClickListener() {
+        imgSpieler2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),PlayerPopActivity.class);
@@ -94,7 +92,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        spieler3.setOnClickListener(new View.OnClickListener() {
+        imgSpieler3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),PlayerPopActivity.class);
@@ -102,7 +100,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        spieler4.setOnClickListener(new View.OnClickListener() {
+        imgSpieler4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),PlayerPopActivity.class);
@@ -110,7 +108,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        doorcard.setOnClickListener(new View.OnClickListener() {
+        imgDoorcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
@@ -118,37 +116,37 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        setCardView(cardView);
-        setCardView(cardView2);
-        setCardView(cardView3);
-        setCardView(cardView4);
+        setCardView(imgCardView);
+        setCardView(imgCardView2);
+        setCardView(imgCardView3);
+        setCardView(imgCardView4);
 
-        cardView.setOnClickListener(new View.OnClickListener() {
+        imgCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardAbelegen(cardView,midemptycard_bottomleft);
+                cardAbelegen(imgCardView, imgMidemptycard_bottomleft);
             }
         });
-        cardView2.setOnClickListener(new View.OnClickListener() {
+        imgCardView2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardAbelegen(cardView2,midemptycard_bottomleft);
+                cardAbelegen(imgCardView2, imgMidemptycard_bottomleft);
             }
         });
-        cardView3.setOnClickListener(new View.OnClickListener() {
+        imgCardView3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardAbelegen(cardView3,midemptycard_bottomleft);
+                cardAbelegen(imgCardView3, imgMidemptycard_bottomleft);
             }
         });
-        cardView4.setOnClickListener(new View.OnClickListener() {
+        imgCardView4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cardAbelegen(cardView4,midemptycard_bottomleft);
+                cardAbelegen(imgCardView4, imgMidemptycard_bottomleft);
             }
         });
 
-        rasse1.setOnClickListener(new View.OnClickListener() {
+        imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
@@ -156,7 +154,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        klasse1.setOnClickListener(new View.OnClickListener() {
+        imgKlasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
@@ -164,7 +162,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
+        imgBackbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),MainMenuActivity.class);
@@ -172,7 +170,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        settings.setOnClickListener(new View.OnClickListener() {
+        imgSettings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(getApplicationContext(),PopActivity.class);
@@ -180,7 +178,7 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        dice.setOnClickListener(new View.OnClickListener() {
+        imgDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent i=new Intent(getApplicationContext(),DiceActivity.class);
@@ -208,19 +206,19 @@ public class SpielfeldActivity extends AppCompatActivity {
     // Add the card to the first free cardview
     public void addCard(Karte card) {
         drawnCards.add(card);
-        if(cardView.getVisibility() == View.INVISIBLE)
-            setCard(card, cardView);
-        else if(cardView2.getVisibility()==View.INVISIBLE)
-            setCard(card, cardView2);
-        else if(cardView3.getVisibility()==View.INVISIBLE)
-            setCard(card, cardView3);
-        else if(cardView4.getVisibility()==View.INVISIBLE)
-            setCard(card, cardView4);
+        if(imgCardView.getVisibility() == View.INVISIBLE)
+            setCard(card, imgCardView);
+        else if(imgCardView2.getVisibility()==View.INVISIBLE)
+            setCard(card, imgCardView2);
+        else if(imgCardView3.getVisibility()==View.INVISIBLE)
+            setCard(card, imgCardView3);
+        else if(imgCardView4.getVisibility()==View.INVISIBLE)
+            setCard(card, imgCardView4);
     }
 
-    private void setCard(Karte card, ImageView cardView) {
-        cardView.setImageResource(card.getImage());
-        cardView.setVisibility(View.VISIBLE);
+    private void setCard(Karte card, ImageView imgCardView) {
+        imgCardView.setImageResource(card.getImage());
+        imgCardView.setVisibility(View.VISIBLE);
     }
 
     // Returns a random number from 1 to bound (inclusive)
@@ -229,33 +227,33 @@ public class SpielfeldActivity extends AppCompatActivity {
         return rand.nextInt(bound)+1;
     }
 
-    public void setCardView(ImageView cardView){
+    public void setCardView(ImageView imgCardView){
         int index= getRandomNum(50);
         Karte card = inventar.getKartenList().get(index);
         if(!drawnCards.contains(card)){
-            cardView.setImageResource(card.getImage());
+            imgCardView.setImageResource(card.getImage());
             drawnCards.add(card);
-            cardView.setVisibility(View.VISIBLE);
+            imgCardView.setVisibility(View.VISIBLE);
         }
         else
-            setCardView(cardView);
+            setCardView(imgCardView);
     }
 
     public void cardHeben(){
-        if(cardView.getVisibility() == View.INVISIBLE)
-            setCardView(cardView);
-        else if(cardView2.getVisibility()==View.INVISIBLE)
-            setCardView(cardView2);
-        else if(cardView3.getVisibility()==View.INVISIBLE)
-            setCardView(cardView3);
-        else if(cardView4.getVisibility()==View.INVISIBLE)
-            setCardView(cardView4);
+        if(imgCardView.getVisibility() == View.INVISIBLE)
+            setCardView(imgCardView);
+        else if(imgCardView2.getVisibility()==View.INVISIBLE)
+            setCardView(imgCardView2);
+        else if(imgCardView3.getVisibility()==View.INVISIBLE)
+            setCardView(imgCardView3);
+        else if(imgCardView4.getVisibility()==View.INVISIBLE)
+            setCardView(imgCardView4);
     }
 
-    public void cardAbelegen(ImageView card, ImageView field){
-        field.setVisibility(View.VISIBLE);
-        field.setImageDrawable(card.getDrawable());
-        card.setVisibility(View.INVISIBLE);
+    public void cardAbelegen(ImageView imgCard, ImageView imgField){
+        imgField.setVisibility(View.VISIBLE);
+        imgField.setImageDrawable(imgCard.getDrawable());
+        imgCard.setVisibility(View.INVISIBLE);
     }
 
     public void setPlayerNames()
