@@ -19,7 +19,7 @@ public class Level {
     }
 
     void levelDecrease(){
-        if (level !=1){
+        if (level != 1){
             level --;
         }
     }
