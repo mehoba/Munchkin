@@ -12,11 +12,11 @@ public class CardPopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cardpopview);
 
-        DisplayMetrics dm=new DisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        int width=dm.widthPixels;
-        int height=dm.heightPixels;
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*0.2),(int)(height*0.6));
 
