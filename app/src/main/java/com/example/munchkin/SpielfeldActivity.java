@@ -26,7 +26,7 @@ public class SpielfeldActivity extends AppCompatActivity {
     private ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMidemptycard_bottomleft, imgTreasureCard;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
-    private TextView txtPlayerCountdowns[] = new TextView[4];
+    private TextView[] txtPlayerCountdowns = new TextView[4];
     private List<Karte> drawnCards;
     // Just the collection of all available cards
     private final Inventar inventar = new Inventar();
