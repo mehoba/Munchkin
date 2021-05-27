@@ -195,10 +195,9 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
-        setPlayerNames();
-
-        Player.setLocalPlayer(new Player());
         new Spielfeld();
+        Player.getLocalPlayer().initializePlayer();
+        setPlayerNames();
     }
 
 //    public void addTreasureCard() {
@@ -275,7 +274,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
         txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
 
-        LinkedList<String> playerNames = Lobby.getInstance().getPlayerNames();
+        LinkedList<String> playerNames = Lobby.getPlayerNames();
 
         for(int i = 0; i < playerNames.size(); i++)
         {

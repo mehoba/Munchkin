@@ -7,6 +7,24 @@ public class KarteImpl implements Karte {
 
    // private CardType cardType;
     public int image;
+    private String beschreibung;
+    private String name;
+
+    public static Karte getRandomKarte()
+    {
+        int count = Inventar.getKartenList().size() - 1;
+        Random rand = new Random();
+        int randomCardIndex = rand.nextInt(count);
+        return Inventar.getKartenList().get(randomCardIndex);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     @Override
     public int getImage() {
@@ -18,26 +36,13 @@ public class KarteImpl implements Karte {
         this.image = image;
     }
 
+    @Override
     public String getBeschreibung() {
         return beschreibung;
     }
 
+    @Override
     public void setBeschreibung(String beschreibung) {
         this.beschreibung = beschreibung;
-    }
-
-    private String beschreibung;
-
-    //@Override
-    //public CardType getCardType() {
-       // return this.cardType;
-    //}
-
-    public static Karte getRandomKarte()
-    {
-        int count = Inventar.getKartenList().size() - 1;
-        Random rand = new Random();
-        int randomCardIndex = rand.nextInt(count);
-        return Inventar.getKartenList().get(randomCardIndex);
     }
 }

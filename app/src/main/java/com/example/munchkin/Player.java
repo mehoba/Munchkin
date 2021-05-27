@@ -11,14 +11,11 @@ public class Player
     private int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
     //ToDo Player Icon
     //ToDo setPlayerName()
-    private final Inventar inventar;
-    private final Level playerLevel;
+    private Inventar inventar;
+    private Level playerLevel;
 
-
-    public Inventar getInventar()
-    {   return  inventar;   }
-
-    public Player()
+    //Only call when Spielfeld is completely loaded
+    public void initializePlayer()
     {
         //ToDo Parameter beim Level ????
         //playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
@@ -60,6 +57,9 @@ public class Player
     public static void setLocalPlayer(Player localPlayer) {
         Player.localPlayer = localPlayer;
     }
+
+    public Inventar getInventar()
+    {   return  inventar;   }
     //-----------------------------------
 
 

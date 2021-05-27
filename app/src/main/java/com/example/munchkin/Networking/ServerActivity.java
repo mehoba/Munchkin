@@ -20,6 +20,7 @@ public class ServerActivity extends AppCompatActivity
 
         try
         {
+            new Lobby();
             new GameServer();
         }
         catch (IOException e)

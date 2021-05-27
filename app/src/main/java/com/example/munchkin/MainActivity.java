@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.munchkin.Networking.Lobby;
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -43,10 +45,12 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        new Lobby();
+
         //Start Client
         //--------------------------------
         //Comment this line if you want to debug without Server
-        //gameClient = new GameClient();
+        gameClient = new GameClient();
         //--------------------------------
 
 
@@ -54,6 +58,7 @@ public class MainActivity extends AppCompatActivity
 
     private void spielen(View view)
     {
+        playernameinvalid.setVisibility(View.INVISIBLE);
         if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
         {
             successfullyConnectedToServer();

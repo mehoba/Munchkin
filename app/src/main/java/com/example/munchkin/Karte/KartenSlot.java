@@ -8,11 +8,11 @@ public class KartenSlot
     private Karte karte;
     private ImageView imgKarte;
 
-    public KartenSlot(ImageView kartenImageView)
+    public KartenSlot(ImageView imgKarte)
     {
         //For Tests
-        if(kartenImageView != null)
-            this.imgKarte = kartenImageView;
+        if(imgKarte != null)
+            this.imgKarte = imgKarte;
         karte = null;
     }
 
@@ -25,8 +25,13 @@ public class KartenSlot
     {
         if(karte == null) return;
 
-        imgKarte.setImageResource(karte.getImage());
-        imgKarte.setVisibility(View.VISIBLE);
+        //For Tests
+        if(imgKarte != null)
+        {
+            imgKarte.setImageResource(karte.getImage());
+            imgKarte.setVisibility(View.VISIBLE);
+        }
+
         this.karte = karte;
     }
 
@@ -34,8 +39,13 @@ public class KartenSlot
     {
         if(karte == null) return null;
 
+
         Karte tempKarte = karte;
-        imgKarte.setImageDrawable(null);
+        //For Tests
+        if(imgKarte != null)
+        {
+            imgKarte.setImageDrawable(null);
+        }
         karte = null;
         return tempKarte;
     }

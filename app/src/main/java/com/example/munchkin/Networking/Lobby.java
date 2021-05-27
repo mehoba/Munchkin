@@ -1,4 +1,6 @@
 package com.example.munchkin.Networking;
+import android.util.Log;
+
 import com.example.munchkin.Player;
 
 import java.util.LinkedList;
@@ -6,7 +8,7 @@ import java.util.LinkedList;
 //Stores all the Player for the Server
 public class Lobby
 {
-    private static Lobby instance = null;
+    private static Lobby instance;
 
     Player[] players = new Player[4];
 
@@ -15,27 +17,48 @@ public class Lobby
 
     public Lobby()
     {
+        if(instance != null)
+            Log.e("Lobby","second Lobby created");
+
         instance = this;
+
+        for(Player player : players)
+        {
+            player = null;
+        }
     }
 
-    //Return true if successfully added
-    public boolean addPlayer(Player player)
+    //Return index in array if successfully added
+    public static int addPlayerAtFreePosition(Player player)
     {
+        Player[] players = instance.players;
+
         for(int i = 0; i < players.length; i++)
         {
             if(players[i] == null)
             {
                 players[i] = player;
                 players[i].setPlayerBoardNumber(i);
-                return true;
+                return i;
             }
         }
+        return -1;
+    }
+
+    public static boolean addPlayer(Player player, int index)
+    {
+        Player[] players = instance.players;
+
+        players[index] = player;
+
         return false;
     }
 
     //Return true if successfully removed
-    public boolean removePlayer(int connectionId)
+    public static boolean removePlayer(int connectionId)
     {
+        Player[] players = instance.players;
+
         for(int i = 0; i < players.length; i++)
         {
             if(players[i] != null && players[i].getConnectionId() == connectionId)
@@ -48,8 +71,10 @@ public class Lobby
         return false;
     }
 
-    public LinkedList<String> getPlayerNames()
+    public static LinkedList<String> getPlayerNames()
     {
+        Player[] players = instance.players;
+
         LinkedList<String> playerNamesList = new LinkedList<>();
 
         for(int i = 0; i < players.length; i++)
@@ -61,6 +86,16 @@ public class Lobby
         return playerNamesList;
     }
 
+    public static Player[] getPlayers()
+    {
+        return instance.players;
+    }
+
+    public static Player getPlayer(int index)
+    {
+        return instance.players[index];
+    }
+
     public static Lobby getInstance()
     {
         return instance;
@@ -69,5 +104,18 @@ public class Lobby
     public static void setInstance(Lobby lobby)
     {
         instance = lobby;
+    }
+
+    public static void syncPlayers(Player[] playerServer)
+    {
+        Player[] playerLocal = instance.players;
+
+        for(int i = 0; i < playerServer.length; i++)
+        {
+            if(playerServer[i] != null && playerLocal[i] == null)
+            {
+                playerLocal[i] = playerServer[i];
+            }
+        }
     }
 }

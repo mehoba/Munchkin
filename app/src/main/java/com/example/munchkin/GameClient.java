@@ -1,5 +1,7 @@
 package com.example.munchkin;
 
+import android.util.Log;
+
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -10,6 +12,8 @@ import java.io.IOException;
 
 public class GameClient
 {
+    Boolean successfullyConnected = false;
+
     Client client;
     public  GameClient()
     {
@@ -36,17 +40,30 @@ public class GameClient
                                @Override
                                public void received(Connection connection, Object object)
                                {
-                                   if (object instanceof Lobby)
-                                   {
-                                       Lobby lobby = (Lobby)object;
-                                       Lobby.setInstance(lobby);
+                                   if (object instanceof Network.SyncPlayers) {
+                                       Network.SyncPlayers syncPlayersClass = (Network.SyncPlayers) object;
 
-                                       if(SpielfeldActivity.getInstance() != null)
-                                            SpielfeldActivity.getInstance().setPlayerNames();
+                                       Lobby.syncPlayers(syncPlayersClass.players);
+
+                                       if (SpielfeldActivity.getInstance() != null)
+                                           SpielfeldActivity.getInstance().setPlayerNames();
+                                   }
+
+                                   if (object instanceof Network.SendLocalPlayer)
+                                   {
+                                       try {
+                                           Thread.sleep(1000);
+                                       } catch (InterruptedException e) {
+                                           e.printStackTrace();
+                                       }
+
+                                       Network.SendLocalPlayer sendLocalPlayerClass = (Network.SendLocalPlayer)object;
+                                       Player player = Lobby.getPlayer(sendLocalPlayerClass.localPlayerIndex);
+                                       Player.setLocalPlayer(player);
+                                       MainActivity.getInstance().successfullyConnectedToServer();
                                    }
                                }
                            }
-
         );
     }
 
@@ -62,7 +79,7 @@ public class GameClient
                         Network.ipAdressServer = ipAddress;
                         client.connect(5000, Network.ipAdressServer, Network.port);
                     }
-                    sendPlayerNameToServer(playerName);
+                    loginToServer(playerName);
                 }
                 catch (IOException ex)
                 {
@@ -73,17 +90,15 @@ public class GameClient
         }.start();
     }
 
-    public void sendPlayerNameToServer(String name)
+    public void loginToServer(String name)
     {
-        Network.PlayerName playerName = new Network.PlayerName();
-        playerName.playerName = name;
-        client.sendTCP(playerName);
-
-        connectionWithServerAbgeschlossen();
+        Network.LoginNewPlayerForServer loginNewPlayer = new Network.LoginNewPlayerForServer();
+        loginNewPlayer.playerName = name;
+        client.sendTCP(loginNewPlayer);
     }
 
-    void connectionWithServerAbgeschlossen()
-    {
-        MainActivity.getInstance().successfullyConnectedToServer();
-    }
+//    void connectionWithServerAbgeschlossen()
+//    {
+//        MainActivity.getInstance().successfullyConnectedToServer();
+//    }
 }

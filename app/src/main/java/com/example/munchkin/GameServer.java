@@ -12,7 +12,6 @@ import java.io.IOException;
 public class GameServer
 {
     Server server;
-    Lobby lobby = new Lobby();
 
     public  GameServer() throws IOException
     {
@@ -23,26 +22,29 @@ public class GameServer
             @Override
             public void received(Connection connection, Object object)
             {
-                if (object instanceof Network.PlayerName)
+                if (object instanceof Network.LoginNewPlayerForServer)
                 {
-                    Network.PlayerName playerName = (Network.PlayerName)object;
+                    Network.LoginNewPlayerForServer loginNewPlayer = (Network.LoginNewPlayerForServer)object;
                     Player player = new Player();
-                    player.setName(playerName.playerName);
+                    player.setName(loginNewPlayer.playerName);
                     player.setConnectionId(connection.getID());
 
-                    if(!lobby.addPlayer(player))
+                    int playerPosInArray = Lobby.addPlayerAtFreePosition(player);
+                    if(playerPosInArray == -1)
                     {
                         Log.d("PlayerConnection", "Too much connections: " + player.getName());
+                        return;
                     }
+                    player.setPlayerBoardNumber(playerPosInArray);
+
+                    syncPlayers();
+                    sendLocalPlayer(player);
 
                     Log.d("PlayerConnection", "New Connected: " + player.getName());
 
                     Log.d("PlayerConnection", " ");
                     logPlayerList();
                     Log.d("PlayerConnection", " ");
-
-
-                    syncLobbyWithClients(lobby);
                 }
             }
 
@@ -58,12 +60,12 @@ public class GameServer
             @Override
             public void disconnected(Connection connection)
             {
-                if(lobby.removePlayer(connection.getID()))
+                if(Lobby.removePlayer(connection.getID()))
                 {
                     Log.d("PlayerConnection", "disconnected: " + connection.getID());
                     logPlayerList();
 
-                    syncLobbyWithClients(lobby);
+                    //ToDo remove Player
                 }
             }
         });
@@ -74,16 +76,26 @@ public class GameServer
         server.start();
     }
 
-    void syncLobbyWithClients(Lobby lobby)
+    void syncPlayers()
     {
-        server.sendToAllTCP(lobby);
+        Network.SyncPlayers syncPlayers = new Network.SyncPlayers();
+        syncPlayers.players = Lobby.getPlayers();
+        server.sendToAllTCP(syncPlayers);
+    }
+
+    void sendLocalPlayer(Player player)
+    {
+        Network.SendLocalPlayer sendLocalPlayerClass = new Network.SendLocalPlayer();
+        sendLocalPlayerClass.localPlayerIndex = player.getPlayerBoardNumber();
+
+        server.sendToTCP(player.getConnectionId(), sendLocalPlayerClass);
     }
 
     void logPlayerList()
     {
         Log.d("PlayerConnection", "PlayerList: ");
 
-        String[] playerNames = lobby.getPlayerNames().toArray(new String[0]);
+        String[] playerNames = Lobby.getPlayerNames().toArray(new String[0]);
         for(int i = 0; i < playerNames.length; i++)
         {
             Log.d("PlayerConnection", "       Player: " + playerNames[i]);
