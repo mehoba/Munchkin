@@ -46,8 +46,10 @@ public class MainActivity extends AppCompatActivity
         //Start Client
         //--------------------------------
         //Comment this line if you want to debug without Server
-        gameClient = new GameClient();
+        //gameClient = new GameClient();
         //--------------------------------
+
+
     }
 
     private void spielen(View view)
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity
         if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
         {
             successfullyConnectedToServer();
+            return;
         }
 
         if (checkIfTextViewEmptyOrNull(playernameinvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))

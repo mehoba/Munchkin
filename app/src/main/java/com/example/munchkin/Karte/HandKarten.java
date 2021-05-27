@@ -1,70 +1,126 @@
 package com.example.munchkin.Karte;
 
-import android.widget.ImageView;
+import android.view.View;
 
-import com.example.munchkin.R;
+import com.example.munchkin.Spielfeld;
 import com.example.munchkin.SpielfeldActivity;
-
-import java.security.PublicKey;
-import java.util.LinkedList;
-import java.util.List;
 
 public class HandKarten
 {
-    SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
-
+    private final SpielfeldActivity spielfeldActivity;
     private KartenSlot[] kartenSlots;
-    int anzahlInHand = 0;
 
     public HandKarten()
     {
+        spielfeldActivity = SpielfeldActivity.getInstance();
+
         kartenSlots = new KartenSlot[4];
-        kartenSlots[0] = new KartenSlot(spielfeldActivity.findViewById(R.id.cardView));
-        kartenSlots[1] = new KartenSlot(spielfeldActivity.findViewById(R.id.cardView2));
-        kartenSlots[2] = new KartenSlot(spielfeldActivity.findViewById(R.id.cardView3));
-        kartenSlots[3] = new KartenSlot(spielfeldActivity.findViewById(R.id.cardView4));
+        kartenSlots[0] = new KartenSlot(spielfeldActivity.imgCardView);
+        kartenSlots[0].getImgKarte().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onKartenSlot0Clicked();
+            }
+        });
+        kartenSlots[1] = new KartenSlot(spielfeldActivity.imgCardView2);
+        kartenSlots[1].getImgKarte().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onKartenSlot1Clicked();
+            }
+        });
+        kartenSlots[2] = new KartenSlot(spielfeldActivity.imgCardView3);
+        kartenSlots[2].getImgKarte().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onKartenSlot2Clicked();
+            }
+        });
+        kartenSlots[3] = new KartenSlot(spielfeldActivity.imgCardView4);
+        kartenSlots[3].getImgKarte().setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onKartenSlot3Clicked();
+            }
+        });
     }
 
-    public KartenSlot getKarte(int index)
+    void onKartenSlot0Clicked()
     {
-        return kartenSlots[index];
+        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[0].karteHeben());
+    }
+    void onKartenSlot1Clicked()
+    {
+        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[1].karteHeben());
+    }
+    void onKartenSlot2Clicked()
+    {
+        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[2].karteHeben());
+    }
+    void onKartenSlot3Clicked()
+    {
+        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[3].karteHeben());
     }
 
-    public KartenSlot getEmptyKardSlot()
+    //Added eine neue Karte an eine freie Handkarten Position
+    public void addKarte(Karte karte)
     {
-        if(kartenSlotsNotFull())
+        if(checkIfNotMoreThan4())
+            getNextEmptySlot().karteAblegen(karte);
+    }
+
+    public  void addKarte(Karte[] karten)
+    {
+        for(int i = 0; i < karten.length; i++)
         {
-            //Todo Implement
+            if(checkIfNotMoreThan4())
+            {
+                getNextEmptySlot().karteAblegen(karten[i]);
+            }
+        }
+    }
 
+    public Karte removeKarte(int index)
+    {
+        return kartenSlots[index].karteHeben();
+    }
+
+    public KartenSlot getNextEmptySlot()
+    {
+        for(int i = 0; i < kartenSlots.length; i++)
+        {
+            if(kartenSlots[i].getKarte() == null)
+            {
+                return kartenSlots[i];
+            }
         }
         return null;
     }
 
-    public boolean kartenSlotsNotFull()
+    public boolean checkIfNotMoreThan4()
     {
-        if(anzahlInHand >= 4)
+        if(countHandkarten() >= 4)
         {
             return false;
         }
-        return true ;
+        return true;
     }
 
-
-
-    public List<Karte> getHandKarten() {
-        return handKarten;
+    private Karte getKarte(int index)
+    {
+        return kartenSlots[index].getKarte();
     }
 
-    public void setHandKarten(List<Karte> handKarten) {
-        this.handKarten = handKarten;
-    }
-
-    private List<Karte> handKarten;
-
-    public boolean checkIfMoreThan7(){
-
-        if(getHandKarten().size() >7)
-            return true;
-        else return false;
+    private int countHandkarten()
+    {
+        int count = 0;
+        for(int i = 0; i < kartenSlots.length; i++)
+        {
+            if(kartenSlots[i].getKarte() != null)
+            {
+                count++;
+            }
+        }
+        return count;
     }
 }

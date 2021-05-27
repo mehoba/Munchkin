@@ -1,14 +1,12 @@
 package com.example.munchkin.Karte;
 
 
+import java.util.Random;
+
 public class KarteImpl implements Karte {
 
-    private CardType cardType;
+   // private CardType cardType;
     public int image;
-
-    public KarteImpl(CardType cardType) {
-        this.cardType = cardType;
-    }
 
     @Override
     public int getImage() {
@@ -30,18 +28,16 @@ public class KarteImpl implements Karte {
 
     private String beschreibung;
 
-    @Override
-    public void karteHeben() {
-        //TODO
-    }
+    //@Override
+    //public CardType getCardType() {
+       // return this.cardType;
+    //}
 
-    @Override
-    public void karteAblegen() {
-        //TODO
-    }
-
-    @Override
-    public CardType getCardType() {
-        return this.cardType;
+    public static Karte getRandomKarte()
+    {
+        int count = Inventar.getKartenList().size() - 1;
+        Random rand = new Random();
+        int randomCardIndex = rand.nextInt(count);
+        return Inventar.getKartenList().get(randomCardIndex);
     }
 }

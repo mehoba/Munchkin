@@ -33,7 +33,7 @@ public class Level {
     }
 
     private void notifyAboutWin() {
-        Intent i = new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
+        Intent i = new Intent(sourceActivity.getApplicationContext(), WinnerPopActivity.class);
         sourceActivity.startActivity(i);
     }
 }

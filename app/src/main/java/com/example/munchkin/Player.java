@@ -1,27 +1,28 @@
 package com.example.munchkin;
 
-import android.telephony.RadioAccessSpecifier;
-
-import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.Inventar;
-import com.example.munchkin.Karte.KlassenKarte;
-import com.example.munchkin.Karte.RassenKarte;
 
 public class Player
 {
+    private static Player localPlayer;
+
     private String name;
     private int connectionId;
     private int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
     //ToDo Player Icon
     //ToDo setPlayerName()
-    private Inventar inventar;
-    private Level playerLevel;
+    private final Inventar inventar;
+    private final Level playerLevel;
 
+
+    public Inventar getInventar()
+    {   return  inventar;   }
 
     public Player()
     {
         //ToDo Parameter beim Level ????
-        playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
+        //playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
+        playerLevel = null;
         inventar = new Inventar();
     }
 
@@ -48,6 +49,16 @@ public class Player
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public  static  Player getLocalPlayer()
+    {
+        return  localPlayer;
+    }
+
+    //Bitte nur am Anfang des Spiels in der Main Activity setzen!!!!
+    public static void setLocalPlayer(Player localPlayer) {
+        Player.localPlayer = localPlayer;
     }
     //-----------------------------------
 

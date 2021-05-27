@@ -7,5 +7,5 @@ import java.util.List;
 
 public class PlayerAusrüstung
 {
-    LinkedList<Karte> ausgerüsteteKartenList;
+   private LinkedList<Karte> ausgerüsteteKartenList;
 }

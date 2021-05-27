@@ -1,18 +1,16 @@
 package com.example.munchkin;
 
-import com.example.munchkin.Karte.CardType;
+import android.content.Intent;
+
 import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
-import com.example.munchkin.Karte.KarteImpl;
+import com.example.munchkin.Karte.KartenTypen.Buffkarte;
 
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
-import java.util.Arrays;
 
 
 public class handkartenTest {
@@ -23,38 +21,37 @@ public class handkartenTest {
 
 
     @Before
-    public void setUp() throws Exception{
-    inventar=new Inventar();
-   handkarten=new HandKarten();
-
+    public void setUp() throws Exception
+    {
+        inventar=new Inventar();
+        handkarten=new HandKarten();
     }
 
     @Test
     public void checkIfMoreThan7Test(){
-
-        k1=new KarteImpl(CardType.BUFF);
-        k2=new KarteImpl(CardType.BUFF);
-        k3=new KarteImpl(CardType.BUFF);
-        k4=new KarteImpl(CardType.BUFF);
-        k5=new KarteImpl(CardType.BUFF);
-        k6=new KarteImpl(CardType.BUFF);
-        k7=new KarteImpl(CardType.BUFF);
-        k8=new KarteImpl(CardType.BUFF);
+        k1=new Buffkarte();
+        k2=new Buffkarte();
+        k3=new Buffkarte();
+        k4=new Buffkarte();
+        k5=new Buffkarte();
+        k6=new Buffkarte();
+        k7=new Buffkarte();
+        k8=new Buffkarte();
         Karte[] array = {k1,k2,k3,k4,k5,k6,k7,k8};
-       handkarten.setHandKarten(Arrays.asList(array));
-        Assert.assertEquals(true,handkarten.checkIfMoreThan7());
+        handkarten.addKarte(array);
+        Assert.assertEquals(false,handkarten.checkIfNotMoreThan4());
     }
 
     @Test
     public void checkIfMoreThan7Test2(){
-        k1=new KarteImpl(CardType.BUFF);
+        k1=new Buffkarte();
         Karte[] array = {k1};
-        handkarten.setHandKarten(Arrays.asList(array));
-        Assert.assertEquals(false,handkarten.checkIfMoreThan7());
+        handkarten.addKarte(array);
+        Assert.assertEquals(true, handkarten.checkIfNotMoreThan4());
     }
 
     @After
     public void cleanUp(){
-        handkarten.setHandKarten(null);
+        handkarten = null;
     }
 }
