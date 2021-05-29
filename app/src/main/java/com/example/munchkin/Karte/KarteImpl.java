@@ -31,17 +31,12 @@ public class KarteImpl implements Karte {
     private String beschreibung;
 
     @Override
-    public void karteHeben() {
-        //TODO
-    }
-
-    @Override
-    public void karteAblegen() {
-        //TODO
-    }
-
-    @Override
     public CardType getCardType() {
         return this.cardType;
+    }
+
+    @Override
+    public void setCardType(CardType cardType) {
+        this.cardType=cardType;
     }
 }
