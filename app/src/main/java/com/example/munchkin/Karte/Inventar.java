@@ -20,6 +20,8 @@ public class Inventar {
     public void setKartenList() {
         KartenList=new ArrayList<>();
         treasureCardList = new ArrayList<>();
+        DoorCards= new ArrayList<>();
+
         KarteImpl k1 = new KarteImpl(CardType.BUFF);
 
         //Adding Buff Cards
@@ -128,50 +130,35 @@ public class Inventar {
         addCard(k32);
 
         //Adding monster cards
-        KarteImpl k33= new KarteImpl(CardType.MONSTER);
-        k33.setImage(R.drawable.monstercard1);
+        Karte k33= new MonsterCardsImpl(2,R.drawable.monstercard1,1,CardType.MONSTER);
         addCard(k33);
-        KarteImpl k34= new KarteImpl(CardType.MONSTER);
-        k34.setImage(R.drawable.monstercard2);
-        addCard(k34);
-        KarteImpl k35= new KarteImpl(CardType.MONSTER);
-        k35.setImage(R.drawable.monstercard3);
+        Karte k34= new MonsterCardsImpl(8,R.drawable.monstercard2,1,CardType.MONSTER);
+       addCard(k34);
+        Karte k35= new MonsterCardsImpl(16,R.drawable.monstercard3,4,CardType.MONSTER);
         addCard(k35);
-        KarteImpl k36= new KarteImpl(CardType.MONSTER);
-        k36.setImage(R.drawable.monstercard4);
+        Karte k36= new MonsterCardsImpl(8,R.drawable.monstercard4,1,CardType.MONSTER);
         addCard(k36);
-        KarteImpl k37= new KarteImpl(CardType.MONSTER);
-        k37.setImage(R.drawable.monstercard5);
+        Karte k37= new MonsterCardsImpl(4,R.drawable.monstercard5,5,CardType.MONSTER);
         addCard(k37);
-        KarteImpl k38= new KarteImpl(CardType.MONSTER);
-        k38.setImage(R.drawable.monstercard6);
+        Karte k38= new MonsterCardsImpl(14,R.drawable.monstercard6,2,CardType.MONSTER);
         addCard(k38);
-        KarteImpl k39= new KarteImpl(CardType.MONSTER);
-        k39.setImage(R.drawable.monstercard7);
+        Karte k39= new MonsterCardsImpl(2,R.drawable.monstercard7,4,CardType.MONSTER);
         addCard(k39);
-        KarteImpl k40= new KarteImpl(CardType.MONSTER);
-        k40.setImage(R.drawable.monstercard8);
+        Karte k40= new MonsterCardsImpl(20,R.drawable.monstercard8,2,CardType.MONSTER);
         addCard(k40);
-        KarteImpl k41= new KarteImpl(CardType.MONSTER);
-        k41.setImage(R.drawable.monstercard9);
+        Karte k41= new MonsterCardsImpl(2,R.drawable.monstercard9,1,CardType.MONSTER);
         addCard(k41);
-        KarteImpl k42= new KarteImpl(CardType.MONSTER);
-        k42.setImage(R.drawable.monstercard9);
+        Karte k42= new MonsterCardsImpl(1,R.drawable.monstercard10,1,CardType.MONSTER);
         addCard(k42);
-        KarteImpl k43= new KarteImpl(CardType.MONSTER);
-        k43.setImage(R.drawable.monstercard10);
+        Karte k43= new MonsterCardsImpl(1,R.drawable.monstercard11,4,CardType.MONSTER);
         addCard(k43);
-        KarteImpl k44= new KarteImpl(CardType.MONSTER);
-        k44.setImage(R.drawable.monstercard11);
+        Karte k44= new MonsterCardsImpl(10,R.drawable.monstercard12,1,CardType.MONSTER);
         addCard(k44);
-        KarteImpl k45= new KarteImpl(CardType.MONSTER);
-        k45.setImage(R.drawable.monstercard12);
+        Karte k45= new MonsterCardsImpl(14,R.drawable.monstercard13,5,CardType.MONSTER);
         addCard(k45);
-        KarteImpl k46= new KarteImpl(CardType.MONSTER);
-        k46.setImage(R.drawable.monstercard13);
+        Karte k46= new MonsterCardsImpl(1,R.drawable.monstercard10,0,CardType.MONSTER);
         addCard(k46);
-        KarteImpl k47= new KarteImpl(CardType.MONSTER);
-        k47.setImage(R.drawable.monstercard14);
+        Karte k47= new MonsterCardsImpl(1,R.drawable.monstercard10,0,CardType.MONSTER);
         addCard(k47);
 
         //Adding Rassen cards
@@ -187,14 +174,22 @@ public class Inventar {
 
     }
 
-    private void addCard(KarteImpl card) {
+    private void addCard(Karte card) {
         KartenList.add(card);
         if(card.getCardType() == CardType.ARMOR || card.getCardType() == CardType.BUFF || card.getCardType() == CardType.LEVEL_UP) {
             treasureCardList.add(card);
         }
+        else
+            DoorCards.add(card);
     }
 
     public ArrayList<Karte> KartenList;
     public ArrayList<Karte> treasureCardList;
+
+    public ArrayList<Karte> getDoorCards() {
+        return DoorCards;
+    }
+
+    public ArrayList <Karte> DoorCards;
 
 }
