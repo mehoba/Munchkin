@@ -1,7 +1,6 @@
 package com.example.munchkin;
 
-import android.widget.ImageView;
-
+import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenSlot;
 import com.example.munchkin.Karte.SchatzkartenStapel;
 import com.example.munchkin.Karte.TürkartenStapel;

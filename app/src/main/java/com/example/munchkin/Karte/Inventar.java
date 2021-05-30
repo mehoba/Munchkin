@@ -11,7 +11,7 @@ import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Karte.KartenTypen.Türkarte;
 import com.example.munchkin.PlayerAusrüstung;
 import com.example.munchkin.R;
-import com.example.munchkin.SpielfeldActivity;
+import com.example.munchkin.Activity.SpielfeldActivity;
 
 import java.util.ArrayList;
 import java.util.List;

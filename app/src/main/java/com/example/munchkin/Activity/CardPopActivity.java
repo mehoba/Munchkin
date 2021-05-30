@@ -1,9 +1,11 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.R;
 
 public class CardPopActivity extends AppCompatActivity {
 

@@ -1,5 +1,7 @@
 package com.example.munchkin;
 
+import com.example.munchkin.Activity.SpielfeldActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 

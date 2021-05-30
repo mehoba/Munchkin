@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
+
+import com.example.munchkin.R;
 
 import java.util.Random;
 

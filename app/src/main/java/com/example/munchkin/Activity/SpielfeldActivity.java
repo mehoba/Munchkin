@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 
 import android.content.Intent;
@@ -12,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.Player;
+import com.example.munchkin.R;
+import com.example.munchkin.Spielfeld;
 
 import java.util.ArrayList;
 import java.util.LinkedList;

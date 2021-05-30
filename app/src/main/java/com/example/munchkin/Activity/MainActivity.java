@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.munchkin.GameClient;
+import com.example.munchkin.Network;
 import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.R;
 
 
 public class MainActivity extends AppCompatActivity

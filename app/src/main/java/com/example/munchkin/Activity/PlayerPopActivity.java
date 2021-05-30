@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.Level;
+import com.example.munchkin.R;
 
 public class PlayerPopActivity extends AppCompatActivity {
 

@@ -4,7 +4,7 @@ import android.view.View;
 
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
-import com.example.munchkin.SpielfeldActivity;
+import com.example.munchkin.Activity.SpielfeldActivity;
 
 public class HandKarten
 {

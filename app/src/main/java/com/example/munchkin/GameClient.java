@@ -1,10 +1,10 @@
 package com.example.munchkin;
 
-import android.util.Log;
-
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
+import com.example.munchkin.Activity.MainActivity;
+import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Networking.Lobby;
 
 import java.io.IOException;

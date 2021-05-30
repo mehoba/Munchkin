@@ -2,6 +2,9 @@ package com.example.munchkin;
 
 import android.content.Intent;
 
+import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Activity.WinnerPopActivity;
+
 public class Level {
 
     private int level = 9;
