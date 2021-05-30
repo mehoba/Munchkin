@@ -15,12 +15,20 @@ public class Spielfeld {
 
     public Spielfeld()
     {
-        SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
         instance = this;
 
-        türkartenStapel = new TürkartenStapel(spielfeldActivity.imgdoorcard);
-        schatzkartenStapel = new SchatzkartenStapel(spielfeldActivity.imgSchatzkarte);
-        kartenSlot = new KartenSlot(spielfeldActivity.imgMidemptycard_bottomleft);
+        türkartenStapel = new TürkartenStapel(null);
+        schatzkartenStapel = new SchatzkartenStapel(null);
+        kartenSlot = new KartenSlot(null);
+    }
+
+    public void initializeUiConnection()
+    {
+        SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
+
+        türkartenStapel.setImgKarte(spielfeldActivity.imgdoorcard);
+        schatzkartenStapel.setImgKarte(spielfeldActivity.imgSchatzkarte);
+        kartenSlot.setImgKarte(spielfeldActivity.imgMidemptycard_bottomleft);
     }
 
     public static TürkartenStapel getTürkartenStapel() {

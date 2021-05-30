@@ -16,13 +16,18 @@ public class Player
     private Boolean istDran;
 
     //Only call when Spielfeld is completely loaded
-    public void initializePlayer()
+    public Player()
     {
         //ToDo Parameter beim Level ????
         //playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
         playerLevel = null;
         inventar = new Inventar();
         istDran = false;
+    }
+
+    public void initializeUIConnection()
+    {
+        getInventar().initializeUIConnection();
     }
 
     //---------Getter/Setter-----------
