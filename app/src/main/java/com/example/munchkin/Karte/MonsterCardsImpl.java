@@ -9,12 +9,10 @@ import static androidx.core.content.ContextCompat.startActivity;
 
 public class MonsterCardsImpl  implements MonsterCards{
     private int level, image, badCategory;
-    private CardType cardType;
 
 
-    public MonsterCardsImpl(int level, int image,int badCategory, CardType cardType){
+    public MonsterCardsImpl(int level, int image,int badCategory){
         setBadCategory(badCategory);
-        setCardType(cardType);
         setImage(image);
         setLevel(level);
     }
@@ -72,16 +70,5 @@ public class MonsterCardsImpl  implements MonsterCards{
     @Override
     public void setImage(int image) {
 this.image=image;
-    }
-
-    // setting Enum type of card
-    @Override
-    public CardType getCardType() {
-        return this.cardType;
-    }
-
-    @Override
-    public void setCardType(CardType cardType) {
-        this.cardType=cardType;
     }
 }

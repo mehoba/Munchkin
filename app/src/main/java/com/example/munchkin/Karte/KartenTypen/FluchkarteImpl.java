@@ -1,7 +1,5 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-
-public class Buffkarte extends Schatzkarte
+public class FluchkarteImpl extends TürkarteImpl
 {
-
 }

@@ -2,13 +2,11 @@ package com.example.munchkin.Karte;
 
 public class FluchCardsImpl  implements FluchCards{
     private int image, lostLevel;
-    private CardType cardType;
     private BodyPart bodyPart;
 
 
-    public FluchCardsImpl(int image, CardType cardType, int lostLevel, BodyPart bodyPart){
+    public FluchCardsImpl(int image, int lostLevel, BodyPart bodyPart){
         setImage(image);
-        setCardType(cardType);
         this.lostLevel=lostLevel;
         this.bodyPart=bodyPart;
 
@@ -31,15 +29,5 @@ public class FluchCardsImpl  implements FluchCards{
     @Override
     public void setImage(int image) {
         this.image=image;
-    }
-
-    @Override
-    public CardType getCardType() {
-        return cardType;
-    }
-
-    @Override
-    public void setCardType(CardType cardType) {
-        this.cardType=cardType;
     }
 }

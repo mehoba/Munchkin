@@ -1,6 +1,6 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-public class Monsterkarte extends Türkarte
+public class MonsterkarteImpl extends TürkarteImpl
 {
     int stufe;
     int anzahlSchätze;

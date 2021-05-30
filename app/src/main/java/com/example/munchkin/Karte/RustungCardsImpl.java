@@ -5,11 +5,9 @@ public class RustungCardsImpl implements  RustungCards{
 
     private BodyPart bodyPart;
     private int sizeOfBonus, sizeOfArmor, image;
-    private CardType cardType;
 
-    public RustungCardsImpl(int image, CardType cardType, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart){
+    public RustungCardsImpl(int image, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart){
         setBodyPart(bodyPart);
-        setCardType(cardType);
         setImage(image);
         setSizeOfArmor(sizeOfArmor);
         setSizeOfBonus(sizeOfBonus);
@@ -55,15 +53,5 @@ public class RustungCardsImpl implements  RustungCards{
     @Override
     public void setImage(int image) {
         this.image=image;
-    }
-
-    @Override
-    public CardType getCardType() {
-        return cardType;
-    }
-
-    @Override
-    public void setCardType(CardType cardType) {
-        this.cardType=cardType;
     }
 }

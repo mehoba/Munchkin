@@ -1,9 +1,9 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-public class LvlUpKarte extends Schatzkarte
+public class LvlUpKarteImpl extends SchatzkarteImpl
 {
-    public LvlUpKarte()
+    public LvlUpKarteImpl()
     {
         goldwert = 0; //Goldwert muss 0 sein
     }

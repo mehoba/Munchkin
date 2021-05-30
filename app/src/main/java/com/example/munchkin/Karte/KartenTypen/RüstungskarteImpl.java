@@ -1,8 +1,6 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-import com.example.munchkin.Karte.CardType;
-
-public class Rüstungskarte extends Schatzkarte
+public class RüstungskarteImpl extends SchatzkarteImpl
 {
     //ToDo Rüstungstyp
     //ToDo Größe

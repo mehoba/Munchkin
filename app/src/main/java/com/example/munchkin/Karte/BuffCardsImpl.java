@@ -21,11 +21,9 @@ public class BuffCardsImpl implements BuffCards {
 
     private int battleDamage;
     private int monsterLvlup;
-    private CardType cardType;
 
-    public BuffCardsImpl(int image, CardType cardType, int battleDamage, int monsterLvlup){
+    public BuffCardsImpl(int image, int battleDamage, int monsterLvlup){
         setImage(image);
-        setCardType(cardType);
         setBattleDamage(battleDamage);
         setMonsterLvlup(monsterLvlup);
     }
@@ -51,13 +49,4 @@ public class BuffCardsImpl implements BuffCards {
 this.image=image;
     }
 
-    @Override
-    public CardType getCardType() {
-        return this.cardType;
-    }
-
-    @Override
-    public void setCardType(CardType cardType) {
-        this.cardType=cardType;
-    }
 }
