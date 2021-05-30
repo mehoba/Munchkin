@@ -4,7 +4,7 @@ import com.example.munchkin.Karte.KarteImpl;
 
 public class RassenKarteImpl implements RassenKarte
 {
-    int image;
+    private int image;
 
     @Override
     public void addBonus() {

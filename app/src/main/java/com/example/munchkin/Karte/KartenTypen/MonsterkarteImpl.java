@@ -1,9 +1,9 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 public class MonsterkarteImpl implements MonsterKarte {
-    int level;
-    int anzahlSchätze;
-    int image;
+    private int level;
+    private int anzahlSchätze;
+    private int image;
 
     //Übernommen von MonsterCardsImpl
     private  int badCategory;
