@@ -1,24 +1,31 @@
 package com.example.munchkin.Networking;
 
+import android.widget.GridLayout;
+
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Networking.Network;
 import com.example.munchkin.Player;
+import com.example.munchkin.Spielfeld;
 
 import java.io.IOException;
 
 
 public class GameClient
 {
+    private static GameClient instance;
+
     Boolean successfullyConnected = false;
 
     Client client;
     public  GameClient()
     {
+        instance = this;
         client  = new Client();
         client.start();
 
@@ -69,6 +76,20 @@ public class GameClient
                                        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = (Network.NächsterSpielerAnDerReihe)object;
                                        nächsterSpielderIstAnDerReihe(nächsterSpielerAnDerReihe.playerBoardNumber);
                                    }
+
+                                   if(object instanceof Network.KarteAufMonsterSlotGelegt)
+                                   {
+                                       //Only the original thread that created a view hierarchy can touch its views.
+                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
+                                                                                        Spielfeld.getKartenSlotUntenLinks().karteAblegen(karteAufMonsterSlotGelegt.karte);
+                                                                                    }
+                                                                                }
+
+                                       );
+                                   }
                                }
                            }
         );
@@ -116,6 +137,24 @@ public class GameClient
         Network.LoginNewPlayerForServer loginNewPlayer = new Network.LoginNewPlayerForServer();
         loginNewPlayer.playerName = name;
         client.sendTCP(loginNewPlayer);
+    }
+
+    public static void SendMonsterKarteGelegtAnServer(Karte karte)
+    {
+        Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = new Network.KarteAufMonsterSlotGelegt();
+        karteAufMonsterSlotGelegt.karte = karte;
+
+        new Thread("Connect")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(karteAufMonsterSlotGelegt);
+            }
+        }.start();
+    }
+
+    private static GameClient getInstance() {
+        return instance;
     }
 
 //    void connectionWithServerAbgeschlossen()

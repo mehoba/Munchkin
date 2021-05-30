@@ -54,6 +54,12 @@ public class GameServer
                     logPlayerList();
                     Log.d("PlayerConnection", " ");
                 }
+
+                if (object instanceof Network.KarteAufMonsterSlotGelegt)
+                {
+                    Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufMonsterSlotGelegt);
+                }
             }
 
             @Override

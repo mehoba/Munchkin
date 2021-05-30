@@ -8,6 +8,9 @@ public class KartenSlot
     private Karte karte;
     private ImageView imgKarte;
 
+    //Nur für Kryo.Net, sonst jammert das Addon....
+    public KartenSlot(){}
+
     public KartenSlot(ImageView imgKarte)
     {
         //For Tests
@@ -54,6 +57,7 @@ public class KartenSlot
     {
         return imgKarte;
     }
+
     //Pls only set in the initializeUIFunction
     public void setImgKarte(ImageView imgKarte)
     {
