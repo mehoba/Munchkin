@@ -1,8 +1,7 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-public class LvlUpKarteImpl implements LevelUpKarte
-{
+public class LvlUpKarteImpl implements LevelUpKarte {
     private int goldwert;
     private int image;
 
