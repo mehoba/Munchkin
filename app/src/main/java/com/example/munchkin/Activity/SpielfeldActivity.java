@@ -291,4 +291,9 @@ public class SpielfeldActivity extends AppCompatActivity {
     {
         return instance;
     }
+
+    public void notifyAboutWin() {
+        Intent i = new Intent(getApplicationContext(), WinnerPopActivity.class);
+        startActivity(i);
+    }
 }

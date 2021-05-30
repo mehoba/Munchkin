@@ -14,7 +14,7 @@ public class levelTest {
     @Before
     public void setUp(){
         sourceActivity=new SpielfeldActivity();
-        level= new Level( sourceActivity);
+        level= new Level();
     }
     @Test
     public void checkIfDecreaseNeverUnder1(){

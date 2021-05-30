@@ -32,7 +32,7 @@ public class PlayerPopActivity extends AppCompatActivity {
         txtPlayerstufepopup = findViewById(R.id.playerpopup_stufetext);
         imgPlayerpicture = findViewById(R.id.player1popup_picture);
 
-        level = new Level(sourceActivity);
+        level = new Level();
 
         txtPlayerstufepopup.setText(Integer.toString(level.getLevel()));
 

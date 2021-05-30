@@ -1,5 +1,7 @@
 package com.example.munchkin.Karte.KartenTypen;
 
+import com.example.munchkin.Player;
+
 public class MonsterkarteImpl implements MonsterKarte {
     private int level;
     private int anzahlSchätze;
@@ -80,5 +82,13 @@ public class MonsterkarteImpl implements MonsterKarte {
     @Override
     public void setBadCategory(int badCategory) {
         this.badCategory=badCategory;
+    }
+
+
+
+    //Impl von Chibi
+    @Override
+    public void schlimmeDinge() {
+        Player.getLocalPlayer().getPlayerLevel().levelDecrease();
     }
 }

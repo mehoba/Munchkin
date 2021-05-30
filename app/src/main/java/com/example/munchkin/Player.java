@@ -18,9 +18,7 @@ public class Player
     //Only call when Spielfeld is completely loaded
     public Player()
     {
-        //ToDo Parameter beim Level ????
-        //playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
-        playerLevel = null;
+        playerLevel = new Level();
         inventar = new Inventar();
         istDran = false;
     }
@@ -76,7 +74,12 @@ public class Player
         this.istDran = istDran;
         //Todo lock or unlock player
     }
+
+    public Level getPlayerLevel() {
+        return playerLevel;
+    }
     //-----------------------------------
+
 
 
 

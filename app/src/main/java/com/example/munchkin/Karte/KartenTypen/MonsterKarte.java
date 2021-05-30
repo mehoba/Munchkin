@@ -14,4 +14,6 @@ public interface MonsterKarte extends Türkarte {
     int getBadCategory();
     void setBadCategory(int badCategory);
 
+    void schlimmeDinge();
+
 }
