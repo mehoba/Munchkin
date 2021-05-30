@@ -23,6 +23,7 @@ public class Inventar
 
     public static ArrayList<Karte> KartenList;
     public static ArrayList<Karte> treasureCardList;
+    public static ArrayList<Karte> türKartenList;
 
     public Inventar()
     {
@@ -44,11 +45,16 @@ public class Inventar
     public static List<Karte> getTreasureCardList() {
         return treasureCardList;
     }
+    public ArrayList<Karte> türKartenList() {
+        return türKartenList;
+    }
 
     //ToDo Türkarten fehlen
     public static void initializeKartenList() {
         KartenList=new ArrayList<>();
         treasureCardList = new ArrayList<>();
+        türKartenList = new ArrayList<>();
+
         KarteImpl k1 = new Buffkarte();
 
         //Adding Buff Cards
@@ -221,6 +227,8 @@ public class Inventar
         if(card instanceof Rüstungskarte || card instanceof Buffkarte || card instanceof LvlUpKarte) {
             treasureCardList.add(card);
         }
+        else
+            türKartenList.add(card);
     }
 
     public HandKarten getHandKarten()
