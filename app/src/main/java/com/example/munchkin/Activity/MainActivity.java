@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.munchkin.GameClient;
-import com.example.munchkin.Network;
+import com.example.munchkin.Networking.GameClient;
+import com.example.munchkin.Networking.Network;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.R;
 

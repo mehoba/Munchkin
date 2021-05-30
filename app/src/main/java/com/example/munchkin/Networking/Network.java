@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Networking;
 
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
@@ -6,7 +6,10 @@ import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenSlot;
+import com.example.munchkin.Level;
 import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.Player;
+import com.example.munchkin.PlayerAusrüstung;
 
 public class Network
 {
