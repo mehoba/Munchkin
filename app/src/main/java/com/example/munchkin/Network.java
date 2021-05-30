@@ -29,6 +29,7 @@ public class Network
         kryo.register(PlayerAusrüstung.class);
         kryo.register(HandKarten.class);
         kryo.register(SendLocalPlayer.class);
+        kryo.register(NächsterSpielerAnDerReihe.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -44,5 +45,10 @@ public class Network
     static public class SendLocalPlayer
     {
         public int localPlayerIndex;
+    }
+
+    static public class NächsterSpielerAnDerReihe
+    {
+        public int playerBoardNumber;
     }
 }

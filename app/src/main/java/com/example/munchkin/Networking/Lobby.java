@@ -86,6 +86,19 @@ public class Lobby
         return playerNamesList;
     }
 
+    public static void syncPlayers(Player[] playerServer)
+    {
+        Player[] playerLocal = instance.players;
+
+        for(int i = 0; i < playerServer.length; i++)
+        {
+            if(playerServer[i] != null && playerLocal[i] == null)
+            {
+                playerLocal[i] = playerServer[i];
+            }
+        }
+    }
+
     public static Player[] getPlayers()
     {
         return instance.players;
@@ -104,18 +117,5 @@ public class Lobby
     public static void setInstance(Lobby lobby)
     {
         instance = lobby;
-    }
-
-    public static void syncPlayers(Player[] playerServer)
-    {
-        Player[] playerLocal = instance.players;
-
-        for(int i = 0; i < playerServer.length; i++)
-        {
-            if(playerServer[i] != null && playerLocal[i] == null)
-            {
-                playerLocal[i] = playerServer[i];
-            }
-        }
     }
 }

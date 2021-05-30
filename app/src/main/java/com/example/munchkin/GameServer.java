@@ -40,6 +40,12 @@ public class GameServer
                     syncPlayers();
                     sendLocalPlayer(player);
 
+                    //1. Spieler -> Soll dran sein
+                    if(player.getPlayerBoardNumber() == 0)
+                    {
+                        boradcastPlayerIstDran(player);
+                    }
+
                     Log.d("PlayerConnection", "New Connected: " + player.getName());
 
                     Log.d("PlayerConnection", " ");
@@ -100,5 +106,12 @@ public class GameServer
         {
             Log.d("PlayerConnection", "       Player: " + playerNames[i]);
         }
+    }
+
+    void boradcastPlayerIstDran(Player player)
+    {
+        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = new Network.NächsterSpielerAnDerReihe();
+        nächsterSpielerAnDerReihe.playerBoardNumber = player.getPlayerBoardNumber();
+        server.sendToAllTCP(nächsterSpielerAnDerReihe);
     }
 }

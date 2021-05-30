@@ -62,9 +62,28 @@ public class GameClient
                                        Player.setLocalPlayer(player);
                                        MainActivity.getInstance().successfullyConnectedToServer();
                                    }
+                                   if (object instanceof Network.NächsterSpielerAnDerReihe)
+                                   {
+                                       Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = (Network.NächsterSpielerAnDerReihe)object;
+                                       nächsterSpielderIstAnDerReihe(nächsterSpielerAnDerReihe.playerBoardNumber);
+                                   }
                                }
                            }
         );
+    }
+
+    void nächsterSpielderIstAnDerReihe(int playerBoardNumber)
+    {
+        if(Player.getLocalPlayer().getPlayerBoardNumber() == playerBoardNumber)
+        {
+            //Ich bin dran
+            Player.getLocalPlayer().setIstDran(true);
+        }
+        else
+        {
+            //wer anders is dran
+            Player.getLocalPlayer().setIstDran(false);
+        }
     }
 
     public void connectToServer(final String ipAddress, final String playerName)

@@ -13,6 +13,7 @@ public class Player
     //ToDo setPlayerName()
     private Inventar inventar;
     private Level playerLevel;
+    private Boolean istDran;
 
     //Only call when Spielfeld is completely loaded
     public void initializePlayer()
@@ -21,6 +22,7 @@ public class Player
         //playerLevel = new Level(null);//<-------------------------------------------------- Fehlt etwas beim Parameter
         playerLevel = null;
         inventar = new Inventar();
+        istDran = false;
     }
 
     //---------Getter/Setter-----------
@@ -60,6 +62,15 @@ public class Player
 
     public Inventar getInventar()
     {   return  inventar;   }
+
+    public Boolean getIstDran() {
+        return istDran;
+    }
+
+    public void setIstDran(Boolean istDran) {
+        this.istDran = istDran;
+        //Todo lock or unlock player
+    }
     //-----------------------------------
 
 
