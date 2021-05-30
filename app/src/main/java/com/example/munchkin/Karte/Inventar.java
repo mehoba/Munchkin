@@ -22,97 +22,70 @@ public class Inventar {
         treasureCardList = new ArrayList<>();
         DoorCards= new ArrayList<>();
 
-        KarteImpl k1 = new KarteImpl(CardType.BUFF);
+
 
         //Adding Buff Cards
-        k1.setImage(R.drawable.buffcard1);
-        KarteImpl k2= new KarteImpl(CardType.BUFF);
-        k2.setImage(R.drawable.buffcard2);
+        Karte k1 = new BuffCardsImpl(R.drawable.buffcard1,CardType.BUFF,2,2);
         addCard(k1);
+        Karte k2 = new BuffCardsImpl(R.drawable.buffcard2,CardType.BUFF,3,3);
         addCard(k2);
-        KarteImpl k3=new KarteImpl(CardType.BUFF);
-        k3.setImage(R.drawable.buffcard3);
+        Karte k3 = new BuffCardsImpl(R.drawable.buffcard3,CardType.BUFF,5,5);
         addCard(k3);
-        KarteImpl k4= new KarteImpl(CardType.BUFF);
-        k4.setImage(R.drawable.buffcard4);
+        Karte k4 = new BuffCardsImpl(R.drawable.buffcard4,CardType.BUFF,2,2);
         addCard(k4);
-        KarteImpl k5= new KarteImpl(CardType.BUFF);
-        k5.setImage(R.drawable.buffcard5);
+        Karte k5 = new BuffCardsImpl(R.drawable.buffcard5,CardType.BUFF,5,5);
         addCard(k5);
-        KarteImpl k6 = new KarteImpl(CardType.BUFF);
-        k6.setImage(R.drawable.buffcard6);
+        Karte k6 = new BuffCardsImpl(R.drawable.buffcard6,CardType.BUFF,3,3);
         addCard(k6);
 
         //Adding level up cards
-        KarteImpl k7 = new KarteImpl(CardType.LEVEL_UP);
-        k7.setImage(R.drawable.lvlupcard1);
+        Karte k7 = new LvlUpCardsImpl(R.drawable.lvlupcard1,CardType.LEVEL_UP);
         addCard(k7);
-        KarteImpl k8= new KarteImpl(CardType.LEVEL_UP);
-        k8.setImage(R.drawable.lvlupcard2);
+        Karte k8 = new LvlUpCardsImpl(R.drawable.lvlupcard2,CardType.LEVEL_UP);
         addCard(k8);
-        KarteImpl k9 = new KarteImpl(CardType.LEVEL_UP);
-        k9.setImage(R.drawable.lvlupcard3);
+        Karte k9 = new LvlUpCardsImpl(R.drawable.lvlupcard3,CardType.LEVEL_UP);
         addCard(k9);
-        KarteImpl k10= new KarteImpl(CardType.LEVEL_UP);
-        k10.setImage(R.drawable.lvlupcard4);
+        Karte k10 = new LvlUpCardsImpl(R.drawable.lvlupcard4,CardType.LEVEL_UP);
         addCard(k10);
 
         //Adding rustungs cards
-        KarteImpl k11= new KarteImpl(CardType.ARMOR);
-        k11.setImage(R.drawable.rustungcard1);
+        Karte k11= new RustungCardsImpl(R.drawable.rustungcard1,CardType.ARMOR,1,1,BodyPart.BODY);
         addCard(k11);
-        KarteImpl k12= new KarteImpl(CardType.ARMOR);
-        k12.setImage(R.drawable.rustungcard2);
+        Karte k12= new RustungCardsImpl(R.drawable.rustungcard2,CardType.ARMOR,2,1,BodyPart.HAND);
         addCard(k12);
-        KarteImpl k13= new KarteImpl(CardType.ARMOR);
-        k13.setImage(R.drawable.rustungcard3);
+        Karte k13= new RustungCardsImpl(R.drawable.rustungcard3,CardType.ARMOR,1,1,BodyPart.BODY);
         addCard(k13);
-        KarteImpl k14= new KarteImpl(CardType.ARMOR);
-        k14.setImage(R.drawable.rustungcard4);
+        Karte k14= new RustungCardsImpl(R.drawable.rustungcard4,CardType.ARMOR,2,3,BodyPart.HAND);
         addCard(k14);
-        KarteImpl k15= new KarteImpl(CardType.ARMOR);
-        k15.setImage(R.drawable.rustungcard5);
+        Karte k15= new RustungCardsImpl(R.drawable.rustungcard5,CardType.ARMOR,1,1,BodyPart.BODY);
         addCard(k15);
-        KarteImpl k16= new KarteImpl(CardType.ARMOR);
-        k16.setImage(R.drawable.rustungcard6);
+        Karte k16= new RustungCardsImpl(R.drawable.rustungcard6,CardType.ARMOR,1,2,BodyPart.HAND);
         addCard(k16);
-        KarteImpl k17= new KarteImpl(CardType.ARMOR);
-        k17.setImage(R.drawable.rustungcard7);
+        Karte k17= new RustungCardsImpl(R.drawable.rustungcard7,CardType.ARMOR,1,3,BodyPart.BODY);
         addCard(k17);
-        KarteImpl k18= new KarteImpl(CardType.ARMOR);
-        k18.setImage(R.drawable.rustungcard8);
+        Karte k18= new RustungCardsImpl(R.drawable.rustungcard8,CardType.ARMOR,1,1,BodyPart.BODY);
         addCard(k18);
-        KarteImpl k19= new KarteImpl(CardType.ARMOR);
-        k19.setImage(R.drawable.rustungcard9);
+        Karte k19= new RustungCardsImpl(R.drawable.rustungcard9,CardType.ARMOR,1,1,BodyPart.HEAD);
         addCard(k19);
-        KarteImpl k20= new KarteImpl(CardType.ARMOR);
-        k20.setImage(R.drawable.rustungcard10);
+        Karte k20= new RustungCardsImpl(R.drawable.rustungcard10,CardType.ARMOR,1,1,BodyPart.HAND);
         addCard(k20);
-        KarteImpl k21= new KarteImpl(CardType.ARMOR);
-        k21.setImage(R.drawable.rustungcard11);
+        Karte k21= new RustungCardsImpl(R.drawable.rustungcard11,CardType.ARMOR,1,2,BodyPart.BODY);
         addCard(k21);
-        KarteImpl k22= new KarteImpl(CardType.ARMOR);
-        k22.setImage(R.drawable.rustungcard12);
+        Karte k22= new RustungCardsImpl(R.drawable.rustungcard12,CardType.ARMOR,1,2,BodyPart.FOOT);
         addCard(k22);
-        KarteImpl k23= new KarteImpl(CardType.ARMOR);
-        k23.setImage(R.drawable.rustungcard13);
+        Karte k23= new RustungCardsImpl(R.drawable.rustungcard13,CardType.ARMOR,2,3,BodyPart.HAND);
         addCard(k23);
-        KarteImpl k24= new KarteImpl(CardType.ARMOR);
-        k24.setImage(R.drawable.rustungcard14);
+        Karte k24= new RustungCardsImpl(R.drawable.rustungcard14,CardType.ARMOR,1,2,BodyPart.HAND);
         addCard(k24);
 
         //Adding fluch cards
-        KarteImpl k25= new KarteImpl(CardType.CURSE);
-        k25.setImage(R.drawable.fluchcard1);
+        Karte k25 = new FluchCardsImpl(R.drawable.fluchcard1, CardType.CURSE, 0,BodyPart.FOOT);
         addCard(k25);
-        KarteImpl k26= new KarteImpl(CardType.CURSE);
-        k26.setImage(R.drawable.fluchcard2);
+        Karte k26 = new FluchCardsImpl(R.drawable.fluchcard2, CardType.CURSE, 0,BodyPart.HEAD);
         addCard(k26);
-        KarteImpl k27= new KarteImpl(CardType.CURSE);
-        k27.setImage(R.drawable.fluchcard3);
+        Karte k27 = new FluchCardsImpl(R.drawable.fluchcard3, CardType.CURSE, 1, null);
         addCard(k27);
-        KarteImpl k28= new KarteImpl(CardType.CURSE);
-        k28.setImage(R.drawable.fluchcard4);
+        Karte k28 = new FluchCardsImpl(R.drawable.fluchcard4, CardType.CURSE, 2,null);
         addCard(k28);
 
         //Adding Klassen cards
