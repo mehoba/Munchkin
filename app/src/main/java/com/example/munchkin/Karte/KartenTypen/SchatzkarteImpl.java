@@ -9,14 +9,23 @@ import java.util.Random;
 public class SchatzkarteImpl implements Schatzkarte
 {
     int goldwert;
+    private int image;
 
     @Override
     public int getImage() {
-        return 0;
+        return image;
+    }
+    @Override
+    public void setImage(int image) {
+        this.image = image;
     }
 
     @Override
-    public void setImage(int image) {
-
+    public int getGoldwert() {
+        return goldwert;
+    }
+    @Override
+    public void SetGoldwert(int goldwert) {
+        this.goldwert = goldwert;
     }
 }

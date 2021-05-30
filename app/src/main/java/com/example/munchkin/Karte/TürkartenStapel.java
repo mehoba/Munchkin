@@ -18,7 +18,7 @@ public class TürkartenStapel extends KartenSlot {
     @Override
     public Karte getKarte()
     {
-        return KarteImpl.getRandomKarte();
+        return Karte.getRandomKarte();
     }//Todo Türkarte statt karte nehmen
 
     void onTürkartenStapelClicked()//Todo heben implementieren

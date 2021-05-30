@@ -3,6 +3,7 @@ package com.example.munchkin.Karte;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Karte.KartenTypen.SchatzkarteImpl;
 import com.example.munchkin.Player;
 
@@ -21,7 +22,7 @@ public class SchatzkartenStapel extends KartenSlot
     @Override
     public Karte getKarte()
     {
-        return SchatzkarteImpl.getRandomSchatzkarte();
+        return Schatzkarte.getRandomSchatzkarte();
     }
 
 

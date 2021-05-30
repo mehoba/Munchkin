@@ -7,11 +7,13 @@ import java.util.Random;
 
 public interface Schatzkarte extends Karte
 {
-    default Karte getRandomSchatzkarte()
-    {
-        int count = Inventar.getTreasureCardList().size() - 1;
+    public int getGoldwert();
+    public void SetGoldwert(int goldwert);
+
+    static Schatzkarte getRandomSchatzkarte() {
+        int count = Inventar.getSchatzkartenList().size() - 1;
         Random rand = new Random();
         int randomCardIndex = rand.nextInt(count);
-        return Inventar.getTreasureCardList().get(randomCardIndex);
+        return Inventar.getSchatzkartenList().get(randomCardIndex);
     }
 }
