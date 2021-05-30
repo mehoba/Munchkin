@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Networking;
 
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
@@ -6,6 +6,8 @@ import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.Networking.Network;
+import com.example.munchkin.Player;
 
 import java.io.IOException;
 
