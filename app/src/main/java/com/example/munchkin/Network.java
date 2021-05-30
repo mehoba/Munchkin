@@ -11,7 +11,7 @@ import com.example.munchkin.Networking.Lobby;
 public class Network
 {
     static public final int port = 25565;
-    static public String ipAdressServer = "192.168.178.22";
+    static public String ipAdressServer = "192.168.178.21";
 
     static  public  void register (EndPoint endpoint)
     {
