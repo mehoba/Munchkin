@@ -7,7 +7,7 @@ import com.example.munchkin.Activity.WinnerPopActivity;
 
 public class Level {
 
-    private int level = 9;
+    private int level = 1;
     private SpielfeldActivity sourceActivity;
 
     public Level(SpielfeldActivity sourceActivity) {
@@ -16,7 +16,7 @@ public class Level {
 
     void levelIncrease(){
         level++;
-        if(level == 10){
+        if(level >= 10){
             notifyAboutWin();
         }
     }
