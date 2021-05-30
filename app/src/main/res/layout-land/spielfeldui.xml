@@ -199,7 +199,7 @@
         app:srcCompat="@drawable/spielfeldui_treasurecard" />
 
     <ImageView
-        android:id="@+id/midemptycard_topright"
+        android:id="@+id/imgAblageStapelSchatzkarten"
         android:layout_width="78dp"
         android:layout_height="79dp"
         android:rotation="-1"
@@ -213,7 +213,7 @@
         app:srcCompat="@drawable/empty_card" />
 
     <ImageView
-        android:id="@+id/midemptycard_topleft"
+        android:id="@+id/imgAblageStapelTürkarten"
         android:layout_width="78dp"
         android:layout_height="79dp"
         android:rotation="-1"
