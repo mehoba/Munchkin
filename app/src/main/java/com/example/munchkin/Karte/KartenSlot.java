@@ -11,8 +11,8 @@ public class KartenSlot
     public KartenSlot(ImageView imgKarte)
     {
         //For Tests
-        if(imgKarte != null)
-            this.imgKarte = imgKarte;
+        this.imgKarte = imgKarte;
+
         karte = null;
     }
 
@@ -53,5 +53,10 @@ public class KartenSlot
     public ImageView getImgKarte()
     {
         return imgKarte;
+    }
+    //Pls only set in the initializeUIFunction
+    public void setImgKarte(ImageView imgKarte)
+    {
+        this.imgKarte = imgKarte;
     }
 }

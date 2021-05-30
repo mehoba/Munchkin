@@ -31,15 +31,20 @@ public class Inventar
     {
         initializeKartenList();
 
-        SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
-
         handKarten = new HandKarten();
         playerAusrüstung = new PlayerAusrüstung();
-        klassenKarteSlot = new KartenSlot(spielfeldActivity.imgKlasse1);
-        rassenKarteSlot = new KartenSlot(spielfeldActivity.imgRasse1);
+        klassenKarteSlot = new KartenSlot(null);
+        rassenKarteSlot = new KartenSlot(null);
     }
 
+    public void initializeUIConnection()
+    {
+        SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
 
+        handKarten.initializeUIConnection();
+        klassenKarteSlot.setImgKarte(spielfeldActivity.imgKlasse1);
+        rassenKarteSlot.setImgKarte(spielfeldActivity.imgRasse1);
+    }
 
     public static List<Karte> getKartenList() {
         return KartenList;
@@ -50,7 +55,6 @@ public class Inventar
     public static List<Türkarte> getTürKartenList() {
         return türKartenList;
     }
-
 
     //ToDo Türkarten fehlen
     public static void initializeKartenList() {

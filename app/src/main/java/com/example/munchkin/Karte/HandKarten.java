@@ -2,64 +2,66 @@ package com.example.munchkin.Karte;
 
 import android.view.View;
 
+import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 import com.example.munchkin.SpielfeldActivity;
 
 public class HandKarten
 {
-    private final SpielfeldActivity spielfeldActivity;
-    private KartenSlot[] kartenSlots;
+    private final KartenSlot[] kartenSlots;
 
     public HandKarten()
     {
-        spielfeldActivity = SpielfeldActivity.getInstance();
-
         kartenSlots = new KartenSlot[4];
-        kartenSlots[0] = new KartenSlot(spielfeldActivity.imgCardView);
+
+        //For Testing
+        kartenSlots[0] = new KartenSlot(null);
+        kartenSlots[1] = new KartenSlot(null);
+        kartenSlots[2] = new KartenSlot(null);
+        kartenSlots[3] = new KartenSlot(null);
+    }
+
+    public void initializeUIConnection()
+    {
+        SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
+
+        kartenSlots[0].setImgKarte(spielfeldActivity.imgCardView);
+        kartenSlots[1].setImgKarte(spielfeldActivity.imgCardView2);
+        kartenSlots[2].setImgKarte(spielfeldActivity.imgCardView3);
+        kartenSlots[3].setImgKarte(spielfeldActivity.imgCardView4);
+
         kartenSlots[0].getImgKarte().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onKartenSlot0Clicked();
+                onKartenSlotClicked(0);
             }
         });
-        kartenSlots[1] = new KartenSlot(spielfeldActivity.imgCardView2);
         kartenSlots[1].getImgKarte().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onKartenSlot1Clicked();
+                onKartenSlotClicked(1);
             }
         });
-        kartenSlots[2] = new KartenSlot(spielfeldActivity.imgCardView3);
         kartenSlots[2].getImgKarte().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onKartenSlot2Clicked();
+                onKartenSlotClicked(2);
             }
         });
-        kartenSlots[3] = new KartenSlot(spielfeldActivity.imgCardView4);
         kartenSlots[3].getImgKarte().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onKartenSlot3Clicked();
+                onKartenSlotClicked(3);
             }
         });
     }
 
-    void onKartenSlot0Clicked()
+    void onKartenSlotClicked(int i)
     {
-        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[0].karteHeben());
-    }
-    void onKartenSlot1Clicked()
-    {
-        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[1].karteHeben());
-    }
-    void onKartenSlot2Clicked()
-    {
-        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[2].karteHeben());
-    }
-    void onKartenSlot3Clicked()
-    {
-        Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[3].karteHeben());
+        if(Player.getLocalPlayer().getIstDran())
+        {
+            Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[i].karteHeben());
+        }
     }
 
     //Added eine neue Karte an eine freie Handkarten Position

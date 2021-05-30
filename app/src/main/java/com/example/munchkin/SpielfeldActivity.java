@@ -195,8 +195,9 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
-        new Spielfeld();
-        Player.getLocalPlayer().initializePlayer();
+        new Spielfeld().initializeUiConnection();
+        Player.getLocalPlayer().initializeUIConnection();
+
         setPlayerNames();
     }
 
