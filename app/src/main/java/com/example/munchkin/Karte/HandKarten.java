@@ -2,6 +2,7 @@ package com.example.munchkin.Karte;
 
 import android.view.View;
 
+import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 import com.example.munchkin.Activity.SpielfeldActivity;
@@ -14,7 +15,7 @@ public class HandKarten
     {
         kartenSlots = new KartenSlot[4];
 
-        //For Testing
+        //For Testing null
         kartenSlots[0] = new KartenSlot(null);
         kartenSlots[1] = new KartenSlot(null);
         kartenSlots[2] = new KartenSlot(null);
@@ -58,9 +59,12 @@ public class HandKarten
 
     void onKartenSlotClicked(int i)
     {
-        if(Player.getLocalPlayer().getIstDran())
+        //Todo istDran temporär deaktiviert zum zeigen
+        if(!Player.istDranAktiviert || Player.getLocalPlayer().getIstDran())
         {
-            Spielfeld.getKartenSlotUntenLinks().karteAblegen(kartenSlots[i].karteHeben());
+            Karte gehobeneKarte = kartenSlots[i].karteHeben();
+            Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);
+            GameClient.sendKarteAufAbgelegtStapelGelegt(gehobeneKarte);
         }
     }
 

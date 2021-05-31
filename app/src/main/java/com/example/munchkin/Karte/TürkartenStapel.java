@@ -5,7 +5,6 @@ import android.widget.ImageView;
 
 import com.example.munchkin.Karte.KartenTypen.Türkarte;
 import com.example.munchkin.Networking.GameClient;
-import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
 public class TürkartenStapel extends KartenSlot {
@@ -39,7 +38,7 @@ public class TürkartenStapel extends KartenSlot {
     void onTürkartenStapelClicked()//Todo heben implementieren
     {
         Karte gehobeneKarte = getKarte();
-        Spielfeld.getKartenSlotUntenLinks().karteAblegen(gehobeneKarte);
-        GameClient.SendMonsterKarteGelegtAnServer(gehobeneKarte);
+        Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
+        GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
     }
 }

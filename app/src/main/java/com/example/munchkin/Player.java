@@ -15,6 +15,9 @@ public class Player
     private Level playerLevel;
     private Boolean istDran;
 
+    //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
+    public static Boolean istDranAktiviert = false;
+
     //Only call when Spielfeld is completely loaded
     public Player()
     {

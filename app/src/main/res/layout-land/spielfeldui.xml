@@ -172,7 +172,7 @@
         app:srcCompat="@drawable/spielfeldui_doorcard" />
 
     <ImageView
-        android:id="@+id/midemptycard_bottomright"
+        android:id="@+id/ausgespielteKartenSlot"
         android:layout_width="78dp"
         android:layout_height="79dp"
         android:rotation="-1"
@@ -227,7 +227,7 @@
         app:srcCompat="@drawable/empty_card" />
 
     <ImageView
-        android:id="@+id/midemptycard_bottomleft"
+        android:id="@+id/monsterKartenSlot"
         android:layout_width="78dp"
         android:layout_height="79dp"
         android:rotation="-1"
@@ -400,7 +400,7 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/spielfeldui_player1icon"
-        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
+        app:layout_constraintTop_toBottomOf="@+id/monsterKartenSlot"
         app:layout_constraintVertical_bias="0.851" />
 
     <ImageView
@@ -413,7 +413,7 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView"
-        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomleft"
+        app:layout_constraintTop_toBottomOf="@+id/monsterKartenSlot"
         app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -427,7 +427,7 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView2"
-        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        app:layout_constraintTop_toBottomOf="@+id/ausgespielteKartenSlot"
         app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
@@ -441,7 +441,7 @@
         android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/cardView3"
-        app:layout_constraintTop_toBottomOf="@+id/midemptycard_bottomright"
+        app:layout_constraintTop_toBottomOf="@+id/ausgespielteKartenSlot"
         app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 

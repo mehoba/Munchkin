@@ -60,6 +60,12 @@ public class GameServer
                     Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
                     server.sendToAllExceptTCP(connection.getID(), karteAufMonsterSlotGelegt);
                 }
+
+                if (object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                {
+                    Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufAbgelegtSlotGelegt);
+                }
             }
 
             @Override

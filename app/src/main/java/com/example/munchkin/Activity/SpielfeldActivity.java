@@ -25,7 +25,7 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4,imgMidemptycard_bottomleft, imgSchatzkarte, imgdoorcard;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -50,8 +50,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgCardView3 =findViewById(R.id.cardView3);
         imgCardView4 =findViewById(R.id.cardView4);
 
-        imgMidemptycard_bottomleft =findViewById(R.id.midemptycard_bottomleft);
-
+        imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
+        imgAusgespielteKartenSlot =findViewById(R.id.ausgespielteKartenSlot);
 
         imgDice =findViewById(R.id.spielfeldui_dicesicon);
         imgSpieler1 =findViewById(R.id.spielfeldui_player1icon);
