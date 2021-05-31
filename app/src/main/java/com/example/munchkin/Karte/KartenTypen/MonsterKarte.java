@@ -8,6 +8,9 @@ public interface MonsterKarte extends Türkarte {
     int getAnzahlSchätze();
     void setAnzahlSchätze(int anzahlSchätze);
 
+    int getGewonneneLevel();
+    void setGewonneneLevel(int gewonneneLevel);
+
     //Übernommen von MonsterCards
     void badStuff(int playerLevel, int badCategory, int levelMinus);
     void runAway();
