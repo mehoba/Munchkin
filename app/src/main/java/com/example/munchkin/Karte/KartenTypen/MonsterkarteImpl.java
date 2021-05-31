@@ -18,12 +18,12 @@ public class MonsterkarteImpl implements MonsterKarte {
 //    }
 
     @Override
-    public int getLevel() {
+    public int getMonsterLevel() {
         return level;
     }
 
     @Override
-    public void setLevel(int level) {
+    public void setMonsterLevel(int level) {
         this.level = level;
     }
 

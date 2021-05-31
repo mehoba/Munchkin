@@ -2,8 +2,8 @@ package com.example.munchkin.Karte.KartenTypen;
 
 public interface MonsterKarte extends Türkarte {
 
-    int getLevel();
-    void setLevel(int level);
+    int getMonsterLevel();
+    void setMonsterLevel(int level);
 
     int getAnzahlSchätze();
     void setAnzahlSchätze(int anzahlSchätze);
