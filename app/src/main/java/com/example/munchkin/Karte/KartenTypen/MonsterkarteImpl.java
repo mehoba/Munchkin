@@ -5,6 +5,7 @@ import com.example.munchkin.Player;
 public class MonsterkarteImpl implements MonsterKarte {
     private int level;
     private int anzahlSchätze;
+    private int gewonneneLevel = 1; //ist standardmäßig 1 auser es wird überschrieben mit setGewonneneLevel
     private int image;
 
     //Übernommen von MonsterCardsImpl
@@ -18,12 +19,12 @@ public class MonsterkarteImpl implements MonsterKarte {
 //    }
 
     @Override
-    public int getLevel() {
+    public int getMonsterLevel() {
         return level;
     }
 
     @Override
-    public void setLevel(int level) {
+    public void setMonsterLevel(int level) {
         this.level = level;
     }
 
@@ -35,6 +36,16 @@ public class MonsterkarteImpl implements MonsterKarte {
     @Override
     public void setAnzahlSchätze(int anzahlSchätze) {
         this.anzahlSchätze=anzahlSchätze;
+    }
+
+    @Override
+    public int getGewonneneLevel() {
+        return gewonneneLevel;
+    }
+
+    @Override
+    public void setGewonneneLevel(int gewonneneLevel) {
+        this.gewonneneLevel=gewonneneLevel;
     }
 
     @Override

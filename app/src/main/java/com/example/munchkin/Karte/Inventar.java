@@ -170,51 +170,97 @@ public class Inventar
         addCardToKartenList(k32);
 
         //Adding monster cards
-        Karte k33= new MonsterkarteImpl();
+        MonsterkarteImpl k33= new MonsterkarteImpl();
         k33.setImage(R.drawable.monstercard1);
+        k33.setMonsterLevel(2);
+        k33.setAnzahlSchätze(1);
         addCardToKartenList(k33);
-        Karte k34= new MonsterkarteImpl();
+
+        MonsterkarteImpl k34= new MonsterkarteImpl();
         k34.setImage(R.drawable.monstercard2);
+        k34.setMonsterLevel(8);
+        k34.setAnzahlSchätze(2);
         addCardToKartenList(k34);
-        Karte k35= new MonsterkarteImpl();
+
+        MonsterkarteImpl k35= new MonsterkarteImpl();
         k35.setImage(R.drawable.monstercard3);
+        k35.setMonsterLevel(16);
+        k35.setAnzahlSchätze(4);
+        k35.setGewonneneLevel(2);
         addCardToKartenList(k35);
-        Karte k36= new MonsterkarteImpl();
+
+        MonsterkarteImpl k36= new MonsterkarteImpl();
         k36.setImage(R.drawable.monstercard4);
+        k36.setMonsterLevel(8);
+        k36.setAnzahlSchätze(2);
         addCardToKartenList(k36);
-        Karte k37= new MonsterkarteImpl();
+
+        MonsterkarteImpl k37= new MonsterkarteImpl();
         k37.setImage(R.drawable.monstercard5);
+        k37.setMonsterLevel(4);
+        k37.setAnzahlSchätze(2);
         addCardToKartenList(k37);
-        Karte k38= new MonsterkarteImpl();
+
+        MonsterkarteImpl k38= new MonsterkarteImpl();
         k38.setImage(R.drawable.monstercard6);
+        k38.setMonsterLevel(14);
+        k38.setAnzahlSchätze(4);
         addCardToKartenList(k38);
-        Karte k39= new MonsterkarteImpl();
+
+        MonsterkarteImpl k39= new MonsterkarteImpl();
         k39.setImage(R.drawable.monstercard7);
+        k39.setMonsterLevel(2);
+        k39.setAnzahlSchätze(1);
         addCardToKartenList(k39);
-        Karte k40= new MonsterkarteImpl();
+
+        MonsterkarteImpl k40= new MonsterkarteImpl();
         k40.setImage(R.drawable.monstercard8);
+        k40.setMonsterLevel(20);
+        k40.setAnzahlSchätze(5);
+        k40.setGewonneneLevel(2);
         addCardToKartenList(k40);
-        Karte k41= new MonsterkarteImpl();
+
+        MonsterkarteImpl k41= new MonsterkarteImpl();
         k41.setImage(R.drawable.monstercard9);
+        k41.setMonsterLevel(2);
+        k41.setAnzahlSchätze(1);
         addCardToKartenList(k41);
-        Karte k42= new MonsterkarteImpl();
-        k42.setImage(R.drawable.monstercard9);
-        addCardToKartenList(k42);
-        Karte k43= new MonsterkarteImpl();
+
+//        //Karte 9 wäre doppelt
+//        Karte k42= new MonsterkarteImpl();
+//        k42.setImage(R.drawable.monstercard9);
+//        addCardToKartenList(k42);
+
+        MonsterkarteImpl k43= new MonsterkarteImpl();
         k43.setImage(R.drawable.monstercard10);
+        k43.setMonsterLevel(1);
+        k43.setAnzahlSchätze(1);
         addCardToKartenList(k43);
-        Karte k44= new MonsterkarteImpl();
+
+        MonsterkarteImpl k44= new MonsterkarteImpl();
         k44.setImage(R.drawable.monstercard11);
+        k44.setMonsterLevel(1);
+        k44.setAnzahlSchätze(1);
         addCardToKartenList(k44);
-        Karte k45= new MonsterkarteImpl();
+
+        MonsterkarteImpl k45= new MonsterkarteImpl();
         k45.setImage(R.drawable.monstercard12);
+        k45.setMonsterLevel(10);
+        k45.setAnzahlSchätze(3);
         addCardToKartenList(k45);
-        Karte k46= new MonsterkarteImpl();
+
+        MonsterkarteImpl k46= new MonsterkarteImpl();
         k46.setImage(R.drawable.monstercard13);
+        k46.setMonsterLevel(14);
+        k46.setAnzahlSchätze(4);
         addCardToKartenList(k46);
-        Karte k47= new MonsterkarteImpl();
+
+        MonsterkarteImpl k47= new MonsterkarteImpl();
         k47.setImage(R.drawable.monstercard14);
+        k47.setMonsterLevel(1);
+        k47.setAnzahlSchätze(1);
         addCardToKartenList(k47);
+
 
         //Adding Rassen cards
         Karte k48= new RassenKarteImpl();
