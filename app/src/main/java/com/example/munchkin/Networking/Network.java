@@ -60,6 +60,7 @@ public class Network
         kryo.register(SchatzkarteImpl.class);
         kryo.register(TürkarteImpl.class);
         kryo.register(BodyPart.class);
+        kryo.register(KarteAufAbgelegtSlotGelegt.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -83,6 +84,11 @@ public class Network
     }
 
     static public class KarteAufMonsterSlotGelegt
+    {
+        public Karte karte;
+    }
+
+    static public class KarteAufAbgelegtSlotGelegt
     {
         public Karte karte;
     }

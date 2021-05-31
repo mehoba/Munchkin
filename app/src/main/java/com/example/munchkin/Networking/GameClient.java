@@ -1,15 +1,11 @@
 package com.example.munchkin.Networking;
 
-import android.widget.GridLayout;
-
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.Karte;
-import com.example.munchkin.Networking.Lobby;
-import com.example.munchkin.Networking.Network;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
@@ -84,7 +80,21 @@ public class GameClient
                                                                                     @Override
                                                                                     public void run() {
                                                                                         Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
-                                                                                        Spielfeld.getKartenSlotUntenLinks().karteAblegen(karteAufMonsterSlotGelegt.karte);
+                                                                                        Spielfeld.getMonsterKartenSlot().karteAblegen(karteAufMonsterSlotGelegt.karte);
+                                                                                    }
+                                                                                }
+
+                                       );
+                                   }
+
+                                   if(object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                                   {
+                                       //Only the original thread that created a view hierarchy can touch its views.
+                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
+                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufAbgelegtSlotGelegt.karte);
                                                                                     }
                                                                                 }
 
@@ -139,12 +149,26 @@ public class GameClient
         client.sendTCP(loginNewPlayer);
     }
 
-    public static void SendMonsterKarteGelegtAnServer(Karte karte)
+    public static void sendKarteAufAbgelegtStapelGelegt(Karte karte)
+    {
+        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = new Network.KarteAufAbgelegtSlotGelegt();
+        karteAufAbgelegtSlotGelegt.karte = karte;
+
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(karteAufAbgelegtSlotGelegt);
+            }
+        }.start();
+    }
+
+    public static void sendMonsterKarteGelegtAnServer(Karte karte)
     {
         Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = new Network.KarteAufMonsterSlotGelegt();
         karteAufMonsterSlotGelegt.karte = karte;
 
-        new Thread("Connect")
+        new Thread("thread")
         {
             public void run ()
             {
