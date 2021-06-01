@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 
@@ -8,10 +8,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.munchkin.Networking.GameClient;
+import com.example.munchkin.Networking.Network;
+import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.R;
 
 
 public class MainActivity extends AppCompatActivity
@@ -43,18 +47,24 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        new Lobby();
+
         //Start Client
         //--------------------------------
         //Comment this line if you want to debug without Server
         //gameClient = new GameClient();
         //--------------------------------
+
+
     }
 
     private void spielen(View view)
     {
+        playernameinvalid.setVisibility(View.INVISIBLE);
         if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
         {
             successfullyConnectedToServer();
+            return;
         }
 
         if (checkIfTextViewEmptyOrNull(playernameinvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))

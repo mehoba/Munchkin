@@ -2,23 +2,25 @@ package com.example.munchkin;
 
 import android.content.Intent;
 
+import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Activity.WinnerPopActivity;
+
 public class Level {
 
-    private int level = 9;
-    private SpielfeldActivity sourceActivity;
+    private int level;
 
-    public Level(SpielfeldActivity sourceActivity) {
-        this.sourceActivity = sourceActivity;
+    public Level(){
+        level = 1;
     }
 
-    void levelIncrease(){
+    public void levelIncrease(){
         level++;
-        if(level == 10){
-            notifyAboutWin();
+        if(level >= 10){
+            SpielfeldActivity.getInstance().notifyAboutWin();;
         }
     }
 
-    void levelDecrease(){
+    public void levelDecrease(){
         if (level !=1){
             level --;
         }
@@ -32,8 +34,4 @@ public class Level {
         this.level = level;
     }
 
-    private void notifyAboutWin() {
-        Intent i = new Intent(sourceActivity.getApplicationContext(),WinnerPopActivity.class);
-        sourceActivity.startActivity(i);
-    }
 }

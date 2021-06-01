@@ -1,18 +1,18 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
-import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class PopActivity extends AppCompatActivity {
+import com.example.munchkin.R;
+
+public class CardPopActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.popupview);
+        setContentView(R.layout.cardpopview);
 
         DisplayMetrics dm=new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -20,7 +20,7 @@ public class PopActivity extends AppCompatActivity {
         int width=dm.widthPixels;
         int height=dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.6),(int)(height*0.6));
+        getWindow().setLayout((int)(width*0.78),(int)(height*0.78));
 
     }
 }

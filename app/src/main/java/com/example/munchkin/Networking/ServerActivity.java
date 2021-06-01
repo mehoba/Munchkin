@@ -3,9 +3,7 @@ package com.example.munchkin.Networking;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
-import android.widget.TextView;
 
-import com.example.munchkin.GameServer;
 import com.example.munchkin.R;
 
 import java.io.IOException;
@@ -20,6 +18,7 @@ public class ServerActivity extends AppCompatActivity
 
         try
         {
+            new Lobby();
             new GameServer();
         }
         catch (IOException e)

@@ -1,12 +1,13 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.R;
 
 public class MainMenuActivity extends AppCompatActivity {
     private ImageView menuspielen,menuexit,menueinstellungen;
@@ -24,7 +25,7 @@ public class MainMenuActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent intent=new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(intent);
             }
         });
@@ -33,7 +34,7 @@ public class MainMenuActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(),SpielfeldActivity.class);
+                Intent i=new Intent(getApplicationContext(), SpielfeldActivity.class);
                 startActivity(i);
             }
         });

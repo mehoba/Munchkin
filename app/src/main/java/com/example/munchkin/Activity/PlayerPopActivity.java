@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -8,6 +8,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.Level;
+import com.example.munchkin.R;
 
 public class PlayerPopActivity extends AppCompatActivity {
 
@@ -29,7 +32,7 @@ public class PlayerPopActivity extends AppCompatActivity {
         txtPlayerstufepopup = findViewById(R.id.playerpopup_stufetext);
         imgPlayerpicture = findViewById(R.id.player1popup_picture);
 
-        level = new Level(sourceActivity);
+        level = new Level();
 
         txtPlayerstufepopup.setText(Integer.toString(level.getLevel()));
 
