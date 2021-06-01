@@ -18,7 +18,7 @@ public class CardPopActivity extends AppCompatActivity {
         int width=dm.widthPixels;
         int height=dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.2),(int)(height*0.6));
+        getWindow().setLayout((int)(width*0.78),(int)(height*0.78));
 
     }
 }
