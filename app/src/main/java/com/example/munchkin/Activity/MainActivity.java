@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity
         //Start Client
         //--------------------------------
         //Comment this line if you want to debug without Server
-        //gameClient = new GameClient();
+        gameClient = new GameClient();
         //--------------------------------
 
 

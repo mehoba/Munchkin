@@ -3,9 +3,12 @@ package com.example.munchkin.Karte;
 import android.view.View;
 
 import com.example.munchkin.Networking.GameClient;
+import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 import com.example.munchkin.Activity.SpielfeldActivity;
+
+import java.util.Arrays;
 
 public class HandKarten
 {
@@ -13,13 +16,12 @@ public class HandKarten
 
     public HandKarten()
     {
-        kartenSlots = new KartenSlot[4];
+        kartenSlots = new KartenSlot[7];
 
         //For Testing null
-        kartenSlots[0] = new KartenSlot(null);
-        kartenSlots[1] = new KartenSlot(null);
-        kartenSlots[2] = new KartenSlot(null);
-        kartenSlots[3] = new KartenSlot(null);
+        for(int i = 0; i < kartenSlots.length; ++i) {
+            kartenSlots[i] = new KartenSlot(null);
+        }
     }
 
     public void initializeUIConnection()
@@ -71,7 +73,7 @@ public class HandKarten
     //Added eine neue Karte an eine freie Handkarten Position
     public void addKarte(Karte karte)
     {
-        if(checkIfNotMoreThan4())
+        if(countHandkarten() < 7)
             getNextEmptySlot().karteAblegen(karte);
     }
 
@@ -79,9 +81,33 @@ public class HandKarten
     {
         for(int i = 0; i < karten.length; i++)
         {
-            if(checkIfNotMoreThan4())
-            {
+            if(countHandkarten() < 7)
                 getNextEmptySlot().karteAblegen(karten[i]);
+        }
+    }
+
+    //TODO: Should be called when the player finishes his round
+    public void onFinishRound() {
+        // Only up to 5 Cards are allowed
+        if(countHandkarten() > 5) {
+            int playerLevel = Player.getLocalPlayer().getPlayerLevel().getLevel();
+            Player lowestPlayer = Player.getLocalPlayer();
+            int currentLowest = playerLevel;
+            for(int i = 0; i < Lobby.getPlayers().length; ++i) {
+                if(Lobby.getPlayers()[i] != null && Lobby.getPlayers()[i].getPlayerLevel().getLevel() < currentLowest) {
+                    lowestPlayer = Lobby.getPlayers()[i];
+                    currentLowest = Lobby.getPlayers()[i].getPlayerLevel().getLevel();
+                }
+            }
+
+            for(int i = 5; i < kartenSlots.length; ++i) {
+                if(lowestPlayer.equals(Player.getLocalPlayer())) {
+                    // We are the lowest player so move card to ablage
+                    this.removeKarte(i);
+                } else {
+                    // Give card to player with lowest level
+                    lowestPlayer.getInventar().getHandKarten().addKarte(this.removeKarte(i));
+                }
             }
         }
     }
@@ -117,7 +143,7 @@ public class HandKarten
         return kartenSlots[index].getKarte();
     }
 
-    private int countHandkarten()
+    public int countHandkarten()
     {
         int count = 0;
         for(int i = 0; i < kartenSlots.length; i++)
