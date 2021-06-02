@@ -1,9 +1,11 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.R;
 
 public class CardPopActivity extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class CardPopActivity extends AppCompatActivity {
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.2),(int)(height*0.6));
+        getWindow().setLayout((int)(width*0.78),(int)(height*0.78));
 
     }
 }

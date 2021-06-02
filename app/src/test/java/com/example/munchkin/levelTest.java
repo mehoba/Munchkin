@@ -1,5 +1,7 @@
 package com.example.munchkin;
 
+import com.example.munchkin.Activity.SpielfeldActivity;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -12,7 +14,7 @@ public class levelTest {
     @Before
     public void setUp(){
         sourceActivity=new SpielfeldActivity();
-        level= new Level( sourceActivity);
+        level= new Level();
     }
     @Test
     public void checkIfDecreaseNeverUnder1(){

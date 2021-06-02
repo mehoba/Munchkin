@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 
 import android.content.Intent;
@@ -10,9 +10,11 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Networking.Lobby;
+import com.example.munchkin.Player;
+import com.example.munchkin.R;
+import com.example.munchkin.Spielfeld;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -23,21 +25,24 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    private ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMidemptycard_bottomleft, imgTreasureCard;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
     private List<Karte> drawnCards;
     // Just the collection of all available cards
-    private final Inventar inventar = new Inventar();
+    //private final Inventar inventar = new Inventar();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         instance = this;
-        inventar.setKartenList();
+
+        //inventar.setKartenList();
         drawnCards=new ArrayList<>();
 
-        super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.spielfeldui);
 
         imgCardView =findViewById(R.id.cardView);
@@ -45,8 +50,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgCardView3 =findViewById(R.id.cardView3);
         imgCardView4 =findViewById(R.id.cardView4);
 
-        imgMidemptycard_bottomleft =findViewById(R.id.midemptycard_bottomleft);
-
+        imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
+        imgAusgespielteKartenSlot =findViewById(R.id.ausgespielteKartenSlot);
 
         imgDice =findViewById(R.id.spielfeldui_dicesicon);
         imgSpieler1 =findViewById(R.id.spielfeldui_player1icon);
@@ -59,14 +64,17 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgRasse1 =findViewById(R.id.player1_rasseicon);
         imgDoorcard =findViewById(R.id.spielfeldui_doorcard);
         imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
-        imgTreasureCard = findViewById(R.id.spielfeldui_treasurecard);
+        imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
+        imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
 
-        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addTreasureCard();
-            }
-        });
+
+
+//        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addTreasureCard();
+//            }
+//        });
 
         imgBackpack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,35 +124,35 @@ public class SpielfeldActivity extends AppCompatActivity {
             }
         });
 
-        setCardView(imgCardView);
-        setCardView(imgCardView2);
-        setCardView(imgCardView3);
-        setCardView(imgCardView4);
-
-        imgCardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardAbelegen(imgCardView, imgMidemptycard_bottomleft);
-            }
-        });
-        imgCardView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardAbelegen(imgCardView2, imgMidemptycard_bottomleft);
-            }
-        });
-        imgCardView3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardAbelegen(imgCardView3, imgMidemptycard_bottomleft);
-            }
-        });
-        imgCardView4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                cardAbelegen(imgCardView4, imgMidemptycard_bottomleft);
-            }
-        });
+//        setCardView(imgCardView);
+//        setCardView(imgCardView2);
+//        setCardView(imgCardView3);
+//        setCardView(imgCardView4);
+//
+//        imgCardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView2, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView3, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView4, imgMidemptycard_bottomleft);
+//            }
+//        });
 
         imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -190,31 +198,34 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
+        new Spielfeld().initializeUiConnection();
+        Player.getLocalPlayer().initializeUIConnection();
+
         setPlayerNames();
     }
 
-    public void addTreasureCard() {
-        int index = getRandomNum(inventar.treasureCardList.size())-1;
-        Karte card = inventar.treasureCardList.get(index);
-        if(!drawnCards.contains(card)) {
-            addCard(card);
-        } else {
-            addTreasureCard();
-        }
-    }
+//    public void addTreasureCard() {
+//        int index = getRandomNum(inventar.treasureCardList.size())-1;
+//        Karte card = inventar.treasureCardList.get(index);
+//        if(!drawnCards.contains(card)) {
+//            addCard(card);
+//        } else {
+//            addTreasureCard();
+//        }
+//    }
 
-    // Add the card to the first free cardview
-    public void addCard(Karte card) {
-        drawnCards.add(card);
-        if(imgCardView.getVisibility() == View.INVISIBLE)
-            setCard(card, imgCardView);
-        else if(imgCardView2.getVisibility()==View.INVISIBLE)
-            setCard(card, imgCardView2);
-        else if(imgCardView3.getVisibility()==View.INVISIBLE)
-            setCard(card, imgCardView3);
-        else if(imgCardView4.getVisibility()==View.INVISIBLE)
-            setCard(card, imgCardView4);
-    }
+//    // Add the card to the first free cardview
+//    public void addCard(Karte card) {
+//        drawnCards.add(card);
+//        if(imgCardView.getVisibility() == View.INVISIBLE)
+//            setCard(card, imgCardView);
+//        else if(imgCardView2.getVisibility()==View.INVISIBLE)
+//            setCard(card, imgCardView2);
+//        else if(imgCardView3.getVisibility()==View.INVISIBLE)
+//            setCard(card, imgCardView3);
+//        else if(imgCardView4.getVisibility()==View.INVISIBLE)
+//            setCard(card, imgCardView4);
+//    }
 
     private void setCard(Karte card, ImageView imgCardView) {
         imgCardView.setImageResource(card.getImage());
@@ -227,28 +238,28 @@ public class SpielfeldActivity extends AppCompatActivity {
         return rand.nextInt(bound)+1;
     }
 
-    public void setCardView(ImageView imgCardView){
-        int index= getRandomNum(50);
-        Karte card = inventar.getKartenList().get(index);
-        if(!drawnCards.contains(card)){
-            imgCardView.setImageResource(card.getImage());
-            drawnCards.add(card);
-            imgCardView.setVisibility(View.VISIBLE);
-        }
-        else
-            setCardView(imgCardView);
-    }
+//    public void setCardView(ImageView imgCardView){
+//        int index= getRandomNum(50);
+//        Karte card = inventar.getKartenList().get(index);
+//        if(!drawnCards.contains(card)){
+//            imgCardView.setImageResource(card.getImage());
+//            drawnCards.add(card);
+//            imgCardView.setVisibility(View.VISIBLE);
+//        }
+//        else
+//            setCardView(imgCardView);
+//    }
 
-    public void cardHeben(){
-        if(imgCardView.getVisibility() == View.INVISIBLE)
-            setCardView(imgCardView);
-        else if(imgCardView2.getVisibility()==View.INVISIBLE)
-            setCardView(imgCardView2);
-        else if(imgCardView3.getVisibility()==View.INVISIBLE)
-            setCardView(imgCardView3);
-        else if(imgCardView4.getVisibility()==View.INVISIBLE)
-            setCardView(imgCardView4);
-    }
+//    public void cardHeben(){
+//        if(imgCardView.getVisibility() == View.INVISIBLE)
+//            setCardView(imgCardView);
+//        else if(imgCardView2.getVisibility()==View.INVISIBLE)
+//            setCardView(imgCardView2);
+//        else if(imgCardView3.getVisibility()==View.INVISIBLE)
+//            setCardView(imgCardView3);
+//        else if(imgCardView4.getVisibility()==View.INVISIBLE)
+//            setCardView(imgCardView4);
+//    }
 
     public void cardAbelegen(ImageView imgCard, ImageView imgField){
         imgField.setVisibility(View.VISIBLE);
@@ -267,7 +278,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
         txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
 
-        LinkedList<String> playerNames = Lobby.getInstance().getPlayerNames();
+        LinkedList<String> playerNames = Lobby.getPlayerNames();
 
         for(int i = 0; i < playerNames.size(); i++)
         {
@@ -279,5 +290,10 @@ public class SpielfeldActivity extends AppCompatActivity {
     public static SpielfeldActivity getInstance()
     {
         return instance;
+    }
+
+    public void notifyAboutWin() {
+        Intent i = new Intent(getApplicationContext(), WinnerPopActivity.class);
+        startActivity(i);
     }
 }

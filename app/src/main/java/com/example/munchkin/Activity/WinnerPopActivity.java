@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.R;
 import com.luolc.emojirain.EmojiRainLayout;
 
 

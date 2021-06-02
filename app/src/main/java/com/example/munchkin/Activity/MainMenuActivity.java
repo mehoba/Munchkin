@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,37 +7,39 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.R;
+
 public class MainMenuActivity extends AppCompatActivity {
-    private ImageView imgMenuSpielen, imgMenuExit, imgMenuEinstellungen;
+    private ImageView menuspielen,menuexit,menueinstellungen;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        imgMenuSpielen = findViewById(R.id.menuspielenbutton);
-        imgMenuExit = findViewById(R.id.menuexitbutton);
-        imgMenuEinstellungen = findViewById(R.id.menusettingsbutton);
+        menuspielen=findViewById(R.id.menuspielenbutton);
+        menuexit=findViewById(R.id.menuexitbutton);
+        menueinstellungen=findViewById(R.id.menusettingsbutton);
 
-        imgMenuEinstellungen.setOnClickListener(new View.OnClickListener()
+        menueinstellungen.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),SettingsActivity.class);
+                Intent intent=new Intent(getApplicationContext(), SettingsActivity.class);
                 startActivity(intent);
             }
         });
 
-        imgMenuSpielen.setOnClickListener(new View.OnClickListener()
+        menuspielen.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(getApplicationContext(),SpielfeldActivity.class);
+                Intent i=new Intent(getApplicationContext(), SpielfeldActivity.class);
                 startActivity(i);
             }
         });
 
-        imgMenuExit.setOnClickListener(new View.OnClickListener()
+        menuexit.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v) {

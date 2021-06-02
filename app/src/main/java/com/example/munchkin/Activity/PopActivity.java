@@ -1,4 +1,4 @@
-package com.example.munchkin;
+package com.example.munchkin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.DisplayMetrics;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.munchkin.R;
 
 public class PopActivity extends AppCompatActivity {
 

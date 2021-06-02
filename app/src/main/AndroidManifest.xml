@@ -12,10 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainMenuActivity"
+        <activity android:name=".Activity.MainMenuActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
-        <activity android:name=".WinnerPopActivity"
+        <activity android:name=".Activity.WinnerPopActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp"/>
@@ -26,35 +26,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Activity.SettingsActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".PlayerPopActivity"
+            android:name=".Activity.PlayerPopActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".CardPopActivity"
+            android:name=".Activity.CardPopActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".DiceActivity"
+            android:name=".Activity.DiceActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".PopActivity"
+            android:name=".Activity.PopActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".SpielfeldActivity"
+            android:name=".Activity.SpielfeldActivity"
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activity.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
