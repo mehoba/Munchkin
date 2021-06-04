@@ -9,7 +9,7 @@
     android:background="@drawable/popup">
 
     <ImageView
-        android:id="@+id/cardpopup_imgCard"
+        android:id="@+id/treasurecardpopup_imgCard"
         android:layout_width="157dp"
         android:layout_height="236dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +33,7 @@
         app:srcCompat="@drawable/kartepopup_ablegenbutton" />
 
     <ImageView
-        android:id="@+id/cardpopup_btnBlank"
+        android:id="@+id/treasurecardpopup_btnAusruesten"
         android:layout_width="173dp"
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -57,7 +57,7 @@
         app:srcCompat="@drawable/kartepopup_ausspielenbutton" />
 
     <ImageView
-        android:id="@+id/cardpopup_btnBlank2"
+        android:id="@+id/treasurecardpopup_btnWegwerfen"
         android:layout_width="173dp"
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -54,6 +54,11 @@
             android:configChanges="orientation"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".Activity.TreasureCardActivity"
+            android:configChanges="orientation"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.CustomPopUp"/>
+        <activity
             android:name=".Activity.MainActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
