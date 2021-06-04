@@ -24,6 +24,7 @@ public class Inventar
     private final KartenSlot rassenKarteSlot;
 
     public static ArrayList<Karte> KartenList;
+
     public static ArrayList<Schatzkarte> schatzkartenList;
     public static ArrayList<Türkarte> türKartenList;
 
