@@ -2,7 +2,7 @@ package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
 
-public class FluchkarteImpl implements FluchKarte {
+public class Fluchkarte implements Türkarte {
     private int image;
 
     //Übernommen von FluchCardsImpl
@@ -29,12 +29,9 @@ public class FluchkarteImpl implements FluchKarte {
 
     //Übernommen von FluchCardsImpl
 
-    @Override
     public void loseArmor(BodyPart bodyPart, int size) {
-
     }
 
-    @Override
     public void loseLevel(int currentLvl) {
         currentLvl-= lostLevel;
     }

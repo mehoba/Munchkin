@@ -1,7 +1,21 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-public interface RassenKarte extends Türkarte{
+public class RassenKarte implements Türkarte
+{
+    private int image;
 
-    void addBonus();
 
+    public void addBonus() {
+        //TODO: Funktionalität Implementieren
+    }
+
+    @Override
+    public int getImage() {
+        return image;
+    }
+
+    @Override
+    public void setImage(int image) {
+        this.image=image;
+    }
 }

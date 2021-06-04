@@ -2,7 +2,7 @@ package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
 
-public class RüstungskarteImpl implements RüstungsKarte
+public class Rüstungskarte implements Schatzkarte
 {
 
     private int goldwert;
@@ -20,22 +20,22 @@ public class RüstungskarteImpl implements RüstungsKarte
 //        setSizeOfBonus(sizeOfBonus);
 //    }
 
-    @Override
+
     public int getGoldwert() {
         return goldwert;
     }
 
-    @Override
+
     public void SetGoldwert(int goldwert) {
         this.goldwert=goldwert;
     }
 
-    @Override
+
     public int getImage() {
         return image;
     }
 
-    @Override
+
     public void setImage(int image) {
         this.image=image;
     }
@@ -69,7 +69,7 @@ public class RüstungskarteImpl implements RüstungsKarte
         this.sizeOfArmor = sizeOfArmor;
     }
 
-    @Override
+
     public void addBonus(int currentLvl) {
         currentLvl+=sizeOfArmor;
     }

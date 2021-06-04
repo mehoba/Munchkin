@@ -1,7 +1,5 @@
 package com.example.munchkin;
 
-import com.example.munchkin.Karte.KartenTypen.MonsterKarte;
-
 public class Kampf {
     //ToDo: Klasse ausimplementieren
     /*
