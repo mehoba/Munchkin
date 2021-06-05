@@ -6,6 +6,8 @@ public class Player
 {
     private static Player localPlayer;
 
+    private PlayerAusrüstung playerAusrüstung;
+
     private String name;
     private int connectionId;
     private int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
@@ -24,6 +26,7 @@ public class Player
         playerLevel = new Level();
         inventar = new Inventar();
         istDran = false;
+        playerAusrüstung=new PlayerAusrüstung();
     }
 
     public void initializeUIConnection()
@@ -83,7 +86,13 @@ public class Player
     }
     //-----------------------------------
 
+    public PlayerAusrüstung getPlayerAusrüstung() {
+        return playerAusrüstung;
+    }
 
+    public void setPlayerAusrüstung(PlayerAusrüstung playerAusrüstung) {
+        this.playerAusrüstung = playerAusrüstung;
+    }
 
 
 }
