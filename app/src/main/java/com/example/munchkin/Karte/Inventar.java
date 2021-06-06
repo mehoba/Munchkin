@@ -256,19 +256,18 @@ public class Inventar
         k47.setImage(R.drawable.monstercard14);
         k47.setMonsterLevel(1);
         k47.setAnzahlSchätze(1);
-        addCardToKartenList(k47);
+        addCardToKartenList(k47);*/
 
 
         //Adding Rassen cards
-        Karte k48= new RassenKarte();
-        k48.setImage(R.drawable.rassencard1);
+        Karte k48= new RassenKarte(R.drawable.rassencard1);
         addCardToKartenList(k48);
-        Karte k49= new RassenKarte();
-        k49.setImage(R.drawable.rassencard2);
+
+        Karte k49= new RassenKarte(R.drawable.rassencard2);
         addCardToKartenList(k49);
-        Karte k50= new RassenKarte();
-        k50.setImage(R.drawable.rassencard3);
-        addCardToKartenList(k50);*/
+
+        Karte k50= new RassenKarte(R.drawable.rassencard3);
+        addCardToKartenList(k50);
 
     }
 

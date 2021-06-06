@@ -1,7 +1,11 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 public class RassenKarte extends TürkarteImpl{
-    private int image;
+
+    public RassenKarte(int image){
+        super(image);
+
+    }
 
 
     public void addBonus() {
