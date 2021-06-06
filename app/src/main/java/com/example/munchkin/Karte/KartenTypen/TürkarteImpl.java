@@ -8,8 +8,5 @@ public class TürkarteImpl implements Türkarte {
     public int getImage() {
         return image;
     }
-    @Override
-    public void setImage(int image) {
-        this.image = image;
-    }
+
 }
