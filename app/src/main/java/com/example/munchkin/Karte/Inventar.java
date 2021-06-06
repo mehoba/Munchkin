@@ -152,21 +152,21 @@ public class Inventar
         Fluchkarte k28= new Fluchkarte(R.drawable.fluchcard4, 2);
         addCardToKartenList(k28);
 
-/*        //Adding Klassen cards
-        Karte k29= new KlassenKarte();
-        k29.setImage(R.drawable.klasscard1);
+
+       //Adding Klassen cards
+        Karte k29= new KlassenKarte(R.drawable.klasscard1);
         addCardToKartenList(k29);
-        Karte k30= new KlassenKarte();
-        k30.setImage(R.drawable.klasscard2);
+
+        Karte k30= new KlassenKarte(R.drawable.klasscard2);
         addCardToKartenList(k30);
-        Karte k31= new KlassenKarte();
-        k31.setImage(R.drawable.klasscard3);
+
+        Karte k31= new KlassenKarte(R.drawable.klasscard3);
         addCardToKartenList(k31);
-        Karte k32= new KlassenKarte();
-        k32.setImage(R.drawable.klasscard4);
+
+        Karte k32= new KlassenKarte(R.drawable.klasscard4);
         addCardToKartenList(k32);
 
-        //Adding monster cards
+/*         //Adding monster cards
         Monsterkarte k33= new Monsterkarte();
         k33.setImage(R.drawable.monstercard1);
         k33.setMonsterLevel(2);

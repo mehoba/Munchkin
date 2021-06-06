@@ -1,7 +1,6 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
-import com.example.munchkin.Player;
 
 public class Fluchkarte extends TürkarteImpl {
 
