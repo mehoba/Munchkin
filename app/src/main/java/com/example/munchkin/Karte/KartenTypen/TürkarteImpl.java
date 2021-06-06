@@ -4,12 +4,13 @@ public class TürkarteImpl implements Türkarte {
 
     private int image;
 
+    public TürkarteImpl(int image){
+        this.image = image;
+    }
+
     @Override
     public int getImage() {
         return image;
     }
-    @Override
-    public void setImage(int image) {
-        this.image = image;
-    }
+
 }

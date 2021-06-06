@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity
     public static GameClient gameClient;
     static MainActivity instance;
 
-    public TextView playername, playernameinvalid, txtServerIpAddress;
+    public TextView txtPlayername, txtPlayernameInvalid, txtServerIpAddress;
 
-    private ImageView spielenbutton;
+    private ImageView imgSpielenButton;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,13 +34,13 @@ public class MainActivity extends AppCompatActivity
 
         instance = this;
 
-        spielenbutton = findViewById(R.id.playername_startbutton);
-        playername = findViewById(R.id.playernameinput);
-        playernameinvalid = findViewById(R.id.playername_error);
+        imgSpielenButton = findViewById(R.id.playername_startbutton);
+        txtPlayername = findViewById(R.id.playernameinput);
+        txtPlayernameInvalid = findViewById(R.id.playername_error);
         txtServerIpAddress = findViewById(R.id.txtServerIPAddress);
         txtServerIpAddress.setText(Network.ipAdressServer);
 
-        spielenbutton.setOnClickListener(new View.OnClickListener() {
+        imgSpielenButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 spielen(view);
@@ -67,10 +67,10 @@ public class MainActivity extends AppCompatActivity
             return;
         }
 
-        if (checkIfTextViewEmptyOrNull(playernameinvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))
-            playernameinvalid.setVisibility(View.VISIBLE);
+        if (checkIfTextViewEmptyOrNull(txtPlayernameInvalid) || checkIfTextViewEmptyOrNull(txtServerIpAddress))
+            txtPlayernameInvalid.setVisibility(View.VISIBLE);
         else
-            gameClient.connectToServer(txtServerIpAddress.getText().toString(), playername.getText().toString());
+            gameClient.connectToServer(txtServerIpAddress.getText().toString(), txtPlayername.getText().toString());
     }
 
     public void successfullyConnectedToServer()

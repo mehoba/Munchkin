@@ -1,68 +1,28 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-public class Buffkarte implements Schatzkarte{
-    private int goldwert;
-    private int image;
+import com.example.munchkin.Player;
 
-    //Übernommen aus BuffCardsImpl
-    private int battleDamage;
-    private int monsterLvlup;
+public class Buffkarte extends SchatzkarteImpl{
 
-//    Konstruktor aus BuffCardsImpl
-//    public BuffkarteImpl(int image, int battleDamage, int monsterLvlup){
-//        setImage(image);
-//        setBattleDamage(battleDamage);
-//        setMonsterLvlup(monsterLvlup);
+    private int amountBonus;
+
+    //Konstruktor aus BuffCardsImpl
+    public Buffkarte(int image, int goldwert, int amountBonus){
+        super(image, goldwert);
+
+        //Statt set wird nun direkt in Konstruktor gesetzt, da nachträglich nicht veränderbar sein sollte
+        this.amountBonus = amountBonus;
+    }
+
+//    //Idee zu sagen für welche seite gespielt wird
+//    public void gespieltFür(Monsterkarte monsterkarte oder Player player){
+//
 //    }
 
 
-    public int getGoldwert() {
-        return goldwert;
-    }
 
 
-    public void SetGoldwert(int goldwert) {
-        this.goldwert=goldwert;
-    }
 
 
-    public int getImage() {
-        return image;
-    }
-
-
-    public void setImage(int image) {
-        this.image=image;
-    }
-
-    //Übernommen aus BuffCardsImpl
-
-    //Buff cards level up monster
-
-    public void monsterLvlUp(int montsterLevel) {
-        montsterLevel=monsterLvlup+montsterLevel;
-    }
-
-    //Buff cards make more damage in battle
-
-    public void moreDamageAfterBattle(int battleDamage) {
-        //TODO
-    }
-
-    public int getBattleDamage() {
-        return battleDamage;
-    }
-
-    public void setBattleDamage(int battleDamage) {
-        this.battleDamage = battleDamage;
-    }
-
-    public int getMonsterLvlup() {
-        return monsterLvlup;
-    }
-
-    public void setMonsterLvlup(int monsterLvlup) {
-        this.monsterLvlup = monsterLvlup;
-    }
 }

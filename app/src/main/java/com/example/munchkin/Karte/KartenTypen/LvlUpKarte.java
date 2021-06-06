@@ -1,40 +1,17 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-public class LvlUpKarte implements Schatzkarte {
-    private int goldwert;
-    private int image;
+import com.example.munchkin.Player;
 
-    public LvlUpKarte()
-    {
-        setImage(image);
-        goldwert = 0; //Goldwert muss 0 sein
+public class LvlUpKarte extends SchatzkarteImpl {
+
+    public LvlUpKarte(int image) {
+        super(image, 0);    //Konstruktor von SchatzkarteImpl aufrufen
+                                    // Goldwert muss 0 sein
     }
 
-
-    public int getGoldwert() {
-        return goldwert;
+    public void triggerPlayerLvlIncrease(){
+        Player.getLocalPlayer().getPlayerLevel().levelIncrease();
     }
 
-
-    public void SetGoldwert(int goldwert) {
-        this.goldwert=goldwert;
-    }
-
-
-    public int getImage() {
-        return image;
-    }
-
-
-    public void setImage(int image) {
-        this.image=image;
-    }
-
-    //Übernommen von LvlUpCards
-
-    public int increaceLvlByOnePermanet(int currentLevel) {
-        currentLevel++;
-        return currentLevel;
-    }
 }

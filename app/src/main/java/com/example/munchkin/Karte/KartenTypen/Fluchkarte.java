@@ -2,37 +2,34 @@ package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
 
-public class Fluchkarte implements Türkarte {
-    private int image;
+public class Fluchkarte extends TürkarteImpl {
 
-    //Übernommen von FluchCardsImpl
-    private int lostLevel;
+    private int amountLostLevel;
+
+//    Konstruktor
+    public Fluchkarte(int image, int amountLostLevel){
+        super(image);
+        this.amountLostLevel=amountLostLevel;
+    }
+
+    public int getAmountLostLevel(){
+        return amountLostLevel;
+    }
+
+
+
+/*    //Für Fluchkarten, die Ausrüstung betreffen
     private BodyPart bodyPart;
 
-//    Konstruktor aus FluchCardsImpl
-//    public FluchCardsImpl(int image, int lostLevel, BodyPart bodyPart){
-//        setImage(image);
-//        this.lostLevel=lostLevel;
-//        this.bodyPart=bodyPart;
-//
-//    }
-
-    @Override
-    public int getImage() {
-        return image;
-    }
-
-    @Override
-    public void setImage(int image) {
-        this.image=image;
+    //    Konstruktor
+    public Fluchkarte(int image, BodyPart bodyPart){
+        super(image);
+        this.bodyPart=bodyPart;
     }
 
     //Übernommen von FluchCardsImpl
-
     public void loseArmor(BodyPart bodyPart, int size) {
+        //TODO Funktionalität implementieren
     }
-
-    public void loseLevel(int currentLvl) {
-        currentLvl-= lostLevel;
-    }
+    */
 }
