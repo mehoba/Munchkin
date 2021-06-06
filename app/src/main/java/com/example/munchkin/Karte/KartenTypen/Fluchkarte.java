@@ -22,7 +22,6 @@ public class Fluchkarte extends TürkarteImpl {
     }
 
 
-
 /*    //Für Fluchkarten, die Ausrüstung betreffen
     private BodyPart bodyPart;
 
