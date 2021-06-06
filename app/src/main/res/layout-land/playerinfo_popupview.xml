@@ -6,7 +6,156 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource"
-    android:background="@drawable/player_popup">
+    android:background="@drawable/popup">
+
+    <ScrollView
+        android:layout_width="445dp"
+        android:layout_height="278dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCard1_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard1" />
+
+                <ImageView
+                    android:id="@+id/imgCard2_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard3" />
+
+                <ImageView
+                    android:id="@+id/imgCard3_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard2" />
+
+                <ImageView
+                    android:id="@+id/imgCard4_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard6" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCard5_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard4" />
+
+                <ImageView
+                    android:id="@+id/imgCard6_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard5" />
+
+                <ImageView
+                    android:id="@+id/imgCard7_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard6" />
+
+                <ImageView
+                    android:id="@+id/imgCard8_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imgCard9_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard1" />
+
+                <ImageView
+                    android:id="@+id/imgCard10_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard4" />
+
+                <ImageView
+                    android:id="@+id/imgCard11_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard2" />
+
+                <ImageView
+                    android:id="@+id/imgCard12_PlayerPopUp"
+                    android:layout_width="112dp"
+                    android:layout_height="125dp"
+                    android:layout_gravity="center"
+                    app:srcCompat="@drawable/buffcard5" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/player1popup_picture"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:contentDescription="TODO"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082"
+        app:srcCompat="@drawable/spielfeldui_player1icon" />
+
+    <TextView
+        android:id="@+id/playerpopup_stufetext"
+        android:layout_width="70dp"
+        android:layout_height="77dp"
+        android:gravity="center_horizontal"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:textSize="64sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.64" />
 
     <TextView
         android:id="@+id/playerpopup_player1_countdown"
@@ -18,22 +167,22 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.886" />
 
     <ImageView
-        android:id="@+id/player1popup_picture"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:id="@+id/playerpop_skiptimebtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.19"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096"
-        app:srcCompat="@drawable/spielfeldui_player1icon" />
+        app:layout_constraintVertical_bias="0.886"
+        app:srcCompat="@drawable/spielfeldui_skiptimebutton" />
 
     <TextView
         android:id="@+id/playerpopup_name"
@@ -47,37 +196,9 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.114"
+        app:layout_constraintHorizontal_bias="0.092"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.32" />
-
-    <TextView
-        android:id="@+id/playerpopup_stufetext"
-        android:layout_width="70dp"
-        android:layout_height="77dp"
-        android:gravity="center_horizontal"
-        android:inputType="number"
-        android:textAlignment="center"
-        android:textSize="64sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
-
-    <ImageView
-        android:id="@+id/playerpop_skiptimebtn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.262"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.886"
-        app:srcCompat="@drawable/spielfeldui_skiptimebutton" />
+        app:layout_constraintVertical_bias="0.372" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

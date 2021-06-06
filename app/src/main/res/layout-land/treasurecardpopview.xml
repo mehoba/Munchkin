@@ -17,20 +17,7 @@
         app:layout_constraintHorizontal_bias="0.083"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497"
-        app:srcCompat="@drawable/buffcard6" />
-
-    <ImageView
-        android:id="@+id/cardpopup_btnAblegen"
-        android:layout_width="173dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542"
-        app:srcCompat="@drawable/kartepopup_ablegenbutton" />
+        app:layout_constraintVertical_bias="0.497" />
 
     <ImageView
         android:id="@+id/treasurecardpopup_btnAusruesten"
@@ -38,23 +25,11 @@
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795"
-        app:srcCompat="@drawable/mainmenu_button" />
-
-    <ImageView
-        android:id="@+id/cardpopup_btnAusspielen"
-        android:layout_width="173dp"
-        android:layout_height="47dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542"
-        app:srcCompat="@drawable/kartepopup_ausspielenbutton" />
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@drawable/cardpopup_ausruestenbutton" />
 
     <ImageView
         android:id="@+id/treasurecardpopup_btnWegwerfen"
@@ -62,10 +37,10 @@
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.927"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795"
-        app:srcCompat="@drawable/mainmenu_button" />
+        app:layout_constraintVertical_bias="0.733"
+        app:srcCompat="@drawable/cardpopup_wegwerfenbutton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
