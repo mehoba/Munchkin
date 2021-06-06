@@ -45,10 +45,11 @@ public class GameClient
                                @Override
                                public void received(Connection connection, Object object)
                                {
-                                   if (object instanceof Network.SyncPlayers) {
-                                       Network.SyncPlayers syncPlayersClass = (Network.SyncPlayers) object;
+                                   if (object instanceof Network.NewPlayerJoined) {
+                                       Network.NewPlayerJoined newPlayerJoinedClass = (Network.NewPlayerJoined) object;
 
-                                       Lobby.syncPlayers(syncPlayersClass.players);
+
+                                       Lobby.newPlayerJoined(newPlayerJoinedClass.playerData);
 
                                        if (SpielfeldActivity.getInstance() != null)
                                            SpielfeldActivity.getInstance().setPlayerNames();

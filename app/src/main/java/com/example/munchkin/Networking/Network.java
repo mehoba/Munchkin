@@ -3,10 +3,7 @@ package com.example.munchkin.Networking;
 import com.esotericsoftware.kryo.Kryo;
 import com.esotericsoftware.kryonet.EndPoint;
 import com.example.munchkin.Karte.BodyPart;
-import com.example.munchkin.Karte.HandKarten;
-import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
-import com.example.munchkin.Karte.KartenSlot;
 import com.example.munchkin.Karte.KartenTypen.Buffkarte;
 import com.example.munchkin.Karte.KartenTypen.Fluchkarte;
 import com.example.munchkin.Karte.KartenTypen.KlassenKarte;
@@ -16,34 +13,20 @@ import com.example.munchkin.Karte.KartenTypen.RassenKarte;
 import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
 import com.example.munchkin.Karte.KartenTypen.SchatzkarteImpl;
 import com.example.munchkin.Karte.KartenTypen.TürkarteImpl;
-import com.example.munchkin.Level;
-import com.example.munchkin.Player;
-import com.example.munchkin.PlayerAusrüstung;
+import com.example.munchkin.PlayerData;
 
 public class Network
 {
     static public final int port = 25565;
-    static public String ipAdressServer = "192.168.178.21";
+    static public String ipAdressServer = "192.168.178.22";
 
     static  public  void register (EndPoint endpoint)
     {
         Kryo kryo = endpoint.getKryo();
-        kryo.register(LoginNewPlayerForServer.class);
         kryo.register(Lobby.class);
-        kryo.register(SyncPlayers.class);
 
-        kryo.register(Player[].class);
-        kryo.register(Player.class);
-        kryo.register(Inventar.class);
-        kryo.register(Level.class);
+        //Cards
         kryo.register(Karte.class);
-        kryo.register(KartenSlot.class);
-        kryo.register(PlayerAusrüstung.class);
-        kryo.register(HandKarten.class);
-        kryo.register(SendLocalPlayer.class);
-        kryo.register(NächsterSpielerAnDerReihe.class);
-        kryo.register(KartenSlot[].class);
-        kryo.register(KarteAufMonsterSlotGelegt.class);
         kryo.register(Monsterkarte.class);
         kryo.register(KlassenKarte.class);
         kryo.register(Buffkarte.class);
@@ -55,7 +38,16 @@ public class Network
         kryo.register(SchatzkarteImpl.class);
         kryo.register(TürkarteImpl.class);
         kryo.register(BodyPart.class);
+        kryo.register(PlayerData.class);
+        kryo.register(PlayerData[].class);
+
+        //Networking Classes
+        kryo.register(SendLocalPlayer.class);
         kryo.register(KarteAufAbgelegtSlotGelegt.class);
+        kryo.register(NächsterSpielerAnDerReihe.class);
+        kryo.register(KarteAufMonsterSlotGelegt.class);
+        kryo.register(LoginNewPlayerForServer.class);
+        kryo.register(NewPlayerJoined.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -63,9 +55,9 @@ public class Network
         public String playerName;
     }
 
-    static public class SyncPlayers
+    static public class NewPlayerJoined
     {
-        public Player[] players;
+        public PlayerData playerData;
     }
 
     static public class SendLocalPlayer

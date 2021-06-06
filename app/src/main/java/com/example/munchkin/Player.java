@@ -2,66 +2,51 @@ package com.example.munchkin;
 
 import com.example.munchkin.Karte.Inventar;
 
-public class Player
+public class Player extends PlayerData
 {
     private static Player localPlayer;
 
     private PlayerAusrüstung playerAusrüstung;
 
-    private String name;
-    private int connectionId;
-    private int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
     //ToDo Player Icon
     //ToDo setPlayerName()
     private Inventar inventar;
     private Level playerLevel;
-    private Boolean istDran;
 
     //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
     public static Boolean istDranAktiviert = false;
 
-    //Only call when Spielfeld is completely loaded
     public Player()
     {
         playerLevel = new Level();
         inventar = new Inventar();
         istDran = false;
-        playerAusrüstung=new PlayerAusrüstung();
+        playerAusrüstung = new PlayerAusrüstung();
     }
 
+    public Player(PlayerData playerData)
+    {
+        this.name = playerData.name;
+        this.connectionId = playerData.connectionId;
+        this.istDran = playerData.istDran;
+        this.playerBoardNumber = playerData.playerBoardNumber;
+
+        playerLevel = new Level();
+        inventar = new Inventar();
+        istDran = false;
+        playerAusrüstung = new PlayerAusrüstung();
+    }
+
+    //Only call when Spielfeld is completely loaded
     public void initializeUIConnection()
     {
         getInventar().initializeUIConnection();
     }
 
     //---------Getter/Setter-----------
-    public int getPlayerBoardNumber() {
-        return playerBoardNumber;
-    }
-
-    public void setPlayerBoardNumber(int playerBoardNumber) {
-        this.playerBoardNumber = playerBoardNumber;
-    }
-
-    public int getConnectionId() {
-        return connectionId;
-    }
-
-    public void setConnectionId(int connectionId) {
-        this.connectionId = connectionId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public  static  Player getLocalPlayer()
     {
-        return  localPlayer;
+        return localPlayer;
     }
 
     //Bitte nur am Anfang des Spiels in der Main Activity setzen!!!!
@@ -72,14 +57,6 @@ public class Player
     public Inventar getInventar()
     {   return  inventar;   }
 
-    public Boolean getIstDran() {
-        return istDran;
-    }
-
-    public void setIstDran(Boolean istDran) {
-        this.istDran = istDran;
-        //Todo lock or unlock player
-    }
 
     public Level getPlayerLevel() {
         return playerLevel;
@@ -89,10 +66,5 @@ public class Player
     public PlayerAusrüstung getPlayerAusrüstung() {
         return playerAusrüstung;
     }
-
-    public void setPlayerAusrüstung(PlayerAusrüstung playerAusrüstung) {
-        this.playerAusrüstung = playerAusrüstung;
-    }
-
 
 }
