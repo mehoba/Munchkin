@@ -63,86 +63,82 @@ public class Inventar
         schatzkartenList = new ArrayList<>();
         türKartenList = new ArrayList<>();
 
-        Karte k1 = new Buffkarte();
-
         //Adding Buff Cards
-        k1.setImage(R.drawable.buffcard1);
-        Karte k2= new Buffkarte();
-        k2.setImage(R.drawable.buffcard2);
+        Buffkarte k1 = new Buffkarte(R.drawable.buffcard1, 100, 2);
         addCardToKartenList(k1);
+
+        Buffkarte k2= new Buffkarte(R.drawable.buffcard2, 100, 3);
         addCardToKartenList(k2);
-        Karte k3=new Buffkarte();
-        k3.setImage(R.drawable.buffcard3);
+
+        Buffkarte k3=new Buffkarte(R.drawable.buffcard3, 0, 5);
         addCardToKartenList(k3);
-        Karte k4= new Buffkarte();
-        k4.setImage(R.drawable.buffcard4);
+
+        Buffkarte k4= new Buffkarte(R.drawable.buffcard4, 100, 2);
         addCardToKartenList(k4);
-        Karte k5= new Buffkarte();
-        k5.setImage(R.drawable.buffcard5);
+
+        Buffkarte k5= new Buffkarte(R.drawable.buffcard5, 200, 5);
         addCardToKartenList(k5);
-        Karte k6 = new Buffkarte();
-        k6.setImage(R.drawable.buffcard6);
+
+        Buffkarte k6 = new Buffkarte(R.drawable.buffcard6, 100, 3);
         addCardToKartenList(k6);
 
         //Adding level up cards
-        Karte k7 = new LvlUpKarte();
-        k7.setImage(R.drawable.lvlupcard1);
+        LvlUpKarte k7 = new LvlUpKarte(R.drawable.lvlupcard1);
         addCardToKartenList(k7);
-        Karte k8= new LvlUpKarte();
-        k8.setImage(R.drawable.lvlupcard2);
+
+        LvlUpKarte k8= new LvlUpKarte(R.drawable.lvlupcard2);
         addCardToKartenList(k8);
-        Karte k9 = new LvlUpKarte();
-        k9.setImage(R.drawable.lvlupcard3);
+
+        LvlUpKarte k9 = new LvlUpKarte(R.drawable.lvlupcard3);
         addCardToKartenList(k9);
-        Karte k10= new LvlUpKarte();
-        k10.setImage(R.drawable.lvlupcard4);
+
+        LvlUpKarte k10= new LvlUpKarte(R.drawable.lvlupcard4);
         addCardToKartenList(k10);
 
         //Adding rustungs cards
-        Karte k11= new Rüstungskarte();
-        k11.setImage(R.drawable.rustungcard1);
+        Rüstungskarte k11= new Rüstungskarte(R.drawable.rustungcard1, 200, 1, 1, BodyPart.BODY);
         addCardToKartenList(k11);
-        Karte k12= new Rüstungskarte();
-        k12.setImage(R.drawable.rustungcard2);
+
+        Rüstungskarte k12= new Rüstungskarte(R.drawable.rustungcard2, 200, 2, 1, BodyPart.HAND);
         addCardToKartenList(k12);
-        Karte k13= new Rüstungskarte();
-        k13.setImage(R.drawable.rustungcard3);
+
+        Rüstungskarte k13= new Rüstungskarte(R.drawable.rustungcard3, 200, 0, 1,BodyPart.NONE);
         addCardToKartenList(k13);
-        Karte k14= new Rüstungskarte();
-        k14.setImage(R.drawable.rustungcard4);
+
+        Rüstungskarte k14= new Rüstungskarte(R.drawable.rustungcard4, 600, 2, 3, BodyPart.HAND, true);
         addCardToKartenList(k14);
-        Karte k15= new Rüstungskarte();
-        k15.setImage(R.drawable.rustungcard5);
+
+        Rüstungskarte k15= new Rüstungskarte(R.drawable.rustungcard5, 200, 1, 1, BodyPart.HEAD);
         addCardToKartenList(k15);
-        Karte k16= new Rüstungskarte();
-        k16.setImage(R.drawable.rustungcard6);
+
+        Rüstungskarte k16= new Rüstungskarte(R.drawable.rustungcard6, 400, 1, 2,BodyPart.HAND);
         addCardToKartenList(k16);
-        Karte k17= new Rüstungskarte();
-        k17.setImage(R.drawable.rustungcard7);
+
+        Rüstungskarte k17= new Rüstungskarte(R.drawable.rustungcard7, 0, 0,3, BodyPart.NONE);
         addCardToKartenList(k17);
-        Karte k18= new Rüstungskarte();
-        k18.setImage(R.drawable.rustungcard8);
+
+        Rüstungskarte k18= new Rüstungskarte(R.drawable.rustungcard8, 200, 1, 1, BodyPart.BODY);
         addCardToKartenList(k18);
-        Karte k19= new Rüstungskarte();
-        k19.setImage(R.drawable.rustungcard9);
+
+        Rüstungskarte k19= new Rüstungskarte(R.drawable.rustungcard9, 600, 1, 3, BodyPart.HEAD);
         addCardToKartenList(k19);
-        Karte k20= new Rüstungskarte();
-        k20.setImage(R.drawable.rustungcard10);
+
+        Rüstungskarte k20= new Rüstungskarte(R.drawable.rustungcard10, 0, 1, 1, BodyPart.HAND);
         addCardToKartenList(k20);
-        Karte k21= new Rüstungskarte();
-        k21.setImage(R.drawable.rustungcard11);
+
+        Rüstungskarte k21= new Rüstungskarte(R.drawable.rustungcard11, 400, 1, 2, BodyPart.BODY);
         addCardToKartenList(k21);
-        Karte k22= new Rüstungskarte();
-        k22.setImage(R.drawable.rustungcard12);
+
+        Rüstungskarte k22= new Rüstungskarte(R.drawable.rustungcard12, 400, 1,2, BodyPart.FOOT);
         addCardToKartenList(k22);
-        Karte k23= new Rüstungskarte();
-        k23.setImage(R.drawable.rustungcard13);
+
+        Rüstungskarte k23= new Rüstungskarte(R.drawable.rustungcard13, 0, 2, 3, BodyPart.HAND, true);
         addCardToKartenList(k23);
-        Karte k24= new Rüstungskarte();
-        k24.setImage(R.drawable.rustungcard14);
+
+        Rüstungskarte k24= new Rüstungskarte(R.drawable.rustungcard14, 400, 1,2, BodyPart.HAND);
         addCardToKartenList(k24);
 
-        //Adding fluch cards
+/*        //Adding fluch cards
         Karte k25= new Fluchkarte();
         k25.setImage(R.drawable.fluchcard1);
         addCardToKartenList(k25);
@@ -272,7 +268,7 @@ public class Inventar
         addCardToKartenList(k49);
         Karte k50= new RassenKarte();
         k50.setImage(R.drawable.rassencard3);
-        addCardToKartenList(k50);
+        addCardToKartenList(k50);*/
 
     }
 
