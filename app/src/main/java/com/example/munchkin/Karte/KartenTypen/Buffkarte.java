@@ -1,7 +1,7 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-public class Buffkarte implements Schatzkarte{
+public class Buffkarte extends SchatzkarteImpl{
     private int goldwert;
     private int image;
 
@@ -15,26 +15,6 @@ public class Buffkarte implements Schatzkarte{
 //        setBattleDamage(battleDamage);
 //        setMonsterLvlup(monsterLvlup);
 //    }
-
-
-    public int getGoldwert() {
-        return goldwert;
-    }
-
-
-    public void SetGoldwert(int goldwert) {
-        this.goldwert=goldwert;
-    }
-
-
-    public int getImage() {
-        return image;
-    }
-
-
-    public void setImage(int image) {
-        this.image=image;
-    }
 
     //Übernommen aus BuffCardsImpl
 

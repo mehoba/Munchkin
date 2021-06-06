@@ -2,7 +2,7 @@ package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Player;
 
-public class Monsterkarte implements Türkarte {
+public class Monsterkarte extends TürkarteImpl {
     private int level;
     private int anzahlSchätze;
     private int gewonneneLevel = 1; //ist standardmäßig 1 auser es wird überschrieben mit setGewonneneLevel
@@ -47,15 +47,6 @@ public class Monsterkarte implements Türkarte {
         this.gewonneneLevel=gewonneneLevel;
     }
 
-
-    public int getImage() {
-        return image;
-    }
-
-
-    public void setImage(int image) {
-        this.image = image;
-    }
 
 
     //ÜBernommen von MonsterCardsImpl
