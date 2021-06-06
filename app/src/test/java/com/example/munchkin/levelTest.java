@@ -9,13 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 public class levelTest {
     Level level;
-    SpielfeldActivity sourceActivity;
 
     @Before
     public void setUp(){
-        sourceActivity=new SpielfeldActivity();
         level= new Level();
     }
+
     @Test
     public void checkIfDecreaseNeverUnder1(){
         level.levelDecrease();
