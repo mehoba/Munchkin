@@ -4,8 +4,7 @@ import java.util.Random;
 
 public interface Karte {
 
-      int getImage();
-      void setImage(int image);
+      public int getImage();
 
        static Karte getRandomKarte() {
              int count = Inventar.getKartenList().size() - 1;
