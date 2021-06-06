@@ -138,21 +138,21 @@ public class Inventar
         Rüstungskarte k24= new Rüstungskarte(R.drawable.rustungcard14, 400, 1,2, BodyPart.HAND);
         addCardToKartenList(k24);
 
-/*        //Adding fluch cards
-        Karte k25= new Fluchkarte();
-        k25.setImage(R.drawable.fluchcard1);
+        //Adding fluch cards
+
+/*      //TODO: Funktionalität für andere Fluchkarten mittels Klassen abbilden
+        Fluchkarte k25= new Fluchkarte(R.drawable.fluchcard1);
         addCardToKartenList(k25);
-        Karte k26= new Fluchkarte();
-        k26.setImage(R.drawable.fluchcard2);
-        addCardToKartenList(k26);
-        Karte k27= new Fluchkarte();
-        k27.setImage(R.drawable.fluchcard3);
+        Fluchkarte k26= new Fluchkarte(R.drawable.fluchcard2);
+        addCardToKartenList(k26);*/
+
+        Fluchkarte k27= new Fluchkarte(R.drawable.fluchcard3, 1);
         addCardToKartenList(k27);
-        Karte k28= new Fluchkarte();
-        k28.setImage(R.drawable.fluchcard4);
+
+        Fluchkarte k28= new Fluchkarte(R.drawable.fluchcard4, 2);
         addCardToKartenList(k28);
 
-        //Adding Klassen cards
+/*        //Adding Klassen cards
         Karte k29= new KlassenKarte();
         k29.setImage(R.drawable.klasscard1);
         addCardToKartenList(k29);
