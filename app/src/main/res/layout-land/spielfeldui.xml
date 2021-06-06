@@ -445,4 +445,22 @@
         app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <HorizontalScrollView
+        android:id="@+id/spielfeldui_handcards"
+        android:layout_width="329dp"
+        android:layout_height="101dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.549"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.993">
+
+        <LinearLayout
+            android:id="@+id/spielfeldui_handcard_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

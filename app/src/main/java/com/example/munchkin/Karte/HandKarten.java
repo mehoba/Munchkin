@@ -1,6 +1,7 @@
 package com.example.munchkin.Karte;
 
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Networking.Lobby;
@@ -57,6 +58,10 @@ public class HandKarten
                 onKartenSlotClicked(3);
             }
         });
+
+        ImageView imageView = new ImageView(spielfeldActivity.getBaseContext());
+        imageView.setImageResource(kartenSlots[0].getKarte().getImage());
+        spielfeldActivity.handcardLayout.addView(imageView);
     }
 
     void onKartenSlotClicked(int i)

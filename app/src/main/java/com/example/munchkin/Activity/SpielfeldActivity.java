@@ -4,12 +4,16 @@ package com.example.munchkin.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
@@ -29,6 +33,7 @@ public class SpielfeldActivity extends AppCompatActivity {
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
+    public LinearLayout handcardLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgCardView2 =findViewById(R.id.cardView2);
         imgCardView3 =findViewById(R.id.cardView3);
         imgCardView4 =findViewById(R.id.cardView4);
+
+        handcardLayout = findViewById(R.id.spielfeldui_handcard_layout);
 
         imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
         imgAusgespielteKartenSlot =findViewById(R.id.ausgespielteKartenSlot);
@@ -151,10 +158,10 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
-        //new Spielfeld().initializeUiConnection();
-        //Player.getLocalPlayer().initializeUIConnection();
+        new Spielfeld().initializeUiConnection();
+        Player.getLocalPlayer().initializeUIConnection();
 
-        //setPlayerNames();
+        setPlayerNames();
     }
 
     private void setCard(Karte card, ImageView imgCardView) {
