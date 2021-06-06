@@ -82,6 +82,7 @@ public class Inventar
         Buffkarte k6 = new Buffkarte(R.drawable.buffcard6, 100, 3);
         addCardToKartenList(k6);
 
+
         //Adding level up cards
         LvlUpKarte k7 = new LvlUpKarte(R.drawable.lvlupcard1);
         addCardToKartenList(k7);
@@ -94,6 +95,7 @@ public class Inventar
 
         LvlUpKarte k10= new LvlUpKarte(R.drawable.lvlupcard4);
         addCardToKartenList(k10);
+
 
         //Adding rustungs cards
         Rüstungskarte k11= new Rüstungskarte(R.drawable.rustungcard1, 200, 1, 1, BodyPart.BODY);
@@ -138,8 +140,8 @@ public class Inventar
         Rüstungskarte k24= new Rüstungskarte(R.drawable.rustungcard14, 400, 1,2, BodyPart.HAND);
         addCardToKartenList(k24);
 
-        //Adding fluch cards
 
+        //Adding fluch cards
 /*      //TODO: Funktionalität für andere Fluchkarten mittels Klassen abbilden
         Fluchkarte k25= new Fluchkarte(R.drawable.fluchcard1);
         addCardToKartenList(k25);

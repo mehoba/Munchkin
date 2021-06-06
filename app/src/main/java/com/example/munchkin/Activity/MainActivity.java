@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
 
     private void spielen(View view)
     {
-        playernameinvalid.setVisibility(View.INVISIBLE);
+        txtPlayernameInvalid.setVisibility(View.INVISIBLE);
         if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
         {
             successfullyConnectedToServer();
