@@ -8,6 +8,7 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenSlot;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
@@ -18,10 +19,12 @@ import com.example.munchkin.Spielfeld;
 public class CardPopActivity_handkarten extends AppCompatActivity {
     private static KartenSlot kartenSlot;
     private static KartenSlot gehobenVonKartenSlot;
+    private static HandKarten sourceKarten;
 
 
-    public static void show(KartenSlot gehobenVonKartenSlot) {
+    public static void show(KartenSlot gehobenVonKartenSlot, HandKarten sourceKarten) {
         CardPopActivity_handkarten.gehobenVonKartenSlot = gehobenVonKartenSlot;
+        CardPopActivity_handkarten.sourceKarten = sourceKarten;
 
         Intent intentCardPopActivity = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), CardPopActivity_handkarten.class);
         SpielfeldActivity.getInstance().startActivity(intentCardPopActivity);
@@ -32,6 +35,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
         Karte karte = gehobenVonKartenSlot.karteHeben();
         Spielfeld.getAusgespielteKartenSlot().karteAblegen(karte);
         GameClient.sendKarteAutStapelAusgespieltGelegt(karte);
+        sourceKarten.removePlayedKarte();
         finish();
     }
 
@@ -43,6 +47,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
             Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
         }
         GameClient.sendKarteAufAblagestapelGelegt(karte);
+        sourceKarten.removePlayedKarte();
         finish();
     }
 

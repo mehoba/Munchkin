@@ -43,15 +43,15 @@ public class SpielfeldActivity extends AppCompatActivity {
 
         setContentView(R.layout.spielfeldui);
 
-        imgCardView = findViewById(R.id.cardView);
+        /*imgCardView = findViewById(R.id.cardView);
         imgCardView2 = findViewById(R.id.cardView2);
         imgCardView3 = findViewById(R.id.cardView3);
-        imgCardView4 = findViewById(R.id.cardView4);
+        imgCardView4 = findViewById(R.id.cardView4);*/
 
-        imgCardView.setVisibility(View.INVISIBLE);
+        /*imgCardView.setVisibility(View.INVISIBLE);
         imgCardView2.setVisibility(View.INVISIBLE);
         imgCardView3.setVisibility(View.INVISIBLE);
-        imgCardView4.setVisibility(View.INVISIBLE);
+        imgCardView4.setVisibility(View.INVISIBLE);*/
 
         handcardLayout = findViewById(R.id.spielfeldui_handcard_layout);
 
