@@ -26,6 +26,7 @@ public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
     public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
+    public ImageView imgButtonKämpfen, imgButtonWeglaufen;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -66,6 +67,10 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
+
+        //Für Kampf
+        imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
+        imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
 
 
@@ -203,7 +208,6 @@ public class SpielfeldActivity extends AppCompatActivity {
 
         //setPlayerNames();
     }
-
 //    public void addTreasureCard() {
 //        int index = getRandomNum(inventar.treasureCardList.size())-1;
 //        Karte card = inventar.treasureCardList.get(index);

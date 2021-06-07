@@ -1,5 +1,13 @@
 package com.example.munchkin;
 
+import android.view.View;
+import android.widget.ImageView;
+
+import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
+import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
+import com.example.munchkin.Karte.SchatzkartenStapel;
+
 public class Kampf {
     //ToDo: Klasse ausimplementieren
     /*
@@ -17,30 +25,68 @@ public class Kampf {
     *
     * */
 
+    //Variablen
+    private Player currentPlayer;
+    private Monsterkarte monster;
+
+
+    public Kampf(Player currentPlayer, Monsterkarte monster){
+        this.currentPlayer=currentPlayer;
+        this.monster=monster;
+
+        SpielfeldActivity.getInstance().imgButtonKämpfen.setVisibility(View.VISIBLE);
+        SpielfeldActivity.getInstance().imgButtonWeglaufen.setVisibility(View.VISIBLE);
+
+        SpielfeldActivity.getInstance().imgButtonKämpfen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                kämpfen();
+            }
+        });
+
+        SpielfeldActivity.getInstance().imgButtonWeglaufen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                weglaufen();
+            }
+        });
+    }
+
     public void kämpfen(){
-        //Soll vermutlich gestartet werden, sobald auf der UI der entsprechende Button gedrückt wurde
-        //ToDo Funktionalität implementieren
+
+        //ToDo Funktionalität verfeinern
         //Soll die Stärke des Player und die Stärke des Monster vergleichen
         //Stärke des Player = Playerlevel + Ausrüstung + ev Buffs, die auf Player gespielt wurden
         //Stärke Monster= Monsterlevel + ev. Monsterbuffs + ev Buffs, die auf Monster gespielt wurden
         //Falls Player stärker - rufe kampfGewonnnen() auf
         //falls Monster stärker - rufe weglaufen() auf
+
+        //Grundfunktionalität
+        if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
+            kampfGewonnen();
+        }else{
+            weglaufen();
+        }
     }
 
     public void kampfGewonnen(){
-        //wenn Player stärker ist als Monster wird diese Funktion aufgerufen
-        // ToDo:  Funktionalität implementieren
-        //es soll die getAnzahlSchätze auf Monster aufgerufen werden
-        //und die entsprechende Anzahl von Schatzkarten gezogen werden
-        //level erhöhen
+
+        currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
+
+        for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
+            //und die entsprechende Anzahl von Schatzkarten gezogen werden
+            currentPlayer.getInventar().getHandKarten().addKarte(Schatzkarte.getRandomSchatzkarte());
+        }
     }
 
     public void weglaufen(){
-        //wenn monster stärker oder button in UI gedrückt wird diese Funktion aufgerufen
-        //ToDo:  Funktionalität implementieren
-        //ruft würfelfunktion auf
-        //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
-        //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
+        //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
+
+        int ergebnisWürfel=0;
+        if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
+            monster.schlimmeDinge();
         }
+        //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
+    }
 
 }
