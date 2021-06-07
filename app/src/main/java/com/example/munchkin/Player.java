@@ -12,6 +12,7 @@ public class Player extends PlayerData
     //ToDo setPlayerName()
     private Inventar inventar;
     private Level playerLevel;
+    private int playerGold;
 
     //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
     public static Boolean istDranAktiviert = false;
@@ -67,4 +68,11 @@ public class Player extends PlayerData
         return playerAusrüstung;
     }
 
+    public void addGold(int amount) {
+        playerGold += amount;
+        if(playerGold >= 1000 && playerLevel.getLevel() < 9) {
+            playerLevel.levelIncrease();
+            playerGold = 0;
+        }
+    }
 }
