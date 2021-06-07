@@ -20,13 +20,13 @@ public class WinnerPopActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.winnerpopupview);
 
-        mContainer=(EmojiRainLayout)findViewById(R.id.winnerpopupview);
+        mContainer = (EmojiRainLayout)findViewById(R.id.winnerpopupview);
 
-        DisplayMetrics dm=new DisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        int width=dm.widthPixels;
-        int height=dm.heightPixels;
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
 
@@ -38,7 +38,6 @@ public class WinnerPopActivity extends AppCompatActivity {
         mContainer.setDropDuration(2400);
         mContainer.setDropFrequency(500);
         mContainer.startDropping();
-
 
     }
 }

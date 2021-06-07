@@ -9,13 +9,12 @@ import static org.junit.Assert.assertEquals;
 
 public class levelTest {
     Level level;
-    SpielfeldActivity sourceActivity;
 
     @Before
     public void setUp(){
-        sourceActivity=new SpielfeldActivity();
         level= new Level();
     }
+
     @Test
     public void checkIfDecreaseNeverUnder1(){
         level.levelDecrease();
@@ -36,11 +35,11 @@ public class levelTest {
     }
 
     @Test
-    public void checkIncreaseTo9(){
-        for(int i=1; i<9; i++){         //erhöht bis 9
+    public void checkIncreaseTo10(){
+        for(int i=1; i<10; i++){         //erhöht bis 9
             level.levelIncrease();
         }
-        assertEquals(level.getLevel(),  9);
+        assertEquals(level.getLevel(),  10);
     }
 
 

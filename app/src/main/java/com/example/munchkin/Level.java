@@ -16,7 +16,9 @@ public class Level {
     public void levelIncrease(){
         level++;
         if(level >= 10){
-            SpielfeldActivity.getInstance().notifyAboutWin();;
+            if(SpielfeldActivity.getInstance() != null){
+                SpielfeldActivity.getInstance().notifyAboutWin();
+            }
         }
     }
 

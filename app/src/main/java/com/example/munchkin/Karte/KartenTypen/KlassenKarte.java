@@ -1,13 +1,13 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-public class KlassenKarte implements Türkarte {
-    private int image;
+public class KlassenKarte extends TürkarteImpl {
+    //Please DONT use this Konstruktor - it is needed for Networking
+    public KlassenKarte(){}
 
-    public int getImage() {
-        return image;
+    //Konstruktor
+    public KlassenKarte(int image){
+       super(image);
+
     }
 
-    public void setImage(int image) {
-        this.image=image;
-    }
 }
