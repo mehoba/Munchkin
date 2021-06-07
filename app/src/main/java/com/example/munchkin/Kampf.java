@@ -1,15 +1,12 @@
 package com.example.munchkin;
 
 import android.view.View;
-import android.widget.ImageView;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
-import com.example.munchkin.Karte.SchatzkartenStapel;
 
 public class Kampf {
-    //ToDo: Klasse ausimplementieren
     /*
     * Soll sich Player suchen
     * und Monster suchen
