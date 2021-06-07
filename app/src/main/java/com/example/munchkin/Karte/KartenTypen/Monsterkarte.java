@@ -3,28 +3,30 @@ package com.example.munchkin.Karte.KartenTypen;
 import com.example.munchkin.Player;
 
 public class Monsterkarte extends TürkarteImpl {
+    //Please DONT use this Konstruktor - it is needed for Networking
+    public Monsterkarte(){}
+
+    //Variablen
     private int monsterLevel;
     private int anzahlSchätze;
     private int gewonneneLevel;
 
-//    Konstruktor aus MonstercardsImpl
+    //Konstruktor aus MonstercardsImpl
     public Monsterkarte(int image, int monsterLevel, int anzahlSchätze){
         super(image);
-
         this.monsterLevel=monsterLevel;
         this.gewonneneLevel = 1;                //ist standardmäßig 1 auser es wird überschrieben mit setGewonneneLevel
         this.anzahlSchätze=anzahlSchätze;
-
     }
 
     public Monsterkarte(int image, int monsterLevel, int anzahlSchätze, int gewonneneLevel){
         super(image);
-
         this.monsterLevel=monsterLevel;
         this.gewonneneLevel = gewonneneLevel;
         this.anzahlSchätze=anzahlSchätze;
-
     }
+
+    //Methoden
 
     public int getMonsterLevel() {
         return monsterLevel;
@@ -38,8 +40,7 @@ public class Monsterkarte extends TürkarteImpl {
         return gewonneneLevel;
     }
 
-    //Impl von Chibi
-
+    //Impl von Chibi - vorläufige Lösung
     public void schlimmeDinge() {
         Player.getLocalPlayer().getPlayerLevel().levelDecrease();
     }

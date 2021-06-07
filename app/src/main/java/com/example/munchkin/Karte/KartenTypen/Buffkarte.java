@@ -5,6 +5,10 @@ import com.example.munchkin.Player;
 
 public class Buffkarte extends SchatzkarteImpl{
 
+    //Please DONT use this Konstruktor - it is needed for Networking
+    public Buffkarte(){}
+
+    //Variablen
     private int amountBonus;
 
     //Konstruktor aus BuffCardsImpl

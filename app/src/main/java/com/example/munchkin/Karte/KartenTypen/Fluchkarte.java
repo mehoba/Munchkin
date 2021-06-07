@@ -3,19 +3,23 @@ package com.example.munchkin.Karte.KartenTypen;
 import com.example.munchkin.Karte.BodyPart;
 
 public class Fluchkarte extends TürkarteImpl {
+    //Please DONT use this Konstruktor - it is needed for Networking
+    public Fluchkarte(){}
 
+    //Variablen
     private int amountLostLevel;
 
-//    Konstruktor
+    //Konstruktor
     public Fluchkarte(int image, int amountLostLevel){
         super(image);
         this.amountLostLevel=amountLostLevel;
     }
 
+    //Methoden
+
     public int getAmountLostLevel(){
         return amountLostLevel;
     }
-
 
 
 /*    //Für Fluchkarten, die Ausrüstung betreffen
