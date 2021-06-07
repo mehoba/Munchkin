@@ -22,6 +22,16 @@ public class SchatzkarteImpl implements Schatzkarte {
     }
 
     @Override
+    public void onKarteGehoben() {
+
+    }
+
+    @Override
+    public void onkarteAusgespielt() {
+
+    }
+
+    @Override
     public int getGoldwert() {
         return goldwert;
     }

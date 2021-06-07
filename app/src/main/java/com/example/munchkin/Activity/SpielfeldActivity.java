@@ -25,7 +25,8 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
+    public ImageView imgButtonKämpfen, imgButtonWeglaufen;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -45,10 +46,16 @@ public class SpielfeldActivity extends AppCompatActivity {
 
         setContentView(R.layout.spielfeldui);
 
-        imgCardView =findViewById(R.id.cardView);
-        imgCardView2 =findViewById(R.id.cardView2);
-        imgCardView3 =findViewById(R.id.cardView3);
-        imgCardView4 =findViewById(R.id.cardView4);
+        imgCardView = findViewById(R.id.cardView);
+        imgCardView2 = findViewById(R.id.cardView2);
+        imgCardView3 = findViewById(R.id.cardView3);
+        imgCardView4 = findViewById(R.id.cardView4);
+
+        imgCardView.setVisibility(View.INVISIBLE);
+        imgCardView2.setVisibility(View.INVISIBLE);
+        imgCardView3.setVisibility(View.INVISIBLE);
+        imgCardView4.setVisibility(View.INVISIBLE);
+
 
         imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
         imgAusgespielteKartenSlot =findViewById(R.id.ausgespielteKartenSlot);
@@ -66,6 +73,12 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
+
+        ablageStapelTürkarten = findViewById(R.id.imgAblageStapelTürkarten);
+        ablageStapelSchatzkarten = findViewById(R.id.imgAblageStapelSchatzkarten);
+        //Für Kampf
+        imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
+        imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
 
 
@@ -119,7 +132,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgDoorcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
                 startActivity(intent);
             }
         });
@@ -157,7 +170,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });
@@ -165,7 +178,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgKlasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });
@@ -198,10 +211,10 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
-        //new Spielfeld().initializeUiConnection();
-        //Player.getLocalPlayer().initializeUIConnection();
+        new Spielfeld().initializeUiConnection();
+        Player.getLocalPlayer().initializeUIConnection();
 
-        //setPlayerNames();
+        setPlayerNames();
     }
 
 //    public void addTreasureCard() {

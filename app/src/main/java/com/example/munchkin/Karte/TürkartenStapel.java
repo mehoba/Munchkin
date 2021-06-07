@@ -38,6 +38,7 @@ public class TürkartenStapel extends KartenSlot {
     void onTürkartenStapelClicked()//Todo heben implementieren
     {
         Karte gehobeneKarte = getKarte();
+        gehobeneKarte.onKarteGehoben();
         Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
         GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
     }

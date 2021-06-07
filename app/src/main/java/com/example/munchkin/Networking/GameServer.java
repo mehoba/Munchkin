@@ -5,9 +5,8 @@ import android.util.Log;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.esotericsoftware.kryonet.Server;
-import com.example.munchkin.Networking.Lobby;
-import com.example.munchkin.Networking.Network;
 import com.example.munchkin.Player;
+import com.example.munchkin.PlayerData;
 
 import java.io.IOException;
 
@@ -39,13 +38,13 @@ public class GameServer
                     }
                     player.setPlayerBoardNumber(playerPosInArray);
 
-                    syncPlayers();
+                    sendNewPlayerJoined(player);
                     sendLocalPlayer(player);
 
                     //1. Spieler -> Soll dran sein
                     if(player.getPlayerBoardNumber() == 0)
                     {
-                        boradcastPlayerIstDran(player);
+                        broadcastPlayerIstDran(player);
                     }
 
                     Log.d("PlayerConnection", "New Connected: " + player.getName());
@@ -61,10 +60,15 @@ public class GameServer
                     server.sendToAllExceptTCP(connection.getID(), karteAufMonsterSlotGelegt);
                 }
 
-                if (object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                if (object instanceof Network.KarteAufStapelAusgespieltGelegt)
                 {
-                    Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
-                    server.sendToAllExceptTCP(connection.getID(), karteAufAbgelegtSlotGelegt);
+                    Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufStapelAusgespieltGelegt);
+                }
+                if (object instanceof Network.KarteAufAblagestapelGelegt)
+                {
+                    Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufAblagestapelGelegt);
                 }
             }
 
@@ -90,17 +94,15 @@ public class GameServer
             }
         });
 
-
-
         server.bind(Network.port);
         server.start();
     }
 
-    void syncPlayers()
+    void sendNewPlayerJoined(Player newPlayer)
     {
-        Network.SyncPlayers syncPlayers = new Network.SyncPlayers();
-        syncPlayers.players = Lobby.getPlayers();
-        server.sendToAllTCP(syncPlayers);
+        Network.NewPlayerJoined newPlayerJoined = new Network.NewPlayerJoined();
+        newPlayerJoined.playerData = PlayerData.convertToPlayerData(newPlayer);
+        server.sendToAllTCP(newPlayerJoined);
     }
 
     void sendLocalPlayer(Player player)
@@ -122,7 +124,7 @@ public class GameServer
         }
     }
 
-    void boradcastPlayerIstDran(Player player)
+    void broadcastPlayerIstDran(Player player)
     {
         Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = new Network.NächsterSpielerAnDerReihe();
         nächsterSpielerAnDerReihe.playerBoardNumber = player.getPlayerBoardNumber();

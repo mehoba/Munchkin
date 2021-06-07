@@ -18,4 +18,14 @@ public class TürkarteImpl implements Türkarte {
         return image;
     }
 
+    @Override
+    public void onKarteGehoben() {
+
+    }
+
+    @Override
+    public void onkarteAusgespielt() {
+
+    }
+
 }
