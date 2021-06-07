@@ -1,7 +1,10 @@
 package com.example.munchkin.Karte;
 
+import android.content.Intent;
 import android.view.View;
 
+import com.example.munchkin.Activity.CardPopActivity_handkarten;
+import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
@@ -62,9 +65,11 @@ public class HandKarten
         //Todo istDran temporär deaktiviert zum zeigen
         if(!Player.istDranAktiviert || Player.getLocalPlayer().getIstDran())
         {
-            Karte gehobeneKarte = kartenSlots[i].karteHeben();
-            Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);
-            GameClient.sendKarteAufAbgelegtStapelGelegt(gehobeneKarte);
+            Karte gehobeneKarte = kartenSlots[i].getKarte();
+
+            CardPopActivity_handkarten.show(gehobeneKarte);
+            //Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);
+            //GameClient.sendKarteAufAbgelegtStapelGelegt(gehobeneKarte);
         }
     }
 

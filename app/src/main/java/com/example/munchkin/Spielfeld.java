@@ -12,6 +12,8 @@ public class Spielfeld {
 
     private final KartenSlot monsterKartenSlot;
     private final KartenSlot ausgespielteKartenSlot;
+    private final KartenSlot ablageStapelSchatzkartenSlot;
+    private final KartenSlot ablageStapelTürkartenSlot;
 
     public Spielfeld()
     {
@@ -21,6 +23,8 @@ public class Spielfeld {
         schatzkartenStapel = new SchatzkartenStapel(null);
         monsterKartenSlot = new KartenSlot(null);
         ausgespielteKartenSlot = new KartenSlot(null);
+        ablageStapelSchatzkartenSlot = new KartenSlot(null);
+        ablageStapelTürkartenSlot = new KartenSlot(null);
     }
 
     public void initializeUiConnection()
@@ -31,6 +35,8 @@ public class Spielfeld {
         schatzkartenStapel.setImgKarte(spielfeldActivity.imgSchatzkarte);
         monsterKartenSlot.setImgKarte(spielfeldActivity.imgMonsterKartenSlot);
         ausgespielteKartenSlot.setImgKarte(spielfeldActivity.imgAusgespielteKartenSlot);
+        ablageStapelSchatzkartenSlot.setImgKarte(spielfeldActivity.ablageStapelSchatzkarten);
+        ablageStapelTürkartenSlot.setImgKarte(spielfeldActivity.ablageStapelTürkarten);
     }
 
     public static TürkartenStapel getTürkartenStapel() {
@@ -44,8 +50,13 @@ public class Spielfeld {
     public static KartenSlot getMonsterKartenSlot() {
         return instance.monsterKartenSlot;
     }
-
     public static KartenSlot getAusgespielteKartenSlot() {
         return instance.ausgespielteKartenSlot;
+    }
+    public static KartenSlot getAblageStapelTürkartenSlot() {
+        return instance.ablageStapelTürkartenSlot;
+    }
+    public static KartenSlot getAblageStapelSchatzkartenSlot() {
+        return instance.ablageStapelSchatzkartenSlot;
     }
 }

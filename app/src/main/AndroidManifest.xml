@@ -35,7 +35,7 @@
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />
         <activity
-            android:name=".Activity.CardPopActivity"
+            android:name=".Activity.CardPopActivity_handkarten"
             android:configChanges="orientation"
             android:screenOrientation="landscape"
             android:theme="@style/AppTheme.CustomPopUp" />

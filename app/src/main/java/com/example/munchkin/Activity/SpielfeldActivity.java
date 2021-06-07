@@ -25,7 +25,8 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4,
+            imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -67,7 +68,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
 
-
+        ablageStapelTürkarten = findViewById(R.id.imgAblageStapelTürkarten);
+        ablageStapelSchatzkarten = findViewById(R.id.imgAblageStapelSchatzkarten);
 
 //        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -119,7 +121,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgDoorcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
                 startActivity(intent);
             }
         });
@@ -157,7 +159,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
                 startActivity(intent);
             }
         });
@@ -165,7 +167,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgKlasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
                 startActivity(intent);
             }
         });

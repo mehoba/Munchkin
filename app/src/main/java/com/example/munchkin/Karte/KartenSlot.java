@@ -38,6 +38,20 @@ public class KartenSlot
         this.karte = karte;
     }
 
+    public void karteAblegenWithoutTrigger(Karte karte)
+    {
+        if(karte == null) return;
+
+        //For Tests
+        if(imgKarte != null)
+        {
+            imgKarte.setImageResource(karte.getImage());
+            imgKarte.setVisibility(View.VISIBLE);
+        }
+
+        this.karte = karte;
+    }
+
     public Karte karteHeben()
     {
         if(karte == null) return null;
