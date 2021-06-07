@@ -5,6 +5,8 @@ import java.util.Random;
 public interface Karte {
 
       public int getImage();
+      public void onKarteGehoben();
+      public void onkarteAusgespielt();
 
        static Karte getRandomKarte() {
              int count = Inventar.getKartenList().size() - 1;

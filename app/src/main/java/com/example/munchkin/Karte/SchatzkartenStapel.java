@@ -35,9 +35,10 @@ public class SchatzkartenStapel extends KartenSlot
         return Schatzkarte.getRandomSchatzkarte();
     }
 
-
     void onSchatzkartenStapelClicked()
     {
-        Player.getLocalPlayer().getInventar().getHandKarten().addKarte(getKarte());
+        Karte gehobeneKarte = getKarte();
+        gehobeneKarte.onKarteGehoben();
+        Player.getLocalPlayer().getInventar().getHandKarten().addKarte(gehobeneKarte);
     }
 }

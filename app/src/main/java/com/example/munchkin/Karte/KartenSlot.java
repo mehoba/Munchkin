@@ -26,16 +26,8 @@ public class KartenSlot
 
     public void karteAblegen(Karte karte)
     {
-        if(karte == null) return;
-
-        //For Tests
-        if(imgKarte != null)
-        {
-            imgKarte.setImageResource(karte.getImage());
-            imgKarte.setVisibility(View.VISIBLE);
-        }
-
-        this.karte = karte;
+        karteAblegenWithoutTrigger(karte);
+        karte.onkarteAusgespielt();
     }
 
     public void karteAblegenWithoutTrigger(Karte karte)
@@ -56,13 +48,13 @@ public class KartenSlot
     {
         if(karte == null) return null;
 
-
         Karte tempKarte = karte;
         //For Tests
         if(imgKarte != null)
         {
             imgKarte.setImageDrawable(null);
         }
+        karte.onKarteGehoben();
         karte = null;
         return tempKarte;
     }
