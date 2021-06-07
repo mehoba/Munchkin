@@ -5,6 +5,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.munchkin.Activity.CardPopActivity_handkarten;
+import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.Activity.SpielfeldActivity;
@@ -84,7 +85,8 @@ public class HandKarten
                     this.removeKarte(5);
                 } else {
                     // Give card to player with lowest level
-                    lowestPlayer.getInventar().getHandKarten().addKarte(this.removeKarte(5));
+                    GameClient.sendKarteZuSpieler(this.removeKarte(5), lowestPlayer);
+
                 }
             }
         }
