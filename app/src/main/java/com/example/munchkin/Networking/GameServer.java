@@ -60,10 +60,10 @@ public class GameServer
                     server.sendToAllExceptTCP(connection.getID(), karteAufMonsterSlotGelegt);
                 }
 
-                if (object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                if (object instanceof Network.KarteAufStapelAusgespieltGelegt)
                 {
-                    Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
-                    server.sendToAllExceptTCP(connection.getID(), karteAufAbgelegtSlotGelegt);
+                    Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufStapelAusgespieltGelegt);
                 }
             }
 

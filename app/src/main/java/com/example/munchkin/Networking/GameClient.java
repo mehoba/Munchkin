@@ -88,14 +88,14 @@ public class GameClient
                                        );
                                    }
 
-                                   if(object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                                   if(object instanceof Network.KarteAufStapelAusgespieltGelegt)
                                    {
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(new Runnable() {
                                                                                     @Override
                                                                                     public void run() {
-                                                                                        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
-                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufAbgelegtSlotGelegt.karte);
+                                                                                        Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
+                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufStapelAusgespieltGelegt.karte);
                                                                                     }
                                                                                 }
 
@@ -152,14 +152,14 @@ public class GameClient
 
     public static void sendKarteAufAbgelegtStapelGelegt(Karte karte)
     {
-        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = new Network.KarteAufAbgelegtSlotGelegt();
-        karteAufAbgelegtSlotGelegt.karte = karte;
+        Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = new Network.KarteAufStapelAusgespieltGelegt();
+        karteAufStapelAusgespieltGelegt.karte = karte;
 
         new Thread("thread")
         {
             public void run ()
             {
-                getInstance().client.sendTCP(karteAufAbgelegtSlotGelegt);
+                getInstance().client.sendTCP(karteAufStapelAusgespieltGelegt);
             }
         }.start();
     }

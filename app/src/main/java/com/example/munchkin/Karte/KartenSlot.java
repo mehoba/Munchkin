@@ -53,10 +53,20 @@ public class KartenSlot
         if(imgKarte != null)
         {
             imgKarte.setImageDrawable(null);
+            imgKarte.setVisibility(View.INVISIBLE);
         }
         karte.onKarteGehoben();
         karte = null;
         return tempKarte;
+    }
+
+    public void setImageWithoutKarteAblegen(Karte karte)
+    {
+        if(imgKarte != null)
+        {
+            imgKarte.setImageResource(karte.getImage());
+            imgKarte.setVisibility(View.VISIBLE);
+        }
     }
 
     public ImageView getImgKarte()

@@ -65,9 +65,7 @@ public class HandKarten
         //Todo istDran temporär deaktiviert zum zeigen
         if(!Player.istDranAktiviert || Player.getLocalPlayer().getIstDran())
         {
-            Karte gehobeneKarte = kartenSlots[i].getKarte();
-
-            CardPopActivity_handkarten.show(gehobeneKarte);
+            CardPopActivity_handkarten.show(kartenSlots[i]);
             //Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);
             //GameClient.sendKarteAufAbgelegtStapelGelegt(gehobeneKarte);
         }

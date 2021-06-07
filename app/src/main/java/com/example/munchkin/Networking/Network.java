@@ -43,7 +43,7 @@ public class Network
 
         //Networking Classes
         kryo.register(SendLocalPlayer.class);
-        kryo.register(KarteAufAbgelegtSlotGelegt.class);
+        kryo.register(KarteAufStapelAusgespieltGelegt.class);
         kryo.register(NächsterSpielerAnDerReihe.class);
         kryo.register(KarteAufMonsterSlotGelegt.class);
         kryo.register(LoginNewPlayerForServer.class);
@@ -75,7 +75,7 @@ public class Network
         public Karte karte;
     }
 
-    static public class KarteAufAbgelegtSlotGelegt
+    static public class KarteAufStapelAusgespieltGelegt
     {
         public Karte karte;
     }

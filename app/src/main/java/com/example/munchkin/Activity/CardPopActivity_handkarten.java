@@ -16,12 +16,12 @@ import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
 
 public class CardPopActivity_handkarten extends AppCompatActivity {
-    private static Karte karte;
     private static KartenSlot kartenSlot;
+    private static KartenSlot gehobenVonKartenSlot;
 
 
-    public static void show(Karte karte) {
-        CardPopActivity_handkarten.karte = karte;
+    public static void show(KartenSlot gehobenVonKartenSlot) {
+        CardPopActivity_handkarten.gehobenVonKartenSlot = gehobenVonKartenSlot;
 
         Intent intentCardPopActivity = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), CardPopActivity_handkarten.class);
         SpielfeldActivity.getInstance().startActivity(intentCardPopActivity);
@@ -29,17 +29,18 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
 
 
     void onBtnAusspielenClicked() {
+        Karte karte = gehobenVonKartenSlot.karteHeben();
         Spielfeld.getAusgespielteKartenSlot().karteAblegen(karte);
+        GameClient.sendKarteAufAbgelegtStapelGelegt(karte);
         finish();
     }
 
     void onBtnAblegenClicked() {
-        if (karte instanceof Schatzkarte) {
-            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
+        if (gehobenVonKartenSlot.getKarte() instanceof Schatzkarte) {
+            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(gehobenVonKartenSlot.karteHeben());
         } else {
-            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
+            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(gehobenVonKartenSlot.karteHeben());
         }
-        //GameClient.sendKarteAufAbgelegtStapelGelegt(karte);
 
         finish();
     }
@@ -61,7 +62,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
         getWindow().setLayout((int) (width * 0.78), (int) (height * 0.78));
 
         kartenSlot = new KartenSlot(findViewById(R.id.cardpopView_handkarten_imgView));
-        kartenSlot.karteAblegen(karte);
+        kartenSlot.setImageWithoutKarteAblegen(gehobenVonKartenSlot.getKarte());
         ImageView imgButtonAblegen = findViewById(R.id.cardpopup_btnAblegen);
         ImageView imgButtonAusspielen = findViewById(R.id.cardpopup_btnAusspielen);
 
@@ -78,13 +79,5 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
                 onBtnAusspielenClicked();
             }
         });
-    }
-
-    public Karte getKarte() {
-        return karte;
-    }
-
-    public void setKarte(Karte karte) {
-        this.karte = karte;
     }
 }
