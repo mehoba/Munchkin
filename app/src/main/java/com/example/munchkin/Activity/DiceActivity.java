@@ -2,6 +2,7 @@ package com.example.munchkin.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,6 +13,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.munchkin.R;
+import com.example.munchkin.Spielfeld;
 
 import java.util.Random;
 
@@ -23,9 +25,6 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

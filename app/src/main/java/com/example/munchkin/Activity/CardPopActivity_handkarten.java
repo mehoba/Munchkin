@@ -31,17 +31,18 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
     void onBtnAusspielenClicked() {
         Karte karte = gehobenVonKartenSlot.karteHeben();
         Spielfeld.getAusgespielteKartenSlot().karteAblegen(karte);
-        GameClient.sendKarteAufAbgelegtStapelGelegt(karte);
+        GameClient.sendKarteAutStapelAusgespieltGelegt(karte);
         finish();
     }
 
     void onBtnAblegenClicked() {
-        if (gehobenVonKartenSlot.getKarte() instanceof Schatzkarte) {
-            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(gehobenVonKartenSlot.karteHeben());
+        Karte karte = gehobenVonKartenSlot.karteHeben();
+        if (karte instanceof Schatzkarte) {
+            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
         } else {
-            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(gehobenVonKartenSlot.karteHeben());
+            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
         }
-
+        GameClient.sendKarteAufAblagestapelGelegt(karte);
         finish();
     }
 

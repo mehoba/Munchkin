@@ -48,6 +48,7 @@ public class Network
         kryo.register(KarteAufMonsterSlotGelegt.class);
         kryo.register(LoginNewPlayerForServer.class);
         kryo.register(NewPlayerJoined.class);
+        kryo.register(KarteAufAblagestapelGelegt.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -76,6 +77,11 @@ public class Network
     }
 
     static public class KarteAufStapelAusgespieltGelegt
+    {
+        public Karte karte;
+    }
+
+    static public class KarteAufAblagestapelGelegt
     {
         public Karte karte;
     }

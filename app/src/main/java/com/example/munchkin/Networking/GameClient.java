@@ -6,6 +6,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
@@ -101,6 +102,23 @@ public class GameClient
 
                                        );
                                    }
+                                   if(object instanceof Network.KarteAufAblagestapelGelegt)
+                                   {
+                                       //Only the original thread that created a view hierarchy can touch its views.
+                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                                                                                        Karte karte = karteAufAblagestapelGelegt.karte;
+                                                                                        if (karte instanceof Schatzkarte) {
+                                                                                            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
+                                                                                        } else {
+                                                                                            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                       );
+                                   }
                                }
                            }
         );
@@ -150,7 +168,7 @@ public class GameClient
         client.sendTCP(loginNewPlayer);
     }
 
-    public static void sendKarteAufAbgelegtStapelGelegt(Karte karte)
+    public static void sendKarteAutStapelAusgespieltGelegt(Karte karte)
     {
         Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = new Network.KarteAufStapelAusgespieltGelegt();
         karteAufStapelAusgespieltGelegt.karte = karte;
@@ -160,6 +178,20 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(karteAufStapelAusgespieltGelegt);
+            }
+        }.start();
+    }
+
+    public static void sendKarteAufAblagestapelGelegt(Karte karte)
+    {
+        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = new Network.KarteAufAblagestapelGelegt();
+        karteAufAblagestapelGelegt.karte = karte;
+
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(karteAufAblagestapelGelegt);
             }
         }.start();
     }

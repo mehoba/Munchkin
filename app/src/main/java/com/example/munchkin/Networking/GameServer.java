@@ -65,6 +65,11 @@ public class GameServer
                     Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
                     server.sendToAllExceptTCP(connection.getID(), karteAufStapelAusgespieltGelegt);
                 }
+                if (object instanceof Network.KarteAufAblagestapelGelegt)
+                {
+                    Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                    server.sendToAllExceptTCP(connection.getID(), karteAufAblagestapelGelegt);
+                }
             }
 
             @Override
