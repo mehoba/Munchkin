@@ -63,7 +63,7 @@ public class HandKarten
     void onKartenSlotClicked(int i)
     {
         //Todo istDran temporär deaktiviert zum zeigen
-        if(!Player.istDranAktiviert || Player.getLocalPlayer().getIstDran())
+        if(/*!Player.istDranAktiviert ||*/ Player.getLocalPlayer().getIstDran())
         {
             CardPopActivity_handkarten.show(kartenSlots[i]);
             //Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);

@@ -14,7 +14,7 @@ public class Player extends PlayerData
     private Level playerLevel;
 
     //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
-    public static Boolean istDranAktiviert = false;
+//    public static Boolean istDranAktiviert = true;
 
     public Player()
     {

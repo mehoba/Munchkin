@@ -5,6 +5,7 @@ import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.GamePhase;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
@@ -73,6 +74,16 @@ public class GameClient
                                    {
                                        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = (Network.NächsterSpielerAnDerReihe)object;
                                        nächsterSpielderIstAnDerReihe(nächsterSpielerAnDerReihe.playerBoardNumber);
+                                       Player spielerAnDerReihe = Lobby.getPlayer(nächsterSpielerAnDerReihe.playerBoardNumber);
+                                       if(spielerAnDerReihe != null && SpielfeldActivity.getInstance() != null)
+                                       {
+                                           SpielfeldActivity.getInstance().runOnUiThread(new Runnable() {
+                                               @Override
+                                               public void run() {
+                                                   SpielfeldActivity.getInstance().txtDuBistDran.setText("Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe");
+                                               }
+                                           });
+                                       }
                                    }
 
                                    if(object instanceof Network.KarteAufMonsterSlotGelegt)
@@ -130,6 +141,7 @@ public class GameClient
         {
             //Ich bin dran
             Player.getLocalPlayer().setIstDran(true);
+            GamePhase.setPhase(GamePhase.Phase.vorbereitungsPhase);
         }
         else
         {
@@ -206,6 +218,20 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(karteAufMonsterSlotGelegt);
+            }
+        }.start();
+    }
+
+    public static void sendNextPlayerAnDerReihe()
+    {
+        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = new Network.NächsterSpielerAnDerReihe();
+        nächsterSpielerAnDerReihe.playerBoardNumber = Player.getLocalPlayer().getPlayerBoardNumber();
+
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(nächsterSpielerAnDerReihe);
             }
         }.start();
     }
