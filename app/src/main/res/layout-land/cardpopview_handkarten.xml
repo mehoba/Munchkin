@@ -10,14 +10,13 @@
 
     <ImageView
         android:id="@+id/cardpopView_handkarten_imgView"
-        android:layout_width="157dp"
-        android:layout_height="236dp"
+        android:layout_width="290dp"
+        android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.497"
         app:srcCompat="@drawable/buffcard6" />
 
     <ImageView
@@ -26,10 +25,10 @@
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.542"
+        app:layout_constraintVertical_bias="0.543"
         app:srcCompat="@drawable/kartepopup_ablegenbutton" />
 
     <ImageView
@@ -38,10 +37,10 @@
         android:layout_height="47dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.58"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.795"
+        app:layout_constraintVertical_bias="0.796"
         app:srcCompat="@drawable/mainmenu_button" />
 
     <ImageView

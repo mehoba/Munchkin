@@ -170,7 +170,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });
@@ -178,7 +178,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgKlasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });
