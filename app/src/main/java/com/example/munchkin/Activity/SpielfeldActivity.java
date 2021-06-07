@@ -25,8 +25,8 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4,
-            imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
+    public ImageView imgButtonKämpfen, imgButtonWeglaufen;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -76,6 +76,11 @@ public class SpielfeldActivity extends AppCompatActivity {
 
         ablageStapelTürkarten = findViewById(R.id.imgAblageStapelTürkarten);
         ablageStapelSchatzkarten = findViewById(R.id.imgAblageStapelSchatzkarten);
+        //Für Kampf
+        imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
+        imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
+
+
 
 //        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
 //            @Override
