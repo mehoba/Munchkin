@@ -2,6 +2,7 @@ package com.example.munchkin.Networking;
 import android.util.Log;
 
 import com.example.munchkin.Player;
+import com.example.munchkin.PlayerData;
 
 import java.util.LinkedList;
 
@@ -48,9 +49,15 @@ public class Lobby
     public static boolean addPlayer(Player player, int index)
     {
         Player[] players = instance.players;
-
         players[index] = player;
+        return false;
+    }
+    public static boolean addPlayer(PlayerData playerData)
+    {
+        Player player = new Player(playerData);
 
+        Player[] players = instance.players;
+        players[playerData.getPlayerBoardNumber()] = player;
         return false;
     }
 
@@ -86,17 +93,9 @@ public class Lobby
         return playerNamesList;
     }
 
-    public static void syncPlayers(Player[] playerServer)
+    public static void newPlayerJoined(PlayerData newPlayer)
     {
-        Player[] playerLocal = instance.players;
-
-        for(int i = 0; i < playerServer.length; i++)
-        {
-            if(playerServer[i] != null && playerLocal[i] == null)
-            {
-                playerLocal[i] = playerServer[i];
-            }
-        }
+        addPlayer(newPlayer);
     }
 
     public static Player[] getPlayers()

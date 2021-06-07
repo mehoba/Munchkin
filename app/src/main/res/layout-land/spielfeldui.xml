@@ -120,7 +120,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783"
         app:srcCompat="@drawable/spielfeldui_klasseicon" />
-        app:srcCompat="@drawable/dices" />
+    app:srcCompat="@drawable/dices" />
 
     <ImageView
         android:id="@+id/player1_rasseicon"
@@ -445,6 +445,31 @@
         app:layout_constraintVertical_bias="0.888"
         tools:srcCompat="@tools:sample/avatars" />
 
+    <ImageView
+        android:id="@+id/imgButtonKämpfen"
+        android:layout_width="91dp"
+        android:layout_height="35dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.827"
+        app:srcCompat="@drawable/mainmenu_button" />
+
+    <ImageView
+        android:id="@+id/imgButtonWeglaufen"
+        android:layout_width="90dp"
+        android:layout_height="37dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.957"
+        app:srcCompat="@drawable/mainmenu_button" />
     <HorizontalScrollView
         android:id="@+id/spielfeldui_handcards"
         android:layout_width="329dp"
@@ -462,5 +487,4 @@
             android:layout_height="match_parent"
             android:orientation="horizontal" />
     </HorizontalScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

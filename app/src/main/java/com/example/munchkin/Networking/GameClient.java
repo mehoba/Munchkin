@@ -6,6 +6,7 @@ import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
@@ -45,10 +46,11 @@ public class GameClient
                                @Override
                                public void received(Connection connection, Object object)
                                {
-                                   if (object instanceof Network.SyncPlayers) {
-                                       Network.SyncPlayers syncPlayersClass = (Network.SyncPlayers) object;
+                                   if (object instanceof Network.NewPlayerJoined) {
+                                       Network.NewPlayerJoined newPlayerJoinedClass = (Network.NewPlayerJoined) object;
 
-                                       Lobby.syncPlayers(syncPlayersClass.players);
+
+                                       Lobby.newPlayerJoined(newPlayerJoinedClass.playerData);
 
                                        if (SpielfeldActivity.getInstance() != null)
                                            SpielfeldActivity.getInstance().setPlayerNames();
@@ -87,17 +89,34 @@ public class GameClient
                                        );
                                    }
 
-                                   if(object instanceof Network.KarteAufAbgelegtSlotGelegt)
+                                   if(object instanceof Network.KarteAufStapelAusgespieltGelegt)
                                    {
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(new Runnable() {
                                                                                     @Override
                                                                                     public void run() {
-                                                                                        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = (Network.KarteAufAbgelegtSlotGelegt)object;
-                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufAbgelegtSlotGelegt.karte);
+                                                                                        Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
+                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufStapelAusgespieltGelegt.karte);
                                                                                     }
                                                                                 }
 
+                                       );
+                                   }
+                                   if(object instanceof Network.KarteAufAblagestapelGelegt)
+                                   {
+                                       //Only the original thread that created a view hierarchy can touch its views.
+                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
+                                                                                    @Override
+                                                                                    public void run() {
+                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                                                                                        Karte karte = karteAufAblagestapelGelegt.karte;
+                                                                                        if (karte instanceof Schatzkarte) {
+                                                                                            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
+                                                                                        } else {
+                                                                                            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
+                                                                                        }
+                                                                                    }
+                                                                                }
                                        );
                                    }
                                }
@@ -149,16 +168,30 @@ public class GameClient
         client.sendTCP(loginNewPlayer);
     }
 
-    public static void sendKarteAufAbgelegtStapelGelegt(Karte karte)
+    public static void sendKarteAutStapelAusgespieltGelegt(Karte karte)
     {
-        Network.KarteAufAbgelegtSlotGelegt karteAufAbgelegtSlotGelegt = new Network.KarteAufAbgelegtSlotGelegt();
-        karteAufAbgelegtSlotGelegt.karte = karte;
+        Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = new Network.KarteAufStapelAusgespieltGelegt();
+        karteAufStapelAusgespieltGelegt.karte = karte;
 
         new Thread("thread")
         {
             public void run ()
             {
-                getInstance().client.sendTCP(karteAufAbgelegtSlotGelegt);
+                getInstance().client.sendTCP(karteAufStapelAusgespieltGelegt);
+            }
+        }.start();
+    }
+
+    public static void sendKarteAufAblagestapelGelegt(Karte karte)
+    {
+        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = new Network.KarteAufAblagestapelGelegt();
+        karteAufAblagestapelGelegt.karte = karte;
+
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(karteAufAblagestapelGelegt);
             }
         }.start();
     }

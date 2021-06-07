@@ -57,221 +57,123 @@ public class Inventar
         return türKartenList;
     }
 
-    //ToDo Türkarten fehlen
     public static void initializeKartenList() {
         KartenList=new ArrayList<>();
         schatzkartenList = new ArrayList<>();
         türKartenList = new ArrayList<>();
 
-        Karte k1 = new Buffkarte();
-
         //Adding Buff Cards
-        k1.setImage(R.drawable.buffcard1);
-        Karte k2= new Buffkarte();
-        k2.setImage(R.drawable.buffcard2);
+        Buffkarte k1 = new Buffkarte(R.drawable.buffcard1, 100, 2);
         addCardToKartenList(k1);
+        Buffkarte k2= new Buffkarte(R.drawable.buffcard2, 100, 3);
         addCardToKartenList(k2);
-        Karte k3=new Buffkarte();
-        k3.setImage(R.drawable.buffcard3);
+        Buffkarte k3=new Buffkarte(R.drawable.buffcard3, 0, 5);
         addCardToKartenList(k3);
-        Karte k4= new Buffkarte();
-        k4.setImage(R.drawable.buffcard4);
+        Buffkarte k4= new Buffkarte(R.drawable.buffcard4, 100, 2);
         addCardToKartenList(k4);
-        Karte k5= new Buffkarte();
-        k5.setImage(R.drawable.buffcard5);
+        Buffkarte k5= new Buffkarte(R.drawable.buffcard5, 200, 5);
         addCardToKartenList(k5);
-        Karte k6 = new Buffkarte();
-        k6.setImage(R.drawable.buffcard6);
+        Buffkarte k6 = new Buffkarte(R.drawable.buffcard6, 100, 3);
         addCardToKartenList(k6);
 
         //Adding level up cards
-        Karte k7 = new LvlUpKarte();
-        k7.setImage(R.drawable.lvlupcard1);
+        LvlUpKarte k7 = new LvlUpKarte(R.drawable.lvlupcard1);
         addCardToKartenList(k7);
-        Karte k8= new LvlUpKarte();
-        k8.setImage(R.drawable.lvlupcard2);
+        LvlUpKarte k8= new LvlUpKarte(R.drawable.lvlupcard2);
         addCardToKartenList(k8);
-        Karte k9 = new LvlUpKarte();
-        k9.setImage(R.drawable.lvlupcard3);
+        LvlUpKarte k9 = new LvlUpKarte(R.drawable.lvlupcard3);
         addCardToKartenList(k9);
-        Karte k10= new LvlUpKarte();
-        k10.setImage(R.drawable.lvlupcard4);
+        LvlUpKarte k10= new LvlUpKarte(R.drawable.lvlupcard4);
         addCardToKartenList(k10);
 
-        //Adding rustungs cards
-        Karte k11= new Rüstungskarte();
-        k11.setImage(R.drawable.rustungcard1);
+        //Adding rüstungs cards
+        Rüstungskarte k11= new Rüstungskarte(R.drawable.rustungcard1, 200, 1, 1, BodyPart.BODY);
         addCardToKartenList(k11);
-        Karte k12= new Rüstungskarte();
-        k12.setImage(R.drawable.rustungcard2);
+        Rüstungskarte k12= new Rüstungskarte(R.drawable.rustungcard2, 200, 2, 1, BodyPart.HAND);
         addCardToKartenList(k12);
-        Karte k13= new Rüstungskarte();
-        k13.setImage(R.drawable.rustungcard3);
+        Rüstungskarte k13= new Rüstungskarte(R.drawable.rustungcard3, 200, 0, 1,BodyPart.NONE);
         addCardToKartenList(k13);
-        Karte k14= new Rüstungskarte();
-        k14.setImage(R.drawable.rustungcard4);
+        Rüstungskarte k14= new Rüstungskarte(R.drawable.rustungcard4, 600, 2, 3, BodyPart.HAND, true);
         addCardToKartenList(k14);
-        Karte k15= new Rüstungskarte();
-        k15.setImage(R.drawable.rustungcard5);
+        Rüstungskarte k15= new Rüstungskarte(R.drawable.rustungcard5, 200, 1, 1, BodyPart.HEAD);
         addCardToKartenList(k15);
-        Karte k16= new Rüstungskarte();
-        k16.setImage(R.drawable.rustungcard6);
+        Rüstungskarte k16= new Rüstungskarte(R.drawable.rustungcard6, 400, 1, 2,BodyPart.HAND);
         addCardToKartenList(k16);
-        Karte k17= new Rüstungskarte();
-        k17.setImage(R.drawable.rustungcard7);
+        Rüstungskarte k17= new Rüstungskarte(R.drawable.rustungcard7, 0, 0,3, BodyPart.NONE);
         addCardToKartenList(k17);
-        Karte k18= new Rüstungskarte();
-        k18.setImage(R.drawable.rustungcard8);
+        Rüstungskarte k18= new Rüstungskarte(R.drawable.rustungcard8, 200, 1, 1, BodyPart.BODY);
         addCardToKartenList(k18);
-        Karte k19= new Rüstungskarte();
-        k19.setImage(R.drawable.rustungcard9);
+        Rüstungskarte k19= new Rüstungskarte(R.drawable.rustungcard9, 600, 1, 3, BodyPart.HEAD);
         addCardToKartenList(k19);
-        Karte k20= new Rüstungskarte();
-        k20.setImage(R.drawable.rustungcard10);
+        Rüstungskarte k20= new Rüstungskarte(R.drawable.rustungcard10, 0, 1, 1, BodyPart.HAND);
         addCardToKartenList(k20);
-        Karte k21= new Rüstungskarte();
-        k21.setImage(R.drawable.rustungcard11);
+        Rüstungskarte k21= new Rüstungskarte(R.drawable.rustungcard11, 400, 1, 2, BodyPart.BODY);
         addCardToKartenList(k21);
-        Karte k22= new Rüstungskarte();
-        k22.setImage(R.drawable.rustungcard12);
+        Rüstungskarte k22= new Rüstungskarte(R.drawable.rustungcard12, 400, 1,2, BodyPart.FOOT);
         addCardToKartenList(k22);
-        Karte k23= new Rüstungskarte();
-        k23.setImage(R.drawable.rustungcard13);
+        Rüstungskarte k23= new Rüstungskarte(R.drawable.rustungcard13, 0, 2, 3, BodyPart.HAND, true);
         addCardToKartenList(k23);
-        Karte k24= new Rüstungskarte();
-        k24.setImage(R.drawable.rustungcard14);
+        Rüstungskarte k24= new Rüstungskarte(R.drawable.rustungcard14, 400, 1,2, BodyPart.HAND);
         addCardToKartenList(k24);
 
         //Adding fluch cards
-        Karte k25= new Fluchkarte();
-        k25.setImage(R.drawable.fluchcard1);
+/*      //TODO: Funktionalität für andere Fluchkarten mittels Klassen abbilden
+        Fluchkarte k25= new Fluchkarte(R.drawable.fluchcard1);
         addCardToKartenList(k25);
-        Karte k26= new Fluchkarte();
-        k26.setImage(R.drawable.fluchcard2);
-        addCardToKartenList(k26);
-        Karte k27= new Fluchkarte();
-        k27.setImage(R.drawable.fluchcard3);
+        Fluchkarte k26= new Fluchkarte(R.drawable.fluchcard2);
+        addCardToKartenList(k26);*/
+        Fluchkarte k27= new Fluchkarte(R.drawable.fluchcard3, 1);
         addCardToKartenList(k27);
-        Karte k28= new Fluchkarte();
-        k28.setImage(R.drawable.fluchcard4);
+        Fluchkarte k28= new Fluchkarte(R.drawable.fluchcard4, 2);
         addCardToKartenList(k28);
 
-        //Adding Klassen cards
-        Karte k29= new KlassenKarte();
-        k29.setImage(R.drawable.klasscard1);
+       //Adding Klassen cards
+        KlassenKarte k29= new KlassenKarte(R.drawable.klasscard1);
         addCardToKartenList(k29);
-        Karte k30= new KlassenKarte();
-        k30.setImage(R.drawable.klasscard2);
+        KlassenKarte k30= new KlassenKarte(R.drawable.klasscard2);
         addCardToKartenList(k30);
-        Karte k31= new KlassenKarte();
-        k31.setImage(R.drawable.klasscard3);
+        KlassenKarte k31= new KlassenKarte(R.drawable.klasscard3);
         addCardToKartenList(k31);
-        Karte k32= new KlassenKarte();
-        k32.setImage(R.drawable.klasscard4);
+        KlassenKarte k32= new KlassenKarte(R.drawable.klasscard4);
         addCardToKartenList(k32);
 
         //Adding monster cards
-        Monsterkarte k33= new Monsterkarte();
-        k33.setImage(R.drawable.monstercard1);
-        k33.setMonsterLevel(2);
-        k33.setAnzahlSchätze(1);
+        Monsterkarte k33= new Monsterkarte(R.drawable.monstercard1, 2, 1);
         addCardToKartenList(k33);
-
-        Monsterkarte k34= new Monsterkarte();
-        k34.setImage(R.drawable.monstercard2);
-        k34.setMonsterLevel(8);
-        k34.setAnzahlSchätze(2);
+        Monsterkarte k34= new Monsterkarte(R.drawable.monstercard2, 8,2);
         addCardToKartenList(k34);
-
-        Monsterkarte k35= new Monsterkarte();
-        k35.setImage(R.drawable.monstercard3);
-        k35.setMonsterLevel(16);
-        k35.setAnzahlSchätze(4);
-        k35.setGewonneneLevel(2);
+        Monsterkarte k35= new Monsterkarte(R.drawable.monstercard3, 16, 4,2);
         addCardToKartenList(k35);
-
-        Monsterkarte k36= new Monsterkarte();
-        k36.setImage(R.drawable.monstercard4);
-        k36.setMonsterLevel(8);
-        k36.setAnzahlSchätze(2);
+        Monsterkarte k36= new Monsterkarte(R.drawable.monstercard4, 8,2);
         addCardToKartenList(k36);
-
-        Monsterkarte k37= new Monsterkarte();
-        k37.setImage(R.drawable.monstercard5);
-        k37.setMonsterLevel(4);
-        k37.setAnzahlSchätze(2);
+        Monsterkarte k37= new Monsterkarte(R.drawable.monstercard5, 4,2);
         addCardToKartenList(k37);
-
-        Monsterkarte k38= new Monsterkarte();
-        k38.setImage(R.drawable.monstercard6);
-        k38.setMonsterLevel(14);
-        k38.setAnzahlSchätze(4);
+        Monsterkarte k38= new Monsterkarte(R.drawable.monstercard6, 14, 4);
         addCardToKartenList(k38);
-
-        Monsterkarte k39= new Monsterkarte();
-        k39.setImage(R.drawable.monstercard7);
-        k39.setMonsterLevel(2);
-        k39.setAnzahlSchätze(1);
+        Monsterkarte k39= new Monsterkarte(R.drawable.monstercard7, 2,1);
         addCardToKartenList(k39);
-
-        Monsterkarte k40= new Monsterkarte();
-        k40.setImage(R.drawable.monstercard8);
-        k40.setMonsterLevel(20);
-        k40.setAnzahlSchätze(5);
-        k40.setGewonneneLevel(2);
+        Monsterkarte k40= new Monsterkarte(R.drawable.monstercard8, 20,5,2);
         addCardToKartenList(k40);
-
-        Monsterkarte k41= new Monsterkarte();
-        k41.setImage(R.drawable.monstercard9);
-        k41.setMonsterLevel(2);
-        k41.setAnzahlSchätze(1);
+        Monsterkarte k41= new Monsterkarte(R.drawable.monstercard9, 2,1);
         addCardToKartenList(k41);
-
-//        //Karte 9 wäre doppelt
-//        Karte k42= new MonsterkarteImpl();
-//        k42.setImage(R.drawable.monstercard9);
-//        addCardToKartenList(k42);
-
-        Monsterkarte k43= new Monsterkarte();
-        k43.setImage(R.drawable.monstercard10);
-        k43.setMonsterLevel(1);
-        k43.setAnzahlSchätze(1);
+        //Karte k42 war 9 und wäre somit doppelt
+        Monsterkarte k43= new Monsterkarte(R.drawable.monstercard10, 1,1);
         addCardToKartenList(k43);
-
-        Monsterkarte k44= new Monsterkarte();
-        k44.setImage(R.drawable.monstercard11);
-        k44.setMonsterLevel(1);
-        k44.setAnzahlSchätze(1);
+        Monsterkarte k44= new Monsterkarte(R.drawable.monstercard11, 1,1);
         addCardToKartenList(k44);
-
-        Monsterkarte k45= new Monsterkarte();
-        k45.setImage(R.drawable.monstercard12);
-        k45.setMonsterLevel(10);
-        k45.setAnzahlSchätze(3);
+        Monsterkarte k45= new Monsterkarte(R.drawable.monstercard12, 10,3);
         addCardToKartenList(k45);
-
-        Monsterkarte k46= new Monsterkarte();
-        k46.setImage(R.drawable.monstercard13);
-        k46.setMonsterLevel(14);
-        k46.setAnzahlSchätze(4);
+        Monsterkarte k46= new Monsterkarte(R.drawable.monstercard13, 14,4);
         addCardToKartenList(k46);
-
-        Monsterkarte k47= new Monsterkarte();
-        k47.setImage(R.drawable.monstercard14);
-        k47.setMonsterLevel(1);
-        k47.setAnzahlSchätze(1);
+        Monsterkarte k47= new Monsterkarte(R.drawable.monstercard14, 1,1);
         addCardToKartenList(k47);
 
-
         //Adding Rassen cards
-        Karte k48= new RassenKarte();
-        k48.setImage(R.drawable.rassencard1);
+        RassenKarte k48= new RassenKarte(R.drawable.rassencard1);
         addCardToKartenList(k48);
-        Karte k49= new RassenKarte();
-        k49.setImage(R.drawable.rassencard2);
+        RassenKarte k49= new RassenKarte(R.drawable.rassencard2);
         addCardToKartenList(k49);
-        Karte k50= new RassenKarte();
-        k50.setImage(R.drawable.rassencard3);
+        RassenKarte k50= new RassenKarte(R.drawable.rassencard3);
         addCardToKartenList(k50);
 
     }

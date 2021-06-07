@@ -29,7 +29,7 @@ public class TreasureCardActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*0.9),(int)(height*0.85));
 
-        imgTreasureCard=findViewById(R.id.treasurecardpopup_imgCard);
+        imgTreasureCard=findViewById(R.id.cardpopView_handkarten_imgView);
         btnAusruesten=findViewById(R.id.treasurecardpopup_btnAusruesten);
         btnWegwerfen=findViewById(R.id.treasurecardpopup_btnWegwerfen);
         player=new Player();

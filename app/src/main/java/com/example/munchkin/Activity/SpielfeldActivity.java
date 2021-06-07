@@ -29,7 +29,8 @@ import java.util.Random;
 public class SpielfeldActivity extends AppCompatActivity {
     private static SpielfeldActivity instance;
 
-    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard;
+    public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
+    public ImageView imgButtonKämpfen, imgButtonWeglaufen;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -42,10 +43,15 @@ public class SpielfeldActivity extends AppCompatActivity {
 
         setContentView(R.layout.spielfeldui);
 
-        imgCardView =findViewById(R.id.cardView);
-        imgCardView2 =findViewById(R.id.cardView2);
-        imgCardView3 =findViewById(R.id.cardView3);
-        imgCardView4 =findViewById(R.id.cardView4);
+        imgCardView = findViewById(R.id.cardView);
+        imgCardView2 = findViewById(R.id.cardView2);
+        imgCardView3 = findViewById(R.id.cardView3);
+        imgCardView4 = findViewById(R.id.cardView4);
+
+        imgCardView.setVisibility(View.INVISIBLE);
+        imgCardView2.setVisibility(View.INVISIBLE);
+        imgCardView3.setVisibility(View.INVISIBLE);
+        imgCardView4.setVisibility(View.INVISIBLE);
 
         handcardLayout = findViewById(R.id.spielfeldui_handcard_layout);
 
@@ -65,6 +71,21 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
+
+        ablageStapelTürkarten = findViewById(R.id.imgAblageStapelTürkarten);
+        ablageStapelSchatzkarten = findViewById(R.id.imgAblageStapelSchatzkarten);
+        //Für Kampf
+        imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
+        imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
+
+
+
+//        imgTreasureCard.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                addTreasureCard();
+//            }
+//        });
 
         imgBackpack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -109,15 +130,45 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgDoorcard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
                 startActivity(intent);
             }
         });
 
+//        setCardView(imgCardView);
+//        setCardView(imgCardView2);
+//        setCardView(imgCardView3);
+//        setCardView(imgCardView4);
+//
+//        imgCardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView2, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView3, imgMidemptycard_bottomleft);
+//            }
+//        });
+//        imgCardView4.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                cardAbelegen(imgCardView4, imgMidemptycard_bottomleft);
+//            }
+//        });
+
         imgRasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });
@@ -125,7 +176,7 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgKlasse1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),CardPopActivity.class);
+                Intent intent=new Intent(getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
                 startActivity(intent);
             }
         });

@@ -2,6 +2,7 @@ package com.example.munchkin.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
@@ -12,35 +13,33 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.munchkin.R;
+import com.example.munchkin.Spielfeld;
 
 import java.util.Random;
 
 public class DiceActivity extends AppCompatActivity implements SensorEventListener {
 
-    private ImageView diceImage;
+    private ImageView imgDice;
     private int prevNum;
     private static final float SHAKE_THRESHOLD = 3.25f;
     private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dice);
 
-        DisplayMetrics dm=new DisplayMetrics();
+        DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
 
-        int width=dm.widthPixels;
-        int height=dm.heightPixels;
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
 
         getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
 
-        diceImage=findViewById(R.id.diceImage);
+        imgDice = findViewById(R.id.diceImage);
 
 
 
@@ -48,17 +47,17 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
         mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         Sensor acceloremeter = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if(acceloremeter!= null){
+        if(acceloremeter != null){
             mSensorMgr.registerListener(this, acceloremeter,SensorManager.SENSOR_DELAY_NORMAL);
         }
 
 
-           diceImage.setOnClickListener(new View.OnClickListener() {
+           imgDice.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 int diceNum = getRandomNumber();
-                while (diceNum==prevNum){
-                    diceNum=getRandomNumber();
+                while (diceNum == prevNum){
+                    diceNum = getRandomNumber();
                 }
                  prevNum = diceNum;
                 setDicePicture(diceNum);
@@ -72,22 +71,22 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
         switch (diceNum){
             case 1:
-              diceImage.setImageResource(R.drawable.diceone);
+              imgDice.setImageResource(R.drawable.diceone);
               break;
             case 2:
-                diceImage.setImageResource(R.drawable.dicetwo);
+                imgDice.setImageResource(R.drawable.dicetwo);
                 break;
             case 3:
-                diceImage.setImageResource(R.drawable.dicethree);
+                imgDice.setImageResource(R.drawable.dicethree);
                 break;
             case 4:
-                diceImage.setImageResource(R.drawable.dicefour);
+                imgDice.setImageResource(R.drawable.dicefour);
                 break;
             case 5:
-                diceImage.setImageResource(R.drawable.dicefive);
+                imgDice.setImageResource(R.drawable.dicefive);
                 break;
             case 6:
-                diceImage.setImageResource(R.drawable.dicesix);
+                imgDice.setImageResource(R.drawable.dicesix);
                 break;
 
         }
@@ -95,7 +94,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
 
     public int getRandomNumber(){
-        Random rand= new Random();
+        Random rand = new Random();
         return rand.nextInt(6)+1;
     }
 
@@ -104,7 +103,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
         if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
             long curTime = System.currentTimeMillis();
             if((curTime -mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES){
-                float x= event.values[0];
+                float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
 

@@ -2,62 +2,49 @@ package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
 
-public class Rüstungskarte implements Schatzkarte
-{
+public class Rüstungskarte extends SchatzkarteImpl{
+    //Please DONT use this Konstruktor - it is needed for Networking
+    public Rüstungskarte(){}
 
-    private int goldwert;
-    private int image;
-
-    //Übernommen aus RustungCardsImpl
+    //Variablen
     private BodyPart bodyPart;
-    private int sizeOfBonus, sizeOfArmor;
+    private int sizeOfBonus;
+    private int sizeOfArmor;
+    private boolean isGroß;
 
-//    Konstruktor aus RustungCardsImpl
-//    public RüstungskarteImpl(int image, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart){
-//        setBodyPart(bodyPart);
-//        setImage(image);
-//        setSizeOfArmor(sizeOfArmor);
-//        setSizeOfBonus(sizeOfBonus);
-//    }
+    //Konstruktor aus RustungCardsImpl
+    public Rüstungskarte(int image, int goldwert, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart){
+        super(image, goldwert);
 
+        //Statt set wird nun direkt in Konstruktor gesetzt, da nachträglich nicht veränderbar sein sollte
+        this.bodyPart = bodyPart;
+        this.sizeOfBonus = sizeOfBonus; //The size of bonus card applies
+        this.sizeOfArmor = sizeOfArmor;
 
-    public int getGoldwert() {
-        return goldwert;
+        this.isGroß=false;  //Standartmäßig sind gegenstände klein
+    }
+
+    public Rüstungskarte(int image, int goldwert, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart, boolean isGroß){
+        super(image, goldwert);
+
+        //Statt set wird nun direkt in Konstruktor gesetzt, da nachträglich nicht veränderbar sein sollte
+        this.bodyPart = bodyPart;
+        this.sizeOfBonus = sizeOfBonus; //The size of bonus card applies
+        this.sizeOfArmor = sizeOfArmor;
+
+        this.isGroß=isGroß;  //Größe der Rüstung wird gesetzt
     }
 
 
-    public void SetGoldwert(int goldwert) {
-        this.goldwert=goldwert;
-    }
-
-
-    public int getImage() {
-        return image;
-    }
-
-
-    public void setImage(int image) {
-        this.image=image;
-    }
-
-    //Übernommen aus RustungCardsImpl
+    //Methoden - Übernommen aus RustungCardsImpl
 
     //To which Body part it will applied(HAND,FOOT,BODY or HEAD)
     public BodyPart getBodyPart() {
         return bodyPart;
     }
 
-    public void setBodyPart(BodyPart bodyPart) {
-        this.bodyPart = bodyPart;
-    }
-
     public int getSizeOfBonus() {
         return sizeOfBonus;
-    }
-
-    //The size of bonus card applies
-    public void setSizeOfBonus(int sizeOfBonus) {
-        this.sizeOfBonus = sizeOfBonus;
     }
 
     //Size of Armor, e.g. 2 Hands
@@ -65,14 +52,9 @@ public class Rüstungskarte implements Schatzkarte
         return sizeOfArmor;
     }
 
-    public void setSizeOfArmor(int sizeOfArmor) {
-        this.sizeOfArmor = sizeOfArmor;
+    //Um zu ermitteln ob dies ein großes Rüstungsteil ist
+    public boolean getIsGroß(){
+        return isGroß;
     }
-
-
-    public void addBonus(int currentLvl) {
-        currentLvl+=sizeOfArmor;
-    }
-
 
 }

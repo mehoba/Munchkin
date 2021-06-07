@@ -9,7 +9,7 @@
     android:background="@drawable/popup">
 
     <ImageView
-        android:id="@+id/treasurecardpopup_imgCard"
+        android:id="@+id/cardpopView_handkarten_imgView"
         android:layout_width="157dp"
         android:layout_height="236dp"
         app:layout_constraintBottom_toBottomOf="parent"

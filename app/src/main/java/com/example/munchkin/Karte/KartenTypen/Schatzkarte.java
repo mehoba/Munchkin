@@ -8,7 +8,6 @@ import java.util.Random;
 public interface Schatzkarte extends Karte
 {
     public int getGoldwert();
-    public void SetGoldwert(int goldwert);
 
     static Schatzkarte getRandomSchatzkarte() {
         int count = Inventar.getSchatzkartenList().size() - 1;
