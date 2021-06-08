@@ -1,5 +1,7 @@
 package com.example.munchkin.Karte.KartenTypen;
 
+import com.example.munchkin.Karte.CardType;
+
 public class TürkarteImpl implements Türkarte {
     //Please DONT use this Konstruktor - it is needed for Networking
     public TürkarteImpl(){}
@@ -25,6 +27,16 @@ public class TürkarteImpl implements Türkarte {
 
     @Override
     public void onkarteAusgespielt() {
+
+    }
+
+    @Override
+    public CardType getCardType() {
+        return null;
+    }
+
+    @Override
+    public void setCardType(CardType cardType) {
 
     }
 

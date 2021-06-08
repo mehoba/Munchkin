@@ -1,10 +1,23 @@
 package com.example.munchkin.Karte.KartenTypen;
 
+import com.example.munchkin.Karte.CardType;
 import com.example.munchkin.Player;
 
 public class Monsterkarte extends TürkarteImpl {
     //Please DONT use this Konstruktor - it is needed for Networking
     public Monsterkarte(){}
+
+    private CardType cardType;
+
+    @Override
+    public void setCardType(CardType cardType) {
+        this.cardType= cardType;
+    }
+
+    @Override
+    public CardType getCardType() {
+        return  cardType;
+    }
 
     //Variablen
     private int monsterLevel;
@@ -17,6 +30,7 @@ public class Monsterkarte extends TürkarteImpl {
         this.monsterLevel=monsterLevel;
         this.gewonneneLevel = 1;                //ist standardmäßig 1 auser es wird überschrieben mit setGewonneneLevel
         this.anzahlSchätze=anzahlSchätze;
+        setCardType(CardType.MONSTERKARTE);
     }
 
     public Monsterkarte(int image, int monsterLevel, int anzahlSchätze, int gewonneneLevel){
@@ -24,6 +38,7 @@ public class Monsterkarte extends TürkarteImpl {
         this.monsterLevel=monsterLevel;
         this.gewonneneLevel = gewonneneLevel;
         this.anzahlSchätze=anzahlSchätze;
+        setCardType(CardType.MONSTERKARTE);
     }
 
     //Methoden
