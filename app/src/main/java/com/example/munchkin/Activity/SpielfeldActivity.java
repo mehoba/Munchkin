@@ -4,12 +4,16 @@ package com.example.munchkin.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
@@ -30,32 +34,26 @@ public class SpielfeldActivity extends AppCompatActivity {
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
-    private List<Karte> drawnCards;
-    // Just the collection of all available cards
-    //private final Inventar inventar = new Inventar();
+    public LinearLayout handcardLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         instance = this;
 
-        //inventar.setKartenList();
-        drawnCards=new ArrayList<>();
-
-
-
         setContentView(R.layout.spielfeldui);
 
-        imgCardView = findViewById(R.id.cardView);
+        /*imgCardView = findViewById(R.id.cardView);
         imgCardView2 = findViewById(R.id.cardView2);
         imgCardView3 = findViewById(R.id.cardView3);
-        imgCardView4 = findViewById(R.id.cardView4);
+        imgCardView4 = findViewById(R.id.cardView4);*/
 
-        imgCardView.setVisibility(View.INVISIBLE);
+        /*imgCardView.setVisibility(View.INVISIBLE);
         imgCardView2.setVisibility(View.INVISIBLE);
         imgCardView3.setVisibility(View.INVISIBLE);
-        imgCardView4.setVisibility(View.INVISIBLE);
+        imgCardView4.setVisibility(View.INVISIBLE);*/
 
+        handcardLayout = findViewById(R.id.spielfeldui_handcard_layout);
 
         imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
         imgAusgespielteKartenSlot =findViewById(R.id.ausgespielteKartenSlot);
@@ -217,29 +215,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         setPlayerNames();
     }
 
-//    public void addTreasureCard() {
-//        int index = getRandomNum(inventar.treasureCardList.size())-1;
-//        Karte card = inventar.treasureCardList.get(index);
-//        if(!drawnCards.contains(card)) {
-//            addCard(card);
-//        } else {
-//            addTreasureCard();
-//        }
-//    }
-
-//    // Add the card to the first free cardview
-//    public void addCard(Karte card) {
-//        drawnCards.add(card);
-//        if(imgCardView.getVisibility() == View.INVISIBLE)
-//            setCard(card, imgCardView);
-//        else if(imgCardView2.getVisibility()==View.INVISIBLE)
-//            setCard(card, imgCardView2);
-//        else if(imgCardView3.getVisibility()==View.INVISIBLE)
-//            setCard(card, imgCardView3);
-//        else if(imgCardView4.getVisibility()==View.INVISIBLE)
-//            setCard(card, imgCardView4);
-//    }
-
     private void setCard(Karte card, ImageView imgCardView) {
         imgCardView.setImageResource(card.getImage());
         imgCardView.setVisibility(View.VISIBLE);
@@ -250,29 +225,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         Random rand= new Random();
         return rand.nextInt(bound)+1;
     }
-
-//    public void setCardView(ImageView imgCardView){
-//        int index= getRandomNum(50);
-//        Karte card = inventar.getKartenList().get(index);
-//        if(!drawnCards.contains(card)){
-//            imgCardView.setImageResource(card.getImage());
-//            drawnCards.add(card);
-//            imgCardView.setVisibility(View.VISIBLE);
-//        }
-//        else
-//            setCardView(imgCardView);
-//    }
-
-//    public void cardHeben(){
-//        if(imgCardView.getVisibility() == View.INVISIBLE)
-//            setCardView(imgCardView);
-//        else if(imgCardView2.getVisibility()==View.INVISIBLE)
-//            setCardView(imgCardView2);
-//        else if(imgCardView3.getVisibility()==View.INVISIBLE)
-//            setCardView(imgCardView3);
-//        else if(imgCardView4.getVisibility()==View.INVISIBLE)
-//            setCardView(imgCardView4);
-//    }
 
     public void cardAbelegen(ImageView imgCard, ImageView imgField){
         imgField.setVisibility(View.VISIBLE);
