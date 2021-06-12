@@ -7,7 +7,6 @@ public class RassenKarte extends TürkarteImpl{
     public RassenKarte(){}
 
 
-
     //Konstruktor
     public RassenKarte(int image){
         super(image);

@@ -22,7 +22,6 @@ public class Kampf {
     *
     * und den kampf auswerten
     *
-    *
     * */
 
     //Variablen
@@ -53,7 +52,6 @@ public class Kampf {
     }
 
     public void kämpfen(){
-
         //ToDo Funktionalität verfeinern
         //Soll die Stärke des Player und die Stärke des Monster vergleichen
         //Stärke des Player = Playerlevel + Ausrüstung + ev Buffs, die auf Player gespielt wurden
@@ -63,6 +61,7 @@ public class Kampf {
 
         //Grundfunktionalität
         int stärkePlayer= currentPlayer.getPlayerLevel().getLevel() + currentPlayer.getPlayerAusrüstung().getLevelSum();
+
         if (stärkePlayer > monster.getMonsterLevel()){
             kampfGewonnen();
         }else{

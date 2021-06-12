@@ -8,8 +8,6 @@ public class Monsterkarte extends TürkarteImpl {
      */
     public Monsterkarte(){}
 
-
-
     //Variablen
     private int monsterLevel;
     private int anzahlSchätze;
@@ -53,7 +51,7 @@ public class Monsterkarte extends TürkarteImpl {
 
 
 
-    //Übernommen von MonsterCardsImpl
+ /*   //Übernommen von MonsterCardsImpl
     private  int badCategory;
 
     public void badStuff(int playerLevel, int badCategorym, int levelMinus) {
@@ -67,7 +65,6 @@ public class Monsterkarte extends TürkarteImpl {
                 playerLevel=0; //Dead
                 break;
             case 3:
-                //TODO money decrease
                 break;
 
         }
@@ -83,7 +80,7 @@ public class Monsterkarte extends TürkarteImpl {
         this.badCategory=badCategory;
     }
 
-
+*/
 
 
 }
