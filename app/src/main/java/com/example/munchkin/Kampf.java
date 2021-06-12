@@ -94,6 +94,7 @@ public class Kampf {
 
     void onKampfFinished()
     {
+        //Todo mehr als 5 cards? -> send per networking to weakest player
         Player.getLocalPlayer().setIstDran(false);
         GameClient.sendNextPlayerAnDerReihe();
         hideButtons();
