@@ -18,11 +18,8 @@ public class Level {
         level++;
         Log.i("lvl empfangen für: " + player.name, Integer.toString(level));
 
-        if(level >= 10){
-            if(SpielfeldActivity.getInstance() != null){
-                SpielfeldActivity.getInstance().notifyAboutWin();
-            }
-        }
+        checkIfWon();
+
         GameClient.sendPlayerLevel(player);
         Log.i("lvl", "SendPlayerLvlIncrease from lvl Player: " + player.name);
     }
@@ -34,12 +31,22 @@ public class Level {
         }
     }
 
+    void checkIfWon()
+    {
+        if(level >= 10){
+            if(SpielfeldActivity.getInstance() != null){
+                SpielfeldActivity.getInstance().notifyAboutWin();
+            }
+        }
+    }
+
     public int getLevel() {
         return level;
     }
 
     public void setLevel(int level) {
         this.level = level;
+        checkIfWon();
     }
 
     public void setPlayer(Player player) {
