@@ -11,20 +11,15 @@ public class Player extends PlayerData
     private static Player localPlayer;
 
     private PlayerAusrüstung playerAusrüstung;
-
-    //ToDo Player Icon
-    //ToDo setPlayerName()
     private Inventar inventar;
     private Level playerLevel;
     private int playerGold;
     private PlayerSideUI playerSideUI;
 
-    //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
-//    public static Boolean istDranAktiviert = true;
-
     public Player()
     {
         playerLevel = new Level();
+        playerLevel.setPlayer(this);
         inventar = new Inventar();
         istDran = false;
         playerAusrüstung = new PlayerAusrüstung();
@@ -103,12 +98,10 @@ public class Player extends PlayerData
     {
         this.playerSideUI = PlayerSideUI.getPlayerSideUI(getRelativePlayerBoardNumber());
         this.playerSideUI.showAll();
-        writeNameToTextView();
+        this.playerSideUI.initializeUI(this );
     }
 
-    public void writeNameToTextView()
-    {
-        if(playerSideUI != null)
-            playerSideUI.getTxtPlayerName().setText(name);
+    public boolean isLocal() {
+        return Player.getLocalPlayer().playerBoardNumber == playerBoardNumber;
     }
 }

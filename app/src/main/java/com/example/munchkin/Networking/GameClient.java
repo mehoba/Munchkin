@@ -50,22 +50,11 @@ public class GameClient
                                    if (object instanceof Network.NewPlayerJoined) {
                                        Network.NewPlayerJoined newPlayerJoinedClass = (Network.NewPlayerJoined) object;
 
-
                                        Lobby.newPlayerJoined(newPlayerJoinedClass.playerData);
-
-//                                       if (SpielfeldActivity.getInstance() != null)
-//                                           SpielfeldActivity.getInstance().setPlayerNames();
-
                                    }
 
                                    if (object instanceof Network.SyncLobbyForNewPlayer)
                                    {
-//                                       try {
-//                                           Thread.sleep(1000);
-//                                       } catch (InterruptedException e) {
-//                                           e.printStackTrace();
-//                                       }
-
                                        Network.SyncLobbyForNewPlayer syncLobbyForNewPlayerClass = (Network.SyncLobbyForNewPlayer)object;
 //                                       Player player = Lobby.getPlayer(syncLobbyForNewPlayerClass.localPlayerIndex);
 //                                       Player.setLocalPlayer(player);
@@ -91,7 +80,7 @@ public class GameClient
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(() -> {
                                            Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
-                                           Spielfeld.getMonsterKartenSlot().karteAblegen(karteAufMonsterSlotGelegt.karte);
+                                           Spielfeld.getMonsterKartenSlot().karteAblegenWithoutTrigger(karteAufMonsterSlotGelegt.karte);
                                        }
 
                                        );
@@ -102,7 +91,7 @@ public class GameClient
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(() -> {
                                            Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
-                                           Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufStapelAusgespieltGelegt.karte);
+                                           Spielfeld.getAusgespielteKartenSlot().karteAblegenWithoutTrigger(karteAufStapelAusgespieltGelegt.karte);
                                        }
 
                                        );

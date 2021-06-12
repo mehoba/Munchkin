@@ -1,6 +1,8 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
+import android.util.Log;
+
 import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 

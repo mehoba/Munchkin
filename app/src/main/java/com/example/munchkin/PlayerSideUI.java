@@ -29,11 +29,6 @@ public class PlayerSideUI {
         this.imgPlayerRasse = imgPlayerRasse;
         this.txtPlayerName = txtPlayerName;
 
-        imgPlayerIcon.setOnClickListener(view -> {
-            Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), PlayerPopActivity.class);
-            SpielfeldActivity.getInstance().startActivity(intent);
-        });
-
         //Nur für local Player [War vorher halt so] TODO: Rasse und Klasse View + Klasse implementieren
         if(index == 0)
         {
@@ -67,7 +62,14 @@ public class PlayerSideUI {
             imgPlayerRasse.setVisibility(View.VISIBLE);
             txtPlayerName.setVisibility(View.VISIBLE);
         });
+    }
 
+    void initializeUI(Player player)
+    {
+        imgPlayerIcon.setOnClickListener(view -> {
+            PlayerPopActivity.show(player);
+        });
+        txtPlayerName.setText(player.getName());
     }
 
     public void hideAll() {
