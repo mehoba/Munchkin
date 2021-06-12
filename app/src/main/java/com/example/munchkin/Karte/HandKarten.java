@@ -16,11 +16,11 @@ import java.util.List;
 public class HandKarten
 {
     private SpielfeldActivity spielfeldActivity;
-    private final List<KartenSlot> karten;
+    private final List<KartenSlot> kartenSlotList;
 
     public HandKarten()
     {
-        karten = new ArrayList<>();
+        kartenSlotList = new ArrayList<>();
     }
 
     public void initializeUIConnection()
@@ -28,12 +28,13 @@ public class HandKarten
         spielfeldActivity = SpielfeldActivity.getInstance();
     }
 
-    void onKartenSlotClicked(KartenSlot slot)
+    void onKartenSlotClicked(ListKartenSlot slot)
     {
         //Todo istDran temporär deaktiviert zum zeigen
-        if(/*!Player.istDranAktiviert ||*/ Player.getLocalPlayer().getIstDran())
+        if(/*!Player.istDranAktiviert ||*/ Player.getLocalPlayer().getIstDran() && !CardPopActivity_handkarten.istGeöffnet())
         {
-            CardPopActivity_handkarten.show(slot, this);
+            slot.setListIndex(getCardSlotIndex(slot));
+            CardPopActivity_handkarten.show(slot);
             //Spielfeld.getAusgespielteKartenSlot().karteAblegen(gehobeneKarte);
             //GameClient.sendKarteAufAbgelegtStapelGelegt(gehobeneKarte);
         }
@@ -44,11 +45,11 @@ public class HandKarten
     {
         ImageView imageView = new ImageView(spielfeldActivity.getBaseContext());
         imageView.setImageResource(karte.getImage());
-        KartenSlot kartenSlot = new KartenSlot(imageView);
-        kartenSlot.karteAblegen(karte);
-        imageView.setOnClickListener(view -> onKartenSlotClicked(kartenSlot));
+        ListKartenSlot listKartenSlot = new ListKartenSlot(imageView, this);
+        listKartenSlot.karteAblegen(karte);
+        imageView.setOnClickListener(view -> onKartenSlotClicked(listKartenSlot));
         spielfeldActivity.handcardLayout.addView(imageView, new ViewGroup.LayoutParams(154, 200));
-        karten.add(kartenSlot);
+        kartenSlotList.add(listKartenSlot);
     }
 
     public  void addKarte(Karte[] karten)
@@ -57,11 +58,11 @@ public class HandKarten
         {
             ImageView imageView = new ImageView(spielfeldActivity.getBaseContext());
             imageView.setImageResource(karten[i].getImage());
-            KartenSlot kartenSlot = new KartenSlot(imageView);
-            kartenSlot.karteAblegen(karten[i]);
-            imageView.setOnClickListener(view -> onKartenSlotClicked(kartenSlot));
+            ListKartenSlot listKartenSlot = new ListKartenSlot(imageView, this);
+            listKartenSlot.karteAblegen(karten[i]);
+            imageView.setOnClickListener(view -> onKartenSlotClicked(listKartenSlot));
             spielfeldActivity.handcardLayout.addView(imageView, new ViewGroup.LayoutParams(154, 200));
-            this.karten.add(kartenSlot);
+            this.kartenSlotList.add(listKartenSlot);
         }
     }
 
@@ -96,37 +97,42 @@ public class HandKarten
     {
         View v = spielfeldActivity.handcardLayout.getChildAt(index);
         spielfeldActivity.handcardLayout.removeView(v);
-        return karten.remove(index).getKarte();
+        return kartenSlotList.remove(index).getKarte();
     }
 
-    public Karte removePlayedKarte()
+    int getCardSlotIndex(ListKartenSlot listKartenSlot)
     {
-        boolean found = false;
-        int i;
-        for(i = 0; i < karten.size(); ++i) {
-            if(karten.get(i).getKarte() == null) {
-                found = true;
-                break;
-            }
-        }
-        if(found) {
-            return removeKarte(i);
-        } else {
-            return removeKarte(0);
-        }
+        return kartenSlotList.indexOf(listKartenSlot);
     }
 
-    public boolean checkIfNotMoreThan4()
-    {
-        if(countHandkarten() >= 4)
-        {
-            return false;
-        }
-        return true;
-    }
+//    public Karte removePlayedKarte()
+//    {
+//        boolean found = false;
+//        int i;
+//        for(i = 0; i < kartenSlotList.size(); ++i) {
+//            if(kartenSlotList.get(i).getKarte() == null) {
+//                found = true;
+//                break;
+//            }
+//        }
+//        if(found) {
+//            return removeKarte(i);
+//        } else {
+//            return removeKarte(0);
+//        }
+//    }
+
+//    public boolean checkIfNotMoreThan4()
+//    {
+//        if(countHandkarten() >= 4)
+//        {
+//            return false;
+//        }
+//        return true;
+//    }
 
     public int countHandkarten()
     {
-        return karten.size();
+        return kartenSlotList.size();
     }
 }
