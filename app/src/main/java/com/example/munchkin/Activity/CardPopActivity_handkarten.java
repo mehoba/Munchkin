@@ -54,7 +54,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
         Karte karte = listKartenSlot.karteHeben();
 
         if(karte instanceof Schatzkarte) {
-            GameClient.sendKarteAufAblagestapelGelegt(karte);
+            //GameClient.sendKarteAufAblagestapelGelegt(karte);
             Player.getLocalPlayer().addGold(((Schatzkarte) karte).getGoldwert());
             //listKartenSlot.getHandKarten().removeKarte(listKartenSlot.getListIndex());
             finish();
