@@ -8,6 +8,7 @@ public class SchatzkarteImpl implements Schatzkarte {
     private int goldwert;
     private int image;
 
+
     //Konstruktor
     public SchatzkarteImpl(int image, int goldwert){
         this.image = image;

@@ -130,6 +130,16 @@ public class GameClient
                                                                                 }
                                        );
                                    }
+                                   if(object instanceof Network.KarteZuSpieler)
+                                   {
+                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
+                                           @Override
+                                           public void run() {
+                                               Network.KarteZuSpieler karteZuSpieler = (Network.KarteZuSpieler) object;
+                                               Lobby.getPlayer(karteZuSpieler.playerIndex).getInventar().getHandKarten().addKarte(karteZuSpieler.karte);
+                                           }
+                                       });
+                                   }
                                }
                            }
         );
@@ -232,6 +242,19 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(nächsterSpielerAnDerReihe);
+            }
+        }.start();
+    }
+
+    public static void sendKarteZuSpieler(Karte karte, Player player) {
+        Network.KarteZuSpieler karteZuSpieler = new Network.KarteZuSpieler();
+        karteZuSpieler.karte = karte;
+        karteZuSpieler.playerIndex = player.getPlayerBoardNumber();
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(karteZuSpieler);
             }
         }.start();
     }

@@ -6,6 +6,8 @@ public class Rüstungskarte extends SchatzkarteImpl{
     //Please DONT use this Konstruktor - it is needed for Networking
     public Rüstungskarte(){}
 
+
+
     //Variablen
     private BodyPart bodyPart;
     private int sizeOfBonus;
@@ -22,6 +24,7 @@ public class Rüstungskarte extends SchatzkarteImpl{
         this.sizeOfArmor = sizeOfArmor;
 
         this.isGroß=false;  //Standartmäßig sind gegenstände klein
+
     }
 
     public Rüstungskarte(int image, int goldwert, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart, boolean isGroß){

@@ -1,9 +1,8 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 
-import com.example.munchkin.Player;
-
 public class Buffkarte extends SchatzkarteImpl{
+
 
     //Please DONT use this Konstruktor - it is needed for Networking
     public Buffkarte(){}

@@ -6,6 +6,8 @@ public class Monsterkarte extends TürkarteImpl {
     //Please DONT use this Konstruktor - it is needed for Networking
     public Monsterkarte(){}
 
+
+
     //Variablen
     private int monsterLevel;
     private int anzahlSchätze;

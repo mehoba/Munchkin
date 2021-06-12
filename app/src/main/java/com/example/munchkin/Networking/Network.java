@@ -85,4 +85,10 @@ public class Network
     {
         public Karte karte;
     }
+
+    static public class KarteZuSpieler
+    {
+        public int playerIndex;
+        public Karte karte;
+    }
 }
