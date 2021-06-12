@@ -1,10 +1,13 @@
 package com.example.munchkin.Networking;
 
+import android.widget.Toast;
+
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
 import com.example.munchkin.Activity.MainActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.GamePhase;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
@@ -73,6 +76,17 @@ public class GameClient
                                    {
                                        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = (Network.NächsterSpielerAnDerReihe)object;
                                        nächsterSpielderIstAnDerReihe(nächsterSpielerAnDerReihe.playerBoardNumber);
+                                       Player spielerAnDerReihe = Lobby.getPlayer(nächsterSpielerAnDerReihe.playerBoardNumber);
+                                       if(spielerAnDerReihe != null && SpielfeldActivity.getInstance() != null)
+                                       {
+                                           SpielfeldActivity.getInstance().runOnUiThread(new Runnable() {
+                                               @Override
+                                               public void run() {
+                                                   String text = "Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe";
+                                                   Toast.makeText(SpielfeldActivity.getInstance(), text, Toast.LENGTH_SHORT).show();
+                                               }
+                                           });
+                                       }
                                    }
 
                                    if(object instanceof Network.KarteAufMonsterSlotGelegt)
@@ -102,13 +116,12 @@ public class GameClient
 
                                        );
                                    }
-                                   if(object instanceof Network.KarteAufAblagestapelGelegt)
-                                   {
+                                   if(object instanceof Network.KarteAufAblagestapelGelegt) {
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(new Runnable() {
                                                                                     @Override
                                                                                     public void run() {
-                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt) object;
                                                                                         Karte karte = karteAufAblagestapelGelegt.karte;
                                                                                         if (karte instanceof Schatzkarte) {
                                                                                             Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
@@ -140,6 +153,7 @@ public class GameClient
         {
             //Ich bin dran
             Player.getLocalPlayer().setIstDran(true);
+            GamePhase.setPhase(GamePhase.Phase.vorbereitungsPhase);
         }
         else
         {
@@ -216,6 +230,20 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(karteAufMonsterSlotGelegt);
+            }
+        }.start();
+    }
+
+    public static void sendNextPlayerAnDerReihe()
+    {
+        Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = new Network.NächsterSpielerAnDerReihe();
+        nächsterSpielerAnDerReihe.playerBoardNumber = Player.getLocalPlayer().getPlayerBoardNumber();
+
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(nächsterSpielerAnDerReihe);
             }
         }.start();
     }

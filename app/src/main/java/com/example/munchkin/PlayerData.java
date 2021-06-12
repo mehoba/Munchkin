@@ -57,6 +57,6 @@ public class PlayerData
 
     public void setIstDran(Boolean istDran) {
         this.istDran = istDran;
-        //Todo lock or unlock player
+        //Todo lock or unlock player, Buttons unlocken(if locked) etc...
     }
 }

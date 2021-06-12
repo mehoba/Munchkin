@@ -93,6 +93,24 @@ public class Lobby
         return playerNamesList;
     }
 
+    //Returns the next Player which is not null. If only one player is in the lobby, return the same player
+    public static Player getNextPlayer(Player player)
+    {
+        Player[] players = instance.players;
+
+        for(int i = 1; i < players.length; i++)
+        {
+            int nextPlayerIndex = (i + player.getPlayerBoardNumber()) % players.length;
+            if(players[nextPlayerIndex] != null)
+            {
+                return players[nextPlayerIndex];
+            }
+        }
+
+        //Solo game
+        return player;
+    }
+
     public static void newPlayerJoined(PlayerData newPlayer)
     {
         addPlayer(newPlayer);

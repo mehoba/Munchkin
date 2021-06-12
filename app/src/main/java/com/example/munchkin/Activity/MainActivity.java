@@ -49,13 +49,7 @@ public class MainActivity extends AppCompatActivity
 
         new Lobby();
 
-        //Start Client
-        //--------------------------------
-        //Comment this line if you want to debug without Server
-        //gameClient = new GameClient();
-        //--------------------------------
-
-
+        gameClient = new GameClient();
     }
 
     private void spielen(View view)

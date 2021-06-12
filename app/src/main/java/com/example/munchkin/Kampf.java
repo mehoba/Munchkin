@@ -5,6 +5,7 @@ import android.view.View;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
+import com.example.munchkin.Networking.GameClient;
 
 public class Kampf {
     /*
@@ -28,11 +29,11 @@ public class Kampf {
 
 
     public Kampf(Player currentPlayer, Monsterkarte monster){
-        this.currentPlayer=currentPlayer;
-        this.monster=monster;
+        this.currentPlayer = currentPlayer;
+        this.monster = monster;
 
-        SpielfeldActivity.getInstance().imgButtonKämpfen.setVisibility(View.VISIBLE);
-        SpielfeldActivity.getInstance().imgButtonWeglaufen.setVisibility(View.VISIBLE);
+        GamePhase.setPhase(GamePhase.Phase.kampfPhase);
+        showButtons();
 
         SpielfeldActivity.getInstance().imgButtonKämpfen.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,7 +61,7 @@ public class Kampf {
 
         //Grundfunktionalität
         if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
-            kampfGewonnen();
+            kampfGewonnen();//Todo Ausrüstungslevel dazu zählen -> Vorher Ausrüstung ausimplementieren
         }else{
             weglaufen();
         }
@@ -74,6 +75,9 @@ public class Kampf {
             //und die entsprechende Anzahl von Schatzkarten gezogen werden
             currentPlayer.getInventar().getHandKarten().addKarte(Schatzkarte.getRandomSchatzkarte());
         }
+
+        GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
+        onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
     }
 
     public void weglaufen(){
@@ -84,6 +88,28 @@ public class Kampf {
             monster.schlimmeDinge();
         }
         //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
+
+       onKampfFinished();
+    }
+
+    void onKampfFinished()
+    {
+        //Todo mehr als 5 cards? -> send per networking to weakest player
+        Player.getLocalPlayer().setIstDran(false);
+        GameClient.sendNextPlayerAnDerReihe();
+        hideButtons();
+    }
+
+    void hideButtons()
+    {
+        SpielfeldActivity.getInstance().imgButtonKämpfen.setVisibility(View.INVISIBLE );
+        SpielfeldActivity.getInstance().imgButtonWeglaufen.setVisibility(View.INVISIBLE);
+    }
+
+    void showButtons( )
+    {
+        SpielfeldActivity.getInstance().imgButtonKämpfen.setVisibility(View.VISIBLE);
+        SpielfeldActivity.getInstance().imgButtonWeglaufen.setVisibility(View.VISIBLE);
     }
 
 }
