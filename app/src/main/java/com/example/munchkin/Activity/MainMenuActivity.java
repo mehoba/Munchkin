@@ -21,31 +21,19 @@ public class MainMenuActivity extends AppCompatActivity {
         menuexit=findViewById(R.id.menuexitbutton);
         menueinstellungen=findViewById(R.id.menusettingsbutton);
 
-        menueinstellungen.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), SettingsActivity.class);
-                startActivity(intent);
-            }
+        menueinstellungen.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(), SettingsActivity.class);
+            startActivity(intent);
         });
 
-        menuspielen.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                Intent i=new Intent(getApplicationContext(), SpielfeldActivity.class);
-                startActivity(i);
-            }
+        menuspielen.setOnClickListener(v -> {
+            Intent i=new Intent(getApplicationContext(), SpielfeldActivity.class);
+            startActivity(i);
         });
 
-        menuexit.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v) {
-                finish();
-                System.exit(1);
-            }
+        menuexit.setOnClickListener(v -> {
+            finish();
+            System.exit(1);
         });
     }
 }

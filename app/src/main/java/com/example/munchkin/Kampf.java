@@ -1,6 +1,7 @@
 package com.example.munchkin;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
@@ -63,12 +64,11 @@ public class Kampf {
         if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
             kampfGewonnen();//Todo Ausrüstungslevel dazu zählen -> Vorher Ausrüstung ausimplementieren
         }else{
-            weglaufen();
+           kampfVerloren();
         }
     }
 
     public void kampfGewonnen(){
-
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
         for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
@@ -78,6 +78,11 @@ public class Kampf {
 
         GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
         onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
+    }
+
+    void kampfVerloren()
+    {
+        weglaufen();
     }
 
     public void weglaufen(){
