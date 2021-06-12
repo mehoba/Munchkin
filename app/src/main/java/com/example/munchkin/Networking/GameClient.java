@@ -117,11 +117,11 @@ public class GameClient
                                            Lobby.getPlayer(karteZuSpieler.playerIndex).getInventar().getHandKarten().addKarte(karteZuSpieler.karte);
                                        });
                                    }
-                                   if (object instanceof Network.PlayerLvlIncrease)
+                                   if (object instanceof Network.PlayerLevel)
                                    {
-                                       Network.PlayerLvlIncrease playerLvlIncrease = (Network.PlayerLvlIncrease)object;
-                                       PlayerData playerData = playerLvlIncrease.playerData;
-                                       Lobby.getPlayer(playerData.getPlayerBoardNumber()).getPlayerLevel().levelIncreaseFromServer();
+                                       Network.PlayerLevel playerLevel = (Network.PlayerLevel)object;
+                                       PlayerData playerData = playerLevel.playerData;
+                                       Lobby.getPlayer(playerData.getPlayerBoardNumber()).getPlayerLevel().setLevel(playerLevel.level);
                                    }
                                }
                            }
@@ -242,15 +242,16 @@ public class GameClient
         }.start();
     }
 
-    public static void sendPlayerLvlIncrease(Player player)
+    public static void sendPlayerLevel(Player player)
     {
-        Network.PlayerLvlIncrease playerLvlIncrease = new Network.PlayerLvlIncrease();
-        playerLvlIncrease.playerData = PlayerData.convertToPlayerData(player);
+        Network.PlayerLevel playerLevel = new Network.PlayerLevel();
+        playerLevel.playerData = PlayerData.convertToPlayerData(player);
+        playerLevel.level = player.getPlayerLevel().getLevel();
         new Thread("thread")
         {
             public void run ()
             {
-                getInstance().client.sendTCP(playerLvlIncrease);
+                getInstance().client.sendTCP(playerLevel);
             }
         }.start();
     }

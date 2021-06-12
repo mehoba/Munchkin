@@ -1,10 +1,8 @@
 package com.example.munchkin;
 
-import android.content.Intent;
 import android.util.Log;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
-import com.example.munchkin.Activity.WinnerPopActivity;
 import com.example.munchkin.Networking.GameClient;
 
 public class Level {
@@ -17,12 +15,6 @@ public class Level {
     }
 
     public void levelIncrease(){
-        GameClient.sendPlayerLvlIncrease(player);
-        Log.i("lvl", "SendPlayerLvlIncrease from lvl Player: " + player.name);
-    }
-
-    public void levelIncreaseFromServer()
-    {
         level++;
         Log.i("lvl empfangen für: " + player.name, Integer.toString(level));
 
@@ -31,11 +23,14 @@ public class Level {
                 SpielfeldActivity.getInstance().notifyAboutWin();
             }
         }
+        GameClient.sendPlayerLevel(player);
+        Log.i("lvl", "SendPlayerLvlIncrease from lvl Player: " + player.name);
     }
 
     public void levelDecrease(){
         if (level !=1){
             level --;
+            GameClient.sendPlayerLevel(player);
         }
     }
 
