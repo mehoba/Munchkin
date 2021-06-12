@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.example.munchkin.GamePhase;
 import com.example.munchkin.Kampf;
+import com.example.munchkin.Karte.KartenTypen.Fluchkarte;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Türkarte;
 import com.example.munchkin.Networking.GameClient;
@@ -12,6 +13,7 @@ import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
 public class TürkartenStapel extends KartenSlot {
+    private int anzahlGezogen=0; //um zu unterscheiden was passieren soll wenn Karten gezogen werden
 
     public TürkartenStapel(ImageView kartenImageView) {
         super(kartenImageView);
@@ -41,21 +43,31 @@ public class TürkartenStapel extends KartenSlot {
 
     void onTürkartenStapelClicked()//Todo heben implementieren
     {
-        if(GamePhase.getPhase() != GamePhase.Phase.vorbereitungsPhase || !Player.getLocalPlayer().getIstDran())
+        if(GamePhase.getPhase() != GamePhase.Phase.vorbereitungsPhase || !Player.getLocalPlayer().getIstDran() || anzahlGezogen>=2)
             return;
 
         Karte gehobeneKarte = getKarte();
         gehobeneKarte.onKarteGehoben();
 
-        if(gehobeneKarte instanceof Monsterkarte)
-        {
+        if(gehobeneKarte instanceof Monsterkarte && anzahlGezogen==0) {
             Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
             GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
             new Kampf(Player.getLocalPlayer(), (Monsterkarte)gehobeneKarte);
+            anzahlGezogen++;
+        }
+        else if (gehobeneKarte instanceof Fluchkarte && anzahlGezogen==0){
+            Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
+            GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
+            anzahlGezogen++;
         }
         else
         {
             Player.getLocalPlayer().getInventar().getHandKarten().addKarte(gehobeneKarte);
+            anzahlGezogen++;
         }
+    }
+
+    public void resetAnzahlGezogen(){
+        anzahlGezogen=0;
     }
 }
