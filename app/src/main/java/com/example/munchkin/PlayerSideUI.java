@@ -29,31 +29,22 @@ public class PlayerSideUI {
         this.imgPlayerRasse = imgPlayerRasse;
         this.txtPlayerName = txtPlayerName;
 
-        imgPlayerIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), PlayerPopActivity.class);
-                SpielfeldActivity.getInstance().startActivity(intent);
-            }
+        imgPlayerIcon.setOnClickListener(view -> {
+            Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), PlayerPopActivity.class);
+            SpielfeldActivity.getInstance().startActivity(intent);
         });
 
         //Nur für local Player [War vorher halt so] TODO: Rasse und Klasse View + Klasse implementieren
         if(index == 0)
         {
-            imgPlayerRasse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
-                    SpielfeldActivity.getInstance().startActivity(intent);
-                }
+            imgPlayerRasse.setOnClickListener(view -> {
+                Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
+                SpielfeldActivity.getInstance().startActivity(intent);
             });
 
-            imgPlayerKlasse.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
-                    SpielfeldActivity.getInstance().startActivity(intent);
-                }
+            imgPlayerKlasse.setOnClickListener(view -> {
+                Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
+                SpielfeldActivity.getInstance().startActivity(intent);
             });
         }
     }
