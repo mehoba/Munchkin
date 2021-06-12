@@ -120,8 +120,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783"
-        app:srcCompat="@drawable/spielfeldui_klasseicon" />
+        app:srcCompat="@drawable/spielfeldui_klasseicon" /><![CDATA[
     app:srcCompat="@drawable/dices" />
+
+
+
+    ]]>
 
     <ImageView
         android:id="@+id/player1_rasseicon"
@@ -129,10 +133,10 @@
         android:layout_height="55dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.979"
+        app:layout_constraintHorizontal_bias="0.978"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
+        app:layout_constraintVertical_bias="0.97"
         app:srcCompat="@drawable/spielfeldui_rasseicon" />
 
     <ImageView
