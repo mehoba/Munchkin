@@ -78,6 +78,12 @@ public class GameServer
 
                     server.sendToAllTCP(nächsterSpielerAnDerReihe);
                 }
+                if (object instanceof Network.PlayerLvlIncrease)
+                {
+                    Network.PlayerLvlIncrease playerLvlIncrease = (Network.PlayerLvlIncrease)object;
+                    server.sendToAllTCP(playerLvlIncrease);
+                    Log.i("lvl", "SendPlayerLvlIncrease from lvl Player: " + playerLvlIncrease.playerData.getName());
+                }
             }
 
             @Override

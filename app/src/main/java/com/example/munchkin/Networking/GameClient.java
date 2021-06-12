@@ -11,6 +11,7 @@ import com.example.munchkin.GamePhase;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
+import com.example.munchkin.PlayerData;
 import com.example.munchkin.Spielfeld;
 
 import java.io.IOException;
@@ -115,6 +116,12 @@ public class GameClient
                                            Network.KarteZuSpieler karteZuSpieler = (Network.KarteZuSpieler) object;
                                            Lobby.getPlayer(karteZuSpieler.playerIndex).getInventar().getHandKarten().addKarte(karteZuSpieler.karte);
                                        });
+                                   }
+                                   if (object instanceof Network.PlayerLvlIncrease)
+                                   {
+                                       Network.PlayerLvlIncrease playerLvlIncrease = (Network.PlayerLvlIncrease)object;
+                                       PlayerData playerData = playerLvlIncrease.playerData;
+                                       Lobby.getPlayer(playerData.getPlayerBoardNumber()).getPlayerLevel().levelIncreaseFromServer();
                                    }
                                }
                            }
@@ -231,6 +238,19 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(karteZuSpieler);
+            }
+        }.start();
+    }
+
+    public static void sendPlayerLvlIncrease(Player player)
+    {
+        Network.PlayerLvlIncrease playerLvlIncrease = new Network.PlayerLvlIncrease();
+        playerLvlIncrease.playerData = PlayerData.convertToPlayerData(player);
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(playerLvlIncrease);
             }
         }.start();
     }

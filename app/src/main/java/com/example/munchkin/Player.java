@@ -19,7 +19,6 @@ public class Player extends PlayerData
     public Player()
     {
         playerLevel = new Level();
-        playerLevel.setPlayer(this);
         inventar = new Inventar();
         istDran = false;
         playerAusrüstung = new PlayerAusrüstung();
@@ -33,6 +32,7 @@ public class Player extends PlayerData
         this.playerBoardNumber = playerData.playerBoardNumber;
 
         playerLevel = new Level();
+        playerLevel.setPlayer(this);
         inventar = new Inventar();
         istDran = false;
         playerAusrüstung = new PlayerAusrüstung();

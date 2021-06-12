@@ -5,6 +5,8 @@ import android.util.Log;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Activity.WinnerPopActivity;
+import com.example.munchkin.Networking.GameClient;
+
 public class Level {
 
     private int level;
@@ -15,8 +17,15 @@ public class Level {
     }
 
     public void levelIncrease(){
+        GameClient.sendPlayerLvlIncrease(player);
+        Log.i("lvl", "SendPlayerLvlIncrease from lvl Player: " + player.name);
+    }
+
+    public void levelIncreaseFromServer()
+    {
         level++;
-        Log.i("Lvl", Integer.toString(level));
+        Log.i("lvl empfangen für: " + player.name, Integer.toString(level));
+
         if(level >= 10){
             if(SpielfeldActivity.getInstance() != null){
                 SpielfeldActivity.getInstance().notifyAboutWin();
