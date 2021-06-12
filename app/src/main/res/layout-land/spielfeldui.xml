@@ -159,19 +159,6 @@
         app:srcCompat="@drawable/spielfeldui_backbutton" />
 
     <ImageView
-        android:id="@+id/spielfeldui_doorcard"
-        android:layout_width="103dp"
-        android:layout_height="117dp"
-        android:rotation="-90"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.321"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
-        app:srcCompat="@drawable/spielfeldui_doorcard" />
-
-    <ImageView
         android:id="@+id/ausgespielteKartenSlot"
         android:layout_width="78dp"
         android:layout_height="79dp"
@@ -179,10 +166,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
+        app:layout_constraintVertical_bias="0.63"
         app:srcCompat="@drawable/empty_card" />
 
     <ImageView
@@ -192,10 +179,10 @@
         android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.769"
+        app:layout_constraintHorizontal_bias="0.735"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.489"
+        app:layout_constraintVertical_bias="0.449"
         app:srcCompat="@drawable/spielfeldui_treasurecard" />
 
     <ImageView
@@ -206,10 +193,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.609"
+        app:layout_constraintHorizontal_bias="0.576"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
+        app:layout_constraintVertical_bias="0.343"
         app:srcCompat="@drawable/empty_card" />
 
     <ImageView
@@ -220,10 +207,10 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.433"
+        app:layout_constraintVertical_bias="0.343"
         app:srcCompat="@drawable/empty_card" />
 
     <ImageView
@@ -234,11 +221,24 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.479"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.671"
+        app:layout_constraintVertical_bias="0.63"
         app:srcCompat="@drawable/empty_card" />
+
+    <ImageView
+        android:id="@+id/spielfeldui_doorcard"
+        android:layout_width="103dp"
+        android:layout_height="117dp"
+        android:rotation="-90"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.286"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.449"
+        app:srcCompat="@drawable/spielfeldui_doorcard" />
 
     <ImageView
         android:id="@+id/spielfeldui_player1icon"
@@ -405,7 +405,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.827"
-        app:srcCompat="@drawable/mainmenu_button" />
+        app:srcCompat="@drawable/spielfeldui_kämpfenButton" />
 
     <ImageView
         android:id="@+id/imgButtonWeglaufen"
@@ -418,7 +418,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
-        app:srcCompat="@drawable/mainmenu_button" />
+        app:srcCompat="@drawable/spielfeldui_weglaufenButton" />
     <HorizontalScrollView
         android:id="@+id/spielfeldui_handcards"
         android:layout_width="329dp"
