@@ -1,11 +1,14 @@
 package com.example.munchkin.Karte.KartenTypen;
 
+import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Player;
+import com.example.munchkin.Spielfeld;
 
 public class Fluchkarte extends TürkarteImpl {
-    //Please DONT use this Konstruktor - it is needed for Networking
+    /**
+     * Please DONT use this Konstruktor - it is needed for Networking
+     */
     public Fluchkarte(){}
-
 
     //Variablen
     private int amountLostLevel;
@@ -14,15 +17,16 @@ public class Fluchkarte extends TürkarteImpl {
     public Fluchkarte(int image, int amountLostLevel){
         super(image);
         this.amountLostLevel=amountLostLevel;
-
     }
 
     @Override
-    public void onKarteGehoben() {
-        super.onKarteGehoben();
+    public void onkarteAusgespielt() {
+        super.onkarteAusgespielt();
         for (int i=0; i < getAmountLostLevel(); i++){
             Player.getLocalPlayer().getPlayerLevel().levelDecrease();
         }
+        Karte karte = Spielfeld.getMonsterKartenSlot().karteHeben();
+        Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
     }
 
     //Methoden
