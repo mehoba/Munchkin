@@ -29,11 +29,6 @@ public class SpielfeldActivity extends AppCompatActivity {
     public ImageView imgButtonKämpfen, imgButtonWeglaufen;
     private ImageView imgDoorcard, imgBackpack;
 
-//    public ImageView imgSpieler1Icon, imgSpieler2Icon, imgSpieler3Icon, imgSpieler4Icon;
-//    public TextView txtSpieler1Name, txtSpieler2Name, txtSpieler3Name, txtSpieler4Name;
-//    public ImageView imgSpieler1Klasse, imgSpieler2Klasse, imgSpieler3Klasse, imgSpieler4Klasse;
-//    public ImageView imgSpieler1Rasse, imgSpieler2Rasse, imgSpieler3Rasse, imgSpieler4Rasse;
-
     private TextView[] txtPlayerCountdowns = new TextView[4];
     public LinearLayout handcardLayout;
 
@@ -65,44 +60,29 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
 
-        imgBackpack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
-                startActivity(intent);
-            }
+        imgBackpack.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
+            startActivity(intent);
         });
 
-        imgDoorcard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
-                startActivity(intent);
-            }
+        imgDoorcard.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
+            startActivity(intent);
         });
 
-        imgBackbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),MainMenuActivity.class);
-                startActivity(intent);
-            }
+        imgBackbtn.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(),MainMenuActivity.class);
+            startActivity(intent);
         });
 
-        imgSettings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),PopActivity.class);
-                startActivity(intent);
-            }
+        imgSettings.setOnClickListener(view -> {
+            Intent intent=new Intent(getApplicationContext(),PopActivity.class);
+            startActivity(intent);
         });
 
-        imgDice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i=new Intent(getApplicationContext(),DiceActivity.class);
-                startActivity(i);
-            }
+        imgDice.setOnClickListener(view -> {
+            Intent i=new Intent(getApplicationContext(),DiceActivity.class);
+            startActivity(i);
         });
 
        /* playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
@@ -160,10 +140,13 @@ public class SpielfeldActivity extends AppCompatActivity {
         new PlayerSideUI(imgSpielerIcon, imgSpielerKlasse, imgSpielerRasse, txtSpielerName, 3);
     }
 
-    private void setCard(Karte card, ImageView imgCardView) {
-        imgCardView.setImageResource(card.getImage());
-        imgCardView.setVisibility(View.VISIBLE);
-    }
+
+    //Todo: Pls löschen, wenn nicht mehr gebraucht
+// -----------------------------------------------------------------
+//    private void setCard(Karte card, ImageView imgCardView) {
+//        imgCardView.setImageResource(card.getImage());
+//        imgCardView.setVisibility(View.VISIBLE);
+//    }
 
     // Returns a random number from 1 to bound (inclusive)
     private int getRandomNum(int bound){
@@ -171,12 +154,12 @@ public class SpielfeldActivity extends AppCompatActivity {
         return rand.nextInt(bound)+1;
     }
 
-    public void cardAbelegen(ImageView imgCard, ImageView imgField){
-        imgField.setVisibility(View.VISIBLE);
-        imgField.setImageDrawable(imgCard.getDrawable());
-        imgCard.setVisibility(View.INVISIBLE);
-    }
-
+//    public void cardAbelegen(ImageView imgCard, ImageView imgField){
+//        imgField.setVisibility(View.VISIBLE);
+//        imgField.setImageDrawable(imgCard.getDrawable());
+//        imgCard.setVisibility(View.INVISIBLE);
+//    }
+//-----------------------------------------------------------------
     public void setPlayerNames()
     {
         if(Lobby.getInstance() == null)
