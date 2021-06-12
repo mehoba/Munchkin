@@ -70,6 +70,14 @@ public class GameServer
                     Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
                     server.sendToAllExceptTCP(connection.getID(), karteAufAblagestapelGelegt);
                 }
+                if (object instanceof Network.NächsterSpielerAnDerReihe)
+                {
+                    Network.NächsterSpielerAnDerReihe nächsterSpielerAnDerReihe = (Network.NächsterSpielerAnDerReihe)object;
+                    Player playerNow = Lobby.getPlayer(nächsterSpielerAnDerReihe.playerBoardNumber);
+                    nächsterSpielerAnDerReihe.playerBoardNumber = Lobby.getNextPlayer(playerNow).getPlayerBoardNumber();
+
+                    server.sendToAllTCP(nächsterSpielerAnDerReihe);
+                }
             }
 
             @Override

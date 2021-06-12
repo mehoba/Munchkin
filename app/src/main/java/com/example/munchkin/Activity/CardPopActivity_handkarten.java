@@ -8,58 +8,55 @@ import android.widget.ImageView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenSlot;
-import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
+import com.example.munchkin.Karte.ListKartenSlot;
 import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Player;
 import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
 
 public class CardPopActivity_handkarten extends AppCompatActivity {
-    private static KartenSlot kartenSlot;
-    private static KartenSlot gehobenVonKartenSlot;
-    private static HandKarten sourceKarten;
+    private static KartenSlot kartenSlotUI;//Only for UI. Should have no logic. Shows the image from listKartenSlot
+    private static ListKartenSlot listKartenSlot;
 
+    private static CardPopActivity_handkarten cardPopActivity_handkarten;
 
-    public static void show(KartenSlot gehobenVonKartenSlot, HandKarten sourceKarten) {
-        CardPopActivity_handkarten.gehobenVonKartenSlot = gehobenVonKartenSlot;
-        CardPopActivity_handkarten.sourceKarten = sourceKarten;
+    public static void show(ListKartenSlot gehobenVonKartenSlot) {
+        CardPopActivity_handkarten.listKartenSlot = gehobenVonKartenSlot;
 
         Intent intentCardPopActivity = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), CardPopActivity_handkarten.class);
         SpielfeldActivity.getInstance().startActivity(intentCardPopActivity);
     }
 
-
     void onBtnAusspielenClicked() {
-        Karte karte = gehobenVonKartenSlot.karteHeben();
+        Karte karte = listKartenSlot.karteHeben();
         Spielfeld.getAusgespielteKartenSlot().karteAblegen(karte);
         GameClient.sendKarteAutStapelAusgespieltGelegt(karte);
-        sourceKarten.removePlayedKarte();
+        //gehobenVonKartenSlot.getHandKarten().removeKarte(gehobenVonKartenSlot.getListIndex());
         finish();
     }
 
     void onBtnAblegenClicked() {
-        Karte karte = gehobenVonKartenSlot.karteHeben();
+        Karte karte = listKartenSlot.karteHeben();
         if (karte instanceof Schatzkarte) {
             Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
         } else {
             Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
         }
         GameClient.sendKarteAufAblagestapelGelegt(karte);
-        sourceKarten.removePlayedKarte();
+        //gehobenVonKartenSlot.getHandKarten().removeKarte(gehobenVonKartenSlot.getListIndex());
         finish();
     }
 
     void onBtnVerkaufenClicked() {
-        Karte karte = gehobenVonKartenSlot.karteHeben();
+        Karte karte = listKartenSlot.karteHeben();
 
         if(karte instanceof Schatzkarte) {
-            GameClient.sendKarteAufAblagestapelGelegt(karte);
+            //GameClient.sendKarteAufAblagestapelGelegt(karte);
             Player.getLocalPlayer().addGold(((Schatzkarte) karte).getGoldwert());
-            sourceKarten.removePlayedKarte();
+            //listKartenSlot.getHandKarten().removeKarte(listKartenSlot.getListIndex());
             finish();
         }
     }
@@ -69,6 +66,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        cardPopActivity_handkarten = this;
         setContentView(R.layout.cardpopview_handkarten);
 
         DisplayMetrics dm = new DisplayMetrics();
@@ -79,8 +77,8 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
 
         getWindow().setLayout((int) (width * 0.78), (int) (height * 0.78));
 
-        kartenSlot = new KartenSlot(findViewById(R.id.cardpopView_handkarten_imgView));
-        kartenSlot.setImageWithoutKarteAblegen(gehobenVonKartenSlot.getKarte());
+        kartenSlotUI = new KartenSlot(findViewById(R.id.cardpopView_handkarten_imgView));
+        kartenSlotUI.setImageWithoutKarteAblegen(listKartenSlot.getKarte());
         ImageView imgButtonAblegen = findViewById(R.id.cardpopup_btnAblegen);
         ImageView imgButtonAusspielen = findViewById(R.id.cardpopup_btnAusspielen);
         ImageView imgButtonVerkaufen = findViewById(R.id.treasurecardpopup_btnverkaufen);
@@ -105,10 +103,25 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
                 onBtnVerkaufenClicked();
             }
         });
-        if(Player.getLocalPlayer().getPlayerLevel().getLevel() >= 9 || !(gehobenVonKartenSlot.getKarte() instanceof Schatzkarte)) {
+        if(Player.getLocalPlayer().getPlayerLevel().getLevel() >= 9 || !(listKartenSlot.getKarte() instanceof Schatzkarte)) {
             imgButtonVerkaufen.setVisibility(View.INVISIBLE);
         } else {
             imgButtonVerkaufen.setVisibility(View.VISIBLE);
         }
+    }
+
+    public static boolean istGeöffnet()
+    {
+        return getInstance() != null;
+    }
+
+    private static CardPopActivity_handkarten getInstance() {
+        return cardPopActivity_handkarten;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cardPopActivity_handkarten = null;
     }
 }
