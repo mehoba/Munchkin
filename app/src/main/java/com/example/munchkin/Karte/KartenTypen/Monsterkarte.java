@@ -3,7 +3,9 @@ package com.example.munchkin.Karte.KartenTypen;
 import com.example.munchkin.Player;
 
 public class Monsterkarte extends TürkarteImpl {
-    //Please DONT use this Konstruktor - it is needed for Networking
+    /**
+     * Please DONT use this Konstruktor - it is needed for Networking
+     */
     public Monsterkarte(){}
 
 

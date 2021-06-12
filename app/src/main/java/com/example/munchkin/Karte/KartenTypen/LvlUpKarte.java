@@ -6,7 +6,9 @@ import com.example.munchkin.Player;
 import com.example.munchkin.Spielfeld;
 
 public class LvlUpKarte extends SchatzkarteImpl {
-    //Please DONT use this Konstruktor - it is needed for Networking
+    /**
+     * Please DONT use this Konstruktor - it is needed for Networking
+     */
     public LvlUpKarte(){}
 
 

@@ -3,7 +3,9 @@ package com.example.munchkin.Karte.KartenTypen;
 import com.example.munchkin.Karte.BodyPart;
 
 public class Rüstungskarte extends SchatzkarteImpl{
-    //Please DONT use this Konstruktor - it is needed for Networking
+    /**
+     * Please DONT use this Konstruktor - it is needed for Networking
+     */
     public Rüstungskarte(){}
 
 
