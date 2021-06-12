@@ -49,6 +49,13 @@ public class PlayerSideUI {
         }
     }
 
+    public static void hideAllSidesExceptLocal()
+    {
+        playerSideUIArray[1].hideAll();
+        playerSideUIArray[2].hideAll();
+        playerSideUIArray[3].hideAll();
+    }
+
     public void showAll() {
         imgPlayerIcon.setVisibility(View.VISIBLE);
         imgPlayerKlasse.setVisibility(View.VISIBLE);

@@ -93,6 +93,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         Player.getLocalPlayer().initializeUIConnection();
 
         setPlayerNames();
+
+        PlayerSideUI.hideAllSidesExceptLocal();
     }
 
     void createPlayerSideUIs()
