@@ -47,6 +47,10 @@ public class PlayerSideUI {
                 SpielfeldActivity.getInstance().startActivity(intent);
             });
         }
+        else
+        {
+            hideAll();
+        }
     }
 
     public static void hideAllSidesExceptLocal()
@@ -57,17 +61,22 @@ public class PlayerSideUI {
     }
 
     public void showAll() {
-        imgPlayerIcon.setVisibility(View.VISIBLE);
-        imgPlayerKlasse.setVisibility(View.VISIBLE);
-        imgPlayerRasse.setVisibility(View.VISIBLE);
-        txtPlayerName.setVisibility(View.VISIBLE);
+        SpielfeldActivity.getInstance().runOnUiThread(() -> {
+            imgPlayerIcon.setVisibility(View.VISIBLE);
+            imgPlayerKlasse.setVisibility(View.VISIBLE);
+            imgPlayerRasse.setVisibility(View.VISIBLE);
+            txtPlayerName.setVisibility(View.VISIBLE);
+        });
+
     }
 
     public void hideAll() {
-        imgPlayerIcon.setVisibility(View.INVISIBLE);
-        imgPlayerKlasse.setVisibility(View.INVISIBLE);
-        imgPlayerRasse.setVisibility(View.INVISIBLE);
-        txtPlayerName.setVisibility(View.INVISIBLE);
+        SpielfeldActivity.getInstance().runOnUiThread(() -> {
+            imgPlayerIcon.setVisibility(View.INVISIBLE);
+            imgPlayerKlasse.setVisibility(View.INVISIBLE);
+            imgPlayerRasse.setVisibility(View.INVISIBLE);
+            txtPlayerName.setVisibility(View.INVISIBLE);
+        });
     }
 
     public static PlayerSideUI getPlayerSideUI(int index) {

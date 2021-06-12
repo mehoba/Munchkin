@@ -1,5 +1,9 @@
 package com.example.munchkin;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.munchkin.Karte.Inventar;
 
 public class Player extends PlayerData
@@ -13,6 +17,7 @@ public class Player extends PlayerData
     private Inventar inventar;
     private Level playerLevel;
     private int playerGold;
+    private PlayerSideUI playerSideUI;
 
     //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
 //    public static Boolean istDranAktiviert = true;
@@ -83,6 +88,27 @@ public class Player extends PlayerData
      */
     public int getRelativePlayerBoardNumber()
     {
-        return (playerBoardNumber - Player.getLocalPlayer().playerBoardNumber) % 4;
+        return  Math.floorMod(playerBoardNumber - Player.getLocalPlayer().playerBoardNumber, 4);
+    }
+
+    public PlayerSideUI getPlayerSideUI() {
+        return playerSideUI;
+    }
+
+
+    /**
+     * Only call when UI finished loading
+     */
+    public void setPlayerSideUI()
+    {
+        this.playerSideUI = PlayerSideUI.getPlayerSideUI(getRelativePlayerBoardNumber());
+        this.playerSideUI.showAll();
+        writeNameToTextView();
+    }
+
+    public void writeNameToTextView()
+    {
+        if(playerSideUI != null)
+            playerSideUI.getTxtPlayerName().setText(name);
     }
 }

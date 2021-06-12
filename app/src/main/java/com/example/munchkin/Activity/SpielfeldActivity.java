@@ -92,9 +92,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         new Spielfeld().initializeUiConnection();
         Player.getLocalPlayer().initializeUIConnection();
 
-        setPlayerNames();
 
-        PlayerSideUI.hideAllSidesExceptLocal();
+//        PlayerSideUI.hideAllSidesExceptLocal();
     }
 
     void createPlayerSideUIs()
@@ -103,6 +102,21 @@ public class SpielfeldActivity extends AppCompatActivity {
         createPlayerSideRight();
         createPlayerSideLeft();
         createPlayerSideTop();
+
+        setPlayerSideUI_InPlayers();
+    }
+
+    void setPlayerSideUI_InPlayers()
+    {
+        Player[] players = Lobby.getPlayers();
+
+        for(int i = 0; i < players.length; i++)
+        {
+            if(players[i] != null)
+            {
+                players[i].setPlayerSideUI();
+            }
+        }
     }
 
     void createPlayerSideBottom()
@@ -162,25 +176,25 @@ public class SpielfeldActivity extends AppCompatActivity {
 //        imgCard.setVisibility(View.INVISIBLE);
 //    }
 //-----------------------------------------------------------------
-    public void setPlayerNames()
-    {
-        if(Lobby.getInstance() == null)
-            return ;
-
-        TextView[] txtPlayerNames = new TextView[4];
-        txtPlayerNames[0] = findViewById(R.id.spielfeldui_player1name);
-        txtPlayerNames[1] = findViewById(R.id.spielfeldui_player2name);
-        txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
-        txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
-
-        LinkedList<String> playerNames = Lobby.getPlayerNames();
-
-        for(int i = 0; i < playerNames.size(); i++)
-        {
-            if(txtPlayerNames[i] != null)
-                txtPlayerNames[i].setText(playerNames.get(i));
-        }
-    }
+//    public void setPlayerNames()
+//    {
+//        if(Lobby.getInstance() == null)
+//            return ;
+//
+//        TextView[] txtPlayerNames = new TextView[4];
+//        txtPlayerNames[0] = findViewById(R.id.spielfeldui_player1name);
+//        txtPlayerNames[1] = findViewById(R.id.spielfeldui_player2name);
+//        txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
+//        txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
+//
+//        LinkedList<String> playerNames = Lobby.getPlayerNames();
+//
+//        for(int i = 0; i < playerNames.size(); i++)
+//        {
+//            if(txtPlayerNames[i] != null)
+//                txtPlayerNames[i].setText(playerNames.get(i));
+//        }
+//    }
 
     public static SpielfeldActivity getInstance()
     {
