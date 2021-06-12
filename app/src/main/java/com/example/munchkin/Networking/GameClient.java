@@ -1,5 +1,7 @@
 package com.example.munchkin.Networking;
 
+import android.widget.Toast;
+
 import com.esotericsoftware.kryonet.Client;
 import com.esotericsoftware.kryonet.Connection;
 import com.esotericsoftware.kryonet.Listener;
@@ -80,7 +82,8 @@ public class GameClient
                                            SpielfeldActivity.getInstance().runOnUiThread(new Runnable() {
                                                @Override
                                                public void run() {
-                                                   SpielfeldActivity.getInstance().txtDuBistDran.setText("Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe");
+                                                   String text = "Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe";
+                                                   Toast.makeText(SpielfeldActivity.getInstance(), text, Toast.LENGTH_SHORT).show();
                                                }
                                            });
                                        }
@@ -113,13 +116,12 @@ public class GameClient
 
                                        );
                                    }
-                                   if(object instanceof Network.KarteAufAblagestapelGelegt)
-                                   {
+                                   if(object instanceof Network.KarteAufAblagestapelGelegt) {
                                        //Only the original thread that created a view hierarchy can touch its views.
                                        MainActivity.getInstance().runOnUiThread(new Runnable() {
                                                                                     @Override
                                                                                     public void run() {
-                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt)object;
+                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt) object;
                                                                                         Karte karte = karteAufAblagestapelGelegt.karte;
                                                                                         if (karte instanceof Schatzkarte) {
                                                                                             Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);

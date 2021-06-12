@@ -436,12 +436,5 @@
 
         </LinearLayout>
     </HorizontalScrollView>
-    <TextView
-        android:id="@+id/txtDuBistDran"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Spieler # ist dran"
-        tools:layout_editor_absoluteX="13dp"
-        tools:layout_editor_absoluteY="279dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

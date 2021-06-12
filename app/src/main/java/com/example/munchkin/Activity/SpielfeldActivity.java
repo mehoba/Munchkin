@@ -31,7 +31,6 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     public ImageView imgDice, imgSettings, imgBackbtn, imgKlasse1, imgRasse1, imgCardView, imgCardView2, imgCardView3, imgCardView4, imgMonsterKartenSlot, imgAusgespielteKartenSlot, imgSchatzkarte, imgdoorcard, ablageStapelTürkarten, ablageStapelSchatzkarten;
     public ImageView imgButtonKämpfen, imgButtonWeglaufen;
-    public TextView txtDuBistDran;
     private ImageView imgDoorcard, imgBackpack;
     private ImageView imgSpieler1, imgSpieler2, imgSpieler3, imgSpieler4;
     private TextView[] txtPlayerCountdowns = new TextView[4];
@@ -54,7 +53,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgCardView3.setVisibility(View.INVISIBLE);
         imgCardView4.setVisibility(View.INVISIBLE);*/
 
-        txtDuBistDran = findViewById(R.id.txtDuBistDran);
         handcardLayout = findViewById(R.id.spielfeldui_handcard_layout);
 
         imgMonsterKartenSlot =findViewById(R.id.monsterKartenSlot);
