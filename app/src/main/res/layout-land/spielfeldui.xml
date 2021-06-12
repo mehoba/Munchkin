@@ -401,11 +401,11 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.827"
-        app:srcCompat="@drawable/spielfeldui_kämpfenButton" />
+        app:layout_constraintVertical_bias="0.824"
+        app:srcCompat="@drawable/kaempfen" />
 
     <ImageView
         android:id="@+id/imgButtonWeglaufen"
@@ -414,11 +414,12 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.026"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.957"
-        app:srcCompat="@drawable/spielfeldui_weglaufenButton" />
+        app:layout_constraintVertical_bias="0.952"
+        app:srcCompat="@drawable/weglaufen" />
+
     <HorizontalScrollView
         android:id="@+id/spielfeldui_handcards"
         android:layout_width="329dp"
