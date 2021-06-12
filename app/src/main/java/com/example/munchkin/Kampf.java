@@ -70,7 +70,9 @@ public class Kampf {
     }
 
     public void kampfGewonnen(){
-        currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
+        for (int i=0; i< monster.getGewonneneLevel(); i++){
+            currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
+        }
 
         for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
             //und die entsprechende Anzahl von Schatzkarten gezogen werden
