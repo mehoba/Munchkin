@@ -7,8 +7,6 @@ public interface Karte {
       public int getImage();
       public void onKarteGehoben();
       public void onkarteAusgespielt();
-      public CardType getCardType();
-      public void setCardType(CardType cardType);
 
        static Karte getRandomKarte() {
              int count = Inventar.getKartenList().size() - 1;

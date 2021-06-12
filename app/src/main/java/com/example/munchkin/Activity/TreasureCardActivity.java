@@ -8,12 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.munchkin.Karte.CardType;
 import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
-import com.example.munchkin.Karte.KartenTypen.Buffkarte;
 import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
-import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
 import com.example.munchkin.R;
 
@@ -46,7 +43,7 @@ public class TreasureCardActivity extends AppCompatActivity {
             public void onClick(View view) {
                 for(Karte karte : Inventar.getKartenList()){
                     if(compare2Images(karte, imgTreasureCard)){
-                      if(karte.getCardType().equals(CardType.RÜSTUNGSKARTE)){
+                      if(karte instanceof Rüstungskarte){
                           Rüstungskarte rüstungskarte = (Rüstungskarte) karte;
                           if(player.getPlayerAusrüstung().addCard(rüstungskarte)==false)
                               Toast.makeText(getApplicationContext(),"Armor nicht möglich", Toast.LENGTH_SHORT ).show();

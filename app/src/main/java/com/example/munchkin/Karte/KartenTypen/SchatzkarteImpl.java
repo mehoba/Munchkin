@@ -1,7 +1,5 @@
 package com.example.munchkin.Karte.KartenTypen;
 
-import com.example.munchkin.Karte.CardType;
-
 public class SchatzkarteImpl implements Schatzkarte {
     //Please DONT use this Konstruktor - it is needed for Networking
     public SchatzkarteImpl(){}
@@ -31,16 +29,6 @@ public class SchatzkarteImpl implements Schatzkarte {
 
     @Override
     public void onkarteAusgespielt() {
-
-    }
-
-    @Override
-    public CardType getCardType() {
-        return null;
-    }
-
-    @Override
-    public void setCardType(CardType cardType) {
 
     }
 
