@@ -16,15 +16,17 @@ public class LvlUpKarte extends SchatzkarteImpl {
 
     }
 
-    //Methoden
-    public void triggerPlayerLvlIncrease(){
-        Player.getLocalPlayer().getPlayerLevel().levelIncrease();
-    }
-
     @Override
     public void onkarteAusgespielt() {
         super.onkarteAusgespielt();
         triggerPlayerLvlIncrease();
 
     }
+
+    //Methoden
+    public void triggerPlayerLvlIncrease(){
+        Player.getLocalPlayer().getPlayerLevel().levelIncrease();
+    }
+
+
 }
