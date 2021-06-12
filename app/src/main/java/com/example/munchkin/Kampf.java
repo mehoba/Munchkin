@@ -4,6 +4,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Networking.GameClient;
@@ -61,8 +62,9 @@ public class Kampf {
         //falls Monster stärker - rufe weglaufen() auf
 
         //Grundfunktionalität
-        if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
-            kampfGewonnen();//Todo Ausrüstungslevel dazu zählen -> Vorher Ausrüstung ausimplementieren
+        int stärkePlayer= currentPlayer.getPlayerLevel().getLevel() + currentPlayer.getPlayerAusrüstung().getLevelSum();
+        if (stärkePlayer > monster.getMonsterLevel()){
+            kampfGewonnen();
         }else{
            kampfVerloren();
         }
@@ -77,7 +79,7 @@ public class Kampf {
         }
 
         GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
-        onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
+        onKampfFinished();
     }
 
     void kampfVerloren()
@@ -99,8 +101,9 @@ public class Kampf {
 
     void onKampfFinished()
     {
-        //Todo mehr als 5 cards? -> send per networking to weakest player
-        Player.getLocalPlayer().setIstDran(false);
+        currentPlayer.getInventar().getHandKarten().onFinishRound();
+
+        currentPlayer.setIstDran(false);
         GameClient.sendNextPlayerAnDerReihe();
         hideButtons();
     }
