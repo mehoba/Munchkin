@@ -1,22 +1,11 @@
 package com.example.munchkin.Karte.KartenTypen;
 
 import com.example.munchkin.Karte.BodyPart;
-import com.example.munchkin.Karte.CardType;
 
 public class Rüstungskarte extends SchatzkarteImpl{
     //Please DONT use this Konstruktor - it is needed for Networking
     public Rüstungskarte(){}
-    private CardType cardType;
 
-    @Override
-    public void setCardType(CardType cardType) {
-        this.cardType= cardType;
-    }
-
-    @Override
-    public CardType getCardType() {
-        return  cardType;
-    }
 
 
     //Variablen
@@ -36,7 +25,6 @@ public class Rüstungskarte extends SchatzkarteImpl{
 
         this.isGroß=false;  //Standartmäßig sind gegenstände klein
 
-        setCardType(CardType.RÜSTUNGSKARTE);
     }
 
     public Rüstungskarte(int image, int goldwert, int sizeOfArmor, int sizeOfBonus, BodyPart bodyPart, boolean isGroß){
