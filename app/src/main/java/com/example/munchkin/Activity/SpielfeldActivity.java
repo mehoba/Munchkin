@@ -87,14 +87,6 @@ public class SpielfeldActivity extends AppCompatActivity {
 //            }
 //        });
 
-        imgBackpack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
-                startActivity(intent);
-            }
-        });
-
         imgSpieler1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
