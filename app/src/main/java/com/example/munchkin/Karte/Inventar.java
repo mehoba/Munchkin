@@ -10,6 +10,7 @@ import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Karte.KartenTypen.Türkarte;
 import com.example.munchkin.PlayerAusrüstung;
+import com.example.munchkin.PlayerSideUI;
 import com.example.munchkin.R;
 import com.example.munchkin.Activity.SpielfeldActivity;
 
@@ -43,8 +44,8 @@ public class Inventar
         SpielfeldActivity spielfeldActivity = SpielfeldActivity.getInstance();
 
         handKarten.initializeUIConnection();
-        klassenKarteSlot.setImgKarte(spielfeldActivity.imgKlasse1);
-        rassenKarteSlot.setImgKarte(spielfeldActivity.imgRasse1);
+        klassenKarteSlot.setImgKarte(PlayerSideUI.getPlayerSideUI(0).getImgPlayerKlasse());
+        rassenKarteSlot.setImgKarte(PlayerSideUI.getPlayerSideUI(0).getImgPlayerRasse());
     }
 
     public static List<Karte> getKartenList() {

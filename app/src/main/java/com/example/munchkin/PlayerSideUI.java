@@ -1,0 +1,95 @@
+package com.example.munchkin;
+
+import android.content.Intent;
+import android.provider.ContactsContract;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.example.munchkin.Activity.PlayerPopActivity;
+import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Activity.TreasureCardActivity;
+
+import org.w3c.dom.Text;
+
+public class PlayerSideUI {
+
+    //Reihenfolge: [0] = unten(localPlayer), [1] = rechts, [2] = links, [3] = oben
+    private static PlayerSideUI[] playerSideUIArray = new PlayerSideUI[4];
+
+    private final ImageView imgPlayerIcon;
+    private final ImageView imgPlayerKlasse;
+    private final ImageView imgPlayerRasse;
+    private final TextView txtPlayerName;
+
+    public PlayerSideUI(ImageView imgPlayerIcon, ImageView imgPlayerKlasse, ImageView imgPlayerRasse, TextView txtPlayerName, int index) {
+        playerSideUIArray[index] = this;
+        this.imgPlayerIcon = imgPlayerIcon;
+        this.imgPlayerKlasse = imgPlayerKlasse;
+        this.imgPlayerRasse = imgPlayerRasse;
+        this.txtPlayerName = txtPlayerName;
+
+        imgPlayerIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), PlayerPopActivity.class);
+                SpielfeldActivity.getInstance().startActivity(intent);
+            }
+        });
+
+        //Nur für local Player [War vorher halt so] TODO: Rasse und Klasse View + Klasse implementieren
+        if(index == 0)
+        {
+            imgPlayerRasse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
+                    SpielfeldActivity.getInstance().startActivity(intent);
+                }
+            });
+
+            imgPlayerKlasse.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(), TreasureCardActivity.class);//Todo Eigene Activity dafür entwerfen
+                    SpielfeldActivity.getInstance().startActivity(intent);
+                }
+            });
+        }
+    }
+
+    public void showAll() {
+        imgPlayerIcon.setVisibility(View.VISIBLE);
+        imgPlayerKlasse.setVisibility(View.VISIBLE);
+        imgPlayerRasse.setVisibility(View.VISIBLE);
+        txtPlayerName.setVisibility(View.VISIBLE);
+    }
+
+    public void hideAll() {
+        imgPlayerIcon.setVisibility(View.INVISIBLE);
+        imgPlayerKlasse.setVisibility(View.INVISIBLE);
+        imgPlayerRasse.setVisibility(View.INVISIBLE);
+        txtPlayerName.setVisibility(View.INVISIBLE);
+    }
+
+    public static PlayerSideUI getPlayerSideUI(int index) {
+        return playerSideUIArray[index];
+    }
+
+    public ImageView getImgPlayerIcon()
+    {
+        return imgPlayerIcon;
+    }
+    public ImageView getImgPlayerKlasse()
+    {
+        return imgPlayerKlasse;
+    }
+    public ImageView getImgPlayerRasse()
+    {
+        return imgPlayerRasse;
+    }
+    public TextView getTxtPlayerName()
+    {
+        return txtPlayerName;
+    }
+}

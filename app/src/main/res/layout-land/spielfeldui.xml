@@ -8,7 +8,7 @@
     tools:ignore="MissingDefaultResource">
 
     <ImageView
-        android:id="@+id/player3_rasseicon2"
+        android:id="@+id/player4_rasseicon"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:rotation="180"
@@ -21,7 +21,7 @@
         app:srcCompat="@drawable/spielfeldui_rasseicon" />
 
     <ImageView
-        android:id="@+id/player3_klasseicon2"
+        android:id="@+id/player4_klasseicon"
         android:layout_width="55dp"
         android:layout_height="55dp"
         android:rotation="180"
@@ -415,6 +415,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.957"
         app:srcCompat="@drawable/mainmenu_button" />
+
     <HorizontalScrollView
         android:id="@+id/spielfeldui_handcards"
         android:layout_width="329dp"
