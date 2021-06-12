@@ -75,4 +75,14 @@ public class Player extends PlayerData
             playerGold = 0;
         }
     }
+
+
+    /**
+     *Just for UI. Should turn the board, that the right player is in the right place. dont use this for logic
+     * @return
+     */
+    public int getRelativePlayerBoardNumber()
+    {
+        return (playerBoardNumber - Player.getLocalPlayer().playerBoardNumber) % 4;
+    }
 }
