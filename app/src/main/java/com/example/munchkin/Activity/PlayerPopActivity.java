@@ -1,5 +1,6 @@
 package com.example.munchkin.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Level;
+import com.example.munchkin.Player;
 import com.example.munchkin.R;
 
 public class PlayerPopActivity extends AppCompatActivity {
@@ -24,6 +26,14 @@ public class PlayerPopActivity extends AppCompatActivity {
     private CountDownTimer timer;
     private int COUNTDOWN_TIME = 120; // Time in seconds
 
+    static Player player;
+
+    public static void show(Player player)
+    {
+        PlayerPopActivity.player = player;
+        Intent intent=new Intent(SpielfeldActivity.getInstance().getApplicationContext(),PlayerPopActivity.class);
+        SpielfeldActivity.getInstance().startActivity(intent);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
