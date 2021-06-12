@@ -139,7 +139,9 @@ public class GameClient
             //Ich bin dran
             Player.getLocalPlayer().setIstDran(true);
             GamePhase.setPhase(GamePhase.Phase.vorbereitungsPhase);
-            Spielfeld.getTürkartenStapel().resetAnzahlGezogen();
+            if (SpielfeldActivity.getInstance() != null){
+                Spielfeld.getTürkartenStapel().resetAnzahlGezogen();
+            }
         }
         else
         {
