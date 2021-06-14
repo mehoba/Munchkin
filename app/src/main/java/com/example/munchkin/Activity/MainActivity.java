@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        //new Lobby();
+        new Lobby();
 
-       // gameClient = new GameClient();
+        gameClient = new GameClient();
     }
 
     private void spielen(View view)
