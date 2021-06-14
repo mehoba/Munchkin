@@ -14,10 +14,13 @@ import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
 import com.example.munchkin.Player;
 import com.example.munchkin.R;
 
+import java.util.Random;
+
 
 public class TreasureCardActivity extends AppCompatActivity {
     private ImageView imgTreasureCard, btnAusruesten, btnWegwerfen;
     private Player player;
+    private int imageResource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +38,24 @@ public class TreasureCardActivity extends AppCompatActivity {
         imgTreasureCard=findViewById(R.id.cardpopView_handkarten_imgView);
         btnAusruesten=findViewById(R.id.treasurecardpopup_btnAusruesten);
         btnWegwerfen=findViewById(R.id.treasurecardpopup_btnWegwerfen);
+        //TODO switch with player from server
         player=new Player();
 
-
+        imageResource= Inventar.getSchatzkartenList().get(getRandomnum()).getImage();
+        imgTreasureCard.setImageResource(imageResource);
+        
         btnAusruesten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 for(Karte karte : Inventar.getKartenList()){
-                    if(compare2Images(karte, imgTreasureCard)){
+                    if(compare2Images(karte, imageResource)){
                       if(karte instanceof Rüstungskarte){
-                          Rüstungskarte rüstungskarte = (Rüstungskarte) karte;
-                          if(player.getPlayerAusrüstung().addCard(rüstungskarte)==false)
+                          if(player.getPlayerAusrüstung().addCard((Rüstungskarte) karte)==false)
                               Toast.makeText(getApplicationContext(),"Armor nicht möglich", Toast.LENGTH_SHORT ).show();
+                          else{
+                              Toast.makeText(getApplicationContext(),"Armor equipped", Toast.LENGTH_SHORT).show();
+                          }
+
                       }
                     }
                 }
@@ -60,8 +69,12 @@ public class TreasureCardActivity extends AppCompatActivity {
             }
         });
     }
-    public boolean compare2Images(Karte karte, ImageView imageView){
-    if(karte.getImage() == getResources().getIdentifier(imageView.getDrawable().toString(),"id",getPackageName()))
+    public int getRandomnum(){
+        Random rand = new Random();
+        return rand.nextInt(Inventar.getSchatzkartenList().size()-1)+1;
+    }
+    public boolean compare2Images(Karte karte, int imageResource){
+    if(karte.getImage() == imageResource )
         return true;
     return false;
     }
