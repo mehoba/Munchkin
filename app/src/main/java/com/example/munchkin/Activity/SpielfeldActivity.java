@@ -49,7 +49,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgSettings =findViewById(R.id.spielfeldui_settingsbtn);
         imgBackbtn =findViewById(R.id.spielfeldui_backbutton);
         imgDoorcard =findViewById(R.id.spielfeldui_doorcard);
-        imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
 
@@ -59,11 +58,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
         imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
-
-        imgBackpack.setOnClickListener(view -> {
-            Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
-            startActivity(intent);
-        });
 
         imgDoorcard.setOnClickListener(view -> {
             Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
