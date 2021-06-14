@@ -201,10 +201,10 @@ public class SpielfeldActivity extends AppCompatActivity {
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
 
-        new Spielfeld().initializeUiConnection();
-        Player.getLocalPlayer().initializeUIConnection();
+        //new Spielfeld().initializeUiConnection();
+        //Player.getLocalPlayer().initializeUIConnection();
 
-        setPlayerNames();
+        //setPlayerNames();
     }
 
     private void setCard(Karte card, ImageView imgCardView) {
