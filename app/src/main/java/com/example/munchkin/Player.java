@@ -1,5 +1,9 @@
 package com.example.munchkin;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import com.example.munchkin.Karte.Inventar;
 
 public class Player extends PlayerData
@@ -7,15 +11,10 @@ public class Player extends PlayerData
     private static Player localPlayer;
 
     private PlayerAusrüstung playerAusrüstung;
-
-    //ToDo Player Icon
-    //ToDo setPlayerName()
     private Inventar inventar;
     private Level playerLevel;
     private int playerGold;
-
-    //Damit das legen in der zwischenzeit für andere Spieler auch funktioniert. Rundensystem ist noch nicht vollständig implementiert, Monster + Kampf fehlen
-//    public static Boolean istDranAktiviert = true;
+    private PlayerSideUI playerSideUI;
 
     public Player()
     {
@@ -33,6 +32,7 @@ public class Player extends PlayerData
         this.playerBoardNumber = playerData.playerBoardNumber;
 
         playerLevel = new Level();
+        playerLevel.setPlayer(this);
         inventar = new Inventar();
         istDran = false;
         playerAusrüstung = new PlayerAusrüstung();
@@ -74,5 +74,34 @@ public class Player extends PlayerData
             playerLevel.levelIncrease();
             playerGold = 0;
         }
+    }
+
+
+    /**
+     *Just for UI. Should turn the board, that the right player is in the right place. dont use this for logic
+     * @return
+     */
+    public int getRelativePlayerBoardNumber()
+    {
+        return  Math.floorMod(playerBoardNumber - Player.getLocalPlayer().playerBoardNumber, 4);
+    }
+
+    public PlayerSideUI getPlayerSideUI() {
+        return playerSideUI;
+    }
+
+
+    /**
+     * Only call when UI finished loading
+     */
+    public void setPlayerSideUI()
+    {
+        this.playerSideUI = PlayerSideUI.getPlayerSideUI(getRelativePlayerBoardNumber());
+        this.playerSideUI.showAll();
+        this.playerSideUI.initializeUI(this );
+    }
+
+    public boolean isLocal() {
+        return Player.getLocalPlayer().playerBoardNumber == playerBoardNumber;
     }
 }

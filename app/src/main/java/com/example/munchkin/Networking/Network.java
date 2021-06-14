@@ -42,13 +42,14 @@ public class Network
         kryo.register(PlayerData[].class);
 
         //Networking Classes
-        kryo.register(SendLocalPlayer.class);
+        kryo.register(SyncLobbyForNewPlayer.class);
         kryo.register(KarteAufStapelAusgespieltGelegt.class);
         kryo.register(NächsterSpielerAnDerReihe.class);
         kryo.register(KarteAufMonsterSlotGelegt.class);
         kryo.register(LoginNewPlayerForServer.class);
         kryo.register(NewPlayerJoined.class);
         kryo.register(KarteAufAblagestapelGelegt.class);
+        kryo.register(PlayerLevel.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -61,9 +62,10 @@ public class Network
         public PlayerData playerData;
     }
 
-    static public class SendLocalPlayer
+    static public class SyncLobbyForNewPlayer
     {
         public int localPlayerIndex;
+        public PlayerData[] playerDataArr;
     }
 
     static public class NächsterSpielerAnDerReihe
@@ -90,5 +92,11 @@ public class Network
     {
         public int playerIndex;
         public Karte karte;
+    }
+
+    static public class PlayerLevel
+    {
+        public PlayerData playerData;
+        public int level;
     }
 }

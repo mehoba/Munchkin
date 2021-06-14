@@ -38,8 +38,8 @@ public class GameServer
                     }
                     player.setPlayerBoardNumber(playerPosInArray);
 
-                    sendNewPlayerJoined(player);
-                    sendLocalPlayer(player);
+                    sendNewPlayerJoined(player);//send to all players(except the new one) the new player
+                    syncNewPlayer(player);//sends all the players to the new player
 
                     //1. Spieler -> Soll dran sein
                     if(player.getPlayerBoardNumber() == 0)
@@ -78,6 +78,12 @@ public class GameServer
 
                     server.sendToAllTCP(nächsterSpielerAnDerReihe);
                 }
+                if (object instanceof Network.PlayerLevel)
+                {
+                    Network.PlayerLevel playerLevel = (Network.PlayerLevel)object;
+                    server.sendToAllExceptTCP(playerLevel.playerData.getConnectionId(), playerLevel);
+                    Log.i("lvl", "Send PlayerLevel from lvl Player: " + playerLevel.playerData.getName() + " to lvl " + playerLevel.level);
+                }
             }
 
             @Override
@@ -110,15 +116,15 @@ public class GameServer
     {
         Network.NewPlayerJoined newPlayerJoined = new Network.NewPlayerJoined();
         newPlayerJoined.playerData = PlayerData.convertToPlayerData(newPlayer);
-        server.sendToAllTCP(newPlayerJoined);
+        server.sendToAllExceptTCP(newPlayer.getConnectionId(), newPlayerJoined);
     }
 
-    void sendLocalPlayer(Player player)
+    void syncNewPlayer(Player player)
     {
-        Network.SendLocalPlayer sendLocalPlayerClass = new Network.SendLocalPlayer();
-        sendLocalPlayerClass.localPlayerIndex = player.getPlayerBoardNumber();
-
-        server.sendToTCP(player.getConnectionId(), sendLocalPlayerClass);
+        Network.SyncLobbyForNewPlayer syncLobbyForNewPlayerClass = new Network.SyncLobbyForNewPlayer();
+        syncLobbyForNewPlayerClass.localPlayerIndex = player.getPlayerBoardNumber();
+        syncLobbyForNewPlayerClass.playerDataArr = PlayerData.converToPlayerData(Lobby.getPlayers());
+        server.sendToTCP(player.getConnectionId(), syncLobbyForNewPlayerClass);
     }
 
     void logPlayerList()

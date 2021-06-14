@@ -1,8 +1,10 @@
 package com.example.munchkin.Networking;
 import android.util.Log;
 
+import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Player;
 import com.example.munchkin.PlayerData;
+import com.example.munchkin.PlayerSideUI;
 
 import java.util.LinkedList;
 
@@ -13,9 +15,6 @@ public class Lobby
 
     Player[] players = new Player[4];
 
-    //ToDo localPlayer
-    Player localPlayer;
-
     public Lobby()
     {
         if(instance != null)
@@ -23,6 +22,7 @@ public class Lobby
 
         instance = this;
 
+        //safe is safe
         for(Player player : players)
         {
             player = null;
@@ -52,13 +52,37 @@ public class Lobby
         players[index] = player;
         return false;
     }
-    public static boolean addPlayer(PlayerData playerData)
+    public static void addPlayer(PlayerData playerData)
     {
         Player player = new Player(playerData);
 
         Player[] players = instance.players;
         players[playerData.getPlayerBoardNumber()] = player;
-        return false;
+
+        addPlayerSideUiToPlayer(player);
+    }
+
+    static void addPlayerSideUiToPlayer(Player player)
+    {
+        if(SpielfeldActivity.getInstance() != null)
+        {
+            player.setPlayerSideUI();
+        }
+    }
+
+    public static void syncLobby(Network.SyncLobbyForNewPlayer syncLobbyForNewPlayer)
+    {
+        PlayerData[] playerDataArr = syncLobbyForNewPlayer.playerDataArr;
+        int localPlayerBoardNumber = syncLobbyForNewPlayer.localPlayerIndex;
+
+        for(int i = 0; i < playerDataArr.length; i++)
+        {
+            if(playerDataArr[i] != null)
+            {
+                addPlayer(playerDataArr[i]);
+            }
+        }
+        Player.setLocalPlayer(Lobby.getPlayer(localPlayerBoardNumber));
     }
 
     //Return true if successfully removed

@@ -11,6 +11,7 @@ import com.example.munchkin.GamePhase;
 import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Player;
+import com.example.munchkin.PlayerData;
 import com.example.munchkin.Spielfeld;
 
 import java.io.IOException;
@@ -19,8 +20,6 @@ import java.io.IOException;
 public class GameClient
 {
     private static GameClient instance;
-
-    Boolean successfullyConnected = false;
 
     Client client;
     public  GameClient()
@@ -52,24 +51,15 @@ public class GameClient
                                    if (object instanceof Network.NewPlayerJoined) {
                                        Network.NewPlayerJoined newPlayerJoinedClass = (Network.NewPlayerJoined) object;
 
-
                                        Lobby.newPlayerJoined(newPlayerJoinedClass.playerData);
-
-                                       if (SpielfeldActivity.getInstance() != null)
-                                           SpielfeldActivity.getInstance().setPlayerNames();
                                    }
 
-                                   if (object instanceof Network.SendLocalPlayer)
+                                   if (object instanceof Network.SyncLobbyForNewPlayer)
                                    {
-                                       try {
-                                           Thread.sleep(1000);
-                                       } catch (InterruptedException e) {
-                                           e.printStackTrace();
-                                       }
-
-                                       Network.SendLocalPlayer sendLocalPlayerClass = (Network.SendLocalPlayer)object;
-                                       Player player = Lobby.getPlayer(sendLocalPlayerClass.localPlayerIndex);
-                                       Player.setLocalPlayer(player);
+                                       Network.SyncLobbyForNewPlayer syncLobbyForNewPlayerClass = (Network.SyncLobbyForNewPlayer)object;
+//                                       Player player = Lobby.getPlayer(syncLobbyForNewPlayerClass.localPlayerIndex);
+//                                       Player.setLocalPlayer(player);
+                                       Lobby.syncLobby(syncLobbyForNewPlayerClass);
                                        MainActivity.getInstance().successfullyConnectedToServer();
                                    }
                                    if (object instanceof Network.NächsterSpielerAnDerReihe)
@@ -79,12 +69,9 @@ public class GameClient
                                        Player spielerAnDerReihe = Lobby.getPlayer(nächsterSpielerAnDerReihe.playerBoardNumber);
                                        if(spielerAnDerReihe != null && SpielfeldActivity.getInstance() != null)
                                        {
-                                           SpielfeldActivity.getInstance().runOnUiThread(new Runnable() {
-                                               @Override
-                                               public void run() {
-                                                   String text = "Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe";
-                                                   Toast.makeText(SpielfeldActivity.getInstance(), text, Toast.LENGTH_SHORT).show();
-                                               }
+                                           SpielfeldActivity.getInstance().runOnUiThread(() -> {
+                                               String text = "Spieler " + spielerAnDerReihe.getName() + " ist an der Reihe";
+                                               Toast.makeText(SpielfeldActivity.getInstance(), text, Toast.LENGTH_SHORT).show();
                                            });
                                        }
                                    }
@@ -92,13 +79,10 @@ public class GameClient
                                    if(object instanceof Network.KarteAufMonsterSlotGelegt)
                                    {
                                        //Only the original thread that created a view hierarchy can touch its views.
-                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
-                                                                                    @Override
-                                                                                    public void run() {
-                                                                                        Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
-                                                                                        Spielfeld.getMonsterKartenSlot().karteAblegen(karteAufMonsterSlotGelegt.karte);
-                                                                                    }
-                                                                                }
+                                       MainActivity.getInstance().runOnUiThread(() -> {
+                                           Network.KarteAufMonsterSlotGelegt karteAufMonsterSlotGelegt = (Network.KarteAufMonsterSlotGelegt)object;
+                                           Spielfeld.getMonsterKartenSlot().karteAblegenWithoutTrigger(karteAufMonsterSlotGelegt.karte);
+                                       }
 
                                        );
                                    }
@@ -106,41 +90,38 @@ public class GameClient
                                    if(object instanceof Network.KarteAufStapelAusgespieltGelegt)
                                    {
                                        //Only the original thread that created a view hierarchy can touch its views.
-                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
-                                                                                    @Override
-                                                                                    public void run() {
-                                                                                        Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
-                                                                                        Spielfeld.getAusgespielteKartenSlot().karteAblegen(karteAufStapelAusgespieltGelegt.karte);
-                                                                                    }
-                                                                                }
+                                       MainActivity.getInstance().runOnUiThread(() -> {
+                                           Network.KarteAufStapelAusgespieltGelegt karteAufStapelAusgespieltGelegt = (Network.KarteAufStapelAusgespieltGelegt)object;
+                                           Spielfeld.getAusgespielteKartenSlot().karteAblegenWithoutTrigger(karteAufStapelAusgespieltGelegt.karte);
+                                       }
 
                                        );
                                    }
                                    if(object instanceof Network.KarteAufAblagestapelGelegt) {
                                        //Only the original thread that created a view hierarchy can touch its views.
-                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
-                                                                                    @Override
-                                                                                    public void run() {
-                                                                                        Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt) object;
-                                                                                        Karte karte = karteAufAblagestapelGelegt.karte;
-                                                                                        if (karte instanceof Schatzkarte) {
-                                                                                            Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
-                                                                                        } else {
-                                                                                            Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
-                                                                                        }
-                                                                                    }
-                                                                                }
+                                       MainActivity.getInstance().runOnUiThread(() -> {
+                                           Network.KarteAufAblagestapelGelegt karteAufAblagestapelGelegt = (Network.KarteAufAblagestapelGelegt) object;
+                                           Karte karte = karteAufAblagestapelGelegt.karte;
+                                           if (karte instanceof Schatzkarte) {
+                                               Spielfeld.getAblageStapelSchatzkartenSlot().karteAblegenWithoutTrigger(karte);
+                                           } else {
+                                               Spielfeld.getAblageStapelTürkartenSlot().karteAblegenWithoutTrigger(karte);
+                                           }
+                                       }
                                        );
                                    }
                                    if(object instanceof Network.KarteZuSpieler)
                                    {
-                                       MainActivity.getInstance().runOnUiThread(new Runnable() {
-                                           @Override
-                                           public void run() {
-                                               Network.KarteZuSpieler karteZuSpieler = (Network.KarteZuSpieler) object;
-                                               Lobby.getPlayer(karteZuSpieler.playerIndex).getInventar().getHandKarten().addKarte(karteZuSpieler.karte);
-                                           }
+                                       MainActivity.getInstance().runOnUiThread(() -> {
+                                           Network.KarteZuSpieler karteZuSpieler = (Network.KarteZuSpieler) object;
+                                           Lobby.getPlayer(karteZuSpieler.playerIndex).getInventar().getHandKarten().addKarte(karteZuSpieler.karte);
                                        });
+                                   }
+                                   if (object instanceof Network.PlayerLevel)
+                                   {
+                                       Network.PlayerLevel playerLevel = (Network.PlayerLevel)object;
+                                       PlayerData playerData = playerLevel.playerData;
+                                       Lobby.getPlayer(playerData.getPlayerBoardNumber()).getPlayerLevel().setLevel(playerLevel.level);
                                    }
                                }
                            }
@@ -257,6 +238,20 @@ public class GameClient
             public void run ()
             {
                 getInstance().client.sendTCP(karteZuSpieler);
+            }
+        }.start();
+    }
+
+    public static void sendPlayerLevel(Player player)
+    {
+        Network.PlayerLevel playerLevel = new Network.PlayerLevel();
+        playerLevel.playerData = PlayerData.convertToPlayerData(player);
+        playerLevel.level = player.getPlayerLevel().getLevel();
+        new Thread("thread")
+        {
+            public void run ()
+            {
+                getInstance().client.sendTCP(playerLevel);
             }
         }.start();
     }

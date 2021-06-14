@@ -8,6 +8,7 @@ public class PlayerData
     protected int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
     protected Boolean istDran;
 
+    //Für Networking
     public PlayerData()
     {
 
@@ -23,8 +24,22 @@ public class PlayerData
 
     public static PlayerData convertToPlayerData(Player player)
     {
-        PlayerData playerData = new PlayerData(player);
+        PlayerData playerData = null;
+        if(player != null)
+            playerData = new PlayerData(player);
         return playerData;
+    }
+
+    public static PlayerData[] converToPlayerData(Player[] players)
+    {
+        PlayerData[] playerDataArr = new PlayerData[players.length];
+
+        for(int i = 0; i < players.length; i++)
+        {
+            playerDataArr[i] = convertToPlayerData(players[i]);
+        }
+
+        return playerDataArr;
     }
 
     public int getPlayerBoardNumber() {
