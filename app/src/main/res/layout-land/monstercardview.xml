@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:ignore="MissingDefaultResource"
-    android:background="@drawable/popup">
+    android:background="@drawable/popup"
+    android:theme="@style/AppTheme.CustomPopUp">
 
     <ImageView
         android:id="@+id/imgZombieCard"
