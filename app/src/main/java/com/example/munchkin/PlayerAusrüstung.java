@@ -13,9 +13,10 @@ import java.util.List;
 public class PlayerAusrüstung
 {
    private LinkedList<Rüstungskarte> ausgerüsteteKartenList;
-   private int levelSum;
+   private int levelSum=0;
    private int countArms;
    private int countLegs;
+   private int countLarge=0;
 
    public int getLevelSum() {
       return levelSum;
@@ -41,13 +42,15 @@ public class PlayerAusrüstung
    }
 
    public boolean addCard(Rüstungskarte karte){
-      if(checkIfBodyPartEquipped(karte) == false){
+      if(checkIfBodyPartEquipped(karte) == false && checkSize(karte) == true) {
          if(karte.getBodyPart().equals(BodyPart.HAND)){
             countArms=karte.getSizeOfArmor();
          }
          else if(karte.getBodyPart().equals(BodyPart.FOOT)){
             countLegs=karte.getSizeOfArmor();
          }
+         if(karte.getIsGroß())
+            countLarge++;
          ausgerüsteteKartenList.add(karte);
          addLevel(karte.getSizeOfArmor());
          return true;
@@ -58,6 +61,15 @@ public class PlayerAusrüstung
 
    public void addLevel(int level){
       levelSum+=level;
+   }
+
+   public boolean checkSize(Rüstungskarte rüstungskarte){
+      if(rüstungskarte.getIsGroß() && countLarge < 2)
+         return true;
+      else if(!rüstungskarte.getIsGroß())
+         return true;
+      else
+         return false;
    }
 
    public boolean checkIfBodyPartEquipped(Rüstungskarte rüstungskarte){
