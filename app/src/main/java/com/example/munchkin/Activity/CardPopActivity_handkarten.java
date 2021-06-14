@@ -15,6 +15,7 @@ import com.example.munchkin.Karte.ListKartenSlot;
 import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Player;
 import com.example.munchkin.R;
+import com.example.munchkin.Rasse;
 import com.example.munchkin.Spielfeld;
 
 public class CardPopActivity_handkarten extends AppCompatActivity {
@@ -22,12 +23,17 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
     private static ListKartenSlot listKartenSlot;
 
     private static CardPopActivity_handkarten cardPopActivity_handkarten;
+    private static boolean firstCardSold = true;
 
     public static void show(ListKartenSlot gehobenVonKartenSlot) {
         CardPopActivity_handkarten.listKartenSlot = gehobenVonKartenSlot;
 
         Intent intentCardPopActivity = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), CardPopActivity_handkarten.class);
         SpielfeldActivity.getInstance().startActivity(intentCardPopActivity);
+    }
+
+    public static void resetCardSold() {
+        firstCardSold = true;
     }
 
     void onBtnAusspielenClicked() {
@@ -55,7 +61,14 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
 
         if(karte instanceof Schatzkarte) {
             //GameClient.sendKarteAufAblagestapelGelegt(karte);
-            Player.getLocalPlayer().addGold(((Schatzkarte) karte).getGoldwert());
+            Player player = Player.getLocalPlayer();
+            // Only for the first card
+            if(player.getRasse() == Rasse.HALBLING && firstCardSold) {
+                firstCardSold = false;
+                player.addGold(((Schatzkarte) karte).getGoldwert() * 2);
+            } else {
+                player.addGold(((Schatzkarte) karte).getGoldwert());
+            }
             //listKartenSlot.getHandKarten().removeKarte(listKartenSlot.getListIndex());
             finish();
         }

@@ -5,6 +5,7 @@ import android.os.Build;
 import androidx.annotation.RequiresApi;
 
 import com.example.munchkin.Karte.Inventar;
+import com.example.munchkin.Karte.KartenTypen.RassenKarte;
 
 public class Player extends PlayerData
 {
@@ -15,6 +16,7 @@ public class Player extends PlayerData
     private Level playerLevel;
     private int playerGold;
     private PlayerSideUI playerSideUI;
+    private Rasse rasse;
 
     public Player()
     {
@@ -22,6 +24,7 @@ public class Player extends PlayerData
         inventar = new Inventar();
         istDran = false;
         playerAusrüstung = new PlayerAusrüstung();
+        rasse = Rasse.NONE;
     }
 
     public Player(PlayerData playerData)
@@ -58,6 +61,14 @@ public class Player extends PlayerData
     public Inventar getInventar()
     {   return  inventar;   }
 
+    public Rasse getRasse() {
+        return this.rasse;
+    }
+
+    public void onRassenkarte(RassenKarte karte) {
+        this.rasse = karte.getRasse();
+        this.playerSideUI.getImgPlayerRasse().setImageResource(karte.getImage());
+    }
 
     public Level getPlayerLevel() {
         return playerLevel;

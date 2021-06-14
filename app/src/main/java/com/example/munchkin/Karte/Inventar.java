@@ -13,6 +13,7 @@ import com.example.munchkin.PlayerAusrüstung;
 import com.example.munchkin.PlayerSideUI;
 import com.example.munchkin.R;
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Rasse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -170,11 +171,11 @@ public class Inventar
         addCardToKartenList(k47);
 
         //Adding Rassen cards
-        RassenKarte k48= new RassenKarte(R.drawable.rassencard1);
+        RassenKarte k48= new RassenKarte(R.drawable.rassencard1, Rasse.ZWERG);
         addCardToKartenList(k48);
-        RassenKarte k49= new RassenKarte(R.drawable.rassencard2);
+        RassenKarte k49= new RassenKarte(R.drawable.rassencard2, Rasse.ELF);
         addCardToKartenList(k49);
-        RassenKarte k50= new RassenKarte(R.drawable.rassencard3);
+        RassenKarte k50= new RassenKarte(R.drawable.rassencard3, Rasse.HALBLING);
         addCardToKartenList(k50);
 
     }

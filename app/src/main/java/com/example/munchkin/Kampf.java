@@ -89,7 +89,9 @@ public class Kampf {
         //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
 
         int ergebnisWürfel=0;
-        if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
+        int threshold = 4;
+        if(currentPlayer.getRasse() == Rasse.ELF) threshold++;
+        if (ergebnisWürfel<=threshold){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
             monster.schlimmeDinge();
         }
         //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
