@@ -10,14 +10,38 @@
 
     <ImageView
         android:id="@+id/imgZombieCard"
-        android:layout_width="260dp"
-        android:layout_height="324dp"
+        android:layout_width="197dp"
+        android:layout_height="262dp"
         android:rotation="-0.5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.492"
+        app:layout_constraintVertical_bias="0.496"
         app:srcCompat="@drawable/empty_card" />
+
+    <ImageView
+        android:id="@+id/imgBtnZombie"
+        android:layout_width="221dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.829"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355"
+        app:srcCompat="@drawable/mainmenu_button" />
+
+    <ImageView
+        android:id="@+id/imgBtnZombie2"
+        android:layout_width="223dp"
+        android:layout_height="72dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.828"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638"
+        app:srcCompat="@drawable/mainmenu_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
