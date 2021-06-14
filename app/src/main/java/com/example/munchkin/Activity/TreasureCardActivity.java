@@ -40,8 +40,9 @@ public class TreasureCardActivity extends AppCompatActivity {
         imgTreasureCard=findViewById(R.id.cardpopView_handkarten_imgView);
         btnAusruesten=findViewById(R.id.treasurecardpopup_btnAusruesten);
         btnWegwerfen=findViewById(R.id.treasurecardpopup_btnWegwerfen);
-        //TODO switch with player from server
-        player=new Player();
+        
+        //player=new Player();
+        player= Player.getLocalPlayer();
 
         imageResource= Inventar.getSchatzkartenList().get(getRandomnum()).getImage();
         imgTreasureCard.setImageResource(imageResource);
