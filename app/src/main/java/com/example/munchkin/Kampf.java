@@ -106,10 +106,7 @@ public class Kampf {
 
     void onKampfFinished()
     {
-        currentPlayer.getInventar().getHandKarten().onFinishRound();
-
-        currentPlayer.setIstDran(false);
-        GameClient.sendNextPlayerAnDerReihe();
+        GamePhase.rundeBeenden();
         hideButtons();
     }
 

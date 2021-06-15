@@ -53,7 +53,6 @@ public class TürkartenStapel extends KartenSlot {
             Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
             GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
             new Kampf(Player.getLocalPlayer(), (Monsterkarte)gehobeneKarte);
-            anzahlGezogen++;
         }
         else if (gehobeneKarte instanceof Fluchkarte && anzahlGezogen==0){
             Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
@@ -63,7 +62,7 @@ public class TürkartenStapel extends KartenSlot {
         else
         {
             Player.getLocalPlayer().getInventar().getHandKarten().addKarte(gehobeneKarte);
-            anzahlGezogen++;
+            GamePhase.rundeBeenden();
         }
     }
 
