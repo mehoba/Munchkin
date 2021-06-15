@@ -70,6 +70,7 @@ public class Kampf {
     }
 
     public void kampfGewonnen(){
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen", Toast.LENGTH_SHORT).show();
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
         for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
@@ -81,8 +82,8 @@ public class Kampf {
         onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
     }
 
-    void kampfVerloren()
-    {
+    void kampfVerloren(){
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf verloren - weglaufen gestartet", Toast.LENGTH_SHORT).show();
         weglaufen();
     }
 
@@ -94,7 +95,10 @@ public class Kampf {
         int ergebnisWürfel=diceNumber;
 
         if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
+            Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen fehlgeschlagen", Toast.LENGTH_SHORT).show();
             monster.schlimmeDinge();
+        }else{
+            Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen erfolgreich", Toast.LENGTH_SHORT).show();
         }
         //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
         onKampfFinished();
