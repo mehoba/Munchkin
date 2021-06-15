@@ -25,6 +25,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
+    private int diceNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +56,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
            imgDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int diceNum = getRandomNumber();
+                diceNum = getRandomNumber();
                 while (diceNum == prevNum){
                     diceNum = getRandomNumber();
                 }

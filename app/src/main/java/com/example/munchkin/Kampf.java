@@ -88,13 +88,18 @@ public class Kampf {
     public void weglaufen(){
         //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
 
-        int ergebnisWürfel=0;
+
+
+    }
+
+    public void weglaufen(int diceNumber){
+        int ergebnisWürfel=diceNumber;
+
         if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
             monster.schlimmeDinge();
         }
         //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
-
-       onKampfFinished();
+        onKampfFinished();
     }
 
     void onKampfFinished()
