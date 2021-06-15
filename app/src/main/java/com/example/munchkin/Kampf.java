@@ -97,10 +97,10 @@ public class Kampf {
         if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
             Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen fehlgeschlagen", Toast.LENGTH_SHORT).show();
             monster.schlimmeDinge();
-        }else{
+        }else{ //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
             Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen erfolgreich", Toast.LENGTH_SHORT).show();
         }
-        //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
+
         onKampfFinished();
     }
 
