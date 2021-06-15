@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Inventar;
 import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KartenTypen.Buffkarte;
+import com.example.munchkin.Karte.KartenTypen.LvlUpKarte;
 import com.example.munchkin.Karte.KartenTypen.Rüstungskarte;
 import com.example.munchkin.Player;
 import com.example.munchkin.R;
@@ -38,8 +40,9 @@ public class TreasureCardActivity extends AppCompatActivity {
         imgTreasureCard=findViewById(R.id.cardpopView_handkarten_imgView);
         btnAusruesten=findViewById(R.id.treasurecardpopup_btnAusruesten);
         btnWegwerfen=findViewById(R.id.treasurecardpopup_btnWegwerfen);
-        //TODO switch with player from server
-        player=new Player();
+        
+        //player=new Player();
+        player= Player.getLocalPlayer();
 
         imageResource= Inventar.getSchatzkartenList().get(getRandomnum()).getImage();
         imgTreasureCard.setImageResource(imageResource);
@@ -55,7 +58,10 @@ public class TreasureCardActivity extends AppCompatActivity {
                           else{
                               Toast.makeText(getApplicationContext(),"Armor equipped", Toast.LENGTH_SHORT).show();
                           }
-
+                      }
+                      else if(karte instanceof LvlUpKarte){
+                          player.getPlayerLevel().levelIncrease();
+                          Toast.makeText(getApplicationContext(),"Level increased", Toast.LENGTH_SHORT).show();
                       }
                     }
                 }
