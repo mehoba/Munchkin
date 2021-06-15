@@ -1,13 +1,17 @@
 package com.example.munchkin;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
 import com.example.munchkin.Networking.GameClient;
+
+import static androidx.core.content.ContextCompat.startActivity;
 
 public class Kampf {
     /*
@@ -89,9 +93,9 @@ public class Kampf {
     }
 
     public void weglaufen(){
-        //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
 
-        int ergebnisWürfel=0;
+        SpielfeldActivity.getInstance().weglaufen();
+        int ergebnisWürfel= DiceActivity.getDiceNum();
         if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
             monster.schlimmeDinge();
         }

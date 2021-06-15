@@ -26,6 +26,12 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
 
+   public static int getDiceNum() {
+        return diceNum;
+    }
+
+    private static int diceNum;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +61,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
            imgDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int diceNum = getRandomNumber();
+                diceNum= getRandomNumber();
                 while (diceNum == prevNum){
                     diceNum = getRandomNumber();
                 }

@@ -164,4 +164,9 @@ public class SpielfeldActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), WinnerPopActivity.class);
         startActivity(i);
     }
+
+    public void weglaufen(){
+        Intent i = new Intent(getApplicationContext(), DiceActivity.class);
+        startActivity(i);
+    }
 }
