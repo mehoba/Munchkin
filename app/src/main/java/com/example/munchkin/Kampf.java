@@ -79,7 +79,7 @@ public class Kampf {
         }
 
         GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
-        onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
+        onKampfFinished();
     }
 
     void kampfVerloren(){
@@ -106,9 +106,7 @@ public class Kampf {
 
     void onKampfFinished()
     {
-        //Todo mehr als 5 cards? -> send per networking to weakest player
-        Player.getLocalPlayer().setIstDran(false);
-        GameClient.sendNextPlayerAnDerReihe();
+        GamePhase.rundeBeenden();
         hideButtons();
     }
 
