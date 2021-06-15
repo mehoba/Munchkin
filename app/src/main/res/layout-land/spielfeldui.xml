@@ -108,7 +108,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.783"
         app:srcCompat="@drawable/spielfeldui_backpackicon"
-        tools:visibility="invisible" />
+        tools:visibility="gone" />
 
     <ImageView
         android:id="@+id/player1_klasseicon"
@@ -440,9 +440,7 @@
             android:id="@+id/spielfeldui_handcard_layout"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="center"
             android:orientation="horizontal">
-
 
         </LinearLayout>
     </HorizontalScrollView>

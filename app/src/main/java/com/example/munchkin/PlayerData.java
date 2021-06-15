@@ -8,6 +8,7 @@ public class PlayerData
     protected int playerBoardNumber;//Aufsteigend von 0 - 3. Bestimmt Platz am Board
     protected Boolean istDran;
 
+    //Für Networking
     public PlayerData()
     {
 

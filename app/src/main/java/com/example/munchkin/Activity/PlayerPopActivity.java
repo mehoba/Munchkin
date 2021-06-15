@@ -16,17 +16,15 @@ import com.example.munchkin.R;
 
 public class PlayerPopActivity extends AppCompatActivity {
 
-    public Level level;
-    private TextView txtPlayerstufepopup;
+    private TextView txtPlayerstufepopup, txtPlayerName;
     private ImageView imgSkiptimebtn, imgPlayerpicture;
-    private int activePlayer = 1;
     private SpielfeldActivity sourceActivity;
 
-    private TextView[] txtPlayerCountdowns = new TextView[4];
+    private TextView txtPlayerCountdown;
     private CountDownTimer timer;
-    private int COUNTDOWN_TIME = 120; // Time in seconds
+    private static final int COUNTDOWN_TIME = 120; // Time in seconds
 
-    static Player player;
+    private static Player player;
 
     public static void show(Player player)
     {
@@ -41,10 +39,10 @@ public class PlayerPopActivity extends AppCompatActivity {
         setContentView(R.layout.playerinfo_popupview);
         txtPlayerstufepopup = findViewById(R.id.playerpopup_stufetext);
         imgPlayerpicture = findViewById(R.id.player1popup_picture);
+        txtPlayerName = findViewById(R.id.playerpopup_name);
 
-        level = new Level();
-
-        txtPlayerstufepopup.setText(Integer.toString(level.getLevel()));
+        txtPlayerstufepopup.setText("Level: " + player.getPlayerLevel().getLevel());
+        txtPlayerName.setText(player.getName());
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);
@@ -54,11 +52,10 @@ public class PlayerPopActivity extends AppCompatActivity {
 
         getWindow().setLayout((int)(width*0.9),(int)(height*0.85));
 
-        txtPlayerCountdowns[0] = findViewById(R.id.playerpopup_player1_countdown);
+        txtPlayerCountdown = findViewById(R.id.playerpopup_player1_countdown);
 
 
         imgSkiptimebtn = findViewById(R.id.playerpop_skiptimebtn);
-
 
         initTimer();
 
@@ -76,16 +73,16 @@ public class PlayerPopActivity extends AppCompatActivity {
         timer = new CountDownTimer(COUNTDOWN_TIME*1000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                txtPlayerCountdowns[activePlayer-1].setText(""+millisUntilFinished/1000);
+                txtPlayerCountdown.setText(""+millisUntilFinished/1000);
             }
 
             @Override
             public void onFinish() {
                 // Reset countdown display
-                txtPlayerCountdowns[activePlayer-1].setText("");
+                txtPlayerCountdown.setText("");
 
                 // Switch to next player
-                activePlayer = (activePlayer % 4) + 1;
+                //Todo
 
                 // Restart timer
                 this.start();

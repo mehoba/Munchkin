@@ -46,7 +46,7 @@ public class HandKarten
         ImageView imageView = new ImageView(spielfeldActivity.getBaseContext());
         imageView.setImageResource(karte.getImage());
         ListKartenSlot listKartenSlot = new ListKartenSlot(imageView, this);
-        listKartenSlot.karteAblegen(karte);
+        listKartenSlot.karteAblegenWithoutTrigger(karte);
         imageView.setOnClickListener(view -> onKartenSlotClicked(listKartenSlot));
         spielfeldActivity.handcardLayout.addView(imageView, new ViewGroup.LayoutParams(154, 200));
         kartenSlotList.add(listKartenSlot);
@@ -59,7 +59,7 @@ public class HandKarten
             ImageView imageView = new ImageView(spielfeldActivity.getBaseContext());
             imageView.setImageResource(karten[i].getImage());
             ListKartenSlot listKartenSlot = new ListKartenSlot(imageView, this);
-            listKartenSlot.karteAblegen(karten[i]);
+            listKartenSlot.karteAblegenWithoutTrigger(karten[i]);
             imageView.setOnClickListener(view -> onKartenSlotClicked(listKartenSlot));
             spielfeldActivity.handcardLayout.addView(imageView, new ViewGroup.LayoutParams(154, 200));
             this.kartenSlotList.add(listKartenSlot);
@@ -87,7 +87,6 @@ public class HandKarten
                 } else {
                     // Give card to player with lowest level
                     GameClient.sendKarteZuSpieler(this.removeKarte(5), lowestPlayer);
-
                 }
             }
         }

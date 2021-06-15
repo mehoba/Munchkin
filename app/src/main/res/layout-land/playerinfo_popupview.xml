@@ -143,12 +143,13 @@
 
     <TextView
         android:id="@+id/playerpopup_stufetext"
-        android:layout_width="70dp"
+        android:layout_width="100dp"
         android:layout_height="77dp"
         android:gravity="center_horizontal"
         android:inputType="number"
+        android:text="level 10"
         android:textAlignment="center"
-        android:textSize="64sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

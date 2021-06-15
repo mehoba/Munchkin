@@ -49,6 +49,7 @@ public class Network
         kryo.register(LoginNewPlayerForServer.class);
         kryo.register(NewPlayerJoined.class);
         kryo.register(KarteAufAblagestapelGelegt.class);
+        kryo.register(PlayerLevel.class);
     }
 
     static public class LoginNewPlayerForServer
@@ -91,5 +92,11 @@ public class Network
     {
         public int playerIndex;
         public Karte karte;
+    }
+
+    static public class PlayerLevel
+    {
+        public PlayerData playerData;
+        public int level;
     }
 }

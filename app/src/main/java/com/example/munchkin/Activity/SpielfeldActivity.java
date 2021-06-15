@@ -49,7 +49,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgSettings =findViewById(R.id.spielfeldui_settingsbtn);
         imgBackbtn =findViewById(R.id.spielfeldui_backbutton);
         imgDoorcard =findViewById(R.id.spielfeldui_doorcard);
-        imgBackpack =findViewById(R.id.spielfeldui_backpackicon);
         imgSchatzkarte = findViewById(R.id.spielfeldui_treasurecard);
         imgdoorcard = findViewById(R.id.spielfeldui_doorcard);
 
@@ -59,9 +58,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
         imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
-
-        imgBackpack.setOnClickListener(view -> {
-            Intent intent=new Intent(getApplicationContext(),WinnerPopActivity.class);
+        imgSchatzkarte.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), TreasureCardActivity.class);
             startActivity(intent);
         });
 
@@ -156,45 +154,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         new PlayerSideUI(imgSpielerIcon, imgSpielerKlasse, imgSpielerRasse, txtSpielerName, 3);
     }
 
-
-    //Todo: Pls löschen, wenn nicht mehr gebraucht
-// -----------------------------------------------------------------
-//    private void setCard(Karte card, ImageView imgCardView) {
-//        imgCardView.setImageResource(card.getImage());
-//        imgCardView.setVisibility(View.VISIBLE);
-//    }
-
-    // Returns a random number from 1 to bound (inclusive)
-    private int getRandomNum(int bound){
-        Random rand= new Random();
-        return rand.nextInt(bound)+1;
-    }
-
-//    public void cardAbelegen(ImageView imgCard, ImageView imgField){
-//        imgField.setVisibility(View.VISIBLE);
-//        imgField.setImageDrawable(imgCard.getDrawable());
-//        imgCard.setVisibility(View.INVISIBLE);
-//    }
-//-----------------------------------------------------------------
-//    public void setPlayerNames()
-//    {
-//        if(Lobby.getInstance() == null)
-//            return ;
-//
-//        TextView[] txtPlayerNames = new TextView[4];
-//        txtPlayerNames[0] = findViewById(R.id.spielfeldui_player1name);
-//        txtPlayerNames[1] = findViewById(R.id.spielfeldui_player2name);
-//        txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
-//        txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
-//
-//        LinkedList<String> playerNames = Lobby.getPlayerNames();
-//
-//        for(int i = 0; i < playerNames.size(); i++)
-//        {
-//            if(txtPlayerNames[i] != null)
-//                txtPlayerNames[i].setText(playerNames.get(i));
-//        }
-//    }
 
     public static SpielfeldActivity getInstance()
     {

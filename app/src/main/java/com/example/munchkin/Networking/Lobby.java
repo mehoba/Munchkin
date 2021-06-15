@@ -67,7 +67,6 @@ public class Lobby
         if(SpielfeldActivity.getInstance() != null)
         {
             player.setPlayerSideUI();
-            player.writeNameToTextView();
         }
     }
 
