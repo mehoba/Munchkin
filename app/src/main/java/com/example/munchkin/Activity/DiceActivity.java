@@ -8,10 +8,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.munchkin.Kampf;
 import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
 
@@ -26,6 +28,7 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
     private int diceNum;
+    private static Kampf kampf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,9 +66,22 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
                  prevNum = diceNum;
                 setDicePicture(diceNum);
                 System.out.println(diceNum);
+                warte1Sekunde();
             }
         });
 
+    }
+
+    private void warte1Sekunde(){
+        Runnable r= new Runnable() {
+            @Override
+            public void run() {
+                kampf.weglaufen(diceNum);
+                finish();
+            }
+        };
+        Handler h = new Handler();
+        h.postDelayed(r, 1000);
     }
 
     public void setDicePicture(int diceNum){
@@ -123,6 +139,13 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public static void show(Kampf kampf){
+        DiceActivity.kampf=kampf;
+
+        Intent i=new Intent(SpielfeldActivity.getInstance().getApplicationContext(),DiceActivity.class);
+        SpielfeldActivity.getInstance().startActivity(i);
     }
 }
 

@@ -3,6 +3,7 @@ package com.example.munchkin;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
@@ -86,10 +87,7 @@ public class Kampf {
     }
 
     public void weglaufen(){
-        //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
-
-
-
+        DiceActivity.show(this);
     }
 
     public void weglaufen(int diceNumber){
