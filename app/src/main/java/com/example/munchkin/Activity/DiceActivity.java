@@ -8,12 +8,13 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.munchkin.Kampf;
 import com.example.munchkin.R;
-import com.example.munchkin.Spielfeld;
 
 import java.util.Random;
 
@@ -25,12 +26,9 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
-
-   public static int getDiceNum() {
-        return diceNum;
-    }
-
     private static int diceNum;
+    private static Kampf kampf;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,9 +66,22 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
                  prevNum = diceNum;
                 setDicePicture(diceNum);
                 System.out.println(diceNum);
+                warte1Sekunde();
             }
         });
 
+    }
+
+    private void warte1Sekunde(){
+        Runnable r= new Runnable() {
+            @Override
+            public void run() {
+                kampf.weglaufen(diceNum);
+                finish();
+            }
+        };
+        Handler h = new Handler();
+        h.postDelayed(r, 1000);
     }
 
     public void setDicePicture(int diceNum){
@@ -127,6 +138,17 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
+
+    }
+
+    public static void show(Kampf kampf){
+        //weise zu in welchem Kampf ich bin
+        DiceActivity.kampf=kampf;
+
+        //Um Würfel anzuzeigen
+        Intent i = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), DiceActivity.class);
+        SpielfeldActivity.getInstance().startActivity(i);
+
 
     }
 }

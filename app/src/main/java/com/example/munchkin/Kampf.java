@@ -1,17 +1,11 @@
 package com.example.munchkin;
 
-import android.content.Intent;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
-import com.example.munchkin.Karte.HandKarten;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
-import com.example.munchkin.Networking.GameClient;
-
-import static androidx.core.content.ContextCompat.startActivity;
 
 public class Kampf {
     /*
@@ -93,15 +87,20 @@ public class Kampf {
     }
 
     public void weglaufen(){
+        DiceActivity.show(this);
+    }
 
-        SpielfeldActivity.getInstance().weglaufen();
-        int ergebnisWürfel= DiceActivity.getDiceNum();
+    /**
+     * @param diceNumber
+     * darf nur aus DiceActivity aufgerufen werden
+     */
+    public void weglaufen(int diceNumber){
+        int ergebnisWürfel= diceNumber;
         if (ergebnisWürfel<=4){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
             monster.schlimmeDinge();
         }
         //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
-
-       onKampfFinished();
+        onKampfFinished();
     }
 
     void onKampfFinished()
@@ -121,5 +120,6 @@ public class Kampf {
         SpielfeldActivity.getInstance().imgButtonKämpfen.setVisibility(View.VISIBLE);
         SpielfeldActivity.getInstance().imgButtonWeglaufen.setVisibility(View.VISIBLE);
     }
+
 
 }
