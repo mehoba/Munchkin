@@ -88,6 +88,7 @@ public class Kampf {
     }
 
     public void weglaufen(){
+        hideButtons();
         DiceActivity.show(this);
     }
 
