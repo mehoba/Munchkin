@@ -133,7 +133,13 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
 
                 if (acceleration > SHAKE_THRESHOLD) {
                     mLastShakeTime = curTime;
-                    setDicePicture(getRandomNumber());
+                    if (!schonGewürfelt) {
+                        diceNum = getRandomNumber();
+                        setDicePicture(diceNum);
+                        System.out.println(diceNum);
+                        warte1Sekunde();
+                        schonGewürfelt = true;
+                    }
 
                 }
             }

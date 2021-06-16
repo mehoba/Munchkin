@@ -54,7 +54,6 @@ public class Kampf {
 
     public void kämpfen(){
 
-        //ToDo Funktionalität verfeinern
         //Soll die Stärke des Player und die Stärke des Monster vergleichen
         //Stärke des Player = Playerlevel + Ausrüstung + ev Buffs, die auf Player gespielt wurden
         //Stärke Monster= Monsterlevel + ev. Monsterbuffs + ev Buffs, die auf Monster gespielt wurden
@@ -62,15 +61,17 @@ public class Kampf {
         //falls Monster stärker - rufe weglaufen() auf
 
         //Grundfunktionalität
-        if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
-            kampfGewonnen();//Todo Ausrüstungslevel dazu zählen -> Vorher Ausrüstung ausimplementieren
+        int stärkePlayer= currentPlayer.getPlayerLevel().getLevel() + currentPlayer.getPlayerAusrüstung().getLevelSum();
+
+        if (stärkePlayer > monster.getMonsterLevel()){
+            kampfGewonnen();
         }else{
            kampfVerloren();
         }
     }
 
     public void kampfGewonnen(){
-        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen - Schätze werden gezogen", Toast.LENGTH_SHORT).show();
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
         for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
