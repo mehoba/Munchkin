@@ -13,6 +13,7 @@ import java.io.IOException;
 public class GameServer
 {
     Server server;
+    public static Boolean startWithClient = false;
 
     public  GameServer() throws IOException
     {
