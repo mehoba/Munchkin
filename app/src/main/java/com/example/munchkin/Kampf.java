@@ -70,7 +70,7 @@ public class Kampf {
     }
 
     public void kampfGewonnen(){
-        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen - Schätze werden gezogen", Toast.LENGTH_SHORT).show();
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
         for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
