@@ -6,8 +6,6 @@ import android.widget.Toast;
 import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
-import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
-import com.example.munchkin.Networking.GameClient;
 
 public class Kampf {
     /*
@@ -71,13 +69,10 @@ public class Kampf {
     }
 
     public void kampfGewonnen(){
-        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen - Schätze werden gezogen", Toast.LENGTH_SHORT).show();
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen", Toast.LENGTH_SHORT).show();
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
-        for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
-            //und die entsprechende Anzahl von Schatzkarten gezogen werden
-            currentPlayer.getInventar().getHandKarten().addKarte(Schatzkarte.getRandomSchatzkarte());
-        }
+        Spielfeld.getSchatzkartenStapel().setAnzahlErlaubtesZiehen(monster.getAnzahlSchätze());
 
         GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
         onKampfFinished();

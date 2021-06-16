@@ -445,4 +445,14 @@
         </LinearLayout>
     </HorizontalScrollView>
 
+    <TextView
+        android:id="@+id/txtZiehenSchatzkartenStapel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="0"
+        app:layout_constraintEnd_toStartOf="@+id/spielfeldui_player2icon"
+        app:layout_constraintStart_toEndOf="@+id/spielfeldui_treasurecard"
+        app:layout_constraintTop_toBottomOf="@+id/player2_klasseicon" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

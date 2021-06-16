@@ -3,7 +3,6 @@ package com.example.munchkin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,16 +10,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.munchkin.Karte.Karte;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
+import com.example.munchkin.Karte.SchatzkartenStapel;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.PlayerSideUI;
 import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
-
-import java.util.LinkedList;
-import java.util.Random;
 
 
 public class SpielfeldActivity extends AppCompatActivity {
@@ -32,6 +28,7 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     private TextView[] txtPlayerCountdowns = new TextView[4];
     public LinearLayout handcardLayout;
+    public TextView txtZiehenSchatzkartenStapel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +55,9 @@ public class SpielfeldActivity extends AppCompatActivity {
         //Für Kampf
         imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
         imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
+
+        txtZiehenSchatzkartenStapel = findViewById(R.id.txtZiehenSchatzkartenStapel);
+
 
         imgSchatzkarte.setOnClickListener(view -> {
             Intent intent = new Intent(getApplicationContext(), TreasureCardActivity.class);
@@ -97,6 +97,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         new Spielfeld().initializeUiConnection();
         Player.getLocalPlayer().initializeUIConnection();
 
+        //Da anfangs nur 4 Schatzkarten gezogen werden dürfen, dann wird dies je nach besiegtem Monster gesetzt
+        SchatzkartenStapel.setAnzahlErlaubtesZiehen(4);
 
 //        PlayerSideUI.hideAllSidesExceptLocal();
     }
