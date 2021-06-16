@@ -143,8 +143,8 @@
 
     <TextView
         android:id="@+id/playerpopup_stufetext"
-        android:layout_width="100dp"
-        android:layout_height="77dp"
+        android:layout_width="104dp"
+        android:layout_height="35dp"
         android:gravity="center_horizontal"
         android:inputType="number"
         android:text="level 10"
@@ -153,10 +153,10 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.086"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64" />
+        app:layout_constraintVertical_bias="0.561" />
 
     <TextView
         android:id="@+id/playerpopup_player1_countdown"
@@ -201,5 +201,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.372" />
+
+    <TextView
+        android:id="@+id/playerpopup_ausrüstungtext"
+        android:layout_width="153dp"
+        android:layout_height="40dp"
+        android:text="Stärke Ausrüstung 3"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.7" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
