@@ -50,6 +50,7 @@ public class Network
         kryo.register(NewPlayerJoined.class);
         kryo.register(KarteAufAblagestapelGelegt.class);
         kryo.register(PlayerLevel.class);
+        kryo.register(KarteZuSpieler.class);
     }
 
     static public class LoginNewPlayerForServer

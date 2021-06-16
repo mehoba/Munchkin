@@ -8,10 +8,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.example.munchkin.Kampf;
 import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
 
@@ -25,9 +27,13 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     private static final int MIN_TIME_BETWEEN_SHAKES = 1000;
     private long mLastShakeTime;
     private SensorManager mSensorMgr;
+    private int diceNum;
+    private static Kampf kampf;
+    private boolean schonGewürfelt=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        schonGewürfelt = false;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dice);
 
@@ -37,42 +43,56 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
         int width = dm.widthPixels;
         int height = dm.heightPixels;
 
-        getWindow().setLayout((int)(width*0.8),(int)(height*0.6));
+        getWindow().setLayout((int) (width * 0.8), (int) (height * 0.6));
 
         imgDice = findViewById(R.id.diceImage);
-
-
 
 
         mSensorMgr = (SensorManager) getSystemService(SENSOR_SERVICE);
 
         Sensor acceloremeter = mSensorMgr.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        if(acceloremeter != null){
-            mSensorMgr.registerListener(this, acceloremeter,SensorManager.SENSOR_DELAY_NORMAL);
+        if (acceloremeter != null) {
+            mSensorMgr.registerListener(this, acceloremeter, SensorManager.SENSOR_DELAY_NORMAL);
         }
 
 
-           imgDice.setOnClickListener(new View.OnClickListener() {
+        imgDice.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int diceNum = getRandomNumber();
-                while (diceNum == prevNum){
+                if (!schonGewürfelt){
                     diceNum = getRandomNumber();
+                    while (diceNum == prevNum) {
+                        diceNum = getRandomNumber();
+                    }
+                    prevNum = diceNum;
+                    setDicePicture(diceNum);
+                    System.out.println(diceNum);
+                    warte1Sekunde();
+                    schonGewürfelt = true;
                 }
-                 prevNum = diceNum;
-                setDicePicture(diceNum);
-                System.out.println(diceNum);
             }
         });
 
     }
 
-    public void setDicePicture(int diceNum){
+    private void warte1Sekunde() {
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                kampf.weglaufen(diceNum);
+                finish();
+            }
+        };
+        Handler h = new Handler();
+        h.postDelayed(r, 1000);
+    }
 
-        switch (diceNum){
+    public void setDicePicture(int diceNum) {
+
+        switch (diceNum) {
             case 1:
-              imgDice.setImageResource(R.drawable.diceone);
-              break;
+                imgDice.setImageResource(R.drawable.diceone);
+                break;
             case 2:
                 imgDice.setImageResource(R.drawable.dicetwo);
                 break;
@@ -93,16 +113,16 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
     }
 
 
-    public int getRandomNumber(){
+    public int getRandomNumber() {
         Random rand = new Random();
-        return rand.nextInt(6)+1;
+        return rand.nextInt(6) + 1;
     }
 
     @Override
     public void onSensorChanged(SensorEvent event) {
-        if(event.sensor.getType() == Sensor.TYPE_ACCELEROMETER){
+        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
             long curTime = System.currentTimeMillis();
-            if((curTime -mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES){
+            if ((curTime - mLastShakeTime) > MIN_TIME_BETWEEN_SHAKES) {
                 float x = event.values[0];
                 float y = event.values[1];
                 float z = event.values[2];
@@ -115,13 +135,21 @@ public class DiceActivity extends AppCompatActivity implements SensorEventListen
                     mLastShakeTime = curTime;
                     setDicePicture(getRandomNumber());
 
+                }
             }
         }
-    }}
+    }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
+    }
+
+    public static void show(Kampf kampf) {
+        DiceActivity.kampf = kampf;
+
+        Intent i = new Intent(SpielfeldActivity.getInstance().getApplicationContext(), DiceActivity.class);
+        SpielfeldActivity.getInstance().startActivity(i);
     }
 }
 

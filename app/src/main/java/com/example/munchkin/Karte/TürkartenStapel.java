@@ -5,6 +5,7 @@ import android.widget.ImageView;
 
 import com.example.munchkin.GamePhase;
 import com.example.munchkin.Kampf;
+import com.example.munchkin.Karte.KartenTypen.Fluchkarte;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Karte.KartenTypen.Türkarte;
 import com.example.munchkin.Networking.GameClient;
@@ -52,6 +53,9 @@ public class TürkartenStapel extends KartenSlot {
             Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
             GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
             new Kampf(Player.getLocalPlayer(), (Monsterkarte)gehobeneKarte);
+        }else if(gehobeneKarte instanceof Fluchkarte){
+            Spielfeld.getMonsterKartenSlot().karteAblegen(gehobeneKarte);
+            GameClient.sendMonsterKarteGelegtAnServer(gehobeneKarte);
         }
         else
         {

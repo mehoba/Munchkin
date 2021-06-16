@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.PlayerSideUI;
@@ -81,6 +82,12 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgDice.setOnClickListener(view -> {
             Intent i=new Intent(getApplicationContext(),DiceActivity.class);
             startActivity(i);
+        });
+
+        imgMonsterKartenSlot.setOnClickListener(view -> {
+            if (Spielfeld.getMonsterKartenSlot().getKarte() != null){
+                MonsterCardActivity.show((Monsterkarte) Spielfeld.getMonsterKartenSlot().getKarte());
+            }
         });
 
        /* playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
