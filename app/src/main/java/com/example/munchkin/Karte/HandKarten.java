@@ -9,6 +9,7 @@ import com.example.munchkin.Networking.GameClient;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.Activity.SpielfeldActivity;
+import com.example.munchkin.Rasse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +69,12 @@ public class HandKarten
 
     public void onFinishRound() {
         // Only up to 5 Cards are allowed
-        if(countHandkarten() > 5) {
+        int threshold = 5;
+        if(Player.getLocalPlayer().getRasse() == Rasse.ZWERG) threshold = 6;
+
+        CardPopActivity_handkarten.resetCardSold();
+
+        if(countHandkarten() > threshold) {
             int playerLevel = Player.getLocalPlayer().getPlayerLevel().getLevel();
             Player lowestPlayer = Player.getLocalPlayer();
             int currentLowest = playerLevel;
@@ -79,13 +85,13 @@ public class HandKarten
                 }
             }
 
-            while(countHandkarten() > 5) {
+            while(countHandkarten() > threshold) {
                 if(lowestPlayer.equals(Player.getLocalPlayer())) {
                     // We are the lowest player so move card to ablage
-                    this.removeKarte(5);
+                    this.removeKarte(threshold);
                 } else {
                     // Give card to player with lowest level
-                    GameClient.sendKarteZuSpieler(this.removeKarte(5), lowestPlayer);
+                    GameClient.sendKarteZuSpieler(this.removeKarte(threshold), lowestPlayer);
                 }
             }
         }
