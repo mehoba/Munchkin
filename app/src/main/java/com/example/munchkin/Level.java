@@ -1,6 +1,7 @@
 package com.example.munchkin;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Networking.GameClient;
@@ -15,6 +16,7 @@ public class Level {
     }
 
     public void levelIncrease(){
+        Toast.makeText(SpielfeldActivity.getInstance(), "Level erhöht", Toast.LENGTH_SHORT).show();
         level++;
         Log.i("lvl empfangen für: " + player.name, Integer.toString(level));
 
@@ -26,6 +28,7 @@ public class Level {
 
     public void levelDecrease(){
         if (level !=1){
+            Toast.makeText(SpielfeldActivity.getInstance(), "Level verloren", Toast.LENGTH_SHORT).show();
             level --;
             GameClient.sendPlayerLevel(player);
         }

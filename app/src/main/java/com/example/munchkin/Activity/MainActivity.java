@@ -9,13 +9,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
 
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.esotericsoftware.kryonet.Server;
 import com.example.munchkin.Networking.GameClient;
+import com.example.munchkin.Networking.GameServer;
 import com.example.munchkin.Networking.Network;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.R;
+
+import java.io.IOException;
 
 
 public class MainActivity extends AppCompatActivity
@@ -47,13 +53,28 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-        new Lobby();
+        CheckBox checkBoxStartServer = findViewById(R.id.checkBoxStartServer);
+        checkBoxStartServer.setOnClickListener(v -> {
+            GameServer.startWithClient = checkBoxStartServer.isChecked();
+        });
 
+        new Lobby();
         gameClient = new GameClient();
     }
 
     private void spielen(View view)
     {
+        if(GameServer.startWithClient) {
+            try {
+                new GameServer();
+                Toast.makeText(this, "Server wurde gestartet", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                e.printStackTrace();
+                Toast.makeText(this, "Server konnte nicht gestartet werden", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+
         txtPlayernameInvalid.setVisibility(View.INVISIBLE);
         if(gameClient == null)//Zum debuggen, falls kein Server zur verfügung steht
         {

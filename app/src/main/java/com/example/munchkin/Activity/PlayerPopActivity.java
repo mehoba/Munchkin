@@ -16,7 +16,7 @@ import com.example.munchkin.R;
 
 public class PlayerPopActivity extends AppCompatActivity {
 
-    private TextView txtPlayerstufepopup, txtPlayerName;
+    private TextView txtPlayerstufepopup, txtPlayerName, txtPlayerAusrüstung;
     private ImageView imgSkiptimebtn, imgPlayerpicture;
     private SpielfeldActivity sourceActivity;
 
@@ -40,9 +40,11 @@ public class PlayerPopActivity extends AppCompatActivity {
         txtPlayerstufepopup = findViewById(R.id.playerpopup_stufetext);
         imgPlayerpicture = findViewById(R.id.player1popup_picture);
         txtPlayerName = findViewById(R.id.playerpopup_name);
+        txtPlayerAusrüstung = findViewById(R.id.playerpopup_ausrüstungtext);
 
         txtPlayerstufepopup.setText("Level: " + player.getPlayerLevel().getLevel());
         txtPlayerName.setText(player.getName());
+        txtPlayerAusrüstung.setText("Stärke Ausrüstung: " + player.getPlayerAusrüstung().getLevelSum());
 
         DisplayMetrics dm = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(dm);

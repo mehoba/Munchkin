@@ -67,7 +67,6 @@ public class HandKarten
         }
     }
 
-    //TODO: Should be called when the player finishes his round
     public void onFinishRound() {
         // Only up to 5 Cards are allowed
         int threshold = 5;

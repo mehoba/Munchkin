@@ -3,7 +3,6 @@ package com.example.munchkin.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,15 +10,13 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.munchkin.Karte.Karte;
+import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
+import com.example.munchkin.Karte.SchatzkartenStapel;
 import com.example.munchkin.Networking.Lobby;
 import com.example.munchkin.Player;
 import com.example.munchkin.PlayerSideUI;
 import com.example.munchkin.R;
 import com.example.munchkin.Spielfeld;
-
-import java.util.LinkedList;
-import java.util.Random;
 
 
 public class SpielfeldActivity extends AppCompatActivity {
@@ -31,6 +28,7 @@ public class SpielfeldActivity extends AppCompatActivity {
 
     private TextView[] txtPlayerCountdowns = new TextView[4];
     public LinearLayout handcardLayout;
+    public TextView txtZiehenSchatzkartenStapel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +56,13 @@ public class SpielfeldActivity extends AppCompatActivity {
         imgButtonKämpfen = findViewById(R.id.imgButtonKämpfen);
         imgButtonWeglaufen= findViewById(R.id.imgButtonWeglaufen);
 
+        txtZiehenSchatzkartenStapel = findViewById(R.id.txtZiehenSchatzkartenStapel);
+
+
+        imgSchatzkarte.setOnClickListener(view -> {
+            Intent intent = new Intent(getApplicationContext(), TreasureCardActivity.class);
+            startActivity(intent);
+        });
 
         imgDoorcard.setOnClickListener(view -> {
             Intent intent=new Intent(getApplicationContext(), CardPopActivity_handkarten.class);
@@ -79,6 +84,12 @@ public class SpielfeldActivity extends AppCompatActivity {
             startActivity(i);
         });
 
+        imgMonsterKartenSlot.setOnClickListener(view -> {
+            if (Spielfeld.getMonsterKartenSlot().getKarte() != null){
+                MonsterCardActivity.show((Monsterkarte) Spielfeld.getMonsterKartenSlot().getKarte());
+            }
+        });
+
        /* playerCountdowns[1]=findViewById(R.id.spielfeldui_player2_countdown);
         playerCountdowns[2]=findViewById(R.id.spielfeldui_player3_countdown);
         playerCountdowns[3]=findViewById(R.id.spielfeldui_player4_countdown);*/
@@ -86,6 +97,8 @@ public class SpielfeldActivity extends AppCompatActivity {
         new Spielfeld().initializeUiConnection();
         Player.getLocalPlayer().initializeUIConnection();
 
+        //Da anfangs nur 4 Schatzkarten gezogen werden dürfen, dann wird dies je nach besiegtem Monster gesetzt
+        SchatzkartenStapel.setAnzahlErlaubtesZiehen(4);
 
 //        PlayerSideUI.hideAllSidesExceptLocal();
     }
@@ -150,45 +163,6 @@ public class SpielfeldActivity extends AppCompatActivity {
         new PlayerSideUI(imgSpielerIcon, imgSpielerKlasse, imgSpielerRasse, txtSpielerName, 3);
     }
 
-
-    //Todo: Pls löschen, wenn nicht mehr gebraucht
-// -----------------------------------------------------------------
-//    private void setCard(Karte card, ImageView imgCardView) {
-//        imgCardView.setImageResource(card.getImage());
-//        imgCardView.setVisibility(View.VISIBLE);
-//    }
-
-    // Returns a random number from 1 to bound (inclusive)
-    private int getRandomNum(int bound){
-        Random rand= new Random();
-        return rand.nextInt(bound)+1;
-    }
-
-//    public void cardAbelegen(ImageView imgCard, ImageView imgField){
-//        imgField.setVisibility(View.VISIBLE);
-//        imgField.setImageDrawable(imgCard.getDrawable());
-//        imgCard.setVisibility(View.INVISIBLE);
-//    }
-//-----------------------------------------------------------------
-//    public void setPlayerNames()
-//    {
-//        if(Lobby.getInstance() == null)
-//            return ;
-//
-//        TextView[] txtPlayerNames = new TextView[4];
-//        txtPlayerNames[0] = findViewById(R.id.spielfeldui_player1name);
-//        txtPlayerNames[1] = findViewById(R.id.spielfeldui_player2name);
-//        txtPlayerNames[2] = findViewById(R.id.spielfeldui_player3name);
-//        txtPlayerNames[3] = findViewById(R.id.spielfeldui_player4name);
-//
-//        LinkedList<String> playerNames = Lobby.getPlayerNames();
-//
-//        for(int i = 0; i < playerNames.size(); i++)
-//        {
-//            if(txtPlayerNames[i] != null)
-//                txtPlayerNames[i].setText(playerNames.get(i));
-//        }
-//    }
 
     public static SpielfeldActivity getInstance()
     {

@@ -94,7 +94,7 @@ public class CardPopActivity_handkarten extends AppCompatActivity {
         kartenSlotUI.setImageWithoutKarteAblegen(listKartenSlot.getKarte());
         ImageView imgButtonAblegen = findViewById(R.id.cardpopup_btnAblegen);
         ImageView imgButtonAusspielen = findViewById(R.id.cardpopup_btnAusspielen);
-        ImageView imgButtonVerkaufen = findViewById(R.id.treasurecardpopup_btnverkaufen);
+        ImageView imgButtonVerkaufen = findViewById(R.id.treasurecardpopup_btnverkaufen2);
 
         imgButtonAblegen.setOnClickListener(new View.OnClickListener() {
             @Override

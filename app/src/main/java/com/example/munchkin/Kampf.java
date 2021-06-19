@@ -3,10 +3,9 @@ package com.example.munchkin;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.munchkin.Activity.DiceActivity;
 import com.example.munchkin.Activity.SpielfeldActivity;
 import com.example.munchkin.Karte.KartenTypen.Monsterkarte;
-import com.example.munchkin.Karte.KartenTypen.Schatzkarte;
-import com.example.munchkin.Networking.GameClient;
 
 public class Kampf {
     /*
@@ -53,7 +52,6 @@ public class Kampf {
 
     public void kämpfen(){
 
-        //ToDo Funktionalität verfeinern
         //Soll die Stärke des Player und die Stärke des Monster vergleichen
         //Stärke des Player = Playerlevel + Ausrüstung + ev Buffs, die auf Player gespielt wurden
         //Stärke Monster= Monsterlevel + ev. Monsterbuffs + ev Buffs, die auf Monster gespielt wurden
@@ -61,49 +59,52 @@ public class Kampf {
         //falls Monster stärker - rufe weglaufen() auf
 
         //Grundfunktionalität
-        if (currentPlayer.getPlayerLevel().getLevel() > monster.getMonsterLevel()){
-            kampfGewonnen();//Todo Ausrüstungslevel dazu zählen -> Vorher Ausrüstung ausimplementieren
+        int stärkePlayer= currentPlayer.getPlayerLevel().getLevel() + currentPlayer.getPlayerAusrüstung().getLevelSum();
+
+        if (stärkePlayer > monster.getMonsterLevel()){
+            kampfGewonnen();
         }else{
            kampfVerloren();
         }
     }
 
     public void kampfGewonnen(){
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf gewonnen", Toast.LENGTH_SHORT).show();
         currentPlayer.getPlayerLevel().levelIncrease(); //level erhöhen
 
-        for (int i=0; i < monster.getAnzahlSchätze(); i++){     //es soll die getAnzahlSchätze auf Monster aufgerufen werden
-            //und die entsprechende Anzahl von Schatzkarten gezogen werden
-            currentPlayer.getInventar().getHandKarten().addKarte(Schatzkarte.getRandomSchatzkarte());
-        }
+        Spielfeld.getSchatzkartenStapel().setAnzahlErlaubtesZiehen(monster.getAnzahlSchätze());
 
         GamePhase.setPhase(GamePhase.Phase.nachKampfPhase);
-        onKampfFinished();//Todo nachkampfphase ausprogrammieren. Am besten Frau Gassinger fragen
+        onKampfFinished();
     }
 
-    void kampfVerloren()
-    {
+    void kampfVerloren(){
+        Toast.makeText(SpielfeldActivity.getInstance(), "Kampf verloren - weglaufen gestartet", Toast.LENGTH_SHORT).show();
         weglaufen();
     }
 
     public void weglaufen(){
-        //TODO @Meho hier Würfelfunktion aufrufen, einbinden und ergebnis in ergebniswürfel speichern
+        hideButtons();
+        DiceActivity.show(this);
+    }
 
-        int ergebnisWürfel=0;
+    public void weglaufen(int diceNumber){
+        int ergebnisWürfel=diceNumber;
         int threshold = 4;
         if(currentPlayer.getRasse() == Rasse.ELF) threshold++;
         if (ergebnisWürfel<=threshold){         //falls ergebnis 4 oder niedriger werden schlimmeDinge von Monster aufgerufen
+            Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen fehlgeschlagen", Toast.LENGTH_SHORT).show();
             monster.schlimmeDinge();
+        }else{ //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
+            Toast.makeText(SpielfeldActivity.getInstance(), "Weglaufen erfolgreich", Toast.LENGTH_SHORT).show();
         }
-        //Falls ergebnis des Würfels 5 oder 6 (>4) war weglaufen erfolgreich
 
-       onKampfFinished();
+        onKampfFinished();
     }
 
     void onKampfFinished()
     {
-        //Todo mehr als 5 cards? -> send per networking to weakest player
-        Player.getLocalPlayer().setIstDran(false);
-        GameClient.sendNextPlayerAnDerReihe();
+        GamePhase.rundeBeenden();
         hideButtons();
     }
 
